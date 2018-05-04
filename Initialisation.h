@@ -12,6 +12,8 @@ e-mail               : $EMAIL$
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Maladie.h"
+#include "Patient.h"
+#include "Medecin.h"
 #include <vector>
 //------------------------------------------------------------- Constantes
 
@@ -79,6 +81,8 @@ private:
 	//------------------------------------------------------- Attributs privés
 
 	vector<Maladie> listeMaladie();
+	vector<Medecin> listeMedecin();
+	vector<Patient> listePatient();
 
 	//---------------------------------------------------------- Classes amies
 
