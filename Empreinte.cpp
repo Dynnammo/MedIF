@@ -12,6 +12,7 @@ copyright            : (C) ${year} par ${user}
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
+#include "stdafx.h"
 #include <iostream>
 using namespace std;
 
@@ -42,11 +43,11 @@ using namespace std;
 
   //-------------------------------------------- Constructeurs - destructeur
 
-Empreinte:: Empreinte(ostream &out, string nomFichier)
+Empreinte:: Empreinte(string nomFichier)
 // Algorithme :
 //
 {
-	idEmpreinte++;
+	
 	ifstream fichier("L:\Mes documents\Visual Studio 2015\Projects\MedIF\MedIF\nomFichier"); //attention path à modifier selon les ordis
 	string ligne;
 	if (fichier) {
@@ -56,9 +57,15 @@ Empreinte:: Empreinte(ostream &out, string nomFichier)
 			mesures += ligne;
 
 		}
-
-
 	}
+	else {
+		cerr << "erreur lors de l'ouverture du fichier" << endl;
+		}
+
+	idEmpreinte = id++;
+
+
+	
 } //----- Fin de ${file_base}
 
 
@@ -66,7 +73,7 @@ Empreinte::~Empreinte ()
 // Algorithme :
 //
 {
-	idEmpreinte--;
+	id--;
 } //----- Fin de ~${file_base}
 
 

@@ -20,7 +20,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
-
+static  int id1 = 0;
 //------------------------------------------------------------------------ 
 // Rôle de la classe <${file_base}>
 //
@@ -36,7 +36,7 @@ public:
 	// Mode d'emploi :
 	//
 	// Contrat :
-	//
+	
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
@@ -55,11 +55,11 @@ public:
 	//
 
 	// Mode d'emploi :
-	Personne();
+	Personne() {};
 
 	Personne(string n, string p, string m) {
 
-		idPersonne++;
+		idPersonne=id1++;
 		prenom = p;
 		nom = m;
 		mail = m;
@@ -68,7 +68,7 @@ public:
 	//
 
 	virtual ~Personne() {
-		idPersonne--;
+		id1--;
 	}
 
 	// Mode d'emploi :
@@ -86,7 +86,7 @@ private:
 
 protected:
 	//----------------------------------------------------- Attributs protégés
-	static int idPersonne;
+	 int idPersonne;
 	string nom;
 	string prenom;
 	string mail;
