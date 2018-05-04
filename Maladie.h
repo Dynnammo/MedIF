@@ -1,0 +1,105 @@
+/*************************************************************************
+Maladie  -  description
+-------------------
+début                : $DATE$
+copyright            : (C) $YEAR$ par $AUTHOR$
+e-mail               : $EMAIL$
+*************************************************************************/
+
+//---------- Interface de la classe <Maladie> (fichier Maladie.h) ----------------
+#if ! defined ( Maladie_H )
+#define Maladie_H
+
+//--------------------------------------------------- Interfaces utilisées
+
+#include <iostream>
+
+//------------------------------------------------------------- Constantes
+
+//------------------------------------------------------------------ Types
+
+//------------------------------------------------------------------------
+// Rôle de la classe <Maladie>
+//
+//
+//------------------------------------------------------------------------
+
+class Maladie : public Ancetre
+{
+	//----------------------------------------------------------------- PUBLIC
+
+public:
+	//----------------------------------------------------- Méthodes publiques
+	// type Méthode ( liste de paramètres );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+
+	//------------------------------------------------- Surcharge d'opérateurs
+	Maladie & operator = (const Maladie & unMaladie);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	ostream& operator<<(ostream &flux, Maladie const& maladie)
+		// Mode d'emploi :
+		//
+		// Contrat :
+		//
+
+
+	//-------------------------------------------- Constructeurs - destructeur
+	Maladie(const Maladie & unMaladie);
+	// Mode d'emploi (constructeur de copie) :
+	//
+	// Contrat :
+	//
+
+	Maladie();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	Maladie(int ad);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	virtual ~Maladie();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	//------------------------------------------------------------------ PRIVE
+
+protected:
+	//----------------------------------------------------- Méthodes protégées
+
+private:
+	//------------------------------------------------------- Méthodes privées
+
+protected:
+	//----------------------------------------------------- Attributs protégés
+
+private:
+	//------------------------------------------------------- Attributs privés
+	int idMaladie;
+
+	//---------------------------------------------------------- Classes amies
+
+	//-------------------------------------------------------- Classes privées
+
+	//----------------------------------------------------------- Types privés
+
+};
+
+//---------------------------------------------- Types dépendants de <Maladie>
+
+#endif // Maladie_H
+
