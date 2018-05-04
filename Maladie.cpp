@@ -36,7 +36,11 @@ ostream& operator<<(ostream &flux, Maladie const& maladie)
 // Algorithme :
 //
 {
-	cout<<
+	for (int i(0); i < listeAttribut.size(); i++)
+	{
+		cout << "id  " << " valeur" << endl;
+		cout<<listeAttribut[i].
+	}
 } //----- Fin de Méthode
 
 
