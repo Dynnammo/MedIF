@@ -1,30 +1,28 @@
 /*************************************************************************
-Maladie  -  description
+Attribut  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Maladie> (fichier Maladie.h) ----------------
-#if ! defined ( Maladie_H )
-#define Maladie_H
+//---------- Interface de la classe <Attribut> (fichier Attribut.h) ----------------
+#if ! defined ( Attribut_H )
+#define Attribut_H
 
 //--------------------------------------------------- Interfaces utilisées
-
-#include <iostream>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Maladie>
+// Rôle de la classe <Attribut>
 //
 //
 //------------------------------------------------------------------------
 
-class Maladie
+class Attribut
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -38,39 +36,33 @@ public:
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	Maladie & operator = (const Maladie & unMaladie);
+	Attribut & operator = (const Attribut & unAttribut);
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	ostream& operator<<(ostream &flux, Maladie const& maladie)
-		// Mode d'emploi :
-		//
-		// Contrat :
-		//
-
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Maladie(const Maladie & unMaladie);
+	Attribut(const Attribut & unAttribut);
 	// Mode d'emploi (constructeur de copie) :
 	//
 	// Contrat :
 	//
 
-	Maladie();
+	Attribut();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	Maladie(int ad);
+	Attribut(int id);
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~Maladie();
+	virtual ~Attribut();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -89,7 +81,8 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs privés
-	int idMaladie;
+
+	int idAttribut;
 
 	//---------------------------------------------------------- Classes amies
 
@@ -99,7 +92,7 @@ private:
 
 };
 
-//---------------------------------------------- Types dépendants de <Maladie>
+//---------------------------------------------- Types dépendants de <Attribut>
 
-#endif // Maladie_H
+#endif // Attribut_H
 

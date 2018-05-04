@@ -1,30 +1,28 @@
 /*************************************************************************
-Maladie  -  description
+Attribut_intervalle  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Maladie> (fichier Maladie.h) ----------------
-#if ! defined ( Maladie_H )
-#define Maladie_H
+//---------- Interface de la classe <Attribut_intervalle> (fichier Attribut_intervalle.h) ----------------
+#if ! defined ( Attribut_intervalle_H )
+#define Attribut_intervalle_H
 
 //--------------------------------------------------- Interfaces utilisées
-
-#include <iostream>
-
+#include "Attribut.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Maladie>
+// Rôle de la classe <Attribut_intervalle>
 //
 //
 //------------------------------------------------------------------------
 
-class Maladie
+class Attribut_intervalle : public Attribut
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -38,39 +36,33 @@ public:
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	Maladie & operator = (const Maladie & unMaladie);
+	Attribut_intervalle & operator = (const Attribut_intervalle & unAttribut_intervalle);
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	ostream& operator<<(ostream &flux, Maladie const& maladie)
-		// Mode d'emploi :
-		//
-		// Contrat :
-		//
-
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Maladie(const Maladie & unMaladie);
+	Attribut_intervalle(const Attribut_intervalle & unAttribut_intervalle);
 	// Mode d'emploi (constructeur de copie) :
 	//
 	// Contrat :
 	//
 
-	Maladie();
+	Attribut_intervalle();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	Maladie(int ad);
+	Attribut_intervalle(double borneS, double borneI, double moy);
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~Maladie();
+	virtual ~Attribut_intervalle();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -89,7 +81,10 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs privés
-	int idMaladie;
+
+	double borneSup;
+	double borneInf;
+	double moyenne;
 
 	//---------------------------------------------------------- Classes amies
 
@@ -99,7 +94,7 @@ private:
 
 };
 
-//---------------------------------------------- Types dépendants de <Maladie>
+//---------------------------------------------- Types dépendants de <Attribut_intervalle>
 
-#endif // Maladie_H
+#endif // Attribut_intervalle_H
 

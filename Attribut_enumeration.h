@@ -1,30 +1,30 @@
 /*************************************************************************
-Maladie  -  description
+Attribut_enumeration  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Maladie> (fichier Maladie.h) ----------------
-#if ! defined ( Maladie_H )
-#define Maladie_H
+//---------- Interface de la classe <Attribut_enumeration> (fichier Attribut_enumeration.h) ----------------
+#if ! defined ( Attribut_enumeration_H )
+#define Attribut_enumeration_H
 
 //--------------------------------------------------- Interfaces utilisées
-
-#include <iostream>
-
+#include <vector>
+#include <string>
+#include "Attribut.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Maladie>
+// Rôle de la classe <Attribut_enumeration>
 //
 //
 //------------------------------------------------------------------------
 
-class Maladie
+class Attribut_enumeration : public Attribut
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -38,39 +38,33 @@ public:
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	Maladie & operator = (const Maladie & unMaladie);
+	Attribut_enumeration & operator = (const Attribut_enumeration & unAttribut_enumeration);
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	ostream& operator<<(ostream &flux, Maladie const& maladie)
-		// Mode d'emploi :
-		//
-		// Contrat :
-		//
-
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Maladie(const Maladie & unMaladie);
+	Attribut_enumeration(const Attribut_enumeration & unAttribut_enumeration);
 	// Mode d'emploi (constructeur de copie) :
 	//
 	// Contrat :
 	//
 
-	Maladie();
+	Attribut_enumeration();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	Maladie(int ad);
+	Attribut_enumeration(int nbValeurs, string *valeurs);
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~Maladie();
+	virtual ~Attribut_enumeration();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -89,7 +83,9 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs privés
-	int idMaladie;
+
+	int nbValeurs;
+	vector<string> valeurs;
 
 	//---------------------------------------------------------- Classes amies
 
@@ -99,7 +95,7 @@ private:
 
 };
 
-//---------------------------------------------- Types dépendants de <Maladie>
+//---------------------------------------------- Types dépendants de <Attribut_enumeration>
 
-#endif // Maladie_H
+#endif // Attribut_enumeration_H
 
