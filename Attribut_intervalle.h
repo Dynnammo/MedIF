@@ -1,38 +1,34 @@
 /*************************************************************************
-Initialisation  -  description
+Attribut_intervalle  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Initialisation> (fichier Initialisation.h) ----------------
-#if ! defined ( Initialisation_H )
-#define Initialisation_H
+//---------- Interface de la classe <Attribut_intervalle> (fichier Attribut_intervalle.h) ----------------
+#if ! defined ( Attribut_intervalle_H )
+#define Attribut_intervalle_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Maladie.h"
-#include "Patient.h"
-#include "Medecin.h"
-#include <vector>
+#include "Attribut.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Initialisation>
+// Rôle de la classe <Attribut_intervalle>
 //
 //
 //------------------------------------------------------------------------
 
-class Initialisation
+class Attribut_intervalle : public Attribut
 {
 	//----------------------------------------------------------------- PUBLIC
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	
-	void init(String nomFichier);
+	// type Méthode ( liste de paramètres );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -40,7 +36,7 @@ public:
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	Initialisation & operator = (const Initialisation & unInitialisation);
+	Attribut_intervalle & operator = (const Attribut_intervalle & unAttribut_intervalle);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -48,19 +44,25 @@ public:
 
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Initialisation(const Initialisation & unInitialisation);
+	Attribut_intervalle(const Attribut_intervalle & unAttribut_intervalle);
 	// Mode d'emploi (constructeur de copie) :
 	//
 	// Contrat :
 	//
 
-	Initialisation();
+	Attribut_intervalle();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~Initialisation();
+	Attribut_intervalle(double borneS, double borneI, double moy);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	virtual ~Attribut_intervalle();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -80,9 +82,9 @@ protected:
 private:
 	//------------------------------------------------------- Attributs privés
 
-	vector<Maladie> listeMaladie();
-	vector<Medecin> listeMedecin();
-	vector<Patient> listePatient();
+	double borneSup;
+	double borneInf;
+	double moyenne;
 
 	//---------------------------------------------------------- Classes amies
 
@@ -92,7 +94,7 @@ private:
 
 };
 
-//---------------------------------------------- Types dépendants de <Initialisation>
+//---------------------------------------------- Types dépendants de <Attribut_intervalle>
 
-#endif // Initialisation_H
+#endif // Attribut_intervalle_H
 

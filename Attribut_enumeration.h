@@ -1,38 +1,36 @@
 /*************************************************************************
-Initialisation  -  description
+Attribut_enumeration  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Initialisation> (fichier Initialisation.h) ----------------
-#if ! defined ( Initialisation_H )
-#define Initialisation_H
+//---------- Interface de la classe <Attribut_enumeration> (fichier Attribut_enumeration.h) ----------------
+#if ! defined ( Attribut_enumeration_H )
+#define Attribut_enumeration_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Maladie.h"
-#include "Patient.h"
-#include "Medecin.h"
 #include <vector>
+#include <string>
+#include "Attribut.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Initialisation>
+// Rôle de la classe <Attribut_enumeration>
 //
 //
 //------------------------------------------------------------------------
 
-class Initialisation
+class Attribut_enumeration : public Attribut
 {
 	//----------------------------------------------------------------- PUBLIC
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	
-	void init(String nomFichier);
+	// type Méthode ( liste de paramètres );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -40,7 +38,7 @@ public:
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	Initialisation & operator = (const Initialisation & unInitialisation);
+	Attribut_enumeration & operator = (const Attribut_enumeration & unAttribut_enumeration);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -48,19 +46,25 @@ public:
 
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Initialisation(const Initialisation & unInitialisation);
+	Attribut_enumeration(const Attribut_enumeration & unAttribut_enumeration);
 	// Mode d'emploi (constructeur de copie) :
 	//
 	// Contrat :
 	//
 
-	Initialisation();
+	Attribut_enumeration();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~Initialisation();
+	Attribut_enumeration(int nbValeurs, string *valeurs);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	virtual ~Attribut_enumeration();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -80,9 +84,8 @@ protected:
 private:
 	//------------------------------------------------------- Attributs privés
 
-	vector<Maladie> listeMaladie();
-	vector<Medecin> listeMedecin();
-	vector<Patient> listePatient();
+	int nbValeurs;
+	vector<string> valeurs;
 
 	//---------------------------------------------------------- Classes amies
 
@@ -92,7 +95,7 @@ private:
 
 };
 
-//---------------------------------------------- Types dépendants de <Initialisation>
+//---------------------------------------------- Types dépendants de <Attribut_enumeration>
 
-#endif // Initialisation_H
+#endif // Attribut_enumeration_H
 

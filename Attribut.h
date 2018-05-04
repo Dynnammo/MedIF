@@ -1,38 +1,34 @@
 /*************************************************************************
-Initialisation  -  description
+Attribut  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <Initialisation> (fichier Initialisation.h) ----------------
-#if ! defined ( Initialisation_H )
-#define Initialisation_H
+//---------- Interface de la classe <Attribut> (fichier Attribut.h) ----------------
+#if ! defined ( Attribut_H )
+#define Attribut_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Maladie.h"
-#include "Patient.h"
-#include "Medecin.h"
-#include <vector>
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Initialisation>
+// Rôle de la classe <Attribut>
 //
 //
 //------------------------------------------------------------------------
 
-class Initialisation
+class Attribut
 {
 	//----------------------------------------------------------------- PUBLIC
 
 public:
 	//----------------------------------------------------- Méthodes publiques
-	
-	void init(String nomFichier);
+	// type Méthode ( liste de paramètres );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -40,7 +36,7 @@ public:
 
 
 	//------------------------------------------------- Surcharge d'opérateurs
-	Initialisation & operator = (const Initialisation & unInitialisation);
+	Attribut & operator = (const Attribut & unAttribut);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -48,19 +44,25 @@ public:
 
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Initialisation(const Initialisation & unInitialisation);
+	Attribut(const Attribut & unAttribut);
 	// Mode d'emploi (constructeur de copie) :
 	//
 	// Contrat :
 	//
 
-	Initialisation();
+	Attribut();
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
 
-	virtual ~Initialisation();
+	Attribut(int id);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	virtual ~Attribut();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -80,9 +82,7 @@ protected:
 private:
 	//------------------------------------------------------- Attributs privés
 
-	vector<Maladie> listeMaladie();
-	vector<Medecin> listeMedecin();
-	vector<Patient> listePatient();
+	int idAttribut;
 
 	//---------------------------------------------------------- Classes amies
 
@@ -92,7 +92,7 @@ private:
 
 };
 
-//---------------------------------------------- Types dépendants de <Initialisation>
+//---------------------------------------------- Types dépendants de <Attribut>
 
-#endif // Initialisation_H
+#endif // Attribut_H
 
