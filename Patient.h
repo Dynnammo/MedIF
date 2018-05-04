@@ -15,6 +15,7 @@ copyright            : (C) ${year} par ${user}
 #include <string>
 #include <iostream>
 #include <list>
+#include "Empreinte.h"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ using namespace std;
 //
 //------------------------------------------------------------------------ 
 
-class Patient : Personne
+class Patient  :public Personne
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -41,6 +42,19 @@ public:
 	// Mode d'emploi :
 	//
 	// Contrat :
+	void Afficher() {
+
+		cout << nom << " " << prenom;
+	}
+	/*list <Analyse> getAnalyses() {
+
+		return la;
+	}*/
+
+	list <Empreinte> getEmpreintes() {
+
+		return le;
+	}
 	//
 
 
@@ -59,6 +73,16 @@ public:
 	// Contrat :
 	//
 	Patient(){}
+
+	Patient(string n, string p, string m) {
+
+		nom = n;	
+		prenom = p;
+		m = m;
+	}
+
+
+	
 	// Mode d'emploi :
 	
 	// Contrat :
@@ -85,8 +109,8 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs privés
-	list <Analyse>;
-	list <Empreinte>;
+	//list <Analyse> la;
+	list <Empreinte> le;
 	//---------------------------------------------------------- Classes amies
 
 	//-------------------------------------------------------- Classes privées

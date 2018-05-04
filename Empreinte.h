@@ -25,7 +25,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
-
+static int id = 0;
 //------------------------------------------------------------------------ 
 // Rôle de la classe <${file_base}>
 //
@@ -37,6 +37,7 @@ class Empreinte
 	//----------------------------------------------------------------- PUBLIC
 
 public:
+	
 	//----------------------------------------------------- Méthodes publiques
 	// type Méthode ( liste de paramètres );
 	// Mode d'emploi :
@@ -61,7 +62,7 @@ public:
 	//
 	// Contrat :
 	//
-	Empreinte(ostream &out, string nomFichier);
+	Empreinte( string nomFichier);
 	// Mode d'emploi :
 
 	// Contrat :
@@ -82,13 +83,15 @@ protected:
 private:
 	//------------------------------------------------------- Méthodes privées
 
+public:
+ int idEmpreinte;
 protected:
 	//----------------------------------------------------- Attributs protégés
 
 
 private:
 	//------------------------------------------------------- Attributs privés
-	static int idEmpreinte;
+	//static int idEmpreinte; 
 	string mesures;
 	//---------------------------------------------------------- Classes amies
 

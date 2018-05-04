@@ -46,6 +46,8 @@ public:
 	Analyse rechercherAnalyse(int id);
 	void afficherMaladie(list <Maladie> lm);
 	void mesurerPatient(Patient p, string nomFichier);
+	list <Analyse> faireAnalyse(list <Maladie>, Patient p);
+	void chargerEmpreinte(string nomFichier);
 
 	// type Méthode ( liste de paramètres );
 	// Mode d'emploi :
