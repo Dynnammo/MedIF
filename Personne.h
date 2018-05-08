@@ -1,12 +1,12 @@
-#pragma once
 /*************************************************************************
-${file_base}  -  description
+Personne -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 04.05.2018
+copyright            : (C) 2018 par Tifenn Floch, Anatolii Gasiuk, 
+									Léo Pape, Baptiste Thivend
 *************************************************************************/
 
-//---------- Interface de la classe <${file_base}> (fichier ${file_name}) ------
+//---------- Interface de la classe <Personne> (fichier Personne.h) ------
 #if ! defined ( PERSONNE_H )
 #define PERSONNE_H
 
@@ -22,8 +22,8 @@ using namespace std;
 //------------------------------------------------------------------ Types 
 static  int id1 = 0;
 //------------------------------------------------------------------------ 
-// Rôle de la classe <${file_base}>
-//
+// Rôle de la classe <Personne>
+// définit les attributs communs aux médecins et aux patients
 //
 //------------------------------------------------------------------------ 
 class Personne
@@ -37,7 +37,11 @@ public:
 	//
 	// Contrat :
 	
-
+	//------------------------------------------------------ Getters - Setters
+	int getIdPersonne()
+	{
+		return idPersonne;
+	}
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
@@ -46,35 +50,37 @@ public:
 	// Contrat :
 	//
 
-
 	//-------------------------------------------- Constructeurs - destructeur
 
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
+	// Constructeur par défaut
+	Personne()
+	{
 
-	// Mode d'emploi :
-	Personne() {};
+	}
 
-	Personne(string n, string p, string m) {
-
+	// Constructeur
+	Personne(string n, string p, string m)
+	{
 		idPersonne=id1++;
 		prenom = p;
 		nom = m;
 		mail = m;
 	}
-	// Contrat :
-	//
 
-	virtual ~Personne() {
-		id1--;
+	// Constructeur de copie
+	Personne(Personne & p)
+	{
+		this.prenom = p.prenom;
+		this.nom = p.nom;
+		this.idPersonne = p.idPersonne;
+		this.mail = p.mail;
 	}
 
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+	// Destructeur de la classe Personne
+	virtual ~Personne()
+	{
+		id1--;
+	}
 
 	//------------------------------------------------------------------ PRIVE 
 
@@ -86,7 +92,7 @@ private:
 
 protected:
 	//----------------------------------------------------- Attributs protégés
-	 int idPersonne;
+	int idPersonne;
 	string nom;
 	string prenom;
 	string mail;
@@ -102,6 +108,6 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <${file_base}>
+//----------------------------------------- Types dépendants de <Personne>
 
-#endif // XXX_H
+#endif // PERSONNE_H
