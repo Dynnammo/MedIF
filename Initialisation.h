@@ -33,7 +33,7 @@ class Initialisation
 public:
 	//----------------------------------------------------- M�thodes publiques
 	
-	void init(String nomFichier);
+	void init(string nomFichier);
 	// Mode d'emploi :
 	//
 	// Contrat :

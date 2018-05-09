@@ -13,6 +13,9 @@ e-mail               : $EMAIL$
 //--------------------------------------------------- Interfaces utilisées
 
 #include <iostream>
+#include "Attribut.h"
+#include "Attribut_enumeration.h"
+#include "Attribut_intervalle.h"
 
 //------------------------------------------------------------- Constantes
 
