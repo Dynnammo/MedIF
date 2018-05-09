@@ -1,38 +1,35 @@
-#pragma once
-#pragma once
 /*************************************************************************
-${file_base}  -  description
+Patient -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 04.05.2018
+copyright            : (C) 2018 par Tifenn Floch, Anatolii Gasiuk, 
+									Léo Pape, Baptiste Thivend
 *************************************************************************/
 
-//---------- Interface de la classe <${file_base}> (fichier ${file_name}) ------
+//---------- Interface de la classe <Patient> (fichier Patient.h) ------
 #if ! defined ( Patient_H )
 #define PATIENT_H
 
-#include "Personne.h"
 #include <string>
 #include <iostream>
 #include <list>
-#include "Empreinte.h"
 
 using namespace std;
 
-
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Personne.h"
+#include "Empreinte.h"
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <${file_base}>
+// Rôle de la classe <Patient>
 //
 //
 //------------------------------------------------------------------------ 
 
-class Patient  :public Personne
+class Patient : public Personne
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -42,21 +39,22 @@ public:
 	// Mode d'emploi :
 	//
 	// Contrat :
-	void Afficher() {
+	void afficher() {
 
-		cout << nom << " " << prenom;
+		cout << nom << " " << prenom << endl;
 	}
-	/*list <Analyse> getAnalyses() {
 
-		return la;
-	}*/
 
+	//------------------------------------------------------ Getters - Setters
 	list <Empreinte> getEmpreintes() {
 
 		return le;
 	}
-	//
 
+	list <Analyse> getAnalyses() {
+
+		return la;
+	}
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
@@ -72,8 +70,14 @@ public:
 	//
 	// Contrat :
 	//
-	Patient(){}
 
+	// Constructeur par défaut
+	Patient()
+	{
+
+	}
+
+	// Constructeur
 	Patient(string n, string p, string m) {
 
 		nom = n;	
@@ -81,19 +85,18 @@ public:
 		m = m;
 	}
 
+	// Constructeur de copie
+	Patient(Patient & p)
+	{
+		this.la = p.la;
+		this.le = p.le;
+	}
 
-	
-	// Mode d'emploi :
-	
-	// Contrat :
-	//
+	virtual ~Patient()
+	{
 
-	virtual ~Patient() {}
-		
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+	}
+
 
 	//------------------------------------------------------------------ PRIVE 
 
@@ -109,7 +112,7 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs privés
-	//list <Analyse> la;
+	list <Analyse> la;
 	list <Empreinte> le;
 	//---------------------------------------------------------- Classes amies
 
@@ -119,6 +122,6 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <${file_base}>
+//----------------------------------------- Types dépendants de <Patient>
 
-#endif // XXX_H
+#endif // PATIENT_H
