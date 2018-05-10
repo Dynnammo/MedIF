@@ -101,7 +101,10 @@ Maladie::~Maladie()
 // Algorithme :
 //
 {
-
+	for (unsigned int i(0); i < this->listeAttribut.size(); i++)
+	{
+		delete(this->listeAttribut[i]);
+	}
 } //----- Fin de ~Maladie
 
 
