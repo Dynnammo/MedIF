@@ -1,30 +1,30 @@
 /*************************************************************************
-Maladie  -  description
+Attribut_enumeration  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Maladie> (fichier Maladie.cpp) ------------
+//---------- Réalisation de la classe <Attribut_enumeration> (fichier Attribut_enumeration.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-using namespace std;
-#include <iostream>
-#include <vector>
-//------------------------------------------------------ Include personnel
-#include "Maladie.h"
-#include "Attribut.h"
-#include "Attribut_enumeration.h"
-#include "Attribut_intervalle.h"
 
+#include <iostream>
+#include <string>
+#include <vector>
+
+//------------------------------------------------------ Include personnel
+#include "Attribut_enumeration.h"
+#include "Attribut.h"
+using namespace std;
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
-int idMaladie;
-vector<Attribut*> listeAttribut;
+int nbValeurs;
+vector <std::string> valeurs;
 //----------------------------------------------------------- Types privés
 
 
@@ -32,67 +32,67 @@ vector<Attribut*> listeAttribut;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
+// type Attribut_enumeration::Méthode ( liste de paramètres )
+// Algorithme :
+//
+//{
+//} //----- Fin de Méthode
 
-
-
-void Maladie::ajouterAttribut(Attribut* attribut)
-{
-	this->listeAttribut.push_back(attribut);
-}
 
 //------------------------------------------------- Surcharge d'opérateurs
-Maladie & Maladie::operator = (const Maladie & unMaladie)
+Attribut_enumeration & Attribut_enumeration::operator = (const Attribut_enumeration & unAttribut_enumeration)
 // Algorithme :
 //
 {
-	this->idMaladie = unMaladie.idMaladie;
-	this->listeAttribut = unMaladie.listeAttribut;
+
+	this->idAttribut = unAttribut_enumeration.idAttribut;
+	this->nbValeurs = unAttribut_enumeration.nbValeurs;
+	this->valeurs = unAttribut_enumeration.valeurs;
 	return *this;
 } //----- Fin de operator =
 
-ostream& operator<<(ostream &flux, Maladie const& maladie)
+ostream& Attribut_enumeration::afficher(ostream &flux)
 // Algorithme :
 //
 {
-	flux << "id    " << "   valeur" << endl;
-	for (unsigned int i(0); i < maladie.listeAttribut.size(); i++)
+	flux << this->idAttribut << "   " << this->valeurs[0] << endl;
+	for (unsigned int i(1); i < this->valeurs.size(); i++)
 	{
-		maladie.listeAttribut[i]->afficher(flux);
-
+		flux << "  " << "   " << this->valeurs[i] << endl;
 	}
 	return flux;
-} //----- Fin de Méthode
+} //----- Fin de operator <<
 
   //-------------------------------------------- Constructeurs - destructeur
-Maladie::Maladie(const Maladie & unMaladie)
+Attribut_enumeration::Attribut_enumeration(const Attribut_enumeration & unAttribut_enumeration)
 // Algorithme :
 //
 {
 
-} //----- Fin de Maladie (constructeur de copie)
+} //----- Fin de Attribut_enumeration (constructeur de copie)
 
 
-Maladie::Maladie()
-// Algorithme :
-//
-{
-} //----- Fin de Maladie
-
-Maladie::Maladie(int id)
-// Algorithme :
-//
-{
-	idMaladie = id;
-
-} //----- Fin de Maladie
-
-
-Maladie::~Maladie()
+Attribut_enumeration::Attribut_enumeration()
 // Algorithme :
 //
 {
 
-} //----- Fin de ~Maladie
+} //----- Fin de Attribut_enumeration
+
+Attribut_enumeration::Attribut_enumeration(int nbValeurs, vector<string> valeurs)
+// Algorithme :
+//
+{
+	this->nbValeurs = nbValeurs;
+	this->valeurs = valeurs;
+} //----- Fin de Attribut_enumeration
+
+Attribut_enumeration::~Attribut_enumeration()
+// Algorithme :
+//
+{
+
+} //----- Fin de ~Attribut_enumeration
 
 
   //------------------------------------------------------------------ PRIVE

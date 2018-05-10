@@ -16,7 +16,7 @@ copyright            : (C) ${year} par ${user}
 #include <string>
 #include <iostream>
 #include <list>
-
+#include "Analyse.h"
 using namespace std;
 
 

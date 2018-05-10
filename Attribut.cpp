@@ -1,30 +1,26 @@
 /*************************************************************************
-Maladie  -  description
+Attribut  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Maladie> (fichier Maladie.cpp) ------------
+//---------- Réalisation de la classe <Attribut> (fichier Attribut.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <vector>
+
 //------------------------------------------------------ Include personnel
-#include "Maladie.h"
 #include "Attribut.h"
-#include "Attribut_enumeration.h"
-#include "Attribut_intervalle.h"
 
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
-int idMaladie;
-vector<Attribut*> listeAttribut;
+
 //----------------------------------------------------------- Types privés
 
 
@@ -32,67 +28,60 @@ vector<Attribut*> listeAttribut;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
+// type Attribut::Méthode ( liste de paramètres )
+// Algorithme :
+//
+//{
+//} //----- Fin de Méthode
 
-
-
-void Maladie::ajouterAttribut(Attribut* attribut)
-{
-	this->listeAttribut.push_back(attribut);
-}
 
 //------------------------------------------------- Surcharge d'opérateurs
-Maladie & Maladie::operator = (const Maladie & unMaladie)
+Attribut & Attribut::operator = (const Attribut & unAttribut)
 // Algorithme :
 //
 {
-	this->idMaladie = unMaladie.idMaladie;
-	this->listeAttribut = unMaladie.listeAttribut;
+	this->idAttribut = unAttribut.idAttribut;
 	return *this;
 } //----- Fin de operator =
 
-ostream& operator<<(ostream &flux, Maladie const& maladie)
+ostream& Attribut::afficher(ostream &flux)
 // Algorithme :
 //
 {
-	flux << "id    " << "   valeur" << endl;
-	for (unsigned int i(0); i < maladie.listeAttribut.size(); i++)
-	{
-		maladie.listeAttribut[i]->afficher(flux);
-
-	}
+	flux << this->idAttribut << "  " << " - " << endl;
 	return flux;
-} //----- Fin de Méthode
+} //----- Fin de operator <<
 
   //-------------------------------------------- Constructeurs - destructeur
-Maladie::Maladie(const Maladie & unMaladie)
+Attribut::Attribut(const Attribut & unAttribut)
 // Algorithme :
 //
 {
 
-} //----- Fin de Maladie (constructeur de copie)
+} //----- Fin de Attribut (constructeur de copie)
 
 
-Maladie::Maladie()
-// Algorithme :
-//
-{
-} //----- Fin de Maladie
-
-Maladie::Maladie(int id)
-// Algorithme :
-//
-{
-	idMaladie = id;
-
-} //----- Fin de Maladie
-
-
-Maladie::~Maladie()
+Attribut::Attribut()
 // Algorithme :
 //
 {
 
-} //----- Fin de ~Maladie
+} //----- Fin de Attribut
+
+Attribut::Attribut(int id)
+// Algorithme :
+//
+{
+	this->idAttribut = id;
+} //----- Fin de Attribut
+
+
+Attribut::~Attribut()
+// Algorithme :
+//
+{
+
+} //----- Fin de ~Attribut
 
 
   //------------------------------------------------------------------ PRIVE

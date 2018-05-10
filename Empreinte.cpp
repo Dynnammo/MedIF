@@ -12,7 +12,6 @@ copyright            : (C) ${year} par ${user}
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
-#include "stdafx.h"
 #include <iostream>
 using namespace std;
 
@@ -48,7 +47,7 @@ Empreinte:: Empreinte(string nomFichier)
 //
 {
 	
-	ifstream fichier("L:\Mes documents\Visual Studio 2015\Projects\MedIF\MedIF\nomFichier"); //attention path à modifier selon les ordis
+	ifstream fichier("D:/Etudes/INSA/TP/GL et UML/MedIF"); //attention path à modifier selon les ordis
 	string ligne;
 	if (fichier) {
 		while (getline(fichier, ligne)) {

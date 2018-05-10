@@ -12,6 +12,7 @@ e-mail               : $EMAIL$
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Attribut.h"
+using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -42,6 +43,11 @@ public:
 	// Contrat :
 	//
 
+	ostream& afficher(ostream &flux);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Attribut_intervalle(const Attribut_intervalle & unAttribut_intervalle);

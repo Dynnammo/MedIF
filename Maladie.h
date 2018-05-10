@@ -16,6 +16,7 @@ e-mail               : $EMAIL$
 #include "Attribut.h"
 #include "Attribut_enumeration.h"
 #include "Attribut_intervalle.h"
+using namespace std;
 
 //------------------------------------------------------------- Constantes
 
@@ -39,6 +40,7 @@ public:
 	// Contrat :
 	//
 
+	void ajouterAttribut(Attribut *attribut);
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Maladie & operator = (const Maladie & unMaladie);
@@ -47,11 +49,11 @@ public:
 	// Contrat :
 	//
 
-	ostream& operator<<(ostream &flux, Maladie const& maladie)
-		// Mode d'emploi :
-		//
-		// Contrat :
-		//
+	friend ostream& operator<<(ostream &flux, Maladie const& maladie);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 
 	//-------------------------------------------- Constructeurs - destructeur
@@ -93,6 +95,7 @@ protected:
 private:
 	//------------------------------------------------------- Attributs privés
 	int idMaladie;
+	vector<Attribut*> listeAttribut;
 
 	//---------------------------------------------------------- Classes amies
 

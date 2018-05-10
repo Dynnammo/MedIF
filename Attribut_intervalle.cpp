@@ -1,30 +1,29 @@
 /*************************************************************************
-Maladie  -  description
+Attribut_intervalle  -  description
 -------------------
 début                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
 e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Maladie> (fichier Maladie.cpp) ------------
+//---------- Réalisation de la classe <Attribut_intervalle> (fichier Attribut_intervalle.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <vector>
+
 //------------------------------------------------------ Include personnel
-#include "Maladie.h"
-#include "Attribut.h"
-#include "Attribut_enumeration.h"
 #include "Attribut_intervalle.h"
+#include "Attribut.h"
 
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
-int idMaladie;
-vector<Attribut*> listeAttribut;
+double borneSup;
+double borneInf;
+double moyenne;
 //----------------------------------------------------------- Types privés
 
 
@@ -32,67 +31,65 @@ vector<Attribut*> listeAttribut;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
+// type Attribut_intervalle::Méthode ( liste de paramètres )
+// Algorithme :
+//
+//{
+//} //----- Fin de Méthode
 
-
-
-void Maladie::ajouterAttribut(Attribut* attribut)
-{
-	this->listeAttribut.push_back(attribut);
-}
 
 //------------------------------------------------- Surcharge d'opérateurs
-Maladie & Maladie::operator = (const Maladie & unMaladie)
+Attribut_intervalle & Attribut_intervalle::operator = (const Attribut_intervalle & unAttribut_intervalle)
 // Algorithme :
 //
 {
-	this->idMaladie = unMaladie.idMaladie;
-	this->listeAttribut = unMaladie.listeAttribut;
+
+	this->borneInf = unAttribut_intervalle.borneInf;
+	this->borneSup = unAttribut_intervalle.borneSup;
+	this->moyenne = unAttribut_intervalle.moyenne;
+	this->idAttribut = unAttribut_intervalle.idAttribut;
 	return *this;
 } //----- Fin de operator =
 
-ostream& operator<<(ostream &flux, Maladie const& maladie)
+ostream& Attribut_intervalle::afficher (ostream &flux)
 // Algorithme :
 //
 {
-	flux << "id    " << "   valeur" << endl;
-	for (unsigned int i(0); i < maladie.listeAttribut.size(); i++)
-	{
-		maladie.listeAttribut[i]->afficher(flux);
-
-	}
+	flux << this->idAttribut << "   " << this->borneInf << " - " << this->borneSup << " ; " << this->moyenne << endl;
 	return flux;
-} //----- Fin de Méthode
+} //----- Fin de operator <<
 
   //-------------------------------------------- Constructeurs - destructeur
-Maladie::Maladie(const Maladie & unMaladie)
+Attribut_intervalle::Attribut_intervalle(const Attribut_intervalle & unAttribut_intervalle)
 // Algorithme :
 //
 {
 
-} //----- Fin de Maladie (constructeur de copie)
+} //----- Fin de Attribut_intervalle (constructeur de copie)
 
 
-Maladie::Maladie()
-// Algorithme :
-//
-{
-} //----- Fin de Maladie
-
-Maladie::Maladie(int id)
-// Algorithme :
-//
-{
-	idMaladie = id;
-
-} //----- Fin de Maladie
-
-
-Maladie::~Maladie()
+Attribut_intervalle::Attribut_intervalle()
 // Algorithme :
 //
 {
 
-} //----- Fin de ~Maladie
+} //----- Fin de Attribut_intervalle
+
+Attribut_intervalle::Attribut_intervalle(double borneS, double borneI, double moy)
+// Algorithme :
+//
+{
+	this->borneSup = borneS;
+	this->borneInf = borneI;
+	this->moyenne = moy;
+} //----- Fin de Attribut_intervalle
+
+Attribut_intervalle::~Attribut_intervalle()
+// Algorithme :
+//
+{
+
+} //----- Fin de ~Attribut_intervalle
 
 
   //------------------------------------------------------------------ PRIVE

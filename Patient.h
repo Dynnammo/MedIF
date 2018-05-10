@@ -19,6 +19,7 @@ using namespace std;
 //--------------------------------------------------- Interfaces utilisées
 #include "Personne.h"
 #include "Empreinte.h"
+#include "Analyse.h"
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
@@ -88,8 +89,8 @@ public:
 	// Constructeur de copie
 	Patient(Patient & p)
 	{
-		this.la = p.la;
-		this.le = p.le;
+		this->la = p.la;
+		this->le = p.le;
 	}
 
 	virtual ~Patient()

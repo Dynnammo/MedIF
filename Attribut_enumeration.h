@@ -13,7 +13,9 @@ e-mail               : $EMAIL$
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>
 #include <string>
+#include <iostream>
 #include "Attribut.h"
+using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -44,6 +46,11 @@ public:
 	// Contrat :
 	//
 
+	ostream& afficher (ostream &flux);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 	//-------------------------------------------- Constructeurs - destructeur
 	Attribut_enumeration(const Attribut_enumeration & unAttribut_enumeration);
@@ -58,7 +65,7 @@ public:
 	// Contrat :
 	//
 
-	Attribut_enumeration(int nbValeurs, string *valeurs);
+	Attribut_enumeration(int nbValeurs, vector<string> valeurs);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -85,7 +92,7 @@ private:
 	//------------------------------------------------------- Attributs privés
 
 	int nbValeurs;
-	vector<string> valeurs;
+	vector<std::string> valeurs;
 
 	//---------------------------------------------------------- Classes amies
 

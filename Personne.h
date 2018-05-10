@@ -70,10 +70,10 @@ public:
 	// Constructeur de copie
 	Personne(Personne & p)
 	{
-		this.prenom = p.prenom;
-		this.nom = p.nom;
-		this.idPersonne = p.idPersonne;
-		this.mail = p.mail;
+		this->prenom = p.prenom;
+		this->nom = p.nom;
+		this->idPersonne = p.idPersonne;
+		this->mail = p.mail; 
 	}
 
 	// Destructeur de la classe Personne

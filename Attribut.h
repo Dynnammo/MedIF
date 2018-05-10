@@ -11,7 +11,8 @@ e-mail               : $EMAIL$
 #define Attribut_H
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include <iostream>
+using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -37,6 +38,12 @@ public:
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Attribut & operator = (const Attribut & unAttribut);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	virtual ostream& afficher(ostream &flux);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -78,11 +85,12 @@ private:
 
 protected:
 	//----------------------------------------------------- Attributs protégés
+	int idAttribut;
 
 private:
 	//------------------------------------------------------- Attributs privés
 
-	int idAttribut;
+
 
 	//---------------------------------------------------------- Classes amies
 
