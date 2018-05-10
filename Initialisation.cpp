@@ -14,6 +14,10 @@
 using namespace std;
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+#include <fstream>
+#include <string>
+#include <regex>
 
 //------------------------------------------------------ Include personnel
 #include "Initialisation.h"
@@ -27,6 +31,7 @@ using namespace std;
 vector<Maladie> listeMaladie;
 vector<Medecin> listeMedecin;
 vector<Patient> listePatient;
+unordered_map <int, Maladie> mapMaladie;
 //----------------------------------------------------------- Types privés
 
 
@@ -44,10 +49,155 @@ void Initialisation::init(string nomFichier)
 // Algorithme :
 //
 {
+	string separateur = ";";
+	unordered_map<string, vector<string>> tmp_map;
+	ifstream lecture(nomFichier);
+	string ligne;
+	if (lecture)
+	{
+		while (getline(lecture, ligne))
+		{
+			int position = ligne.find_last_of(separateur);
+			tmp_map[ligne.substr(position+1, ligne.size())].push_back(ligne.substr(0, position));
+		}
+		lecture.close();
+	}
+	else
+	{
+		cout << "Erreur de lecture du fichier" << endl;
+	}
+	unordered_map<string, vector<string>>::iterator it;
+	int idMaladie(0);
+	for (it = tmp_map.begin(); it != tmp_map.end(); ++it,idMaladie++)
+	{
+		int cmpF_V(0);
+		int cmpBornes(0);
+		double cmpMoyenne(0);
+		for (unsigned int i(0); i < it->second.size(); i++)
+		{
+			vector<string> symptomes = split(it->second[i], separateur);
+			for (unsigned int j(0); j < symptomes.size(); j++)
+			{
+				if (symptomes[j] == "F" || symptomes[j] == "V")
+				{
+					cmpF_V++;
+					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)
+					{
+						if (symptomes[j] == "F")
+						{
+							Attribut_intervalle* symptome = new Attribut_intervalle(j,0,0,0);
+							mapMaladie[idMaladie].ajouterAttribut(symptome);
 
+						}
+						else 
+						{
+							Attribut_intervalle* symptome = new Attribut_intervalle(j, 0, 0, 1);
+							mapMaladie[idMaladie].ajouterAttribut(symptome);
+						}
+					}
+					else
+					{
+						Attribut_intervalle* symptome = (Attribut_intervalle*)mapMaladie[idMaladie].getListeAttribut()[j];
+						if (symptomes[j] == "V")
+						{
+							double moy = symptome->getMoyenne()+1;
+							symptome->setMoyenne(moy/cmpF_V);
+						}
+					}
+				}
+
+				else if (regex_match(symptomes[j],regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+				{
+					cmpBornes++;
+					double borne = atof(symptomes[j].c_str());
+					cmpMoyenne += borne;
+					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)
+					{
+						Attribut_intervalle* symptome = new Attribut_intervalle(j, borne, borne, borne);
+						mapMaladie[idMaladie].ajouterAttribut(symptome);
+						
+					}
+					else
+					{
+						Attribut_intervalle* symptome = (Attribut_intervalle*)mapMaladie[idMaladie].getListeAttribut()[j];
+						if (borne > symptome->getBorneSup())
+						{
+							symptome->setBorneSup(borne);
+						}
+
+						else if (borne < symptome->getBorneInf())
+						{
+							symptome->setBorneInf(borne);
+						}
+						symptome->setMoyenne(cmpMoyenne / cmpBornes);
+
+					}
+					
+				}
+
+				else
+				{
+					if (mapMaladie[idMaladie].getListeAttribut().size() <= j)
+					{
+						vector<string> valeurs;
+						valeurs.push_back(symptomes[j]);
+						Attribut_enumeration* symptome = new Attribut_enumeration(j, 1,valeurs );
+						mapMaladie[idMaladie].ajouterAttribut(symptome);
+
+					}
+					else
+					{
+						Attribut_enumeration* symptome = (Attribut_enumeration*)mapMaladie[idMaladie].getListeAttribut()[j];
+						vector<string> tmp_Symptomes = symptome->getValeurs();
+						if (find(tmp_Symptomes.begin(), tmp_Symptomes.end(), symptomes[j]) == tmp_Symptomes.end())
+						{
+							symptome->setValeur(symptomes[j]);
+						}
+						symptome->setNbValeurs(tmp_Symptomes.size());
+					}
+				}
+			}
+		}
+	}
 } //----- Fin de Méthode
 
+vector<string> Initialisation::split(string &lignef, string del)
+{
 
+
+	vector<string> reponse;
+	int pos = 0;
+	while (pos != -1)
+	{
+		pos = lignef.find(del);
+		if (del.size() != lignef.size())
+		{
+
+			if (pos != 0)
+			{
+				reponse.push_back(lignef.substr(0, pos));
+
+			}
+			if (pos != lignef.size() - 1 && pos != -1)
+			{
+				lignef.erase(0, pos + del.size());
+			}
+			else if (pos != -1)
+			{
+				lignef.erase(pos, pos + del.size());
+				break;
+			}
+		}
+		else
+		{
+			pos = -1;
+			reponse.push_back(lignef);
+		}
+
+	}
+	return reponse;
+
+}
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -55,6 +205,11 @@ Initialisation & Initialisation::operator = ( const Initialisation & unInitialis
 // Algorithme :
 //
 {
+	this->listeMaladie=unInitialisation.listeMaladie;
+	this->listeMedecin = unInitialisation.listeMedecin;
+	this->listePatient = unInitialisation.listePatient;
+	this->mapMaladie = unInitialisation.mapMaladie;
+	return *this;
 } //----- Fin de operator =
 
 

@@ -102,10 +102,11 @@ Attribut_enumeration::Attribut_enumeration()
 
 } //----- Fin de Attribut_enumeration
 
-Attribut_enumeration::Attribut_enumeration(int nbValeurs, vector<string> valeurs)
+Attribut_enumeration::Attribut_enumeration(int id,int nbValeurs, vector<string> valeurs)
 // Algorithme :
 //
 {
+	this->idAttribut = id;
 	this->nbValeurs = nbValeurs;
 	this->valeurs = valeurs;
 } //----- Fin de Attribut_enumeration

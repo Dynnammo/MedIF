@@ -77,7 +77,6 @@ public:
 	// Contrat :
 	//
 
-
 	//------------------------------------------------- Surcharge d'opérateurs
 	Attribut_intervalle & operator = (const Attribut_intervalle & unAttribut_intervalle);
 	// Mode d'emploi :

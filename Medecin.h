@@ -8,8 +8,8 @@ copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
 //---------- Interface de la classe <${file_base}> (fichier ${file_name}) ------
-#if ! defined ( Patient_H )
-#define PATIENT_H
+#if ! defined ( Medecin_H )
+#define Medecin_H
 
 #include "Personne.h"
 #include "Patient.h"

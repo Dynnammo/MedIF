@@ -8,7 +8,7 @@ copyright            : (C) 2018 par Tifenn Floch, Anatolii Gasiuk,
 
 //---------- Interface de la classe <Patient> (fichier Patient.h) ------
 #if ! defined ( Patient_H )
-#define PATIENT_H
+#define Patient_H
 
 #include <string>
 #include <iostream>

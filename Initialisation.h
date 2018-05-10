@@ -16,9 +16,11 @@ e-mail               : $EMAIL$
 #include "Medecin.h"
 #include <vector>
 #include <string>
+#include <unordered_map>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+
 
 //------------------------------------------------------------------------
 // R�le de la classe <Initialisation>
@@ -74,7 +76,7 @@ protected:
 
 private:
 	//------------------------------------------------------- M�thodes priv�es
-
+	vector<string> Initialisation::split(string &lignef, string del);
 protected:
 	//----------------------------------------------------- Attributs prot�g�s
 
@@ -84,7 +86,7 @@ private:
 	vector<Maladie> listeMaladie;
 	vector<Medecin> listeMedecin;
 	vector<Patient> listePatient;
-
+	unordered_map <int, Maladie> mapMaladie;
 	//---------------------------------------------------------- Classes amies
 
 	//-------------------------------------------------------- Classes priv�es

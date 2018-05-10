@@ -53,7 +53,7 @@ Analyse::Analyse ( const Analyse & unAnalyse )
 
 Analyse::Analyse ( )
 {
-    idAnalyse = id++;
+    idAnalyse = idA++;
     pourcentage = 0;
 #ifdef MAP
     cout << "Appel au constructeur de <Analyse>" << endl;
@@ -65,7 +65,7 @@ Analyse::~Analyse ( )
 // Algorithme :
 //
 {
-    id--;
+    idA--;
 #ifdef MAP
     cout << "Appel au destructeur de <Analyse>" << endl;
 #endif
