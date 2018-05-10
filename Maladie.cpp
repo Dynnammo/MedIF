@@ -101,10 +101,12 @@ Maladie::~Maladie()
 // Algorithme :
 //
 {
-	for (unsigned int i(0); i < this->listeAttribut.size(); i++)
+	for (std::vector< Attribut* >::iterator it =this->listeAttribut.begin(); it != this->listeAttribut.end(); ++it)
 	{
-		delete(this->listeAttribut[i]);
+		delete (*it);
 	}
+	this->listeAttribut.clear();
+
 } //----- Fin de ~Maladie
 
 

@@ -70,47 +70,48 @@ void Initialisation::init(string nomFichier)
 	int idMaladie(0);
 	for (it = tmp_map.begin(); it != tmp_map.end(); ++it,idMaladie++)
 	{
-		int cmpF_V(0);
-		int cmpBornes(0);
-		double cmpMoyenne(0);
+		int nbrEmpreinte = it->second.size();
 		for (unsigned int i(0); i < it->second.size(); i++)
 		{
+
 			vector<string> symptomes = split(it->second[i], separateur);
 			for (unsigned int j(0); j < symptomes.size(); j++)
 			{
 				if (symptomes[j] == "F" || symptomes[j] == "V")
 				{
-					cmpF_V++;
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)
 					{
 						if (symptomes[j] == "F")
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(j,0,0,0);
+							Attribut_intervalle* symptome = new Attribut_intervalle(j,1,0,0);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 						}
 						else 
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(j, 0, 0, 1);
+							Attribut_intervalle* symptome = new Attribut_intervalle(j, 1, 0, 1);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 						}
 					}
 					else
 					{
+						
 						Attribut_intervalle* symptome = (Attribut_intervalle*)mapMaladie[idMaladie].getListeAttribut()[j];
+						double moy = symptome->getMoyenne();
 						if (symptomes[j] == "V")
 						{
-							double moy = symptome->getMoyenne()+1;
-							symptome->setMoyenne(moy/cmpF_V);
+							moy+=1;
+							
 						}
+						symptome->setMoyenne(moy / nbrEmpreinte);
 					}
 				}
 
 				else if (regex_match(symptomes[j],regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
 				{
-					cmpBornes++;
+
 					double borne = atof(symptomes[j].c_str());
-					cmpMoyenne += borne;
+
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)
 					{
 						Attribut_intervalle* symptome = new Attribut_intervalle(j, borne, borne, borne);
@@ -129,7 +130,9 @@ void Initialisation::init(string nomFichier)
 						{
 							symptome->setBorneInf(borne);
 						}
-						symptome->setMoyenne(cmpMoyenne / cmpBornes);
+						double moyenne = symptome->getMoyenne() + borne;
+
+						symptome->setMoyenne(moyenne / nbrEmpreinte);
 
 					}
 					
