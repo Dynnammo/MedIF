@@ -35,6 +35,13 @@ public:
 	// Contrat :
 	//
 
+	virtual int getIdAttribut();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	virtual void setIdAttribut(int id);
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Attribut & operator = (const Attribut & unAttribut);

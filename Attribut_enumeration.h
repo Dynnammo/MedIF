@@ -38,6 +38,35 @@ public:
 	// Contrat :
 	//
 
+	int getIdAttribut();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	int getNbValeurs();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	vector<string> getValeurs();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void setNbValeurs(int val);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void setValeur(string);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Attribut_enumeration & operator = (const Attribut_enumeration & unAttribut_enumeration);
@@ -65,7 +94,7 @@ public:
 	// Contrat :
 	//
 
-	Attribut_enumeration(int nbValeurs, vector<string> valeurs);
+	Attribut_enumeration(int id, int nbValeurs, vector<string> valeurs);
 	// Mode d'emploi :
 	//
 	// Contrat :

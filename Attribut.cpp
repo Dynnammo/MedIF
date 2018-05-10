@@ -34,6 +34,15 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+int Attribut::getIdAttribut()
+{
+	return this->idAttribut;
+}
+
+void Attribut::setIdAttribut(int id)
+{
+	this->idAttribut = id;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 Attribut & Attribut::operator = (const Attribut & unAttribut)

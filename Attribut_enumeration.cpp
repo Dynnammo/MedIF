@@ -38,7 +38,30 @@ vector <std::string> valeurs;
 //{
 //} //----- Fin de Méthode
 
+int Attribut_enumeration::getIdAttribut()
+{
+	return this->idAttribut;
+}
 
+int Attribut_enumeration::getNbValeurs()
+{
+	return this->nbValeurs;
+}
+
+vector<string> Attribut_enumeration::getValeurs()
+{
+	return this->valeurs;
+}
+
+void Attribut_enumeration::setNbValeurs(int nb)
+{
+	this->nbValeurs = nb;
+}
+
+void Attribut_enumeration::setValeur(string val)
+{
+	this->valeurs.push_back(val);
+}
 //------------------------------------------------- Surcharge d'opérateurs
 Attribut_enumeration & Attribut_enumeration::operator = (const Attribut_enumeration & unAttribut_enumeration)
 // Algorithme :

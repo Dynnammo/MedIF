@@ -41,6 +41,22 @@ public:
 	//
 
 	void ajouterAttribut(Attribut *attribut);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	int getIdMaladie();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	vector<Attribut*> getListeAttribut();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Maladie & operator = (const Maladie & unMaladie);

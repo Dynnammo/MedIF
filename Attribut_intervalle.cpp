@@ -37,6 +37,40 @@ double moyenne;
 //{
 //} //----- Fin de Méthode
 
+double Attribut_intervalle::getBorneSup()
+{
+	return this->borneSup;
+}
+
+double Attribut_intervalle::getBorneInf()
+{
+	return this->borneInf;
+}
+
+double Attribut_intervalle::getMoyenne()
+{
+	return this->moyenne;
+}
+
+int Attribut_intervalle::getIdAttribut()
+{
+	return this->idAttribut;
+}
+
+void Attribut_intervalle::setBorneSup(double sup)
+{
+	this->borneSup = sup;
+}
+
+void Attribut_intervalle::setBorneInf(double inf)
+{
+	this->borneInf = inf;
+}
+
+void Attribut_intervalle::setMoyenne(double moy)
+{
+	this->moyenne = moy;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 Attribut_intervalle & Attribut_intervalle::operator = (const Attribut_intervalle & unAttribut_intervalle)
@@ -75,7 +109,7 @@ Attribut_intervalle::Attribut_intervalle()
 
 } //----- Fin de Attribut_intervalle
 
-Attribut_intervalle::Attribut_intervalle(double borneS, double borneI, double moy)
+Attribut_intervalle::Attribut_intervalle(int id, double borneS, double borneI, double moy)
 // Algorithme :
 //
 {

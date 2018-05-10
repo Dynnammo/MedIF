@@ -40,6 +40,16 @@ void Maladie::ajouterAttribut(Attribut* attribut)
 	this->listeAttribut.push_back(attribut);
 }
 
+int Maladie::getIdMaladie()
+{
+	return this->idMaladie;
+}
+
+vector<Attribut*> Maladie::getListeAttribut()
+{
+	return this->listeAttribut;
+}
+
 //------------------------------------------------- Surcharge d'opérateurs
 Maladie & Maladie::operator = (const Maladie & unMaladie)
 // Algorithme :

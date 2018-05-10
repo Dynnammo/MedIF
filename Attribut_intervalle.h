@@ -35,6 +35,48 @@ public:
 	// Contrat :
 	//
 
+	double getBorneSup();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	double getBorneInf();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	double getMoyenne();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	int getIdAttribut();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void setBorneSup(double sup);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void setBorneInf(double inf);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void setMoyenne(double moy);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Attribut_intervalle & operator = (const Attribut_intervalle & unAttribut_intervalle);
@@ -62,7 +104,7 @@ public:
 	// Contrat :
 	//
 
-	Attribut_intervalle(double borneS, double borneI, double moy);
+	Attribut_intervalle(int id, double borneS, double borneI, double moy);
 	// Mode d'emploi :
 	//
 	// Contrat :

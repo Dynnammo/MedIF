@@ -81,9 +81,9 @@ protected:
 private:
 	//------------------------------------------------------- Attributs priv�s
 
-	vector<Maladie> listeMaladie();
-	vector<Medecin> listeMedecin();
-	vector<Patient> listePatient();
+	vector<Maladie> listeMaladie;
+	vector<Medecin> listeMedecin;
+	vector<Patient> listePatient;
 
 	//---------------------------------------------------------- Classes amies
 

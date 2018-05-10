@@ -13,20 +13,41 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <vector>
 
 //------------------------------------------------------ Include personnel
 #include "Initialisation.h"
+#include "Maladie.h"
+#include "medecin.h"
+#include "patient.h"
 
 //------------------------------------------------------------- Constantes
 
+//---------------------------------------------------- Variables de classe
+vector<Maladie> listeMaladie;
+vector<Medecin> listeMedecin;
+vector<Patient> listePatient;
+//----------------------------------------------------------- Types privés
+
+
 //----------------------------------------------------------------- PUBLIC
+//-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type Initialisation::Méthode ( liste des paramètres )
+// type ${file_base}::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
+
+void Initialisation::init(string nomFichier)
+// Algorithme :
+//
+{
+
+} //----- Fin de Méthode
+
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -71,3 +92,4 @@ Initialisation::~Initialisation ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+
