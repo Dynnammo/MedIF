@@ -34,7 +34,8 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-bool Medecin::seConnecter(int id, string mdp) {
+bool Medecin::seConnecter(int id, string mdp)
+{
 	Initialisation ini;
 	bool estConnecte = false;
 	vector<Medecin> liste = ini.getListeMedecin();
@@ -49,9 +50,13 @@ bool Medecin::seConnecter(int id, string mdp) {
 	return estConnecte;
 }
 
+void Medecin::seDeconnecter()
+{
+	this.~Medecin();
+}
 
-
-Patient Medecin::ajouterPatient(string n, string p, string m) {
+Patient Medecin::ajouterPatient(string n, string p, string m) 
+{
 	Initialisation ini;
 	Patient patient (n, p, m);
 
@@ -61,16 +66,23 @@ Patient Medecin::ajouterPatient(string n, string p, string m) {
 }
 
 
-list <Analyse>Medecin::faireAnalyse(Patient p, list <Maladie> lm) {
+list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
+{
 	list <Empreinte> le = p.getEmpreintes();
 	list <Analyse> la = p.getAnalyses();
 	Analyse a;
-	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
-
+	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
+	{
 		a = a.analyseEmpreinte(*it);
-
 	}
+}
 
+void Medecin::afficherMaladies(list <Maladie> lm)
+{
+	for (list<Maladie>::const_iterator it = lm.cbegin(); it != lm.cend(); it++)
+	{
+		
+	}
 }
 // type Medecin::Méthode ( liste de paramètres )
 // Algorithme :

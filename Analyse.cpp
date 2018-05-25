@@ -46,7 +46,7 @@ int Analyse::getId()
 // Algorithme :
 //
 {
-	return this->getId;
+    return this->idAnalyse;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

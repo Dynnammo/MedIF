@@ -49,7 +49,7 @@ public:
 	Patient ajouterPatient(string n, string p, string m);
 	list <Analyse> faireAnalyse(Patient p, list <Maladie> lm);
 	Analyse rechercherAnalyse(int id);
-	void afficherMaladie(list <Maladie> lm);
+	void afficherMaladies(list <Maladie> lm);
 	void mesurerPatient(Patient p, string nomFichier);
 	list <Analyse> faireAnalyse(list <Maladie>, Patient p);
 	void chargerEmpreinte(string nomFichier);
