@@ -1,13 +1,17 @@
 #pragma once
 #pragma once
 /*************************************************************************
-${file_base}  -  description
+Empreinte  -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <${file_base}> (fichier ${file_name}) ------
+//---------- Interface de la classe <Empreinte> (fichier empreinte.h) ------
 #if ! defined ( Empreinte_H )
 #define EMPREINTE_H
 
@@ -27,7 +31,7 @@ using namespace std;
 //------------------------------------------------------------------ Types 
 static int id = 0;
 //------------------------------------------------------------------------ 
-// Rôle de la classe <${file_base}>
+// Rôle de la classe <Empreinte>
 //
 //
 //------------------------------------------------------------------------ 
@@ -101,7 +105,7 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <${file_base}>
+//----------------------------------------- Types dépendants de <Empreinte>
 
-#endif // XXX_H
+#endif // EMPREINTE_H
 #pragma once

@@ -1,13 +1,17 @@
 
 
 /*************************************************************************
-${file_base}  -  description
+Empreinte  -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <${file_base}> (fichier ${file_name}) --
+//---------- Réalisation de la classe <Empreinte> (fichier Empreinte.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -30,7 +34,7 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type ${file_base}::Méthode ( liste de paramètres )
+// type Empreinte::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
@@ -65,7 +69,7 @@ Empreinte:: Empreinte(string nomFichier)
 
 
 	
-} //----- Fin de ${file_base}
+} //----- Fin de Empreinte
 
 
 Empreinte::~Empreinte ()
@@ -73,7 +77,7 @@ Empreinte::~Empreinte ()
 //
 {
 	id--;
-} //----- Fin de ~${file_base}
+} //----- Fin de ~Empreinte
 
 
   //------------------------------------------------------------------ PRIVE
