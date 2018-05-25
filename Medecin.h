@@ -17,6 +17,7 @@ copyright            : (C) ${year} par ${user}
 #include <iostream>
 #include <list>
 #include "Analyse.h"
+#include "Maladie.h"
 using namespace std;
 
 
@@ -42,7 +43,7 @@ public:
 	bool seConnecter(int id, string mp);
 	void seDeconnecter();
 	Patient ajouterPatient(string n, string p, string m);
-	list <Analyse> faireAnalyse(Patient p);
+	list <Analyse> faireAnalyse(Patient p, list <Maladie> lm);
 	Analyse rechercherAnalyse(int id);
 	void afficherMaladie(list <Maladie> lm);
 	void mesurerPatient(Patient p, string nomFichier);
@@ -71,6 +72,8 @@ public:
 	// Contrat :
 	//
 	Medecin() {}
+
+	Medecin(string motDePasse) :mdp(motDePasse) {}
 	// Mode d'emploi :
 
 	// Contrat :

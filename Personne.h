@@ -63,7 +63,7 @@ public:
 	{
 		idPersonne=id1++;
 		prenom = p;
-		nom = m;
+		nom = n;
 		mail = m;
 	}
 
