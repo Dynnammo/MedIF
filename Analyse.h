@@ -59,12 +59,20 @@ public:
 	// Contrat :
 	//
 
+	vector<string> split(string &lignef, string del);
+	// type Méthode ( liste des paramètres );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
 	int getId();
 	// type Méthode ( liste des paramètres );
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
+
 
 
 

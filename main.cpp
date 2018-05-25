@@ -24,6 +24,7 @@ int main()
 	Initialisation i;
 	i.init("test.txt");
 	
+	Empreinte e("test.txt");
 
 	return 0;
 }
