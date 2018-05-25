@@ -1,13 +1,15 @@
-
-
 /*************************************************************************
-${file_base}  -  description
+Medecin  -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <${file_base}> (fichier ${file_name}) --
+//---------- Réalisation de la classe <Medecin> (fichier Medecin.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -59,7 +61,7 @@ Patient Medecin::ajouterPatient(string n, string p, string m) {
 }
 
 
-list <Analyse>Medecin:: faireAnalyse(Patient p, list <Maladie> lm) {
+list <Analyse>Medecin::faireAnalyse(Patient p, list <Maladie> lm) {
 	list <Empreinte> le = p.getEmpreintes();
 	list <Analyse> la = p.getAnalyses();
 	Analyse a();
@@ -70,28 +72,19 @@ list <Analyse>Medecin:: faireAnalyse(Patient p, list <Maladie> lm) {
 	}
 
 }
-// type ${file_base}::Méthode ( liste de paramètres )
+// type Medecin::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
+
+//------------------------------------------------------ Getters - Setters
 
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
-
-
-// Algorithme :
-//
-
-
-
- //----- Fin de ${file_base}
-
-
- //----- Fin de ~${file_base}
 
 
   //------------------------------------------------------------------ PRIVE

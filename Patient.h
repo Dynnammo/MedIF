@@ -94,11 +94,9 @@ public:
 #endif
 	}//----- Fin de Patient
 
-	Patient(string n, string p, string m) {
-
-		nom = n;	
-		prenom = p;
-		m = m;
+	Patient(string n, string p, string m)
+		: Personne(n,p,m)
+	{
 #ifdef MAP
     	cout << "Appel au constructeur de <Patient>" << endl;
 #endif
