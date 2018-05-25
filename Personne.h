@@ -55,20 +55,7 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 
-	// Constructeur par défaut
-	Personne()
-	{
 
-	}
-
-	// Constructeur
-	Personne(string n, string p, string m)
-	: idPersonne(id1++), prenom(p), nom(n), mail(m)
-	{
-#ifdef MAP
-	    cout << "Appel au constructeur de <Personne>" << endl;
-#endif
-	}
 
 	// Constructeur de copie
 	Personne(Personne & p)

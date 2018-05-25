@@ -63,11 +63,11 @@ Patient Medecin::ajouterPatient(string n, string p, string m) {
 
 list <Analyse>Medecin::faireAnalyse(Patient p, list <Maladie> lm) {
 	list <Empreinte> le = p.getEmpreintes();
-
+	Initialisation ini;
 	Analyse a;
 	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
 
-		a = a.analyseEmpreinte(*it);
+		a = a.analyseEmpreinte(*it,ini.getListeMaladie());
 		p.setAnalyses(a);
 	}
 
@@ -78,9 +78,14 @@ Analyse Medecin:: rechercherAnalyse(int id, Patient p) {
 
 	list <Analyse> liste= p.getAnalyses();
 	Analyse a;
+	Analyse tmp;
+
 	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 
-		if (it.getidAnalyse == id) {
+		tmp = *it;
+
+		
+		if (a.getId() == id) {
 
 			a = *it;
 		}
