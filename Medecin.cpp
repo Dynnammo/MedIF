@@ -74,8 +74,6 @@ list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
 	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
 	{
 		a = a.analyseEmpreinte(*it);
-<<<<<<< HEAD
-=======
 		p.setAnalyses(a);
 	}
 
@@ -92,22 +90,18 @@ Analyse Medecin:: rechercherAnalyse(int id, Patient p) {
 
 			a = *it;
 		}
-
->>>>>>> aa25d10153cf67111a4718b3ed0e016802a33ef9
 	}
+
+    return a;
 }
 
-<<<<<<< HEAD
 void Medecin::afficherMaladies(list <Maladie> lm)
 {
 	for (list<Maladie>::const_iterator it = lm.cbegin(); it != lm.cend(); it++)
 	{
-		
+        cout << *it << endl;
 	}
-=======
-	return a;
-	
->>>>>>> aa25d10153cf67111a4718b3ed0e016802a33ef9
+
 }
 
 
