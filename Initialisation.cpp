@@ -259,8 +259,14 @@ void Initialisation::initMedesin(string nomFichier)
 	{
 		while (getline(lecture, ligne))
 		{
-			Medecin m();
+			vector<string> parametres = split(ligne, ";");
+			Medecin m( parametres[0], parametres[1], parametres[2], parametres[3]);//attendre le commit de leo
+			listeMedecin.push_back(m);
 		}
+	}
+	else
+	{
+		cout << "Erreur de lecture du fichier log Medecin." << endl;
 	}
 }
 

@@ -16,7 +16,9 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 
 //--------------------------------------------------- Interfaces utilisées
-
+#include<unordered_map>;
+#include<string>;
+using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -40,10 +42,26 @@ public:
     // Contrat :
     //
 
+	unordered_map<string,double> getMaladiesPotentielles();
+	// type Méthode ( liste des paramètres );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	int getId();
+	// type Méthode ( liste des paramètres );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+
 
 //------------------------------------------------- Surcharge d'opérateurs
     friend ostream & operator << (ostream & out, Analyse & a);
 
+	Analyse & operator =(Analyse a);
 
 //-------------------------------------------- Constructeurs - destructeur
     Analyse ( const Analyse & unAnalyse );
@@ -69,7 +87,7 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
     int idAnalyse;
-    int pourcentage;
+	unordered_map<string, double> maladiesPotentielles;
 //----------------------------------------------------- Attributs protégés
 
 };

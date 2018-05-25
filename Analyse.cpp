@@ -33,14 +33,42 @@ using namespace std;
 
 //------------------------------------------------------ Getters - Setters
 
+unordered_map<string, double> Analyse::getMaladiesPotentielles()
+// type Analyse::Méthode ( liste des paramètres )
+// Algorithme :
+//
+{
+	return this->maladiesPotentielles;
+}
+
+int Analyse::getId()
+// type Analyse::Méthode ( liste des paramètres )
+// Algorithme :
+//
+{
+	return this->getId;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 ostream & operator << (ostream & out, Analyse & a)
 {
-    out << a.idAnalyse << "et" << a.pourcentage << endl;
+	unordered_map<string, double> maladies = a.getMaladiesPotentielles();
+    out <<" Id : "<< a.idAnalyse << endl; 
+	out << " Maladie : " << "/t" << "Pourcentage : " << endl;
+	unordered_map<string, double>::iterator it;
+	for (it=maladies.begin();it!=maladies.end();++it)
+	{
+		out <<"  "<< it->first << "/t" << it->second << endl;
+	}
 	return out;
 }
 
+Analyse&  Analyse::operator =(Analyse a)
+{
+	this->idAnalyse = a.getId();
+	this->maladiesPotentielles = a.getMaladiesPotentielles;
+	return *this;
+}
 //-------------------------------------------- Constructeurs - destructeur
 /*Analyse::Analyse()
 {
@@ -59,7 +87,6 @@ Analyse::Analyse ( const Analyse & unAnalyse )
 Analyse::Analyse ( )
 {
     idAnalyse = idA++;
-    pourcentage = 0;
 #ifdef MAP
     cout << "Appel au constructeur (par défaut) de <Analyse>" << endl;
 #endif
