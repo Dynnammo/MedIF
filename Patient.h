@@ -105,8 +105,7 @@ public:
 
 	virtual ~Patient()
 	{
-		this->la = p.la;
-		this->le = p.le;
+
 #ifdef MAP
 	    cout << "Appel au destructeur de <Patient>" << endl;
 #endif

@@ -56,7 +56,7 @@ public:
 	// Contrat :
 	//
 
-	Patient getPatient(string id);
+	Patient getPatient(int id);
 	// Mode d'emploi :
 	//
 	// Contrat :
