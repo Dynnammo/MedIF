@@ -44,8 +44,38 @@ public:
 	// Contrat :
 	//
 
+	void initMedesin(string nomFichier);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
-	//------------------------------------------------- Surcharge d'operateurs
+	unordered_map<int, Maladie> getListeMaladie();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	Patient getPatient(string id);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void setPatient(Patient p);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	vector<Medecin> getListeMedecin();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+
+	//------------------------------------------------- Surcharge d'op�rateurs
 	Initialisation & operator = (const Initialisation & unInitialisation);
 	// Mode d'emploi :
 	//
