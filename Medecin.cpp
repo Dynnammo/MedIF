@@ -1,13 +1,15 @@
-
-
 /*************************************************************************
-${file_base}  -  description
+Medecin  -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <${file_base}> (fichier ${file_name}) --
+//---------- Réalisation de la classe <Medecin> (fichier Medecin.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -33,11 +35,11 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 bool Medecin::seConnecter(int id, string mdp) {
-	Initialisation ini();
+	Initialisation ini;
 	bool estConnecte = false;
-	list<Medecin> liste = ini.getListeMedecin();
+	vector<Medecin> liste = ini.getListeMedecin();
 	
-	for (list<Medecin>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
+	for (vector<Medecin>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 
 		if (it->mdp == mdp && it->idPersonne==id) {
 			estConnecte = true;
@@ -50,7 +52,7 @@ bool Medecin::seConnecter(int id, string mdp) {
 
 
 Patient Medecin::ajouterPatient(string n, string p, string m) {
-	Initialisation ini();
+	Initialisation ini;
 	Patient patient (n, p, m);
 
 	ini.setPatient(patient);
@@ -59,7 +61,7 @@ Patient Medecin::ajouterPatient(string n, string p, string m) {
 }
 
 
-list <Analyse>Medecin:: faireAnalyse(Patient p, list <Maladie> lm) {
+list <Analyse>Medecin::faireAnalyse(Patient p, list <Maladie> lm) {
 	list <Empreinte> le = p.getEmpreintes();
 
 	Analyse a;
@@ -96,22 +98,13 @@ Analyse Medecin:: rechercherAnalyse(int id, Patient p) {
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
-
-
-// Algorithme :
-//
-
-
-
- //----- Fin de ${file_base}
-
-
- //----- Fin de ~${file_base}
 
 
   //------------------------------------------------------------------ PRIVE
