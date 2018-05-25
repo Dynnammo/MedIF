@@ -18,6 +18,9 @@ using namespace std;
 //--------------------------------------------------- Interfaces utilisées
 #include<unordered_map>
 #include<string>
+#include "Analyse.h"
+#include "Maladie.h"
+#include "Empreinte.h"
 using namespace std;
 //------------------------------------------------------------- Constantes
 
@@ -43,6 +46,13 @@ public:
     //
 
 	unordered_map<string,double> getMaladiesPotentielles();
+	// type Méthode ( liste des paramètres );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> mapMaladie);
 	// type Méthode ( liste des paramètres );
 	// Mode d'emploi :
 	//

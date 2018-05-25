@@ -19,17 +19,21 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Analyse.h"
+#include "Maladie.h"
+#include "Empreinte.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Analyse::Méthode ( liste des paramètres )
+
+void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> mapMaladie)
 // Algorithme :
 //
-//{
-//} //----- Fin de Méthode
+{
+
+} //----- Fin de Méthode
 
 //------------------------------------------------------ Getters - Setters
 
