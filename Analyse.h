@@ -16,8 +16,9 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 
 //--------------------------------------------------- Interfaces utilisées
-#include<unordered_map>
-#include<string>
+#include<unordered_map>;
+#include<string>;
+#include "Analyse.h"
 #include "Maladie.h"
 #include "Empreinte.h"
 using namespace std;
@@ -51,7 +52,13 @@ public:
 	// Contrat :
 	//
 
-	Analyse analyseEmpreinte(Empreinte  e, unordered_map<int, Maladie> lm);
+	void analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> mapMaladie);
+	// type Méthode ( liste des paramètres );
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
 	int getId();
 	// type Méthode ( liste des paramètres );
 	// Mode d'emploi :

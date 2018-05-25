@@ -34,7 +34,8 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-bool Medecin::seConnecter(int id, string mdp) {
+bool Medecin::seConnecter(int id, string mdp)
+{
 	Initialisation ini;
 	bool estConnecte = false;
 	vector<Medecin> liste = ini.getListeMedecin();
@@ -49,9 +50,13 @@ bool Medecin::seConnecter(int id, string mdp) {
 	return estConnecte;
 }
 
+void Medecin::seDeconnecter()
+{
+	this.~Medecin();
+}
 
-
-Patient Medecin::ajouterPatient(string n, string p, string m) {
+Patient Medecin::ajouterPatient(string n, string p, string m) 
+{
 	Initialisation ini;
 	Patient patient (n, p, m);
 
@@ -61,7 +66,8 @@ Patient Medecin::ajouterPatient(string n, string p, string m) {
 }
 
 
-list <Analyse>Medecin::faireAnalyse(Patient p, list <Maladie> lm) {
+list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
+{
 	list <Empreinte> le = p.getEmpreintes();
 	Initialisation ini;
 	Analyse a;
@@ -90,10 +96,21 @@ Analyse Medecin:: rechercherAnalyse(int id, Patient p) {
 			a = *it;
 		}
 
+>>>>>>> aa25d10153cf67111a4718b3ed0e016802a33ef9
 	}
+}
 
+<<<<<<< HEAD
+void Medecin::afficherMaladies(list <Maladie> lm)
+{
+	for (list<Maladie>::const_iterator it = lm.cbegin(); it != lm.cend(); it++)
+	{
+		
+	}
+=======
 	return a;
 	
+>>>>>>> aa25d10153cf67111a4718b3ed0e016802a33ef9
 }
 
 

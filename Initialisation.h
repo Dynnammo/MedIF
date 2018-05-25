@@ -56,7 +56,7 @@ public:
 	// Contrat :
 	//
 
-	Patient getPatient(string id);
+	Patient getPatient(int id);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -109,7 +109,7 @@ protected:
 
 private:
 	//------------------------------------------------------- Methodes privees
-	vector<string> Initialisation::split(string &lignef, string del);
+    vector<string> split(string &lignef, string del);
 protected:
 	//----------------------------------------------------- Attributs proteges
 

@@ -55,7 +55,7 @@ unordered_map<int, Maladie> Initialisation::getListeMaladie()
 	return mapMaladie;
 } //----- Fin de Méthode
 
-Patient  Initialisation::getPatient(string id)
+Patient  Initialisation::getPatient(int id)
 // type ${file_base}::Méthode ( liste de paramètres )
 // Algorithme :
 //
@@ -63,7 +63,7 @@ Patient  Initialisation::getPatient(string id)
 	Patient p;
 	for (int i(0); i < this->listePatient.size();i++)
 	{
-		if (id == this->listePatient[i].getIdPersonne)
+		if (id == this->listePatient[i].getIdPersonne())
 		{
 			 return this->listePatient[i];
 		}

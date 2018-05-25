@@ -19,17 +19,21 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Analyse.h"
+#include "Maladie.h"
+#include "Empreinte.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Analyse::Méthode ( liste des paramètres )
+
+void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> mapMaladie)
 // Algorithme :
 //
-//{
-//} //----- Fin de Méthode
+{
+
+} //----- Fin de Méthode
 
 //------------------------------------------------------ Getters - Setters
 
@@ -46,7 +50,7 @@ int Analyse::getId()
 // Algorithme :
 //
 {
-	return this->getId;
+	return this->idAnalyse;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -66,7 +70,12 @@ ostream & operator << (ostream & out, Analyse & a)
 Analyse&  Analyse::operator =(Analyse a)
 {
 	this->idAnalyse = a.getId();
-	this->maladiesPotentielles = a.getMaladiesPotentielles;
+	unordered_map<string, double> maladies = a.getMaladiesPotentielles();
+	unordered_map<string, double>::iterator it;
+	for (it=maladies.begin(); it != maladies.end(); ++it)
+	{
+		this->maladiesPotentielles[it->first] = it->second;
+	}
 	return *this;
 }
 //-------------------------------------------- Constructeurs - destructeur

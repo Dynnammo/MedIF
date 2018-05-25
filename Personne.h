@@ -54,11 +54,7 @@ public:
 	//
 
 	//-------------------------------------------- Constructeurs - destructeur
-
-
-
-	// Constructeur de copie
-	Personne(Personne & p)
+    Personne(Personne & p)
 	{
 		this->prenom = p.prenom;
 		this->nom = p.nom;
@@ -69,7 +65,7 @@ public:
 #endif
 	}//----- Fin de Personne (constructeur de copie)
 
-	Personne()
+    Personne()
 	{
 #ifdef MAP
 	    cout << "Appel au constructeur par défaut de <Personne>" << endl;
@@ -103,8 +99,8 @@ private:
 protected:
 	//----------------------------------------------------- Attributs protégés
 	int idPersonne;
+    string prenom;
 	string nom;
-	string prenom;
 	string mail;
 
 private:
