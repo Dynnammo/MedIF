@@ -28,7 +28,6 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
-vector<Maladie> listeMaladie;
 vector<Medecin> listeMedecin;
 vector<Patient> listePatient;
 unordered_map <int, Maladie> mapMaladie;
@@ -45,6 +44,46 @@ unordered_map <int, Maladie> mapMaladie;
 //{
 //} //----- Fin de Méthode
 
+unordered_map<int, Maladie> Initialisation::getListeMaladie()
+// type ${file_base}::Méthode ( liste de paramètres )
+// Algorithme :
+//
+{
+	return mapMaladie;
+} //----- Fin de Méthode
+
+Patient  Initialisation::getPatient(string id)
+// type ${file_base}::Méthode ( liste de paramètres )
+// Algorithme :
+//
+{
+	Patient p;
+	for (int i(0); i < this->listePatient.size();i++)
+	{
+		if (id == this->listePatient[i].getIdPersonne)
+		{
+			 return this->listePatient[i];
+		}
+	}
+	return p;
+} //----- Fin de Méthode
+
+void  Initialisation::setPatient(Patient p)
+// type ${file_base}::Méthode ( liste de paramètres )
+// Algorithme :
+//
+{
+	this->listePatient.push_back(p);
+} //----- Fin de Méthode
+
+vector<Medecin> Initialisation::getListeMedecin()
+// type ${file_base}::Méthode ( liste de paramètres )
+// Algorithme :
+//
+{
+	return this->listeMedecin;
+} //----- Fin de Méthode
+
 void Initialisation::init(string nomFichier)
 // Algorithme :
 //
@@ -58,7 +97,13 @@ void Initialisation::init(string nomFichier)
 		while (getline(lecture, ligne))
 		{
 			int position = ligne.find_last_of(separateur);
-			tmp_map[ligne.substr(position+1, ligne.size())].push_back(ligne.substr(0, position));
+			string maladie= ligne.substr(position + 1, ligne.size());
+			if (maladie == "")
+			{
+				maladie = "sain";
+			}
+			
+			tmp_map[maladie].push_back(ligne.substr(0, position));
 		}
 		lecture.close();
 	}
@@ -202,13 +247,26 @@ vector<string> Initialisation::split(string &lignef, string del)
 
 }
 
+void Initialisation::initMedesin(string nomFichier)
+{
+	string separateur = ";";
+	ifstream lecture(nomFichier);
+	string ligne;
+	if (lecture)
+	{
+		while (getline(lecture, ligne))
+		{
+			Medecin m();
+		}
+	}
+}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 Initialisation & Initialisation::operator = ( const Initialisation & unInitialisation )
 // Algorithme :
 //
 {
-	this->listeMaladie=unInitialisation.listeMaladie;
 	this->listeMedecin = unInitialisation.listeMedecin;
 	this->listePatient = unInitialisation.listePatient;
 	this->mapMaladie = unInitialisation.mapMaladie;

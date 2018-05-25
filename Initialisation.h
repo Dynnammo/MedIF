@@ -3,7 +3,7 @@ Initialisation  -  description
 -------------------
 d�but                : $DATE$
 copyright            : (C) $YEAR$ par $AUTHOR$
-e-mail               : $EMAIL$
+e-mail               : anatoliigasiuk@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Initialisation> (fichier Initialisation.h) ----------------
@@ -36,6 +36,36 @@ public:
 	//----------------------------------------------------- M�thodes publiques
 	
 	void init(string nomFichier);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void initMedesin(string nomFichier);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	unordered_map<int, Maladie> getListeMaladie();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	Patient getPatient(string id);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void setPatient(Patient p);
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	vector<Medecin> getListeMedecin();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -82,8 +112,6 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs priv�s
-
-	vector<Maladie> listeMaladie;
 	vector<Medecin> listeMedecin;
 	vector<Patient> listePatient;
 	unordered_map <int, Maladie> mapMaladie;
