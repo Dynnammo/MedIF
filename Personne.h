@@ -40,18 +40,18 @@ public:
 	//
 	// Contrat :
 	
+	//------------------------------------------------- Surcharge d'opérateurs
+	Personne&  operator = (const & Personne p)
+	{
+		this->idPersonne = p.getId();
+		return *this;
+	} //----- Fin de operator =
+	
 	//------------------------------------------------------ Getters - Setters
 	int getIdPersonne()
 	{
 		return idPersonne;
 	}
-
-	//------------------------------------------------- Surcharge d'opérateurs
-
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
 	//-------------------------------------------- Constructeurs - destructeur
     Personne(const Personne & p)

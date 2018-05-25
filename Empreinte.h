@@ -58,7 +58,13 @@ public:
 	//
 	// Contrat :
 	//
-
+	Empreinte & operator = (const Empreinte & uneEmpreinte)
+	// Algorithme :
+	//
+	{
+		this->idEmpreinte = uneEmpreinte.idEmpreinte;
+		return *this;
+	} //----- Fin de operator =
 
 	//-------------------------------------------- Constructeurs - destructeur
 
@@ -66,7 +72,12 @@ public:
 	//
 	// Contrat :
 	//
-	Empreinte(string m) :mesures(m) {}
+	Empreinte(string m) :mesures(m) 
+	{
+#ifdef MAP
+		cout << "Appel au constructeur de <Empreinte>" << endl;
+#endif
+	}
 	// Mode d'emploi :
 
 	// Contrat :

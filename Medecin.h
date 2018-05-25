@@ -69,7 +69,8 @@ public:
 	//
 	// Contrat :
 	//
-
+	Medecin & operator = (const Medecin & unMedecin);
+	
 
 	//-------------------------------------------- Constructeurs - destructeur
 

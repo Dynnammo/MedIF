@@ -174,7 +174,16 @@ void chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagr
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-
+Medecin & operator = (const Medecin & unMedecin)
+// Algorithme :
+//
+{
+	this->mdp = unMedecin.mdp;
+	this->prenom = unMedecin.prenom;
+	this->nom = unMedecin.nom;
+	this->mail = unMedecin.mail;
+	return *this;
+} //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
 
