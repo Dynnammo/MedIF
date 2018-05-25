@@ -125,6 +125,12 @@ void Medecin:: afficherAnalyses(Patient p) {
 
 }
 
+void mesurerPatient(string mesures, Patient p) {
+
+	Empreinte e(mesures);
+	p.setEmpreintes(e);
+
+}
 void chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagramme uml
 
 	ifstream fichier(nomFichier, ios::in);  // on ouvre en lecture
@@ -140,12 +146,12 @@ void chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagr
 		while (getline(fichier, line)) {
 			pos = line.find(';');
 			idP = line.substr(0,pos);
-			line.erase(0, pos + 1);
+			line.erase(0, pos + 1); //j'enlève l'id du patient de l'Empreinte
 			cout << "test pour voir si l'idP est bon :" << idP;
 			cout << "test pour voir si line est bon :" << line;
 			for (list<Patient>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 				p = *it;
-				test = stoi(idP, &sz);
+				test = stoi(idP, &sz); //convertit l'id du Patient de string à int
 				if (p.getIdPersonne() == test ) {
 
 					mesurerPatient(line, p);

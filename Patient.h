@@ -68,6 +68,12 @@ public:
 		la.push_back(a);
 
 	}
+
+	list <Empreinte> setEmpreintes(Empreinte e)
+	{
+
+		 le.push_back(e);
+	}
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	// Mode d'emploi :
