@@ -61,15 +61,35 @@ Patient Medecin::ajouterPatient(string n, string p, string m) {
 
 list <Analyse>Medecin:: faireAnalyse(Patient p, list <Maladie> lm) {
 	list <Empreinte> le = p.getEmpreintes();
-	list <Analyse> la = p.getAnalyses();
-	Analyse a();
+
+	Analyse a;
 	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
 
 		a = a.analyseEmpreinte(*it);
-
+		p.setAnalyses(a);
 	}
 
 }
+
+
+Analyse Medecin:: rechercherAnalyse(int id, Patient p) {
+
+	list <Analyse> liste= p.getAnalyses();
+	Analyse a;
+	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
+
+		if (it.getidAnalyse == id) {
+
+			a = *it;
+		}
+
+	}
+
+	return a;
+	
+}
+
+
 // type ${file_base}::Méthode ( liste de paramètres )
 // Algorithme :
 //

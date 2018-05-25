@@ -63,6 +63,11 @@ public:
 		return la;
 	}
 
+	void  setAnalyses(Analyse a) {
+
+		la.push_back(a);
+
+	}
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	// Mode d'emploi :
@@ -98,7 +103,7 @@ public:
 
 		nom = n;	
 		prenom = p;
-		m = m;
+		mail = m;
 #ifdef MAP
     	cout << "Appel au constructeur de <Patient>" << endl;
 #endif
