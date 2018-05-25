@@ -37,7 +37,7 @@ using namespace std;
 //
 //------------------------------------------------------------------------ 
 
-class Medecin : Personne
+class Medecin : public Personne
 {
 	//----------------------------------------------------------------- PUBLIC
 
@@ -48,7 +48,7 @@ public:
 	void seDeconnecter();
 	Patient ajouterPatient(string n, string p, string m);
 	list <Analyse> faireAnalyse(Patient p, list <Maladie> lm);
-	Analyse rechercherAnalyse(int id);
+	Analyse rechercherAnalyse(int id, Patient p);
 	void afficherMaladie(list <Maladie> lm);
 	void mesurerPatient(Patient p, string nomFichier);
 	list <Analyse> faireAnalyse(list <Maladie>, Patient p);

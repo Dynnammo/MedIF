@@ -63,6 +63,11 @@ public:
 		return la;
 	}
 
+	void  setAnalyses(Analyse a) {
+
+		la.push_back(a);
+
+	}
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	// Mode d'emploi :
