@@ -41,6 +41,7 @@ vector <std::string> valeurs;
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
 int Attribut_enumeration::getIdAttribut()
 {
 	return this->idAttribut;
@@ -70,7 +71,6 @@ Attribut_enumeration & Attribut_enumeration::operator = (const Attribut_enumerat
 // Algorithme :
 //
 {
-
 	this->idAttribut = unAttribut_enumeration.idAttribut;
 	this->nbValeurs = unAttribut_enumeration.nbValeurs;
 	this->valeurs = unAttribut_enumeration.valeurs;
@@ -94,7 +94,9 @@ Attribut_enumeration::Attribut_enumeration(const Attribut_enumeration & unAttrib
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Attribut_enumeration>" << endl;
+#endif
 } //----- Fin de Attribut_enumeration (constructeur de copie)
 
 
@@ -102,7 +104,9 @@ Attribut_enumeration::Attribut_enumeration()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au constructeur de <Attribut_enumeration>" << endl;
+#endif
 } //----- Fin de Attribut_enumeration
 
 Attribut_enumeration::Attribut_enumeration(int id,int nbValeurs, vector<string> valeurs)
@@ -112,13 +116,18 @@ Attribut_enumeration::Attribut_enumeration(int id,int nbValeurs, vector<string> 
 	this->idAttribut = id;
 	this->nbValeurs = nbValeurs;
 	this->valeurs = valeurs;
+#ifdef MAP
+    cout << "Appel au constructeur de copie <Attribut_enumeration>" << endl;
+#endif
 } //----- Fin de Attribut_enumeration
 
 Attribut_enumeration::~Attribut_enumeration()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au destructeur de <Attribut_enumeration>" << endl;
+#endif
 } //----- Fin de ~Attribut_enumeration
 
 

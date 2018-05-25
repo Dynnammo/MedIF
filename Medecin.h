@@ -59,6 +59,7 @@ public:
 	// Contrat :
 	//
 
+	//------------------------------------------------------ Getters - Setters
 
 	//------------------------------------------------- Surcharge d'opérateurs
 
@@ -74,13 +75,13 @@ public:
 	//
 	// Contrat :
 	//
-	Medecin() {}
+	Medecin();
 	// Mode d'emploi :
 
 	// Contrat :
 	//
 
-	virtual ~ Medecin() {}
+	virtual ~ Medecin();
 
 	// Mode d'emploi :
 	//

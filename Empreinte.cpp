@@ -19,7 +19,6 @@ e-mail               : @insa-lyon.fr
 #include <iostream>
 using namespace std;
 
-
 //------------------------------------------------------ Include personnel
 #include "Empreinte.h"
 
@@ -40,11 +39,12 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
-  //-------------------------------------------- Constructeurs - destructeur
+//-------------------------------------------- Constructeurs - destructeur
 
 Empreinte:: Empreinte(string nomFichier)
 // Algorithme :
@@ -67,7 +67,9 @@ Empreinte:: Empreinte(string nomFichier)
 
 	idEmpreinte = id++;
 
-
+#ifdef MAP
+    cout << "Appel au constructeur (par défaut) de <Empreinte>" << endl;
+#endif
 	
 } //----- Fin de Empreinte
 
@@ -77,6 +79,9 @@ Empreinte::~Empreinte ()
 //
 {
 	id--;
+#ifdef MAP
+    cout << "Appel au destructeur de <Empreinte>" << endl;
+#endif
 } //----- Fin de ~Empreinte
 
 

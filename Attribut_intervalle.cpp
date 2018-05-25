@@ -40,6 +40,7 @@ double moyenne;
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
 double Attribut_intervalle::getBorneSup()
 {
 	return this->borneSup;
@@ -109,7 +110,9 @@ Attribut_intervalle::Attribut_intervalle()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Attribut_intervalle>" << endl;
+#endif
 } //----- Fin de Attribut_intervalle
 
 Attribut_intervalle::Attribut_intervalle(int id, double borneS, double borneI, double moy)
@@ -119,13 +122,18 @@ Attribut_intervalle::Attribut_intervalle(int id, double borneS, double borneI, d
 	this->borneSup = borneS;
 	this->borneInf = borneI;
 	this->moyenne = moy;
+#ifdef MAP
+    cout << "Appel au constructeur de <Attribut_intervalle>" << endl;
+#endif
 } //----- Fin de Attribut_intervalle
 
 Attribut_intervalle::~Attribut_intervalle()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au destructeur de <Attribut_intervalle>" << endl;
+#endif
 } //----- Fin de ~Attribut_intervalle
 
 

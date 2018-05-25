@@ -55,21 +55,6 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
 
-	// Constructeur par défaut
-	Personne()
-	{
-
-	}
-
-	// Constructeur
-	Personne(string n, string p, string m)
-	{
-		idPersonne=id1++;
-		prenom = p;
-		nom = m;
-		mail = m;
-	}
-
 	// Constructeur de copie
 	Personne(Personne & p)
 	{
@@ -77,13 +62,33 @@ public:
 		this->nom = p.nom;
 		this->idPersonne = p.idPersonne;
 		this->mail = p.mail; 
-	}
+#ifdef MAP
+	    cout << "Appel au constructeur de copie de <Personne>" << endl;
+#endif
+	}//----- Fin de Personne (constructeur de copie)
 
-	// Destructeur de la classe Personne
+	Personne()
+	{
+#ifdef MAP
+	    cout << "Appel au constructeur par défaut de <Personne>" << endl;
+#endif
+	}//----- Fin de Personne
+
+	Personne(string n, string p, string m)
+		: idPersonne(id1++), prenom(p), nom(n), mail(m)
+	{
+#ifdef MAP
+	    cout << "Appel au constructeur de <Personne>" << endl;
+#endif
+	}//----- Fin de Personne
+
 	virtual ~Personne()
 	{
 		id1--;
-	}
+#ifdef MAP
+	    cout << "Appel au destructeur de <Personne>" << endl;
+#endif
+	}//----- Fin de ~Personne
 
 	//------------------------------------------------------------------ PRIVE 
 

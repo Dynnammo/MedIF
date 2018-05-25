@@ -31,6 +31,8 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 ostream & operator << (ostream & out, Analyse & a)
@@ -59,7 +61,7 @@ Analyse::Analyse ( )
     idAnalyse = idA++;
     pourcentage = 0;
 #ifdef MAP
-    cout << "Appel au constructeur de <Analyse>" << endl;
+    cout << "Appel au constructeur (par défaut) de <Analyse>" << endl;
 #endif
 } //----- Fin de Analyse
 
