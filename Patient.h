@@ -74,7 +74,7 @@ public:
 	//
 	// Contrat :
 	//
-
+	Patient & operator =(Patient p);
 
 	//-------------------------------------------- Constructeurs - destructeur
 

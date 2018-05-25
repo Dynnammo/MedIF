@@ -50,7 +50,8 @@ public:
 	list <Analyse> faireAnalyse(Patient p, list <Maladie> lm);
 	Analyse rechercherAnalyse(int id, Patient p);
     void afficherMaladies(list <Maladie> lm);
-	void mesurerPatient(Patient p, string nomFichier);
+	void afficherAnalyses(Patient p);
+	void mesurerPatient(string mesures, Patient p);
 	list <Analyse> faireAnalyse(list <Maladie>, Patient p);
 	void chargerEmpreinte(string nomFichier);
 
