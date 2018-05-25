@@ -1,9 +1,12 @@
 /*************************************************************************
 Attribut_intervalle  -  description
 -------------------
-début                : $DATE$
-copyright            : (C) $YEAR$ par $AUTHOR$
-e-mail               : $EMAIL$
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Attribut_intervalle> (fichier Attribut_intervalle.cpp) ------------
@@ -37,6 +40,7 @@ double moyenne;
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
 double Attribut_intervalle::getBorneSup()
 {
 	return this->borneSup;
@@ -106,7 +110,9 @@ Attribut_intervalle::Attribut_intervalle()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Attribut_intervalle>" << endl;
+#endif
 } //----- Fin de Attribut_intervalle
 
 Attribut_intervalle::Attribut_intervalle(int id, double borneS, double borneI, double moy)
@@ -116,13 +122,18 @@ Attribut_intervalle::Attribut_intervalle(int id, double borneS, double borneI, d
 	this->borneSup = borneS;
 	this->borneInf = borneI;
 	this->moyenne = moy;
+#ifdef MAP
+    cout << "Appel au constructeur de <Attribut_intervalle>" << endl;
+#endif
 } //----- Fin de Attribut_intervalle
 
 Attribut_intervalle::~Attribut_intervalle()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au destructeur de <Attribut_intervalle>" << endl;
+#endif
 } //----- Fin de ~Attribut_intervalle
 
 

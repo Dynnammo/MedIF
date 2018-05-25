@@ -1,9 +1,12 @@
 /*************************************************************************
-Personne -  description
+Personne  -  description
 -------------------
-début                : 04.05.2018
-copyright            : (C) 2018 par Tifenn Floch, Anatolii Gasiuk, 
-									Léo Pape, Baptiste Thivend
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Personne> (fichier Personne.h) ------
@@ -74,13 +77,33 @@ public:
 		this->nom = p.nom;
 		this->idPersonne = p.idPersonne;
 		this->mail = p.mail; 
-	}
+#ifdef MAP
+	    cout << "Appel au constructeur de copie de <Personne>" << endl;
+#endif
+	}//----- Fin de Personne (constructeur de copie)
 
-	// Destructeur de la classe Personne
+	Personne()
+	{
+#ifdef MAP
+	    cout << "Appel au constructeur par défaut de <Personne>" << endl;
+#endif
+	}//----- Fin de Personne
+
+	Personne(string n, string p, string m)
+		: idPersonne(id1++), prenom(p), nom(n), mail(m)
+	{
+#ifdef MAP
+	    cout << "Appel au constructeur de <Personne>" << endl;
+#endif
+	}//----- Fin de Personne
+
 	virtual ~Personne()
 	{
 		id1--;
-	}
+#ifdef MAP
+	    cout << "Appel au destructeur de <Personne>" << endl;
+#endif
+	}//----- Fin de ~Personne
 
 	//------------------------------------------------------------------ PRIVE 
 

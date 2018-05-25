@@ -1,9 +1,12 @@
 /*************************************************************************
 Maladie  -  description
 -------------------
-début                : $DATE$
-copyright            : (C) $YEAR$ par $AUTHOR$
-e-mail               : $EMAIL$
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Maladie> (fichier Maladie.cpp) ------------
@@ -32,14 +35,12 @@ vector<Attribut*> listeAttribut;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-
-
-
 void Maladie::ajouterAttribut(Attribut* attribut)
 {
 	this->listeAttribut.push_back(attribut);
 }
 
+//------------------------------------------------------ Getters - Setters
 int Maladie::getIdMaladie()
 {
 	return this->idMaladie;
@@ -78,7 +79,9 @@ Maladie::Maladie(const Maladie & unMaladie)
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Maladie>" << endl;
+#endif
 } //----- Fin de Maladie (constructeur de copie)
 
 
@@ -86,6 +89,9 @@ Maladie::Maladie()
 // Algorithme :
 //
 {
+#ifdef MAP
+    cout << "Appel au constructeur par défaut de <Maladie>" << endl;
+#endif
 } //----- Fin de Maladie
 
 Maladie::Maladie(int id)
@@ -93,7 +99,9 @@ Maladie::Maladie(int id)
 //
 {
 	idMaladie = id;
-
+#ifdef MAP
+    cout << "Appel au constructeur de <Maladie>" << endl;
+#endif
 } //----- Fin de Maladie
 
 
@@ -106,7 +114,9 @@ Maladie::~Maladie()
 		delete (*it);
 	}
 	this->listeAttribut.clear();
-
+#ifdef MAP
+    cout << "Appel au destructeur de <Maladie>" << endl;
+#endif
 } //----- Fin de ~Maladie
 
 

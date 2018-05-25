@@ -1,9 +1,12 @@
 /*************************************************************************
 Attribut  -  description
 -------------------
-début                : $DATE$
-copyright            : (C) $YEAR$ par $AUTHOR$
-e-mail               : $EMAIL$
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Attribut> (fichier Attribut.cpp) ------------
@@ -34,13 +37,11 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
 int Attribut::getIdAttribut()
 {
 	return this->idAttribut;
 }
-
-
-
 
 //------------------------------------------------- Surcharge d'opérateurs
 Attribut & Attribut::operator = (const Attribut & unAttribut)
@@ -64,7 +65,9 @@ Attribut::Attribut(const Attribut & unAttribut)
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Attribut>" << endl;
+#endif
 } //----- Fin de Attribut (constructeur de copie)
 
 
@@ -72,7 +75,9 @@ Attribut::Attribut()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au constructeur par défaut de <Attribut>" << endl;
+#endif
 } //----- Fin de Attribut
 
 Attribut::Attribut(int id)
@@ -80,6 +85,9 @@ Attribut::Attribut(int id)
 //
 {
 	this->idAttribut = id;
+#ifdef MAP
+    cout << "Appel au constructeur de <Attribut>" << endl;
+#endif
 } //----- Fin de Attribut
 
 
@@ -87,7 +95,9 @@ Attribut::~Attribut()
 // Algorithme :
 //
 {
-
+#ifdef MAP
+    cout << "Appel au destructeur de <Attribut>" << endl;
+#endif
 } //----- Fin de ~Attribut
 
 

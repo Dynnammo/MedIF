@@ -1,9 +1,12 @@
 /*************************************************************************
-Patient -  description
+Patient  -  description
 -------------------
-début                : 04.05.2018
-copyright            : (C) 2018 par Tifenn Floch, Anatolii Gasiuk, 
-									Léo Pape, Baptiste Thivend
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Patient> (fichier Patient.h) ------
@@ -40,19 +43,22 @@ public:
 	// Mode d'emploi :
 	//
 	// Contrat :
-	void afficher() {
+	void afficher()
+	{
 
 		cout << nom << " " << prenom << endl;
 	}
 
 
 	//------------------------------------------------------ Getters - Setters
-	list <Empreinte> getEmpreintes() {
+	list <Empreinte> getEmpreintes() 
+	{
 
 		return le;
 	}
 
-	list <Analyse> getAnalyses() {
+	list <Analyse> getAnalyses() 
+	{
 
 		return la;
 	}
@@ -72,31 +78,41 @@ public:
 	// Contrat :
 	//
 
-	// Constructeur par défaut
+	Patient(Patient & p)
+	{
+		this->la = p.la;
+		this->le = p.le;
+#ifdef MAP
+	    cout << "Appel au constructeur de copie de <Maladie>" << endl;
+#endif
+	}//----- Fin de Patient (constructeur de copie)
+
 	Patient()
 	{
+#ifdef MAP
+    	cout << "Appel au constructeur de copie de <Patient>" << endl;
+#endif
+	}//----- Fin de Patient
 
-	}
-
-	// Constructeur
 	Patient(string n, string p, string m) {
 
 		nom = n;	
 		prenom = p;
 		m = m;
-	}
+#ifdef MAP
+    	cout << "Appel au constructeur de <Patient>" << endl;
+#endif
+	}//----- Fin de Patient
 
-	// Constructeur de copie
-	Patient(Patient & p)
-	{
-		this->la = p.la;
-		this->le = p.le;
-	}
 
 	virtual ~Patient()
 	{
-
-	}
+		this->la = p.la;
+		this->le = p.le;
+#ifdef MAP
+	    cout << "Appel au destructeur de <Patient>" << endl;
+#endif
+	}//----- Fin de ~Patient
 
 
 	//------------------------------------------------------------------ PRIVE 

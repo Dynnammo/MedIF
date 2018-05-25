@@ -1,9 +1,12 @@
 /*************************************************************************
-                           Analyse  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+Analyse  -  description
+-------------------
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Analyse> (fichier Analyse.cpp) ------------
@@ -27,6 +30,8 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
+
+//------------------------------------------------------ Getters - Setters
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -56,7 +61,7 @@ Analyse::Analyse ( )
     idAnalyse = idA++;
     pourcentage = 0;
 #ifdef MAP
-    cout << "Appel au constructeur de <Analyse>" << endl;
+    cout << "Appel au constructeur (par défaut) de <Analyse>" << endl;
 #endif
 } //----- Fin de Analyse
 

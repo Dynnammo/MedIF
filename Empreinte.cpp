@@ -1,20 +1,23 @@
 
 
 /*************************************************************************
-${file_base}  -  description
+Empreinte  -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <${file_base}> (fichier ${file_name}) --
+//---------- Réalisation de la classe <Empreinte> (fichier Empreinte.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 #include <iostream>
 using namespace std;
-
 
 //------------------------------------------------------ Include personnel
 #include "Empreinte.h"
@@ -30,17 +33,18 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type ${file_base}::Méthode ( liste de paramètres )
+// type Empreinte::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
 
+//------------------------------------------------------ Getters - Setters
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
-  //-------------------------------------------- Constructeurs - destructeur
+//-------------------------------------------- Constructeurs - destructeur
 
 Empreinte:: Empreinte(string nomFichier)
 // Algorithme :
@@ -63,9 +67,11 @@ Empreinte:: Empreinte(string nomFichier)
 
 	idEmpreinte = id++;
 
-
+#ifdef MAP
+    cout << "Appel au constructeur (par défaut) de <Empreinte>" << endl;
+#endif
 	
-} //----- Fin de ${file_base}
+} //----- Fin de Empreinte
 
 
 Empreinte::~Empreinte ()
@@ -73,7 +79,10 @@ Empreinte::~Empreinte ()
 //
 {
 	id--;
-} //----- Fin de ~${file_base}
+#ifdef MAP
+    cout << "Appel au destructeur de <Empreinte>" << endl;
+#endif
+} //----- Fin de ~Empreinte
 
 
   //------------------------------------------------------------------ PRIVE
