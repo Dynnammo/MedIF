@@ -76,15 +76,27 @@ public:
 	//
 	// Contrat :
 	//
-	Medecin() {}
+	Medecin()
+	{
+#ifdef MAP
+   		cout << "Appel au constructeur par defaut de <Medecin>" << endl;
+#endif
+	} //----- Fin de Medecin
 
-	Medecin(string motDePasse) :mdp(motDePasse) {}
-	// Mode d'emploi :
+	Medecin(string n, string m, string p, string motDePasse) 
+		:Personne(n, p, m), mdp(motDePasse)
+	{
+#ifdef MAP
+    cout << "Appel au constructeur de <Medecin>" << endl;
+#endif
+	}//----- Fin de Medecin
 
-	// Contrat :
-	//
-
-	virtual ~ Medecin();
+	virtual ~ Medecin()
+	{
+#ifdef MAP
+    cout << "Appel au destructeur de <Medecin>" << endl;
+#endif
+	} //----- Fin de ~Medecin
 
 	// Mode d'emploi :
 	//
