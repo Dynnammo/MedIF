@@ -1,16 +1,19 @@
 /*************************************************************************
 Initialisation  -  description
 -------------------
-d�but                : $DATE$
-copyright            : (C) $YEAR$ par $AUTHOR$
-e-mail               : anatoliigasiuk@insa-lyon.fr
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Initialisation> (fichier Initialisation.h) ----------------
 #if ! defined ( Initialisation_H )
 #define Initialisation_H
 
-//--------------------------------------------------- Interfaces utilis�es
+//--------------------------------------------------- Interfaces utilisees
 #include "Maladie.h"
 #include "Patient.h"
 #include "Medecin.h"
@@ -23,7 +26,7 @@ e-mail               : anatoliigasiuk@insa-lyon.fr
 
 
 //------------------------------------------------------------------------
-// R�le de la classe <Initialisation>
+// Role de la classe <Initialisation>
 //
 //
 //------------------------------------------------------------------------
@@ -33,7 +36,7 @@ class Initialisation
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- M�thodes publiques
+	//----------------------------------------------------- Methodes publiques
 	
 	void init(string nomFichier);
 	// Mode d'emploi :
@@ -102,28 +105,30 @@ public:
 	//------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- M�thodes prot�g�es
+	//----------------------------------------------------- Methodes protegees
 
 private:
-	//------------------------------------------------------- M�thodes priv�es
+	//------------------------------------------------------- Methodes privees
 	vector<string> Initialisation::split(string &lignef, string del);
 protected:
-	//----------------------------------------------------- Attributs prot�g�s
+	//----------------------------------------------------- Attributs proteges
 
 private:
-	//------------------------------------------------------- Attributs priv�s
+	//------------------------------------------------------- Attributs prives
+
+	vector<Maladie> listeMaladie;
 	vector<Medecin> listeMedecin;
 	vector<Patient> listePatient;
 	unordered_map <int, Maladie> mapMaladie;
 	//---------------------------------------------------------- Classes amies
 
-	//-------------------------------------------------------- Classes priv�es
+	//-------------------------------------------------------- Classes privees
 
-	//----------------------------------------------------------- Types priv�s
+	//----------------------------------------------------------- Types prives
 
 };
 
-//---------------------------------------------- Types d�pendants de <Initialisation>
+//---------------------------------------------- Types dependants de <Initialisation>
 
 #endif // Initialisation_H
 

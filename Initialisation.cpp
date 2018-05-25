@@ -1,9 +1,12 @@
 /*************************************************************************
-                           Initialisation  -  description
-                             -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+Initialisation  -  description
+-------------------
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <Initialisation> (fichier Initialisation.cpp) ------------
@@ -38,7 +41,7 @@ unordered_map <int, Maladie> mapMaladie;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-// type ${file_base}::Méthode ( liste de paramètres )
+// type Initialisation::Méthode ( liste de paramètres )
 // Algorithme :
 //
 //{

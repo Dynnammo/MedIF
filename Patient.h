@@ -1,9 +1,12 @@
 /*************************************************************************
-Patient -  description
+Patient  -  description
 -------------------
-début                : 04.05.2018
-copyright            : (C) 2018 par Tifenn Floch, Anatolii Gasiuk, 
-									Léo Pape, Baptiste Thivend
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Patient> (fichier Patient.h) ------

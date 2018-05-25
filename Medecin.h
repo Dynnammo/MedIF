@@ -1,13 +1,17 @@
 #pragma once
 #pragma once
 /*************************************************************************
-${file_base}  -  description
+Medecin  -  description
 -------------------
-début                : ${date}
-copyright            : (C) ${year} par ${user}
+début                : 27.04.2018
+copyright            : (C) 2018 par Tifenn FLOCH
+									Anatolii GASIUK
+									Léo PAPE
+									Baptiste THIVEND
+e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <${file_base}> (fichier ${file_name}) ------
+//---------- Interface de la classe <Medecin> (fichier Medecin.h) ------
 #if ! defined ( Medecin_H )
 #define Medecin_H
 
@@ -27,7 +31,7 @@ using namespace std;
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <${file_base}>
+// Rôle de la classe <Medecin>
 //
 //
 //------------------------------------------------------------------------ 
@@ -107,7 +111,7 @@ private:
 
 };
 
-//----------------------------------------- Types dépendants de <${file_base}>
+//----------------------------------------- Types dépendants de <Medecin>
 
-#endif // XXX_H
+#endif // MEDECIN_H
 #pragma once
