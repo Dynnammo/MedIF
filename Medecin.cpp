@@ -52,7 +52,7 @@ bool Medecin::seConnecter(int id, string mdp)
 
 void Medecin::seDeconnecter()
 {
-	this.~Medecin();
+	this->~Medecin();
 }
 
 Patient Medecin::ajouterPatient(string n, string p, string m) 
@@ -69,16 +69,15 @@ Patient Medecin::ajouterPatient(string n, string p, string m)
 list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
 {
 	list <Empreinte> le = p.getEmpreintes();
-
+	Initialisation ini;
 	Analyse a;
-	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-	{
-		a = a.analyseEmpreinte(*it);
-<<<<<<< HEAD
-=======
+	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
+
+		a.analyseEmpreinte(*it,ini.getListeMaladie());
 		p.setAnalyses(a);
 	}
 
+	return p.getAnalyses();
 }
 
 
@@ -86,28 +85,32 @@ Analyse Medecin:: rechercherAnalyse(int id, Patient p) {
 
 	list <Analyse> liste= p.getAnalyses();
 	Analyse a;
+	Analyse tmp;
+
 	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 
-		if (it.getidAnalyse == id) {
+		tmp = *it;
+
+		
+		if (a.getId() == id) {
 
 			a = *it;
 		}
 
->>>>>>> aa25d10153cf67111a4718b3ed0e016802a33ef9
+
 	}
+	return a;
 }
 
-<<<<<<< HEAD
+
 void Medecin::afficherMaladies(list <Maladie> lm)
 {
 	for (list<Maladie>::const_iterator it = lm.cbegin(); it != lm.cend(); it++)
 	{
 		
 	}
-=======
-	return a;
+
 	
->>>>>>> aa25d10153cf67111a4718b3ed0e016802a33ef9
 }
 
 

@@ -66,13 +66,21 @@ public:
 	//
 	// Contrat :
 	//
-	Empreinte( string nomFichier);
+	Empreinte(string m) :mesures(m) {}
 	// Mode d'emploi :
 
 	// Contrat :
 	//
 
-	virtual ~Empreinte();
+	virtual ~Empreinte()
+		// Algorithme :
+		//
+	{
+		id--;
+#ifdef MAP
+		cout << "Appel au destructeur de <Empreinte>" << endl;
+#endif
+	} //----- Fin de ~Empreinte
 
 	// Mode d'emploi :
 	//

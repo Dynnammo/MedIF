@@ -61,7 +61,7 @@ Patient  Initialisation::getPatient(int id)
 //
 {
 	Patient p;
-	for (int i(0); i < this->listePatient.size();i++)
+	for (unsigned int i(0); i < this->listePatient.size();i++)
 	{
 		if (id == this->listePatient[i].getIdPersonne())
 		{

@@ -83,7 +83,7 @@ public:
 	// Contrat :
 	//
 
-	Patient(Patient & p)
+	Patient(const Patient & p)
 	{
 		this->la = p.la;
 		this->le = p.le;
@@ -110,7 +110,7 @@ public:
 
 	virtual ~Patient()
 	{
-
+		
 #ifdef MAP
 	    cout << "Appel au destructeur de <Patient>" << endl;
 #endif

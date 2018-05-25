@@ -76,6 +76,11 @@ public:
 	//
 	// Contrat :
 	//
+
+	Medecin(const Medecin &m) 
+	{
+
+	}
 	Medecin()
 	{
 #ifdef MAP
