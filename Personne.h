@@ -54,7 +54,7 @@ public:
 	//
 
 	//-------------------------------------------- Constructeurs - destructeur
-    Personne(Personne & p)
+    Personne(const Personne & p)
 	{
 		this->prenom = p.prenom;
 		this->nom = p.nom;

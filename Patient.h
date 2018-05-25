@@ -83,7 +83,7 @@ public:
 	// Contrat :
 	//
 
-	Patient(Patient & p)
+	Patient(const Patient & p)
 	{
 		this->la = p.la;
 		this->le = p.le;
