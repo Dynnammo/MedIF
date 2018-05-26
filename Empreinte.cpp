@@ -46,33 +46,6 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Empreinte:: Empreinte(string nomFichier)
-// Algorithme :
-//
-{
-	
-	ifstream fichier("D:/Etudes/INSA/TP/GL et UML/MedIF"); //attention path à modifier selon les ordis
-	string ligne;
-	if (fichier) {
-		while (getline(fichier, ligne)) {
-
-
-			mesures += ligne;
-
-		}
-	}
-	else {
-		cerr << "erreur lors de l'ouverture du fichier" << endl;
-		}
-
-	idEmpreinte = id++;
-
-#ifdef MAP
-    cout << "Appel au constructeur (par défaut) de <Empreinte>" << endl;
-#endif
-	
-} //----- Fin de Empreinte
-
 
 Empreinte::~Empreinte ()
 // Algorithme :

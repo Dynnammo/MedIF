@@ -71,6 +71,14 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> mapMala
 //
 {
 	vector<string> symptomes = split(e.getMesures(), ";");
+	
+	unordered_map <int, Maladie> temp = mapMaladie;
+	unordered_map <int, Maladie>::iterator it;
+	for (it = temp.begin(); it != temp.end(); it++)
+	{
+
+	}
+
 
 } //----- Fin de Méthode
 
