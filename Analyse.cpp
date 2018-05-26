@@ -30,8 +30,6 @@ using namespace std;
 
 vector<string> Analyse::split(string &lignef, string del)
 {
-
-
 	vector<string> reponse;
 	int pos = 0;
 	while (pos != -1)
@@ -114,7 +112,7 @@ ostream & operator << (ostream & out, Analyse & a)
 	return out;
 }
 
-Analyse&  Analyse::operator =(Analyse a)
+Analyse&  Analyse::operator =(const &Analyse a)
 {
 	this->idAnalyse = a.getId();
 	unordered_map<string, double> maladies = a.getMaladiesPotentielles();

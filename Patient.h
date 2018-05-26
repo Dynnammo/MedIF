@@ -68,12 +68,24 @@ public:
 		la.push_back(a);
 
 	}
+
+	list <Empreinte> setEmpreintes(Empreinte e)
+	{
+
+		 le.push_back(e);
+	}
 	//------------------------------------------------- Surcharge d'opérateurs
 
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
+	//------------------------------------------------- Surcharge d'opérateurs
+	Patient & operator = (const & Patient p)
+	{
+		this->idPersonne = p.getId();
+		return *this;
+	} //----- Fin de operator =
 
 
 	//-------------------------------------------- Constructeurs - destructeur
@@ -85,6 +97,10 @@ public:
 
 	Patient(const Patient & p)
 	{
+		this->idPersonne = p.idPersonne;
+		this->nom = p.nom;
+		this->prenom = p.prenom;
+		this->mail = p.mail;
 		this->la = p.la;
 		this->le = p.le;
 #ifdef MAP

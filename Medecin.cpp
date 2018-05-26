@@ -113,7 +113,57 @@ void Medecin::afficherMaladies(list <Maladie> lm)
 	
 }
 
+void Medecin:: afficherAnalyses(Patient p) {
+	list<Analyse> liste = p.getAnalyses();
+	Analyse tmp;
+	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
+		tmp = *it;
+		cout << tmp;
+		
 
+	}
+
+}
+
+void mesurerPatient(string mesures, Patient p) {
+
+	Empreinte e(mesures);
+	p.setEmpreintes(e);
+
+}
+void chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagramme uml
+
+	ifstream fichier(nomFichier, ios::in);  // on ouvre en lecture
+
+	if (fichier)  // si l'ouverture a fonctionné
+	{
+		string line;
+		string idP;
+		int pos;
+		int test;
+		Patient p;
+		string::size_type sz;
+		while (getline(fichier, line)) {
+			pos = line.find(';');
+			idP = line.substr(0,pos);
+			line.erase(0, pos + 1); //j'enlève l'id du patient de l'Empreinte
+			cout << "test pour voir si l'idP est bon :" << idP;
+			cout << "test pour voir si line est bon :" << line;
+			for (list<Patient>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
+				p = *it;
+				test = stoi(idP, &sz); //convertit l'id du Patient de string à int
+				if (p.getIdPersonne() == test ) {
+
+					mesurerPatient(line, p);
+				}
+			}
+			
+		}
+	}
+	else {
+		cerr << "Impossible d'ouvrir le fichier !" << endl;
+	}
+}
 // type ${file_base}::Méthode ( liste de paramètres )
 // Algorithme :
 //
@@ -124,7 +174,16 @@ void Medecin::afficherMaladies(list <Maladie> lm)
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-
+Medecin & operator = (const Medecin & unMedecin)
+// Algorithme :
+//
+{
+	this->mdp = unMedecin.mdp;
+	this->prenom = unMedecin.prenom;
+	this->nom = unMedecin.nom;
+	this->mail = unMedecin.mail;
+	return *this;
+} //----- Fin de operator =
 
 //-------------------------------------------- Constructeurs - destructeur
 
