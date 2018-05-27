@@ -26,8 +26,6 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
-int idMaladie;
-vector<Attribut*> listeAttribut;
 //----------------------------------------------------------- Types privés
 
 
@@ -51,12 +49,27 @@ vector<Attribut*> Maladie::getListeAttribut()
 	return this->listeAttribut;
 }
 
+string Maladie::getNom()
+{
+	return this->nomMaladie;
+}
+
+void Maladie::setNom(string nom)
+{
+	this->nomMaladie = nom;
+}
+
+void Maladie::setId(int id)
+{
+	this->idMaladie = id;
+}
 //------------------------------------------------- Surcharge d'opérateurs
-Maladie & Maladie::operator = (const Maladie & unMaladie)
+Maladie & Maladie::operator = ( Maladie const & unMaladie)
 // Algorithme :
 //
 {
 	this->idMaladie = unMaladie.idMaladie;
+	this->nomMaladie = unMaladie.nomMaladie;
 	this->listeAttribut = unMaladie.listeAttribut;
 	return *this;
 } //----- Fin de operator =
@@ -65,7 +78,7 @@ ostream& operator<<(ostream &flux, Maladie const& maladie)
 // Algorithme :
 //
 {
-	flux << "id    " << "   valeur" << endl;
+	flux << "Maladie : " << maladie.nomMaladie << endl;
 	for (unsigned int i(0); i < maladie.listeAttribut.size(); i++)
 	{
 		maladie.listeAttribut[i]->afficher(flux);
@@ -109,9 +122,9 @@ Maladie::~Maladie()
 // Algorithme :
 //
 {
-	for (std::vector< Attribut* >::iterator it =this->listeAttribut.begin(); it != this->listeAttribut.end(); ++it)
+	for (unsigned int i(0); i<this->listeAttribut.size();i++)
 	{
-		delete (*it);
+		delete this->listeAttribut[i];
 	}
 	this->listeAttribut.clear();
 #ifdef MAP

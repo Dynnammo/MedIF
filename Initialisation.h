@@ -50,7 +50,7 @@ public:
 	// Contrat :
 	//
 
-	unordered_map<int, Maladie> getListeMaladie();
+	unordered_map<int, Maladie>& getListeMaladie();
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -115,8 +115,6 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs prives
-
-	vector<Maladie> listeMaladie;
 	vector<Medecin> listeMedecin;
 	vector<Patient> listePatient;
 	unordered_map <int, Maladie> mapMaladie;

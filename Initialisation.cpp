@@ -31,9 +31,7 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
-vector<Medecin> listeMedecin;
-vector<Patient> listePatient;
-unordered_map <int, Maladie> mapMaladie;
+
 //----------------------------------------------------------- Types privés
 
 
@@ -47,7 +45,7 @@ unordered_map <int, Maladie> mapMaladie;
 //{
 //} //----- Fin de Méthode
 
-unordered_map<int, Maladie> Initialisation::getListeMaladie()
+unordered_map<int, Maladie>& Initialisation::getListeMaladie()
 // type ${file_base}::Méthode ( liste de paramètres )
 // Algorithme :
 //
@@ -97,16 +95,21 @@ void Initialisation::init(string nomFichier)
 	string ligne;
 	if (lecture)
 	{
+		if (!getline(lecture, ligne))
+		{
+			cout << "Le fichier est vide." << endl;
+		}
 		while (getline(lecture, ligne))
 		{
 			int position = ligne.find_last_of(separateur);
-			string maladie= ligne.substr(position + 1, ligne.size());
+			int positionId = ligne.find(separateur);
+			string maladie= ligne.substr(position + 1);
 			if (maladie == "")
 			{
 				maladie = "sain";
 			}
 			
-			tmp_map[maladie].push_back(ligne.substr(0, position));
+			tmp_map[maladie].push_back(ligne.substr(positionId+1, (position-1-positionId)));
 		}
 		lecture.close();
 	}
@@ -137,7 +140,7 @@ void Initialisation::init(string nomFichier)
 						}
 						else 
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(j, 1, 0, 1);
+							Attribut_intervalle* symptome = new Attribut_intervalle(j, 1, 0, 1/ nbrEmpreinte);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 						}
 					}
@@ -148,7 +151,7 @@ void Initialisation::init(string nomFichier)
 						double moy = symptome->getMoyenne();
 						if (symptomes[j] == "V")
 						{
-							moy+=1;
+							moy+=1/ nbrEmpreinte;
 							
 						}
 						symptome->setMoyenne(moy / nbrEmpreinte);
@@ -162,7 +165,7 @@ void Initialisation::init(string nomFichier)
 
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)
 					{
-						Attribut_intervalle* symptome = new Attribut_intervalle(j, borne, borne, borne);
+						Attribut_intervalle* symptome = new Attribut_intervalle(j, borne, borne, borne/ nbrEmpreinte);
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 						
 					}
@@ -178,9 +181,9 @@ void Initialisation::init(string nomFichier)
 						{
 							symptome->setBorneInf(borne);
 						}
-						double moyenne = symptome->getMoyenne() + borne;
+						double moyenne = symptome->getMoyenne() + borne/ nbrEmpreinte;
 
-						symptome->setMoyenne(moyenne / nbrEmpreinte);
+						symptome->setMoyenne(moyenne);
 
 					}
 					
@@ -209,6 +212,8 @@ void Initialisation::init(string nomFichier)
 				}
 			}
 		}
+		mapMaladie[idMaladie].setNom(it->first);
+		mapMaladie[idMaladie].setId(idMaladie);
 	}
 } //----- Fin de Méthode
 

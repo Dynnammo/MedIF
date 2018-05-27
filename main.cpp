@@ -14,6 +14,7 @@ e-mail               : @insa-lyon.fr
 #include "Attribut_intervalle.h"
 #include "Maladie.h"
 #include <iostream>
+#include <fstream>
 #include "Initialisation.h"
 
 using namespace std;
@@ -22,9 +23,24 @@ int main()
 {
 
 	Initialisation i;
-	i.init("test.txt");
+	i.init("test2.txt");
+	ifstream lecture("test3.txt");
+	string ligne;
 	
-	Empreinte e("test.txt");
+	getline(lecture, ligne);
+	Empreinte e(ligne);
+
+	Analyse a;
+	unordered_map <string, double> maladies;
+	unordered_map <int, Maladie> maladies2= i.getListeMaladie();
+
+	for (int j(0); j < maladies2.size(); j++)
+	{
+		cout << i.getListeMaladie()[j] << endl;
+	}
+	
+	a.analyseEmpreinte(e, i.getListeMaladie());
+	cout << a << endl;
 
 	return 0;
 }

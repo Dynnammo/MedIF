@@ -15,6 +15,7 @@ e-mail               : @insa-lyon.fr
 
 //-------------------------------------------------------- Include système
 #include <iostream>
+#include <regex>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
@@ -64,18 +65,94 @@ vector<string> Analyse::split(string &lignef, string del)
 
 }
 
-void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> mapMaladie)
+void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie)
 // Algorithme :
 //
 {
 	vector<string> symptomes = split(e.getMesures(), ";");
 	
-	unordered_map <int, Maladie> temp = mapMaladie;
+	unordered_map <int, Maladie> temp;
 	unordered_map <int, Maladie>::iterator it;
-	for (it = temp.begin(); it != temp.end(); it++)
-	{
 
+	for (it = mapMaladie.begin(); it != mapMaladie.end(); ++it)
+	{
+		temp[it->first]=it->second;
 	}
+
+	for (unsigned int j(0); j < symptomes.size(); j++)
+	{
+		
+		for (it = temp.begin(); it != temp.end(); ++it)
+		{
+			if (j > it->second.getListeAttribut().size())
+			{
+				break;
+			}
+
+			Attribut* attribut = it->second.getListeAttribut()[j];
+			if (regex_match(symptomes[j], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+			{
+				double valeurSymptome = atof(symptomes[j].c_str());
+
+				if (!attribut->verification(valeurSymptome))
+				{
+					it->second = NULL;
+					it=temp.erase(it);
+					--it;
+				}
+				
+
+			}
+
+			else if (symptomes[j] != "F" && symptomes[j] != "V")
+			{
+
+				if (!attribut->verification(symptomes[j]))
+				{
+					it->second = NULL;
+					it = temp.erase(it);
+					--it;
+				}
+			}
+				
+		}
+	}
+	for (it = temp.begin(); it != temp.end(); ++it)
+	{
+		double probabilite = 0;
+		vector<Attribut*> attribut = it->second.getListeAttribut();
+		int nbrAttribut = it->second.getListeAttribut().size();
+		for (int i(0); i < nbrAttribut; i++)
+		{
+			if (regex_match(symptomes[i], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+			{
+				double valeurSymptome = atof(symptomes[i].c_str());
+				Attribut_intervalle *ai = (Attribut_intervalle*)(attribut[i]);
+				if (valeurSymptome < ai->getMoyenne())
+				{
+					probabilite += (valeurSymptome-ai->getBorneInf()) / ((ai->getMoyenne() - ai->getBorneInf())*nbrAttribut);
+				}
+				else
+				{
+					probabilite += (ai->getBorneSup()-valeurSymptome) / ((ai->getBorneSup()-ai->getMoyenne())*nbrAttribut);
+				}
+
+			}
+
+			else if (symptomes[i] == "F" || symptomes[i] == "V")
+			{
+				Attribut_intervalle *ai = (Attribut_intervalle*)(attribut[i]);
+				probabilite += ai->getMoyenne() / nbrAttribut;
+			}
+			else
+			{
+				probabilite += 1.0 / nbrAttribut;
+			}
+		}
+		maladiesPotentielles[it->second.getNom()] = probabilite;
+		it->second = NULL;
+	}
+
 
 
 } //----- Fin de Méthode
@@ -103,19 +180,19 @@ ostream & operator << (ostream & out, Analyse & a)
 {
 	unordered_map<string, double> maladies = a.getMaladiesPotentielles();
     out <<" Id : "<< a.idAnalyse << endl; 
-	out << " Maladie : " << "/t" << "Pourcentage : " << endl;
+	out << " Maladie : " << "\t" << "Pourcentage : " << endl;
 	unordered_map<string, double>::iterator it;
 	for (it=maladies.begin();it!=maladies.end();++it)
 	{
-		out <<"  "<< it->first << "/t" << it->second << endl;
+		out <<"---------  "<< it->first << "\t-----------  " << it->second << endl;
 	}
 	return out;
 }
 
-Analyse&  Analyse::operator =(const &Analyse a)
+Analyse&  Analyse::operator =(Analyse const &a)
 {
-	this->idAnalyse = a.getId();
-	unordered_map<string, double> maladies = a.getMaladiesPotentielles();
+	this->idAnalyse = a.idAnalyse;
+	unordered_map<string, double> maladies = a.maladiesPotentielles;
 	unordered_map<string, double>::iterator it;
 	for (it=maladies.begin(); it != maladies.end(); ++it)
 	{

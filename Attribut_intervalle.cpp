@@ -40,6 +40,18 @@ double moyenne;
 //{
 //} //----- Fin de Méthode
 
+bool Attribut_intervalle :: verification(double valeur)
+{
+	if (valeur<borneSup && valeur>borneInf)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 //------------------------------------------------------ Getters - Setters
 double Attribut_intervalle::getBorneSup()
 {
@@ -93,7 +105,17 @@ ostream& Attribut_intervalle::afficher (ostream &flux)
 // Algorithme :
 //
 {
-	flux << this->idAttribut << "   " << this->borneInf << " - " << this->borneSup << " ; " << this->moyenne << endl;
+	flux << "idAttribut : " << this->idAttribut ;
+	if (this->borneInf == 0 && this->borneSup == 1)
+	{
+		flux << " \t  " << "positif : "<< this->moyenne << endl;
+	}
+	else
+	{
+		flux << " \t  " << "intervalles : "<<this->borneInf << " - " << this->borneSup << " ; \t Moyenne : " << this->moyenne << endl;
+	}
+
+	
 	return flux;
 } //----- Fin de operator <<
 
@@ -119,6 +141,7 @@ Attribut_intervalle::Attribut_intervalle(int id, double borneS, double borneI, d
 // Algorithme :
 //
 {
+	this->idAttribut = id;
 	this->borneSup = borneS;
 	this->borneInf = borneI;
 	this->moyenne = moy;

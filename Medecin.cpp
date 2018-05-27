@@ -174,7 +174,7 @@ void chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagr
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Medecin & operator = (const Medecin & unMedecin)
+Medecin & Medecin::operator = ( Medecin const & unMedecin)
 // Algorithme :
 //
 {

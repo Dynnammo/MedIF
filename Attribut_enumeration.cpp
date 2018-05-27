@@ -41,6 +41,18 @@ vector <std::string> valeurs;
 //{
 //} //----- Fin de Méthode
 
+bool Attribut_enumeration::verification(string valeur)
+{
+	if (find(valeurs.begin(), valeurs.end(), valeur)!=valeurs.end())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 //------------------------------------------------------ Getters - Setters
 int Attribut_enumeration::getIdAttribut()
 {
@@ -81,10 +93,10 @@ ostream& Attribut_enumeration::afficher(ostream &flux)
 // Algorithme :
 //
 {
-	flux << this->idAttribut << "   " << this->valeurs[0] << endl;
-	for (unsigned int i(1); i < this->valeurs.size(); i++)
+	flux << "id_Attribut : " << this->idAttribut << " \t " << "valeurs" << endl;
+	for (unsigned int i(0); i < this->valeurs.size(); i++)
 	{
-		flux << "  " << "   " << this->valeurs[i] << endl;
+		flux << "---------------" << " \t  " << this->valeurs[i] << endl;
 	}
 	return flux;
 } //----- Fin de operator <<

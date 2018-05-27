@@ -48,6 +48,14 @@ public:
 	//
 	// Contrat :
 
+	string getMesures()
+	{
+		return mesures;
+	}
+	// Mode d'emploi :
+	//
+	// Contrat :
+
 
 	//
 

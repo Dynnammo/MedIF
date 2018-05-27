@@ -61,6 +61,12 @@ public:
 	// Contrat :
 	//
 
+	string getNom();
+
+	void setNom(string nom);
+
+	void setId(int id);
+
 	//------------------------------------------------- Surcharge d'opérateurs
 	Maladie & operator = (const Maladie & unMaladie);
 	// Mode d'emploi :
@@ -114,6 +120,7 @@ protected:
 private:
 	//------------------------------------------------------- Attributs privés
 	int idMaladie;
+	string nomMaladie;
 	vector<Attribut*> listeAttribut;
 
 	//---------------------------------------------------------- Classes amies

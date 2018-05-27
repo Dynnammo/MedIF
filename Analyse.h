@@ -52,7 +52,7 @@ public:
 	// Contrat :
 	//
 
-	void analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> mapMaladie);
+	void analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie);
 	// type Méthode ( liste des paramètres );
 	// Mode d'emploi :
 	//
@@ -79,7 +79,7 @@ public:
 //------------------------------------------------- Surcharge d'opérateurs
     friend ostream & operator << (ostream & out, Analyse & a);
 
-	Analyse & operator =(Analyse a);
+	Analyse & operator =( Analyse const &a);
 
 //-------------------------------------------- Constructeurs - destructeur
     Analyse ( const Analyse & unAnalyse );

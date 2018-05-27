@@ -44,6 +44,10 @@ public:
 	// Contrat :
 	//
 
+	virtual bool verification(string valeur);
+
+	virtual bool verification(double valeur);
+
 
 	//------------------------------------------------- Surcharge d'opérateurs
 	Attribut & operator = (const Attribut & unAttribut);

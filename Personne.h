@@ -41,9 +41,9 @@ public:
 	// Contrat :
 	
 	//------------------------------------------------- Surcharge d'opérateurs
-	Personne&  operator = (const & Personne p)
+	Personne&  operator = ( Personne const &p)
 	{
-		this->idPersonne = p.getId();
+		this->idPersonne = p.idPersonne;
 		return *this;
 	} //----- Fin de operator =
 	

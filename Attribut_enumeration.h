@@ -71,6 +71,8 @@ public:
 	// Contrat :
 	//
 
+	bool verification(string valeur);
+
 	//------------------------------------------------- Surcharge d'opérateurs
 	Attribut_enumeration & operator = (const Attribut_enumeration & unAttribut_enumeration);
 	// Mode d'emploi :

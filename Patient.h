@@ -69,7 +69,7 @@ public:
 
 	}
 
-	list <Empreinte> setEmpreintes(Empreinte e)
+	void setEmpreintes(Empreinte e)
 	{
 
 		 le.push_back(e);
@@ -81,9 +81,9 @@ public:
 	// Contrat :
 	//
 	//------------------------------------------------- Surcharge d'opérateurs
-	Patient & operator = (const & Patient p)
+	Patient & operator = ( Patient const & p)
 	{
-		this->idPersonne = p.getId();
+		this->idPersonne = p.idPersonne;
 		return *this;
 	} //----- Fin de operator =
 

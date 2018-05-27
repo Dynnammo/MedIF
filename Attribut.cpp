@@ -37,6 +37,16 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+bool Attribut::verification(string valeur)
+{
+	return true;
+}
+
+bool Attribut::verification(double valeur)
+{
+	return true;
+}
+
 //------------------------------------------------------ Getters - Setters
 int Attribut::getIdAttribut()
 {
@@ -56,7 +66,7 @@ ostream& Attribut::afficher(ostream &flux)
 // Algorithme :
 //
 {
-	flux << this->idAttribut << "  " << " - " << endl;
+	flux <<"id_Attribut : "<< this->idAttribut << "  " << " - " << endl;
 	return flux;
 } //----- Fin de operator <<
 
