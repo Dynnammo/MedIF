@@ -31,6 +31,8 @@ using namespace std;
 
 vector<string> Analyse::split(string &lignef, string del)
 {
+// Algorithme :
+//
 	vector<string> reponse;
 	int pos = 0;
 	while (pos != -1)
@@ -66,17 +68,18 @@ vector<string> Analyse::split(string &lignef, string del)
 }
 
 void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie)
-// Algorithme :
-//
+// Algorithme : Créer une map temporaire avec les maladies
+//pour chaque symptome descriminant (intervalle ou sequence string) parcourir la map et exclure les maladies 
+//avec les maladies restante faire un calcule de probabilité de la maladie
 {
-	vector<string> symptomes = split(e.getMesures(), ";");
+	vector<string> symptomes = split(e.getMesures(), ";"); // on recupères les symptomes de l'empreinte
 	
-	unordered_map <int, Maladie> temp;
+	unordered_map <int, Maladie> temp; //map temporaire des maladies
 	unordered_map <int, Maladie>::iterator it;
 
 	for (it = mapMaladie.begin(); it != mapMaladie.end(); ++it)
 	{
-		temp[it->first]=it->second;
+		temp[it->first]=it->second; //copie de la map en parametre
 	}
 
 	for (unsigned int j(0); j < symptomes.size(); j++)
@@ -84,17 +87,20 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		
 		for (it = temp.begin(); it != temp.end(); ++it)
 		{
-			if (j > it->second.getListeAttribut().size())
+			if (j > it->second.getListeAttribut().size()) //pour chaque maladie on teste s'il y a pas plus de symptomes
+														 //que des attributs dans la maladie tester, si oui on break
+														 //cas possible si le capteur sera amelioré avec l'ajout d'attributs
 			{
 				break;
 			}
 
 			Attribut* attribut = it->second.getListeAttribut()[j];
-			if (regex_match(symptomes[j], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+			if (regex_match(symptomes[j], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))// on test si le symptome numérique est dans l'intervalle définit
 			{
 				double valeurSymptome = atof(symptomes[j].c_str());
 
-				if (!attribut->verification(valeurSymptome))
+				if (!attribut->verification(valeurSymptome))//si c'est le cas, on supprime la maladie de la table sans supprimé le 
+															// vector des pointeurs d'attributs
 				{
 					it->second = NULL;
 					it=temp.erase(it);
@@ -104,10 +110,10 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 
 			}
 
-			else if (symptomes[j] != "F" && symptomes[j] != "V")
+			else if (symptomes[j] != "F" && symptomes[j] != "V")//on test si le symptome c'est un string
 			{
 
-				if (!attribut->verification(symptomes[j]))
+				if (!attribut->verification(symptomes[j]))//cf commentaire au dessus
 				{
 					it->second = NULL;
 					it = temp.erase(it);
@@ -117,14 +123,15 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 				
 		}
 	}
-	for (it = temp.begin(); it != temp.end(); ++it)
+	for (it = temp.begin(); it != temp.end(); ++it)//on parcourt les maladies restantes
+													// details:: ajouter une condition si pas de maladies
 	{
 		double probabilite = 0;
 		vector<Attribut*> attribut = it->second.getListeAttribut();
 		int nbrAttribut = it->second.getListeAttribut().size();
-		for (int i(0); i < nbrAttribut; i++)
+		for (int i(0); i < nbrAttribut; i++)// chaque attribut de la maladie
 		{
-			if (regex_match(symptomes[i], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+			if (regex_match(symptomes[i], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))// comparaison avec symptome associé
 			{
 				double valeurSymptome = atof(symptomes[i].c_str());
 				Attribut_intervalle *ai = (Attribut_intervalle*)(attribut[i]);
@@ -156,7 +163,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 				probabilite += 1.0 / nbrAttribut;
 			}
 		}
-		maladiesPotentielles[it->second.getNom()] = probabilite;
+		maladiesPotentielles[it->second.getNom()] = probabilite; // details:: mettre une conditions pour un pourcentage minimal
 		it->second = NULL;
 	}
 

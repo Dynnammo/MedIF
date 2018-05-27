@@ -86,27 +86,28 @@ vector<Medecin> Initialisation::getListeMedecin()
 } //----- Fin de Méthode
 
 void Initialisation::init(string nomFichier)
-// Algorithme :
-//
+// Algorithme :Lire le fichier - en lisant ligne par ligne, ajouter dans la map la maladie (clé) et ses empreintes (valeurs)
+// Pour chaque maladie parcourir ses empreintes et calculer les attributs: intervalle+moyenne, p(X=Vrai), sequence string
+// 
 {
 	string separateur = ";";
 	unordered_map<string, vector<string>> tmp_map;
-	ifstream lecture(nomFichier);
+	ifstream lecture(nomFichier); //lecture du fichier
 	string ligne;
-	if (lecture)
+	if (lecture) // test de lecture
 	{
 		if (!getline(lecture, ligne))
 		{
 			cout << "Le fichier est vide." << endl;
 		}
-		while (getline(lecture, ligne))
+		while (getline(lecture, ligne)) // initialisation de maladies et empreintes correspondantes dans une map
 		{
 			int position = ligne.find_last_of(separateur);
 			int positionId = ligne.find(separateur);
 			string maladie= ligne.substr(position + 1);
 			if (maladie == "")
 			{
-				maladie = "sain";
+				maladie = "sain"; // état correspondant à aucune maladie
 			}
 			
 			tmp_map[maladie].push_back(ligne.substr(positionId+1, (position-1-positionId)));
@@ -119,18 +120,18 @@ void Initialisation::init(string nomFichier)
 	}
 	unordered_map<string, vector<string>>::iterator it;
 	int idMaladie(0);
-	for (it = tmp_map.begin(); it != tmp_map.end(); ++it,idMaladie++)
+	for (it = tmp_map.begin(); it != tmp_map.end(); ++it,idMaladie++) // debut de calcul des attributs dans la mapMaladie
 	{
 		int nbrEmpreinte = it->second.size();
 		for (unsigned int i(0); i < it->second.size(); i++)
 		{
 
-			vector<string> symptomes = split(it->second[i], separateur);
+			vector<string> symptomes = split(it->second[i], separateur); // symptomes d'empreinte
 			for (unsigned int j(0); j < symptomes.size(); j++)
 			{
-				if (symptomes[j] == "F" || symptomes[j] == "V")
+				if (symptomes[j] == "F" || symptomes[j] == "V") // test symptome Vrai/Faux attribut de type intervale 0(V) - 1(F)
 				{
-					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)
+					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)//test pour initialiser les attribut
 					{
 						if (symptomes[j] == "F")
 						{
@@ -144,7 +145,7 @@ void Initialisation::init(string nomFichier)
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 						}
 					}
-					else
+					else // sinon recuprer et modifier les attributs existants
 					{
 						
 						Attribut_intervalle* symptome = (Attribut_intervalle*)mapMaladie[idMaladie].getListeAttribut()[j];
@@ -158,18 +159,18 @@ void Initialisation::init(string nomFichier)
 					}
 				}
 
-				else if (regex_match(symptomes[j],regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+				else if (regex_match(symptomes[j],regex{ "[+-]?[0-9]+(.[0-9]+)?" })) // test symptome numérique
 				{
 
 					double borne = atof(symptomes[j].c_str());
 
-					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)
+					if (mapMaladie[idMaladie].getListeAttribut().size()<=j) //cf commentaire symptome precedent
 					{
 						Attribut_intervalle* symptome = new Attribut_intervalle(j, borne, borne, borne/ nbrEmpreinte);
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 						
 					}
-					else
+					else//cf commentaire symptome precedent
 					{
 						Attribut_intervalle* symptome = (Attribut_intervalle*)mapMaladie[idMaladie].getListeAttribut()[j];
 						if (borne > symptome->getBorneSup())
@@ -189,9 +190,9 @@ void Initialisation::init(string nomFichier)
 					
 				}
 
-				else
+				else //sinon action pour symptome string
 				{
-					if (mapMaladie[idMaladie].getListeAttribut().size() <= j)
+					if (mapMaladie[idMaladie].getListeAttribut().size() <= j) //cf commentaire symptome precedent
 					{
 						vector<string> valeurs;
 						valeurs.push_back(symptomes[j]);
@@ -199,7 +200,7 @@ void Initialisation::init(string nomFichier)
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 					}
-					else
+					else //cf commentaire symptome precedent
 					{
 						Attribut_enumeration* symptome = (Attribut_enumeration*)mapMaladie[idMaladie].getListeAttribut()[j];
 						vector<string> tmp_Symptomes = symptome->getValeurs();
@@ -256,6 +257,8 @@ vector<string> Initialisation::split(string &lignef, string del)
 }
 
 void Initialisation::initMedesin(string nomFichier)
+//Algo: initier la liste de medecin qui peuvent se connecteà partir d'un fichier
+//
 {
 	string separateur = ";";
 	ifstream lecture(nomFichier);
@@ -265,7 +268,7 @@ void Initialisation::initMedesin(string nomFichier)
 		while (getline(lecture, ligne))
 		{
 			vector<string> parametres = split(ligne, ";");
-			Medecin m( parametres[0], parametres[1], parametres[2], parametres[3]);//attendre le commit de leo
+			Medecin m( parametres[0], parametres[1], parametres[2], parametres[3]);
 			listeMedecin.push_back(m);
 		}
 	}
