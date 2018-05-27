@@ -142,7 +142,14 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 			else if (symptomes[i] == "F" || symptomes[i] == "V")
 			{
 				Attribut_intervalle *ai = (Attribut_intervalle*)(attribut[i]);
-				probabilite += ai->getMoyenne() / nbrAttribut;
+				if (ai->getMoyenne() == 0)
+				{
+					probabilite += 1 / nbrAttribut;
+				}
+				else
+				{
+					probabilite += ai->getMoyenne() / nbrAttribut;
+				}
 			}
 			else
 			{
