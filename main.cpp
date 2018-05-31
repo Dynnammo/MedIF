@@ -17,14 +17,10 @@ e-mail               : @insa-lyon.fr
 #include "Attribut_intervalle.h"
 #include "Maladie.h"
 #include "Medecin.h"
-<<<<<<< HEAD
-#include <vector>
-=======
 #include "Initialisation.h"
 #include "Test.h"
 
 
->>>>>>> 47bd5f54c267ab538532bc3cc5a6fa448e4e426b
 
 using namespace std;
 
@@ -32,15 +28,10 @@ using namespace std;
 int main()
 {
 
-<<<<<<< HEAD
-	Initialisation i;
-	vector <Medecin> lm = i.getListeMedecin();
-=======
 	Test t;
 
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	t.testSeConnecter("MedecinIni.txt", m);
->>>>>>> 47bd5f54c267ab538532bc3cc5a6fa448e4e426b
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;

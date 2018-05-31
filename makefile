@@ -5,12 +5,14 @@ COMPFLAGS = -ansi -pedantic -Wall -std=c++14
 COMPPART = $(COMPILER) $(COMPFLAGS) -c
 COMPFINAL = $(COMPILER) $(COMPFLAGS) -o
 
-$(PROGRAM_NAME): main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o
-	$(COMPFINAL) $(PROGRAM_NAME) main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o
+$(PROGRAM_NAME): main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o Test.o
+	$(COMPFINAL) $(PROGRAM_NAME) main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o Test.o
 
 Analyse.o: Analyse.cpp Analyse.h
 	$(COMPPART) Analyse.cpp
-	
+
+Test.o : Test.cpp Test.h
+	$(COMPPART) Test.cpp
 
 Initialisation.o :Initialisation.cpp Initialisation.h 
 	$(COMPPART) Initialisation.cpp

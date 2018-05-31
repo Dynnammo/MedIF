@@ -1,23 +1,24 @@
 /*************************************************************************
 Attribut_enumeration  -  description
 -------------------
-début                : 27.04.2018
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Attribut_enumeration> (fichier Attribut_enumeration.cpp) ------------
+//---------- Rï¿½alisation de la classe <Attribut_enumeration> (fichier Attribut_enumeration.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 //------------------------------------------------------ Include personnel
 #include "Attribut_enumeration.h"
@@ -28,18 +29,18 @@ using namespace std;
 //---------------------------------------------------- Variables de classe
 int nbValeurs;
 vector <std::string> valeurs;
-//----------------------------------------------------------- Types privés
+//----------------------------------------------------------- Types privï¿½s
 
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
-//----------------------------------------------------- Méthodes publiques
-// type Attribut_enumeration::Méthode ( liste de paramètres )
+//----------------------------------------------------- Mï¿½thodes publiques
+// type Attribut_enumeration::Mï¿½thode ( liste de paramï¿½tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de Mï¿½thode
 
 bool Attribut_enumeration::verification(string valeur)
 {
@@ -78,7 +79,7 @@ void Attribut_enumeration::setValeur(string val)
 {
 	this->valeurs.push_back(val);
 }
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 Attribut_enumeration & Attribut_enumeration::operator = (const Attribut_enumeration & unAttribut_enumeration)
 // Algorithme :
 //
@@ -146,7 +147,7 @@ Attribut_enumeration::~Attribut_enumeration()
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-  //------------------------------------------------------- Méthodes privées
+  //------------------------------------------------------- Mï¿½thodes privï¿½es
 
