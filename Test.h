@@ -67,6 +67,7 @@ public:
 	void testFaireAnalyse();
 	//void testRechercherAnalyse();
 	void testSeConnecter(string nomFichier, Medecin m);
+	void Test::testMesurerPatient(string mesures, Patient p, Medecin m);
 
 	//--------------------------------------------- Tests de la classe Analyse
 

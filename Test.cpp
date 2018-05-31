@@ -17,7 +17,7 @@ using namespace std;
 #include <string>
 
 //------------------------------------------------------ Include personnel
-#include "Test.h"
+
 #include "Medecin.cpp"
 #include "Initialisation.cpp"
 
@@ -28,7 +28,7 @@ using namespace std;
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		Initialisation i;
 		cout << "Liste des Patients AVANT : " << endl;
-		cout << i.getlistePatient() << endl;
+		cout << i.getListePatient() << endl;
 
 		string n = "Marley";
 		string p = "Bob";
@@ -37,7 +37,7 @@ using namespace std;
 		Medecin.ajouterPatient(n,p,m);
 
 		cout << "Liste des Patients APRES : " << endl;
-		cout << i.getlistePatient() << endl;
+		cout << i.getListePatient() << endl;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
@@ -59,4 +59,17 @@ using namespace std;
 
 			cout << "Le médecin n'existe pas." << endl;
 		}
+	}
+
+	void Test::testMesurerPatient(string mesures, Patient p, Medecin m) {
+
+		m.mesurerPatient(mesures, p);
+
+		list <Empreinte> le = p.getEmpreintes();
+
+		list<Empreinte>::const_iterator it = le.end();
+		string mes = it->getMesures;
+		cout << mes;
+
+
 	}
