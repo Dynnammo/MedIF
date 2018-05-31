@@ -28,35 +28,12 @@ using namespace std;
 #include "medecin.h"
 #include "patient.h"
 
-//------------------------------------------------------------- Constantes
-
-//---------------------------------------------------- Variables de classe
-
-//----------------------------------------------------------- Types privés
-
-
-//----------------------------------------------------------------- PUBLIC
-//-------------------------------------------------------- Fonctions amies
-
-//----------------------------------------------------- Méthodes publiques
-// type Initialisation::Méthode ( liste de paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
 unordered_map<int, Maladie>& Initialisation::getListeMaladie()
-// type ${file_base}::Méthode ( liste de paramètres )
-// Algorithme :
-//
 {
 	return mapMaladie;
-} //----- Fin de Méthode
+} //----- Fin de Méthode getListeMaladie
 
 Patient  Initialisation::getPatient(int id)
-// type ${file_base}::Méthode ( liste de paramètres )
-// Algorithme :
-//
 {
 	Patient p;
 	for (unsigned int i(0); i < this->listePatient.size();i++)
@@ -67,23 +44,17 @@ Patient  Initialisation::getPatient(int id)
 		}
 	}
 	return p;
-} //----- Fin de Méthode
+} //----- Fin de Méthode getPatient
 
 void  Initialisation::setPatient(Patient p)
-// type ${file_base}::Méthode ( liste de paramètres )
-// Algorithme :
-//
 {
 	this->listePatient.push_back(p);
-} //----- Fin de Méthode
+} //----- Fin de Méthode setPatient
 
 vector<Medecin> Initialisation::getListeMedecin()
-// type ${file_base}::Méthode ( liste de paramètres )
-// Algorithme :
-//
 {
 	return this->listeMedecin;
-} //----- Fin de Méthode
+} //----- Fin de Méthode getListeMedecin
 
 void Initialisation::init(string nomFichier)
 // Algorithme :Lire le fichier - en lisant ligne par ligne, ajouter dans la map la maladie (clé) et ses empreintes (valeurs)
@@ -216,12 +187,10 @@ void Initialisation::init(string nomFichier)
 		mapMaladie[idMaladie].setNom(it->first);
 		mapMaladie[idMaladie].setId(idMaladie);
 	}
-} //----- Fin de Méthode
+} //----- Fin de Méthode init
 
 vector<string> Initialisation::split(string &lignef, string del)
 {
-
-
 	vector<string> reponse;
 	int pos = 0;
 	while (pos != -1)
@@ -253,10 +222,9 @@ vector<string> Initialisation::split(string &lignef, string del)
 
 	}
 	return reponse;
+} //----- Fin de Méthode split
 
-}
-
-void Initialisation::initMedesin(string nomFichier)
+void Initialisation::initMedecin(string nomFichier)
 //Algo: initier la liste de medecin qui peuvent se connecteà partir d'un fichier
 //
 {
@@ -276,7 +244,7 @@ void Initialisation::initMedesin(string nomFichier)
 	{
 		cout << "Erreur de lecture du fichier log Medecin." << endl;
 	}
-}
+}//----- Fin de Méthode initMedecin
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -293,8 +261,6 @@ Initialisation & Initialisation::operator = ( const Initialisation & unInitialis
 
 //-------------------------------------------- Constructeurs - destructeur
 Initialisation::Initialisation ( const Initialisation & unInitialisation )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Initialisation>" << endl;
@@ -303,8 +269,6 @@ Initialisation::Initialisation ( const Initialisation & unInitialisation )
 
 
 Initialisation::Initialisation ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Initialisation>" << endl;
@@ -313,16 +277,8 @@ Initialisation::Initialisation ( )
 
 
 Initialisation::~Initialisation ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Initialisation>" << endl;
 #endif
 } //----- Fin de ~Initialisation
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
-

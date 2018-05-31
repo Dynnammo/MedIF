@@ -13,13 +13,14 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 #include <iostream>
 //------------------------------------------------------ Include personnel
-
+#include "Test.h"
+#include "Medecin.cpp"
 
 using namespace std;
 
 	void Test::testAjouterPatient()
 	{
-
+		
 	}
 
 	void Test::testFaireAnalyse()
