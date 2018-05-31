@@ -56,6 +56,11 @@ vector<Medecin> Initialisation::getListeMedecin()
 	return this->listeMedecin;
 } //----- Fin de Méthode getListeMedecin
 
+vector<Patient> Initialisation::getListePatient()
+{
+	return this->listePatient;
+} //----- Fin de Méthode getListeMedecin
+
 void Initialisation::init(string nomFichier)
 // Algorithme :Lire le fichier - en lisant ligne par ligne, ajouter dans la map la maladie (clé) et ses empreintes (valeurs)
 // Pour chaque maladie parcourir ses empreintes et calculer les attributs: intervalle+moyenne, p(X=Vrai), sequence string
