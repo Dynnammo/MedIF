@@ -1,7 +1,7 @@
 /*************************************************************************
-Patient  -  description
+Test  -  tests unitaires
 -------------------
-début                : 27.04.2018
+début                : 31.05.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 Anatolii GASIUK
 Léo PAPE
@@ -9,26 +9,23 @@ Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <Patient> (fichier Patient.h) ------
+//---------- Interface de la classe <Test> (fichier Test.h) ------
 #if ! defined ( TEST_H )
 #define TEST_H
 
 #include <string>
 #include <iostream>
-#include <list>
 
 using namespace std;
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Personne.h"
-#include "Empreinte.h"
-#include "Analyse.h"
+
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Patient>
+// Rôle de la classe <Test>
 //
 //
 //------------------------------------------------------------------------ 
@@ -43,66 +40,33 @@ public:
 	// Mode d'emploi :
 	//
 	// Contrat :
-	
-
-	
-	//------------------------------------------------- Surcharge d'opérateurs
-
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-	//------------------------------------------------- Surcharge d'opérateurs
-	 //----- Fin de operator =
 
 
-	  //-------------------------------------------- Constructeurs - destructeur
-
-	  // Mode d'emploi (constructeur de copie) :
-	  //
-	  // Contrat :
-	  //
-
+	//-------------------------------------------- Constructeurs - destructeur
 	Test()
 	{
-	}//----- Fin de Patient (constructeur de copie)
-
-	
-
+#ifdef MAP
+		cout << "Appel au constructeur de <Test>" << endl;
+#endif
+	}//----- Fin de Test (constructeur par défaut)
 
 	virtual ~Test()
 	{
-
 #ifdef MAP
-		cout << "Appel au destructeur de <Patient>" << endl;
+		cout << "Appel au destructeur de <Test>" << endl;
 #endif
-	}//----- Fin de ~Patient
+	}//----- Fin de ~Test
 
 
-	 //------------------------------------------------------------------ PRIVE 
+	//--------------------------------------------- Tests de la classe Medecin
+	void testAjouterPatient();
+	void testFaireAnalyse();
+	void testRechercherAnalyse();
 
-protected:
-	//----------------------------------------------------- Méthodes protégées
-
-private:
-	//------------------------------------------------------- Méthodes privées
-
-protected:
-	//----------------------------------------------------- Attributs protégés
+	//--------------------------------------------- Tests de la classe Analyse
 
 
-private:
-	//------------------------------------------------------- Attributs privés
-	
-	//---------------------------------------------------------- Classes amies
-
-	//-------------------------------------------------------- Classes privées
-
-	//----------------------------------------------------------- Types privés
-
+	//-------------------------------------- Tests de la classe Initialisation
 };
-
-//----------------------------------------- Types dépendants de <Patient>
-
 #endif // PATIENT_H
 #pragma once
