@@ -19,11 +19,13 @@ e-mail               : @insa-lyon.fr
 
 using namespace std;
 
+
 int main()
 {
 
 	Initialisation i;
-	i.init("test2.txt");
+	List <Medecin> lm = i.getListeMedecin;
+	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;
 	
@@ -40,7 +42,7 @@ int main()
 	}
 	
 	a.analyseEmpreinte(e, i.getListeMaladie());
-	cout << a << endl;
+	cout << a << endl;*/
 
 	return 0;
 }
