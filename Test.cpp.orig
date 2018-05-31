@@ -23,30 +23,39 @@ using namespace std;
 
 using namespace std;
 
-	void Test::testAjouterPatient(Medecin m)
+	void Test::testAjouterPatient()
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
-		Initialisation ini;
-		list<Patient> listeP = ini.getlistePatient();
-		for (list<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
-		{
-			cout << (*it).afficher() << endl;
-		}
+		Initialisation i;
+		cout << i.getlistePatient() << endl;
 
 		string n = "Marley";
 		string p = "Bob";
 		string m = "bm";
 
-		m.ajouterPatient(n,p,m);
+		Medecin.ajouterPatient(n,p,m);
 
 		cout << "Liste des Patients APRES : " << endl;
-		cout << i.getlistePatient().afficher() << endl;
+		cout << i.getlistePatient() << endl;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
 	void Test::testFaireAnalyse()
 	{
+<<<<<<< HEAD
+		cout << "----------- Test Faire Analyse -----------" << endl;
+		cout << "Liste des Patients AVANT : " << endl;
+		Initialisation i;
+		cout << i.getlistePatient() << endl;
+		list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
+		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
+	}
+=======
+
+	}
+
+	void Test::testSeConnecter(string nomFichier, Medecin m) {
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
 		bool estConnecte = m.seConnecter();
@@ -60,3 +69,4 @@ using namespace std;
 			cout << "Le médecin n'existe pas." << endl;
 		}
 	}
+>>>>>>> 537c6a130d4fa091c396a42c5b9cab0633ac1488

@@ -238,16 +238,9 @@ vector<string> Initialisation::split(string &lignef, string del)
 	return reponse;
 } //----- Fin de Méthode split
 
-<<<<<<< HEAD
-void Initialisation::initMedecin(string nomFichier)
-//Algo: initier la liste de medecin qui peuvent se connecteà partir d'un fichier
-=======
-}
 
 void Initialisation::initMedecin(string nomFichier)
 //Algo: initier la liste de medecin qui peuvent se connecter à partir d'un fichier
->>>>>>> 3bb2e6a45d96bd5547a4b6710736f2a921db24e3
-//
 {
 	string separateur = ";";
 	ifstream lecture(nomFichier);
