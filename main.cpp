@@ -16,6 +16,7 @@ e-mail               : @insa-lyon.fr
 #include <iostream>
 #include <fstream>
 #include "Initialisation.h"
+#include "Medecin.h"
 
 using namespace std;
 
