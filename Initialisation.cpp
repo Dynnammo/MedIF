@@ -94,12 +94,21 @@ void Initialisation::init(string nomFichier)
 	unordered_map<string, vector<string>> tmp_map;
 	ifstream lecture(nomFichier); //lecture du fichier
 	string ligne;
+	vector<string> nomAttributs;
 	if (lecture) // test de lecture
 	{
-		if (!getline(lecture, ligne))
+		if (getline(lecture, ligne))
+		{
+			nomAttributs = split(ligne, ";");
+			nomAttributs.pop_back();
+			nomAttributs.erase(nomAttributs.begin());
+
+		}
+		else
 		{
 			cout << "Le fichier est vide." << endl;
 		}
+
 		while (getline(lecture, ligne)) // initialisation de maladies et empreintes correspondantes dans une map
 		{
 			int position = ligne.find_last_of(separateur);
@@ -135,13 +144,13 @@ void Initialisation::init(string nomFichier)
 					{
 						if (symptomes[j] == "F")
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(j,1,0,0);
+							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j,1,0,0);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 						}
 						else 
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(j, 1, 0, 1/ nbrEmpreinte);
+							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, 1, 0, 1/ nbrEmpreinte);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 						}
 					}
@@ -166,7 +175,7 @@ void Initialisation::init(string nomFichier)
 
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j) //cf commentaire symptome precedent
 					{
-						Attribut_intervalle* symptome = new Attribut_intervalle(j, borne, borne, borne/ nbrEmpreinte);
+						Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, borne, borne, borne/ nbrEmpreinte);
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 						
 					}
@@ -196,7 +205,7 @@ void Initialisation::init(string nomFichier)
 					{
 						vector<string> valeurs;
 						valeurs.push_back(symptomes[j]);
-						Attribut_enumeration* symptome = new Attribut_enumeration(j, 1,valeurs );
+						Attribut_enumeration* symptome = new Attribut_enumeration(nomAttributs[j],j, 1,valeurs );
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 					}
@@ -257,7 +266,7 @@ vector<string> Initialisation::split(string &lignef, string del)
 }
 
 void Initialisation::initMedesin(string nomFichier)
-//Algo: initier la liste de medecin qui peuvent se connecteà partir d'un fichier
+//Algo: initier la liste de medecin qui peuvent se connecter à partir d'un fichier
 //
 {
 	string separateur = ";";

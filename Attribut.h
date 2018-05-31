@@ -76,7 +76,7 @@ public:
 	// Contrat :
 	//
 
-	Attribut(int id);
+	Attribut(int id, string nom);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -99,6 +99,7 @@ private:
 protected:
 	//----------------------------------------------------- Attributs protégés
 	int idAttribut;
+	string nomAttribut;
 
 private:
 	//------------------------------------------------------- Attributs privés

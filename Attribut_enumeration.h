@@ -99,7 +99,7 @@ public:
 	// Contrat :
 	//
 
-	Attribut_enumeration(int id, int nbValeurs, vector<string> valeurs);
+	Attribut_enumeration(string nom, int id, int nbValeurs, vector<string> valeurs);
 	// Mode d'emploi :
 	//
 	// Contrat :

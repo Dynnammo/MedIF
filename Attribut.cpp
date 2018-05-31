@@ -16,6 +16,7 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "Attribut.h"
@@ -66,7 +67,7 @@ ostream& Attribut::afficher(ostream &flux)
 // Algorithme :
 //
 {
-	flux <<"id_Attribut : "<< this->idAttribut << "  " << " - " << endl;
+	flux <<"Attribut : "<< this->nomAttribut << "  " << " - " << endl;
 	return flux;
 } //----- Fin de operator <<
 
@@ -90,11 +91,12 @@ Attribut::Attribut()
 #endif
 } //----- Fin de Attribut
 
-Attribut::Attribut(int id)
+Attribut::Attribut(int id, string nom)
 // Algorithme :
 //
 {
 	this->idAttribut = id;
+	this->nomAttribut = nom;
 #ifdef MAP
     cout << "Appel au constructeur de <Attribut>" << endl;
 #endif

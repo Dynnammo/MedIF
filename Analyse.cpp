@@ -85,7 +85,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 	for (unsigned int j(0); j < symptomes.size(); j++)
 	{
 		
-		for (it = temp.begin(); it != temp.end(); ++it)
+		for (it = temp.begin(); it != temp.end(); )
 		{
 			if (j > it->second.getListeAttribut().size()) //pour chaque maladie on teste s'il y a pas plus de symptomes
 														 //que des attributs dans la maladie tester, si oui on break
@@ -104,7 +104,10 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 				{
 					it->second = NULL;
 					it=temp.erase(it);
-					--it;
+				}
+				else
+				{
+					++it;
 				}
 				
 
@@ -117,12 +120,21 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 				{
 					it->second = NULL;
 					it = temp.erase(it);
-					--it;
+				}
+				else
+				{
+					++it;
 				}
 			}
 				
 		}
 	}
+	if (temp.begin() == temp.end())
+	{
+		cout << "L'analyse n'a pas donné de resultat." << endl;
+		cout << "Veuillez faire des testes supplémentaires" << endl;
+	}
+
 	for (it = temp.begin(); it != temp.end(); ++it)//on parcourt les maladies restantes
 													// details:: ajouter une condition si pas de maladies
 	{
@@ -163,8 +175,11 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 				probabilite += 1.0 / nbrAttribut;
 			}
 		}
-		maladiesPotentielles[it->second.getNom()] = probabilite; // details:: mettre une conditions pour un pourcentage minimal
-		it->second = NULL;
+		if (temp.size() == 1 || probabilite > 0.20)
+		{
+			maladiesPotentielles[it->second.getNom()] = probabilite; // conditions pour un pourcentage minimal
+			it->second = NULL;
+		}
 	}
 
 
