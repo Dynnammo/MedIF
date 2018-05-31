@@ -63,7 +63,7 @@ public:
 
 
 	//--------------------------------------------- Tests de la classe Medecin
-	void testAjouterPatient();
+	void testAjouterPatient(Medecin medecin);
 	void testFaireAnalyse();
 	//void testRechercherAnalyse();
 	void testSeConnecter(string nomFichier, Medecin m);

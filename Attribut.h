@@ -10,8 +10,8 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Attribut> (fichier Attribut.h) ----------------
-#if ! defined ( Attribut_H )
-#define Attribut_H
+#if ! defined ( ATTRIBUT_H )
+#define ATTRIBUT_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <iostream>

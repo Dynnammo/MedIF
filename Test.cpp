@@ -23,29 +23,29 @@ using namespace std;
 
 using namespace std;
 
-	void Test::testAjouterPatient(Medecin m)
+	void Test::testAjouterPatient(Medecin medecin)
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
 		Initialisation ini;
-		list<Patient> listeP = ini.getlistePatient();
-		for (list<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
+		vector <Patient> listeP = ini.getListePatient();
+		/*for (list<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
 		{
 			cout << (*it).afficher() << endl;
-		}
+		}*/
 
 		string n = "Marley";
 		string p = "Bob";
 		string m = "bm";
 
-		m.ajouterPatient(n,p,m);
+		medecin.ajouterPatient(n,p,m);
 
 		cout << "Liste des Patients APRES : " << endl;
-		cout << i.getlistePatient().afficher() << endl;
+		//cout << i.getlistePatient().afficher() << endl;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
-	void Test::testFaireAnalyse()
+	void Test::testSeConnecter(string nomFichier, Medecin m)
 	{
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
@@ -68,8 +68,9 @@ using namespace std;
 		list <Empreinte> le = p.getEmpreintes();
 
 		list<Empreinte>::const_iterator it = le.end();
-		string mes = it->getMesures;
-		cout << mes;
+		Empreinte temp = *it;
+
+		cout << temp.getMesures();
 
 
 	}

@@ -12,7 +12,7 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Empreinte> (fichier empreinte.h) ------
-#if ! defined ( Empreinte_H )
+#if ! defined ( EMPREINTE_H )
 #define EMPREINTE_H
 
 

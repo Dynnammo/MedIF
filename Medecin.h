@@ -12,8 +12,8 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Medecin> (fichier Medecin.h) ------
-#if ! defined ( Medecin_H )
-#define Medecin_H
+#if ! defined ( MEDECIN_H )
+#define MEDECIN_H
 
 #include "Personne.h"
 #include "Patient.h"

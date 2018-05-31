@@ -16,12 +16,14 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <regex>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Analyse.h"
 #include "Maladie.h"
 #include "Empreinte.h"
+
 
 //------------------------------------------------------------- Constantes
 
