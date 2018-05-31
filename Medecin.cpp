@@ -54,7 +54,6 @@ Patient Medecin::ajouterPatient(string n, string p, string m)
 
 	ini.setPatient(patient);
 	return patient;
-
 }
 
 

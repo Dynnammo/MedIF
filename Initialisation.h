@@ -73,7 +73,12 @@ public:
 	//
 	// Contrat :
 	//
-
+	
+	vector<Patient> getListePatient();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 	//------------------------------------------------- Surcharge d'op�rateurs
 	Initialisation & operator = (const Initialisation & unInitialisation);
