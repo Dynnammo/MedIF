@@ -1,7 +1,7 @@
 /*************************************************************************
-mainAnalyse  -  description
+Test  -  tests unitaires
 -------------------
-début                : 27.04.2018
+début                : 31.05.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
 									Léo PAPE
@@ -9,16 +9,20 @@ copyright            : (C) 2018 par Tifenn FLOCH
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
+//-------------------------------------------------------- Include système
+using namespace std;
 #include <iostream>
-#include "Analyse.h"
+//------------------------------------------------------ Include personnel
+
+
 using namespace std;
 
+	void Test::testAjouterPatient()
+	{
 
-int main(){
-    cout << "Hello World" << endl;
-    Analyse a;
-    Analyse b;
-    cout << a;
-    cout << b;
-    return 0;
-}
+	}
+
+	void Test::testFaireAnalyse()
+	{
+
+	}
