@@ -10,8 +10,8 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Patient> (fichier Patient.h) ------
-#if ! defined ( Patient_H )
-#define Patient_H
+#if ! defined ( PATIENT_H )
+#define PATIENT_H
 
 #include <string>
 #include <iostream>

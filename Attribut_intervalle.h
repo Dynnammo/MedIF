@@ -10,8 +10,8 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Attribut_intervalle> (fichier Attribut_intervalle.h) ----------------
-#if ! defined ( Attribut_intervalle_H )
-#define Attribut_intervalle_H
+#if ! defined ( ATTRIBUT_INTERVALLE_H)
+#define ATTRIBUT_INTERVALLE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Attribut.h"

@@ -24,9 +24,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Initialisation.h"
-#include "Maladie.h"
-#include "Medecin.h"
-#include "Patient.h"
 
 unordered_map<int, Maladie>& Initialisation::getListeMaladie()
 {
