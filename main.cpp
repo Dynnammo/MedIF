@@ -17,7 +17,7 @@ e-mail               : @insa-lyon.fr
 #include <fstream>
 #include "Initialisation.h"
 #include "Medecin.h"
-#include <list>
+#include <vector>
 
 using namespace std;
 
@@ -26,7 +26,7 @@ int main()
 {
 
 	Initialisation i;
-	list <Medecin> lm = i.getListeMedecin;
+	vector <Medecin> lm = i.getListeMedecin();
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;

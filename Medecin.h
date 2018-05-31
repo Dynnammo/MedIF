@@ -3,10 +3,10 @@
 /*************************************************************************
 Medecin  -  description
 -------------------
-début                : 27.04.2018
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
@@ -25,14 +25,14 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Medecin>
+// Rï¿½le de la classe <Medecin>
 //
 //
 //------------------------------------------------------------------------ 
@@ -42,7 +42,7 @@ class Medecin : public Personne
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
+	//----------------------------------------------------- Mï¿½thodes publiques
 
 	bool seConnecter(int id, string mp);
 	void seDeconnecter();
@@ -53,9 +53,9 @@ public:
 	void afficherAnalyses(Patient p);
 	void mesurerPatient(string mesures, Patient p);
 	list <Analyse> faireAnalyse(list <Maladie>, Patient p);
-	void chargerEmpreinte(string nomFichier);
+	void chargerEmpreinte(string nomFichier, list <Patient> liste);
 
-	// type Méthode ( liste de paramètres );
+	// type Mï¿½thode ( liste de paramï¿½tres );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -63,7 +63,7 @@ public:
 
 	//------------------------------------------------------ Getters - Setters
 
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 	// Mode d'emploi :
 	//
@@ -113,28 +113,28 @@ public:
 	//------------------------------------------------------------------ PRIVE 
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
 private:
 	void afficherAnalyse(list <Analyse>);
-	//------------------------------------------------------- Méthodes privées
+	//------------------------------------------------------- Mï¿½thodes privï¿½es
 
 protected:
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
 
 
 private:
-	//------------------------------------------------------- Attributs privés
+	//------------------------------------------------------- Attributs privï¿½s
 	string mdp;
 	//---------------------------------------------------------- Classes amies
 
-	//-------------------------------------------------------- Classes privées
+	//-------------------------------------------------------- Classes privï¿½es
 
-	//----------------------------------------------------------- Types privés
+	//----------------------------------------------------------- Types privï¿½s
 
 };
 
-//----------------------------------------- Types dépendants de <Medecin>
+//----------------------------------------- Types dï¿½pendants de <Medecin>
 
 #endif // MEDECIN_H
 #pragma once
