@@ -44,7 +44,7 @@ public:
 	// Contrat :
 	//
 
-	void initMedesin(string nomFichier);
+	void initMedecin(string nomFichier);
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -73,7 +73,12 @@ public:
 	//
 	// Contrat :
 	//
-
+	
+	vector<Patient> getListePatient();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
 
 	//------------------------------------------------- Surcharge d'op�rateurs
 	Initialisation & operator = (const Initialisation & unInitialisation);
