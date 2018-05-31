@@ -17,17 +17,9 @@ e-mail               : @insa-lyon.fr
 #include <iostream>
 using namespace std;
 
-
 //------------------------------------------------------ Include personnel
 #include "Medecin.h"
 #include "Initialisation.h"
-
-//------------------------------------------------------------- Constantes
-
-//---------------------------------------------------- Variables de classe
-
-//----------------------------------------------------------- Types privés
-
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
@@ -81,7 +73,7 @@ list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
 }
 
 
-Analyse Medecin:: rechercherAnalyse(int id, Patient p) {
+Analyse Medecin::rechercherAnalyse(int id, Patient p) {
 
 	list <Analyse> liste= p.getAnalyses();
 	Analyse a;
@@ -113,7 +105,7 @@ void Medecin::afficherMaladies(list <Maladie> lm)
 	
 }
 
-void Medecin:: afficherAnalyses(Patient p) {
+void Medecin::afficherAnalyses(Patient p) {
 	list<Analyse> liste = p.getAnalyses();
 	Analyse tmp;
 	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
@@ -125,13 +117,13 @@ void Medecin:: afficherAnalyses(Patient p) {
 
 }
 
-void mesurerPatient(string mesures, Patient p) {
+void Medecin::mesurerPatient(string mesures, Patient p) {
 
 	Empreinte e(mesures);
 	p.setEmpreintes(e);
 
 }
-void chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagramme uml
+void Medecin::chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagramme uml
 
 	ifstream fichier(nomFichier, ios::in);  // on ouvre en lecture
 
