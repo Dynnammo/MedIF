@@ -1,5 +1,3 @@
-#pragma once
-#pragma once
 /*************************************************************************
 Medecin  -  description
 -------------------
@@ -15,13 +13,15 @@ e-mail               : @insa-lyon.fr
 #if ! defined ( MEDECIN_H )
 #define MEDECIN_H
 
-#include "Personne.h"
-#include "Patient.h"
 #include <string>
 #include <iostream>
 #include <list>
+
+#include "Personne.h"
+#include "Patient.h"
 #include "Analyse.h"
 #include "Maladie.h"
+
 using namespace std;
 
 
@@ -44,15 +44,14 @@ class Medecin : public Personne
 public:
 	//----------------------------------------------------- M�thodes publiques
 
-	bool seConnecter();
+	bool seConnecter(vector<Medecin>);
 	void seDeconnecter();
-	Patient ajouterPatient(string n, string p, string m);
-	list <Analyse> faireAnalyse(Patient p, list <Maladie> lm);
+	Patient ajouterPatient(string n, string p, string m, vector <Patient> &patients);
+	list <Analyse> faireAnalyse(Patient p, unordered_map<int, Maladie> &lm);
 	Analyse rechercherAnalyse(int id, Patient p);
     void afficherMaladies(list <Maladie> lm);
-	void afficherAnalyses(Patient p);
+	//void afficherAnalyse(Patient p);
 	void mesurerPatient(string mesures, Patient p);
-	list <Analyse> faireAnalyse(list <Maladie>, Patient p);
 	void chargerEmpreinte(string nomFichier, list <Patient> liste);
 
 	// type M�thode ( liste de param�tres );
@@ -116,7 +115,7 @@ protected:
 	//----------------------------------------------------- M�thodes prot�g�es
 
 private:
-	void afficherAnalyse(list <Analyse>);
+	void afficherAnalyse(Patient p);
 	//------------------------------------------------------- M�thodes priv�es
 
 protected:

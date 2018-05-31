@@ -50,6 +50,7 @@ int main()
 	
 	a.analyseEmpreinte(e, i.getListeMaladie());
 	cout << a << endl;*/
-
+	int a;
+	cin >> a;
 	return 0;
 }

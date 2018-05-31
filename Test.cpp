@@ -18,8 +18,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 
-#include "Medecin.cpp"
-#include "Initialisation.cpp"
 
 using namespace std;
 
@@ -49,9 +47,10 @@ using namespace std;
 	{
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
+
 		bool estConnecte = m.seConnecter();
 
-		if (estConnecte == true) {
+		if (estConnecte) {
 
 			cout << "Le médecin est bien connecté à l'appli." << endl;
 		}
@@ -68,6 +67,7 @@ using namespace std;
 		list <Empreinte> le = p.getEmpreintes();
 
 		list<Empreinte>::const_iterator it = le.end();
+		it--;
 		Empreinte temp = *it;
 
 		cout << temp.getMesures();

@@ -17,13 +17,13 @@ e-mail               : @insa-lyon.fr
 #include "Maladie.h"
 #include "Patient.h"
 #include "Medecin.h"
+
 #include <vector>
 #include <string>
 #include <unordered_map>
-//------------------------------------------------------------- Constantes
+#include <iostream>
 
-//------------------------------------------------------------------ Types
-
+using namespace std;
 
 //------------------------------------------------------------------------
 // Role de la classe <Initialisation>
