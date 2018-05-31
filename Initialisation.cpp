@@ -25,8 +25,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Initialisation.h"
 #include "Maladie.h"
-#include "medecin.h"
-#include "patient.h"
+#include "Medecin.h"
+#include "Patient.h"
 
 //------------------------------------------------------------- Constantes
 

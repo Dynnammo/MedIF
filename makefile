@@ -11,8 +11,8 @@ $(PROGRAM_NAME): main.cpp Analyse.o Empreinte.o Initialisation.o Maladie.o Medec
 Analyse.o: Analyse.cpp Analyse.h
 	$(COMPPART) Analyse.cpp
 
-Empreinte.o :Empreinte.cpp Empreinte.h 
-	$(COMPPART) Empreinte.cpp
+Empreinte.o : Empreinte.h 
+	
 
 Initialisation.o :Initialisation.cpp Initialisation.h 
 	$(COMPPART) Initialisation.cpp
@@ -23,8 +23,7 @@ Maladie.o :Maladie.cpp Maladie.h
 Medecin.o :Medecin.cpp Medecin.h 
 	$(COMPPART) Medecin.cpp
 
-Patient.o :Patient.cpp Patient.h 
-	$(COMPPART) Patient.cpp
+Patient.o : Patient.h 
 
 Personne.o :Personne.cpp Personne.h 
 	$(COMPPART) Personne.cpp
