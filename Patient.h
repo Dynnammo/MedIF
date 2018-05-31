@@ -1,10 +1,10 @@
 /*************************************************************************
 Patient  -  description
 -------------------
-début                : 27.04.2018
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
@@ -19,7 +19,7 @@ e-mail               : @insa-lyon.fr
 
 using namespace std;
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include "Personne.h"
 #include "Empreinte.h"
 #include "Analyse.h"
@@ -28,7 +28,7 @@ using namespace std;
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Patient>
+// Rï¿½le de la classe <Patient>
 //
 //
 //------------------------------------------------------------------------ 
@@ -38,12 +38,12 @@ class Patient : public Personne
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste de paramètres );
+	//----------------------------------------------------- Mï¿½thodes publiques
+	// type Mï¿½thode ( liste de paramï¿½tres );
 	// Mode d'emploi :
 	//
 	// Contrat :
-	void afficher()
+	void afficher() const
 	{
 
 		cout << nom << " " << prenom << endl;
@@ -74,13 +74,13 @@ public:
 
 		 le.push_back(e);
 	}
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 	// Mode d'emploi :
 	//
 	// Contrat :
 	//
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 	Patient & operator = ( Patient const & p)
 	{
 		this->idPersonne = p.idPersonne;
@@ -136,27 +136,27 @@ public:
 	//------------------------------------------------------------------ PRIVE 
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
 private:
-	//------------------------------------------------------- Méthodes privées
+	//------------------------------------------------------- Mï¿½thodes privï¿½es
 
 protected:
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
 	
 
 private:
-	//------------------------------------------------------- Attributs privés
+	//------------------------------------------------------- Attributs privï¿½s
 	list <Analyse> la;
 	list <Empreinte> le;
 	//---------------------------------------------------------- Classes amies
 
-	//-------------------------------------------------------- Classes privées
+	//-------------------------------------------------------- Classes privï¿½es
 
-	//----------------------------------------------------------- Types privés
+	//----------------------------------------------------------- Types privï¿½s
 
 };
 
-//----------------------------------------- Types dépendants de <Patient>
+//----------------------------------------- Types dï¿½pendants de <Patient>
 
 #endif // PATIENT_H

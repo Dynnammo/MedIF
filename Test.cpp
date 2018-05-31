@@ -18,8 +18,8 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 
-#include "Medecin.cpp"
-#include "Initialisation.cpp"
+#include "Medecin.h"
+#include "Initialisation.h"
 
 using namespace std;
 
@@ -28,24 +28,24 @@ using namespace std;
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
 		Initialisation ini;
-		list<Patient> listeP = ini.getlistePatient();
-		for (list<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
+		vector<Patient> listeP = ini.getListePatient();
+		for (vector<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
 		{
-			cout << (*it).afficher() << endl;
+			(*it).afficher();
 		}
 
 		string n = "Marley";
 		string p = "Bob";
-		string m = "bm";
+		string mdp = "bm";
 
-		m.ajouterPatient(n,p,m);
+		m.ajouterPatient(n,p,mdp);
 
 		cout << "Liste des Patients APRES : " << endl;
-		cout << i.getlistePatient().afficher() << endl;
+		//cout << ini.getListePatient().afficher() << endl;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
-	void Test::testFaireAnalyse()
+	void Test::testSeConnecter(string nomFichier, Medecin m)
 	{
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
@@ -68,7 +68,7 @@ using namespace std;
 		list <Empreinte> le = p.getEmpreintes();
 
 		list<Empreinte>::const_iterator it = le.end();
-		string mes = it->getMesures;
+		string mes = it->getMesures();
 		cout << mes;
 
 
