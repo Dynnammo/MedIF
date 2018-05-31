@@ -20,6 +20,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Attribut_intervalle.h"
 #include "Attribut.h"
+#include <string>
 
 //------------------------------------------------------------- Constantes
 
@@ -105,7 +106,7 @@ ostream& Attribut_intervalle::afficher (ostream &flux)
 // Algorithme :
 //
 {
-	flux << "idAttribut : " << this->idAttribut ;
+	flux << "Attribut : " << this->nomAttribut ;
 	if (this->borneInf == 0 && this->borneSup == 1)
 	{
 		flux << " \t  " << "positif : "<< this->moyenne << endl;
@@ -137,10 +138,11 @@ Attribut_intervalle::Attribut_intervalle()
 #endif
 } //----- Fin de Attribut_intervalle
 
-Attribut_intervalle::Attribut_intervalle(int id, double borneS, double borneI, double moy)
+Attribut_intervalle::Attribut_intervalle(string nom, int id, double borneS, double borneI, double moy)
 // Algorithme :
 //
 {
+	this->nomAttribut = nom;
 	this->idAttribut = id;
 	this->borneSup = borneS;
 	this->borneInf = borneI;

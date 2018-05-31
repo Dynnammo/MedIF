@@ -93,7 +93,7 @@ ostream& Attribut_enumeration::afficher(ostream &flux)
 // Algorithme :
 //
 {
-	flux << "id_Attribut : " << this->idAttribut << " \t " << "valeurs" << endl;
+	flux << "Attribut : " << this->nomAttribut << " \t " << "valeurs" << endl;
 	for (unsigned int i(0); i < this->valeurs.size(); i++)
 	{
 		flux << "---------------" << " \t  " << this->valeurs[i] << endl;
@@ -121,11 +121,12 @@ Attribut_enumeration::Attribut_enumeration()
 #endif
 } //----- Fin de Attribut_enumeration
 
-Attribut_enumeration::Attribut_enumeration(int id,int nbValeurs, vector<string> valeurs)
+Attribut_enumeration::Attribut_enumeration(string nom, int id,int nbValeurs, vector<string> valeurs)
 // Algorithme :
 //
 {
 	this->idAttribut = id;
+	this->nomAttribut = nom;
 	this->nbValeurs = nbValeurs;
 	this->valeurs = valeurs;
 #ifdef MAP

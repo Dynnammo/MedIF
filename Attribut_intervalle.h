@@ -107,7 +107,7 @@ public:
 	// Contrat :
 	//
 
-	Attribut_intervalle(int id, double borneS, double borneI, double moy);
+	Attribut_intervalle(string nom, int id, double borneS, double borneI, double moy);
 	// Mode d'emploi :
 	//
 	// Contrat :
