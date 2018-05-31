@@ -26,7 +26,7 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-bool Medecin::seConnecter(int id, string mdp)
+bool Medecin::seConnecter()
 {
 	Initialisation ini;
 	bool estConnecte = false;
@@ -98,10 +98,8 @@ void Medecin::afficherMaladies(list <Maladie> lm)
 {
 	for (list<Maladie>::const_iterator it = lm.cbegin(); it != lm.cend(); it++)
 	{
-		
+		cout << *it << endl;
 	}
-
-	
 }
 
 void Medecin::afficherAnalyses(Patient p) {
@@ -110,8 +108,6 @@ void Medecin::afficherAnalyses(Patient p) {
 	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 		tmp = *it;
 		cout << tmp;
-		
-
 	}
 
 }
@@ -122,6 +118,7 @@ void Medecin::mesurerPatient(string mesures, Patient p) {
 	p.setEmpreintes(e);
 
 }
+
 void Medecin::chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagramme uml
 
 	ifstream fichier(nomFichier, ios::in);  // on ouvre en lecture

@@ -15,6 +15,10 @@ e-mail               : @insa-lyon.fr
 
 #include <string>
 #include <iostream>
+#include"Medecin.h"
+#include <List>
+#include <string>
+#include "Initialisation.h"
 
 using namespace std;
 
@@ -61,12 +65,14 @@ public:
 	//--------------------------------------------- Tests de la classe Medecin
 	void testAjouterPatient();
 	void testFaireAnalyse();
-	void testRechercherAnalyse();
+	//void testRechercherAnalyse();
+	void testSeConnecter(string nomFichier, Medecin m);
+	void Test::testMesurerPatient(string mesures, Patient p, Medecin m);
 
 	//--------------------------------------------- Tests de la classe Analyse
 
 
 	//-------------------------------------- Tests de la classe Initialisation
 };
-#endif // PATIENT_H
+#endif // TEST_H
 #pragma once

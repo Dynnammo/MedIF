@@ -44,7 +44,7 @@ class Medecin : public Personne
 public:
 	//----------------------------------------------------- M�thodes publiques
 
-	bool seConnecter(int id, string mp);
+	bool seConnecter();
 	void seDeconnecter();
 	Patient ajouterPatient(string n, string p, string m);
 	list <Analyse> faireAnalyse(Patient p, list <Maladie> lm);
