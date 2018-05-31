@@ -24,8 +24,8 @@ using namespace std;
 	void Test::testAjouterPatient()
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
-		Initialisation i;
 		cout << "Liste des Patients AVANT : " << endl;
+		Initialisation i;
 		cout << i.getlistePatient() << endl;
 
 		string n = "Marley";
@@ -41,5 +41,10 @@ using namespace std;
 
 	void Test::testFaireAnalyse()
 	{
-
+		cout << "----------- Test Faire Analyse -----------" << endl;
+		cout << "Liste des Patients AVANT : " << endl;
+		Initialisation i;
+		cout << i.getlistePatient() << endl;
+		list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
+		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
