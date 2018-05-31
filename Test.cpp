@@ -43,11 +43,16 @@ using namespace std;
 
 	void Test::testFaireAnalyse()
 	{
-<<<<<<< HEAD
-		cout << "----------- Test Faire Analyse -----------" << endl;
-		cout << "Liste des Patients AVANT : " << endl;
-		Initialisation i;
-		cout << i.getlistePatient() << endl;
-		list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
-		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
+		Initialisation ini;
+		ini.initMedecin(nomFichier);
+		bool estConnecte = m.seConnecter();
+
+		if (estConnecte == true) {
+
+			cout << "Le médecin est bien connecté à l'appli." << endl;
+		}
+		else {
+
+			cout << "Le médecin n'existe pas." << endl;
+		}
 	}
