@@ -25,8 +25,8 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Initialisation.h"
 #include "Maladie.h"
-#include "medecin.h"
-#include "patient.h"
+#include "Medecin.h"
+#include "Patient.h"
 
 unordered_map<int, Maladie>& Initialisation::getListeMaladie()
 {
@@ -244,7 +244,7 @@ void Initialisation::initMedecin(string nomFichier)
 =======
 }
 
-void Initialisation::initMedesin(string nomFichier)
+void Initialisation::initMedecin(string nomFichier)
 //Algo: initier la liste de medecin qui peuvent se connecter à partir d'un fichier
 >>>>>>> 3bb2e6a45d96bd5547a4b6710736f2a921db24e3
 //

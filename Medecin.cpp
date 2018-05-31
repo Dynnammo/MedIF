@@ -26,7 +26,7 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-bool Medecin::seConnecter(int id, string mdp)
+bool Medecin::seConnecter()
 {
 	Initialisation ini;
 	bool estConnecte = false;

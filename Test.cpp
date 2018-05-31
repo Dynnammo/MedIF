@@ -12,6 +12,8 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include "Test.h"
+
 #include <string>
 
 //------------------------------------------------------ Include personnel
@@ -41,6 +43,7 @@ using namespace std;
 
 	void Test::testFaireAnalyse()
 	{
+<<<<<<< HEAD
 		cout << "----------- Test Faire Analyse -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
 		Initialisation i;

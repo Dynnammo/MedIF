@@ -8,16 +8,19 @@ copyright            : (C) 2018 par Tifenn FLOCH
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
+#include <iostream>
+#include <fstream>
+#include <string>
 
 #include "Attribut.h"
 #include "Attribut_enumeration.h"
 #include "Attribut_intervalle.h"
 #include "Maladie.h"
-#include <iostream>
-#include <fstream>
-#include "Initialisation.h"
 #include "Medecin.h"
-#include <list>
+#include "Initialisation.h"
+#include "Test.h"
+
+
 
 using namespace std;
 
@@ -25,8 +28,10 @@ using namespace std;
 int main()
 {
 
-	Initialisation i;
-	list <Medecin> lm = i.getListeMedecin;
+	Test t;
+
+	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	t.testSeConnecter("MedecinIni.txt", m);
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;
