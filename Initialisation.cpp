@@ -265,7 +265,7 @@ vector<string> Initialisation::split(string &lignef, string del)
 
 }
 
-void Initialisation::initMedesin(string nomFichier)
+void Initialisation::initMedecin(string nomFichier)
 //Algo: initier la liste de medecin qui peuvent se connecter à partir d'un fichier
 //
 {

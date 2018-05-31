@@ -44,7 +44,7 @@ public:
 	// Contrat :
 	//
 
-	void initMedesin(string nomFichier);
+	void initMedecin(string nomFichier);
 	// Mode d'emploi :
 	//
 	// Contrat :

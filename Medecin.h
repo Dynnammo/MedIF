@@ -44,7 +44,7 @@ class Medecin : public Personne
 public:
 	//----------------------------------------------------- Méthodes publiques
 
-	bool seConnecter(int id, string mp);
+	bool seConnecter();
 	void seDeconnecter();
 	Patient ajouterPatient(string n, string p, string m);
 	list <Analyse> faireAnalyse(Patient p, list <Maladie> lm);
@@ -53,7 +53,7 @@ public:
 	void afficherAnalyses(Patient p);
 	void mesurerPatient(string mesures, Patient p);
 	list <Analyse> faireAnalyse(list <Maladie>, Patient p);
-	void chargerEmpreinte(string nomFichier);
+	void chargerEmpreinte(string nomFichier, list <Patient> liste);
 
 	// type Méthode ( liste de paramètres );
 	// Mode d'emploi :
