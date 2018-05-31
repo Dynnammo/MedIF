@@ -2,7 +2,7 @@
 Attribut  -  description
 -------------------
 début                : 27.04.2018
-copyright            : (C) 2018 par Tifenn FLOCH
+copyright            : (C) 2018 par Tifenn FLOCH 
 									Anatolii GASIUK
 									Léo PAPE
 									Baptiste THIVEND
