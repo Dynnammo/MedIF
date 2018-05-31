@@ -18,6 +18,8 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 
+#include "Medecin.h"
+#include "Initialisation.h"
 
 using namespace std;
 
@@ -34,7 +36,7 @@ using namespace std;
 
 		string n = "Marley";
 		string p = "Bob";
-		string m = "bm";
+		string mdp = "bm";
 
 		medecin.ajouterPatient(n,p,m);
 

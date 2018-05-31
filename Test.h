@@ -1,10 +1,10 @@
 /*************************************************************************
 Test  -  tests unitaires
 -------------------
-début                : 31.05.2018
+dï¿½but                : 31.05.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 Anatolii GASIUK
-Léo PAPE
+Lï¿½o PAPE
 Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
@@ -16,20 +16,20 @@ e-mail               : @insa-lyon.fr
 #include <string>
 #include <iostream>
 #include"Medecin.h"
-#include <List>
+#include <list>
 #include <string>
 #include "Initialisation.h"
 
 using namespace std;
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Test>
+// Rï¿½le de la classe <Test>
 //
 //
 //------------------------------------------------------------------------ 
@@ -39,8 +39,8 @@ class Test
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste de paramètres );
+	//----------------------------------------------------- Mï¿½thodes publiques
+	// type Mï¿½thode ( liste de paramï¿½tres );
 	// Mode d'emploi :
 	//
 	// Contrat :
@@ -52,7 +52,7 @@ public:
 #ifdef MAP
 		cout << "Appel au constructeur de <Test>" << endl;
 #endif
-	}//----- Fin de Test (constructeur par défaut)
+	}//----- Fin de Test (constructeur par dï¿½faut)
 
 	virtual ~Test()
 	{
