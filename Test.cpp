@@ -156,7 +156,6 @@ using namespace std;
 
 	void Test::testAjouterPatient(Medecin medecin, vector <Patient> & listeP)
 	{
-
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
 		for (unsigned int i(0); i<listeP.size(); i++)
@@ -177,7 +176,7 @@ using namespace std;
 			listeP[i].afficher();
 			cout << endl;
 		}
-		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
+		cout << "----------- FIN Test Ajouter Patient -----------\n" << endl;
 	}
 
 	void Test::testSeConnecter( Medecin m, vector <Medecin> liste)
@@ -194,7 +193,7 @@ using namespace std;
 
 			cout << "Le medecin n'existe pas." << endl;
 		}
-		cout << "----------- Fin de Test se Connecter -----------" << endl;
+		cout << "----------- FIN de Test se Connecter -----------\n" << endl;
 	}
 
 	void Test::testMesurerPatient(string mesures, Patient p, Medecin m)
@@ -206,7 +205,8 @@ using namespace std;
 	
 		Empreinte e= le.back();
 	
-		cout << e.getMesures();
+		cout << e.getMesures() << endl;
+		cout << "-----------  FIN Test Mesurer Patient -----------\n" << endl;
 	}
 
 	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini) {
@@ -215,19 +215,29 @@ using namespace std;
 		m.chargerEmpreinte(nomFichier, liste);
 		
 	
-		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++){
-			cout << "Liste Patients pas vide" << endl;
+		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
+		{
 			list<Empreinte> le = (*it).getEmpreintes();
-			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++) {
-				cout << "Je passe dans la liste d'empreinte, elle n'est pas vide" << endl;
+			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
+			{
 				Empreinte temp = *it2;
-
-				cout << temp.getMesures() << endl;;
+				cout << temp.getMesures() << endl;
 			}
 		}
-		cout << "-------------- FIN Test charger Empreinte -------------" << endl;
+		cout << "-------------- FIN Test charger Empreinte -------------\n" << endl;
 	}
 
+	void Test::testRechercherAnalyse(Patient &p, Medecin &m) {
+		
+		int id= p.getAnalyses().back().getId();
+		//Analyse test = p.getAnalyses().back();
+
+		//cout << test << endl;
+		Analyse a=m.rechercherAnalyse(id, p);
+
+		cout <<"Analyse "<<a.getId()<<" a ete trouvee"<<a << endl;
+
+	}
 
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{

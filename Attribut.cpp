@@ -1,19 +1,19 @@
 /*************************************************************************
 Attribut  -  description
 -------------------
-début                : 27.04.2018
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH 
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Attribut> (fichier Attribut.cpp) ------------
+//---------- Rï¿½alisation de la classe <Attribut> (fichier Attribut.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 #include <string>
@@ -25,18 +25,18 @@ using namespace std;
 
 //---------------------------------------------------- Variables de classe
 
-//----------------------------------------------------------- Types privés
+//----------------------------------------------------------- Types privï¿½s
 
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
-//----------------------------------------------------- Méthodes publiques
-// type Attribut::Méthode ( liste de paramètres )
+//----------------------------------------------------- Mï¿½thodes publiques
+// type Attribut::Mï¿½thode ( liste de paramï¿½tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de Mï¿½thode
 
 bool Attribut::verification(string valeur)
 {
@@ -54,7 +54,7 @@ int Attribut::getIdAttribut()
 	return this->idAttribut;
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 Attribut & Attribut::operator = (const Attribut & unAttribut)
 // Algorithme :
 //
@@ -72,9 +72,8 @@ ostream& Attribut::afficher(ostream &flux)
 } //----- Fin de operator <<
 
   //-------------------------------------------- Constructeurs - destructeur
-Attribut::Attribut(const Attribut & unAttribut)
-// Algorithme :
-//
+Attribut::Attribut(const Attribut & a)
+	:idAttribut(a.idAttribut),nomAttribut(a.nomAttribut)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Attribut>" << endl;
@@ -87,7 +86,7 @@ Attribut::Attribut()
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur par défaut de <Attribut>" << endl;
+    cout << "Appel au constructeur par dï¿½faut de <Attribut>" << endl;
 #endif
 } //----- Fin de Attribut
 
@@ -115,7 +114,7 @@ Attribut::~Attribut()
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-  //------------------------------------------------------- Méthodes privées
+  //------------------------------------------------------- Mï¿½thodes privï¿½es
 
