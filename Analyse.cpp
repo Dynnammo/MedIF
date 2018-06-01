@@ -195,28 +195,22 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 
 
 
-} //----- Fin de Méthode
+} //----- Fin de Méthode analyseEmpreinte
 
 //------------------------------------------------------ Getters - Setters
 
-unordered_map<string, double> Analyse::getMaladiesPotentielles()
-// type Analyse::Méthode ( liste des paramètres )
-// Algorithme :
-//
+unordered_map<string, double> Analyse::getMaladiesPotentielles() const
 {
 	return this->maladiesPotentielles;
 }
 
 int Analyse::getId()
-// type Analyse::Méthode ( liste des paramètres )
-// Algorithme :
-//
 {
 	return this->idAnalyse;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-ostream & operator << (ostream & out, Analyse & a)
+ostream & operator << (ostream & out, const Analyse & a)
 {
 	unordered_map<string, double> maladies = a.getMaladiesPotentielles();
     out <<" Id : "<< a.idAnalyse << endl; 

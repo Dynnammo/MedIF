@@ -64,10 +64,10 @@ public:
 
 	//--------------------------------------------- Tests de la classe Medecin
 	void testAjouterPatient(Medecin medecin, vector <Patient> & listeP);
-	//void testFaireAnalyse();
-	//void testRechercherAnalyse();
 	void testSeConnecter( Medecin m, vector <Medecin> liste);
 	void testMesurerPatient(string mesures, Patient p, Medecin m);
+	void testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm);
+	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini);
 
 	//--------------------------------------------- Tests de la classe Analyse
 

@@ -271,14 +271,14 @@ Initialisation & Initialisation::operator = ( const Initialisation & unInitialis
 } //----- Fin de operator =
 
 void Initialisation::afficherMedecin(){
-	for(int i = 0; i < listeMedecin.size() ; i++)
+	for(unsigned int i = 0; i < listeMedecin.size() ; i++)
 	{
 		cout << listeMedecin[i];
 	}	
 }
 
 void Initialisation::afficherPatient(){
-	for(int i = 0; i < listePatient.size() ; i++)
+	for(unsigned int i = 0; i < listePatient.size() ; i++)
 	{
 		cout << listeMedecin[i];
 	}	
