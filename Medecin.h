@@ -70,7 +70,7 @@ public:
 	//
 	Medecin & operator = (const Medecin & unMedecin);
 	
-
+	friend ostream &operator<<(ostream &os, const Medecin &m);
 	//-------------------------------------------- Constructeurs - destructeur
 
 	// Mode d'emploi (constructeur de copie) :

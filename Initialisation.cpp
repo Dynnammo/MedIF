@@ -270,6 +270,19 @@ Initialisation & Initialisation::operator = ( const Initialisation & unInitialis
 	return *this;
 } //----- Fin de operator =
 
+void Initialisation::afficherMedecin(){
+	for(int i = 0; i < listeMedecin.size() ; i++)
+	{
+		cout << listeMedecin[i];
+	}	
+}
+
+void Initialisation::afficherPatient(){
+	for(int i = 0; i < listePatient.size() ; i++)
+	{
+		cout << listeMedecin[i];
+	}	
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 Initialisation::Initialisation ( const Initialisation & unInitialisation )

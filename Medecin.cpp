@@ -1,19 +1,23 @@
 /*************************************************************************
 Medecin  -  description
 -------------------     
+<<<<<<< HEAD
+dï¿½but                : 27.04.2018
+=======
 début                : 27.04.2018
+>>>>>>> 870942ccdf807d0da48bd030eb9f48ceb3916ae8
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Medecin> (fichier Medecin.cpp) --
+//---------- Rï¿½alisation de la classe <Medecin> (fichier Medecin.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 #include <iostream>
 using namespace std;
 
@@ -22,7 +26,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
 
 bool Medecin::seConnecter(vector<Medecin> liste)
 {
@@ -120,7 +124,7 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 
 	ifstream fichier(nomFichier, ios::in);  // on ouvre en lecture
 
-	if (fichier)  // si l'ouverture a fonctionné
+	if (fichier)  // si l'ouverture a fonctionnï¿½
 	{
 		string line;
 		string idP;
@@ -157,16 +161,16 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 		cerr << "Impossible d'ouvrir le fichier !" << endl;
 	}
 }
-// type ${file_base}::Méthode ( liste de paramètres )
+// type ${file_base}::Mï¿½thode ( liste de paramï¿½tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de Mï¿½thode
 
 //------------------------------------------------------ Getters - Setters
 
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 Medecin & Medecin::operator = ( Medecin const & unMedecin)
 // Algorithme :
 //
@@ -178,11 +182,19 @@ Medecin & Medecin::operator = ( Medecin const & unMedecin)
 	return *this;
 } //----- Fin de operator =
 
+ostream &operator<< (ostream &os, const Medecin &m){
+	os << "Medecin" << endl;
+	os << m.nom <<endl;
+	os << m.prenom <<endl;
+	os<< m.mdp <<endl;
+	return os;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-  //------------------------------------------------------- Méthodes privées
+  //------------------------------------------------------- Mï¿½thodes privï¿½es
