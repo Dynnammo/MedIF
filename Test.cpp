@@ -38,7 +38,7 @@ using namespace std;
 		string p = "Bob";
 		string mdp = "bm";
 
-		medecin.ajouterPatient(n,p,m);
+		medecin.ajouterPatient(n,p,mdp, ini.getListePatient());
 
 		cout << "Liste des Patients APRES : " << endl;
 		//cout << i.getlistePatient().afficher() << endl;
@@ -50,7 +50,7 @@ using namespace std;
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
 
-		bool estConnecte = m.seConnecter();
+		bool estConnecte = m.seConnecter(ini.getListeMedecin());
 
 		if (estConnecte) {
 
