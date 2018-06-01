@@ -87,6 +87,13 @@ public:
 		return *this;
 	} //----- Fin de operator =
 
+	friend ostream &operator<<(ostream &os, const Patient  &p){
+		os << "Patient"<< endl;
+		os << "Nom " << p.nom << endl;
+		os << "Prénom " << p.prenom << endl;
+		os << "Mail " << p.mail << endl;
+		return os;
+	}
 
 	//-------------------------------------------- Constructeurs - destructeur
 

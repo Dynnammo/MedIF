@@ -80,6 +80,18 @@ public:
 	// Contrat :
 	//
 
+	void afficherMedecin();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
+	void afficherPatient();
+	// Mode d'emploi :
+	//
+	// Contrat :
+	//
+
 	//------------------------------------------------- Surcharge d'op�rateurs
 	Initialisation & operator = (const Initialisation & unInitialisation);
 	// Mode d'emploi :

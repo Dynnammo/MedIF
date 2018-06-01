@@ -70,12 +70,9 @@ using namespace std;
 		m.mesurerPatient(mesures, p);
 
 		list <Empreinte> le = p.getEmpreintes();
+		Empreinte e = le.back();
 
-		list<Empreinte>::const_iterator it = le.end();
-		it--;
-		Empreinte temp = *it;
-
-		cout << temp.getMesures();
+		cout << e.getMesures();
 
 		cout << "----------- Fin de Test se Connecter -----------" << endl;
 	}
@@ -152,3 +149,4 @@ using namespace std;
 
 		cout << "----------- Fin Test Faire Analyse -----------" << endl;
 	}
+}

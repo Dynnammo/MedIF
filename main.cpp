@@ -39,7 +39,8 @@ vector<string> split(string lignef, string del)
 	return reponse;
 }
 
-void appelTestSeConnecter(Initialisation ini, Test t) {
+void appelTestSeConnecter(Initialisation ini, Test t, Medecin m)
+{
 
 	ini.initMedecin("MedecinIni.txt");
 
@@ -48,9 +49,12 @@ void appelTestSeConnecter(Initialisation ini, Test t) {
 	t.testSeConnecter(m, medecins);
 }
 
-void appelTestMesurerPatient(Initialisation ini, Test t) {
-	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
-	t.testSeConnecter(m, medecins);
+void appelTestMesurerPatient(Initialisation ini, Test t, Medecin m, Patient p)
+{
+
+	string mesures = "1;True;2.12;13;3.156;1236";
+
+	t.testMesurerPatient(mesures, p, m);
 }
 
 void appelTestAjouterPatient(Test t, Medecin m, Initialisation i)
@@ -121,9 +125,15 @@ int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
 	Test t;
+	Initialisation i;
+	i.initMedecin("fichierMedecin.txt");
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
-	Initialisation ini;
-	
+	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
+	cout << m;
+	cout << p;
+	i.afficherMedecin();
+	i.afficherPatient();
+
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
 	appelTestAjouterPatient(t, m, ini);
 
@@ -132,7 +142,8 @@ int main()
 	
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
 	appelTestFaireAnalyse(t, m, p, ini);
-
+	
+	cout << "Fin du programme" << endl;
 	// pour eviter que la fenetre se ferme dans la foulee, un cin inutile
 	int a;
 	cin >> a;

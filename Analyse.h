@@ -65,7 +65,6 @@ public:
 
 	unordered_map<string, double> getMaladiesPotentielles() const;
 
-
 //------------------------------------------------- Surcharge d'opérateurs
     friend ostream & operator << (ostream & out, const Analyse & a);
 
