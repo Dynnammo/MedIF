@@ -24,25 +24,30 @@ using namespace std;
 
 using namespace std;
 
-	void Test::testAjouterPatient(Medecin medecin)
+	void Test::testAjouterPatient(Medecin medecin, Initialisation ini)
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
-		Initialisation ini;
 		vector <Patient> listeP = ini.getListePatient();
-		/*for (list<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
+		for (unsigned int i(0); i<listeP.size(); i++)
 		{
-			cout << (*it).afficher() << endl;
-		}*/
+			listeP[i].afficher();
+			cout << endl;
+		}
 
 		string n = "Marley";
 		string p = "Bob";
 		string mdp = "bm";
 
-		medecin.ajouterPatient(n,p,m);
+		medecin.ajouterPatient(n,p,mdp, listeP);
 
 		cout << "Liste des Patients APRES : " << endl;
-		//cout << i.getlistePatient().afficher() << endl;
+		listeP = ini.getListePatient();
+		for (unsigned int i(0); i<listeP.size(); i++)
+		{
+			listeP[i].afficher();
+			cout << endl;
+		}
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
