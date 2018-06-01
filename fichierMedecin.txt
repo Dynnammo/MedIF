@@ -1,3 +1,2 @@
-Mohamed;Dupont;m.Dupont@test.fr
-
-Jack;Itation;j.itation@test.fr
+Mohamed;Dupont;m.Dupont@test.fr;1234
+Jack;Itation;j.itation@test.fr;4321
