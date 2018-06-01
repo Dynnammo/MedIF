@@ -70,12 +70,8 @@ using namespace std;
 		m.mesurerPatient(mesures, p);
 
 		list <Empreinte> le = p.getEmpreintes();
-
-		list<Empreinte>::const_iterator it = le.end();
-		it--;
-		Empreinte temp = *it;
-
-		cout << temp.getMesures();
-
-
+	
+		Empreinte e= le.back();
+	
+		cout << e.getMesures();
 	}

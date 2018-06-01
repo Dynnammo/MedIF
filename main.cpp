@@ -39,7 +39,7 @@ vector<string> split(string lignef, string del)
 	return reponse;
 }
 
-void appelTestSeConnecter(Initialisation ini, Test t) {
+void appelTestSeConnecter(Initialisation ini, Test t, Medecin m) {
 
 	ini.initMedecin("MedecinIni.txt");
 
@@ -48,9 +48,13 @@ void appelTestSeConnecter(Initialisation ini, Test t) {
 	t.testSeConnecter(m, medecins);
 }
 
-void appelTestMesurerPatient(Initialisation ini, Test t) {
-	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+void appelTestMesurerPatient(Initialisation ini, Test t, Medecin m, Patient p) {
+	
 
+
+	string mesures = "1;True;2.12;13;3.156;1236";
+
+	t.testMesurerPatient(mesures, p, m);
 	
 
 }
@@ -59,13 +63,17 @@ int main()
 	/* Initialisation des variables indispensable a tous les tests*/
 	Test t;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	Patient p("Baker", "Hanna", "hanna.bake@tapes.com");
 	Initialisation i;
 	
 	// test Ajouter Patient
-	appelTestAjouterPatient(t, m, i);
+	//appelTestAjouterPatient(t, m, i);
 
 	//test pour vérifier qu'un Medecin puisse se connecter.
-	appelTestSeConnecter(ini, t);
+	//appelTestSeConnecter(i, t,m);
+
+	//test pour vérifier que l'empreinte est ajoutee au patient
+	appelTestMesurerPatient(i, t, m,p);
 	
 	/*
 	//t.testSeConnecter("MedecinIni.txt", m);

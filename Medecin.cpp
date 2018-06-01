@@ -107,7 +107,7 @@ void Medecin::afficherAnalyse(Patient p) {
 
 }
 
-void Medecin::mesurerPatient(string mesures, Patient p) {
+void Medecin::mesurerPatient(string mesures, Patient &p) {
 
 	Empreinte e(mesures);
 	p.setEmpreintes(e);
