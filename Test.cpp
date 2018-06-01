@@ -12,14 +12,13 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include "Test.h"
-
 #include <string>
 
 //------------------------------------------------------ Include personnel
 
 #include "Medecin.h"
 #include "Initialisation.h"
+#include "Test.h"
 
 using namespace std;
 
@@ -38,7 +37,7 @@ using namespace std;
 		string p = "Bob";
 		string mdp = "bm";
 
-		medecin.ajouterPatient(n,p,m);
+		medecin.ajouterPatient(n,p,mdp,listeP);
 
 		cout << "Liste des Patients APRES : " << endl;
 		//cout << i.getlistePatient().afficher() << endl;
@@ -49,8 +48,9 @@ using namespace std;
 	{
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
-
-		bool estConnecte = m.seConnecter();
+		vector<Medecin> vm;
+		vm.push_back(m);
+		bool estConnecte = m.seConnecter(vm);
 
 		if (estConnecte) {
 
