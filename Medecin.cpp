@@ -19,22 +19,18 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Medecin.h"
-#include "Initialisation.h"
-
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
 
-bool Medecin::seConnecter()
+bool Medecin::seConnecter(vector<Medecin> liste)
 {
-	Initialisation ini;
 	bool estConnecte = false;
-	vector<Medecin> liste = ini.getListeMedecin();
 	
 	for (vector<Medecin>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 
-		if (it->mdp == mdp && it->idPersonne==id) {
+		if (it->mdp == this->mdp && it->mail==this->mail) {
 			estConnecte = true;
 		}
 	}
@@ -47,24 +43,23 @@ void Medecin::seDeconnecter()
 	this->~Medecin();
 }
 
-Patient Medecin::ajouterPatient(string n, string p, string m) 
+Patient Medecin::ajouterPatient(string n, string p, string m, vector <Patient> &patients) 
 {
-	Initialisation ini;
+	
 	Patient patient (n, p, m);
-
-	ini.setPatient(patient);
+	patients.push_back(patient);
+	
 	return patient;
 }
 
 
-list<Analyse> Medecin::faireAnalyse(Patient p, list <Maladie> lm)
+list<Analyse> Medecin::faireAnalyse(Patient p, unordered_map<int, Maladie> &lm)
 {
 	list <Empreinte> le = p.getEmpreintes();
-	Initialisation ini;
 	Analyse a;
 	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
 
-		a.analyseEmpreinte(*it,ini.getListeMaladie());
+		a.analyseEmpreinte(*it,lm);
 		p.setAnalyses(a);
 	}
 
@@ -102,7 +97,7 @@ void Medecin::afficherMaladies(list <Maladie> lm)
 	}
 }
 
-void Medecin::afficherAnalyses(Patient p) {
+void Medecin::afficherAnalyse(Patient p) {
 	list<Analyse> liste = p.getAnalyses();
 	Analyse tmp;
 	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {

@@ -10,8 +10,8 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Attribut_enumeration> (fichier Attribut_enumeration.h) ----------------
-#if ! defined ( Attribut_enumeration_H )
-#define Attribut_enumeration_H
+#if ! defined ( ATTRIBUT_ENUMERATION_H )
+#define ATTRIBUT_ENUMERATION_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include <vector>

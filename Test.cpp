@@ -23,25 +23,25 @@ using namespace std;
 
 using namespace std;
 
-	void Test::testAjouterPatient(Medecin m)
+	void Test::testAjouterPatient(Medecin medecin)
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
 		Initialisation ini;
-		vector<Patient> listeP = ini.getListePatient();
-		for (vector<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
+		vector <Patient> listeP = ini.getListePatient();
+		/*for (list<Patient>::const_iterator it = listeP.cbegin(); it != listeP.cend(); it++)
 		{
-			(*it).afficher();
-		}
+			cout << (*it).afficher() << endl;
+		}*/
 
 		string n = "Marley";
 		string p = "Bob";
 		string mdp = "bm";
 
-		m.ajouterPatient(n,p,mdp);
+		medecin.ajouterPatient(n,p,m);
 
 		cout << "Liste des Patients APRES : " << endl;
-		//cout << ini.getListePatient().afficher() << endl;
+		//cout << i.getlistePatient().afficher() << endl;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
@@ -49,9 +49,10 @@ using namespace std;
 	{
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
+
 		bool estConnecte = m.seConnecter();
 
-		if (estConnecte == true) {
+		if (estConnecte) {
 
 			cout << "Le médecin est bien connecté à l'appli." << endl;
 		}
@@ -68,8 +69,10 @@ using namespace std;
 		list <Empreinte> le = p.getEmpreintes();
 
 		list<Empreinte>::const_iterator it = le.end();
-		string mes = it->getMesures();
-		cout << mes;
+		it--;
+		Empreinte temp = *it;
+
+		cout << temp.getMesures();
 
 
 	}

@@ -10,8 +10,8 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Analyse> (fichier Analyse.h) ----------------
-#if ! defined ( Analyse_H )
-#define Analyse_H
+#if ! defined ( ANALYSE_H )
+#define ANALYSE_H
 
 using namespace std;
 

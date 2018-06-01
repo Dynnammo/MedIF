@@ -10,20 +10,20 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Initialisation> (fichier Initialisation.h) ----------------
-#if ! defined ( Initialisation_H )
-#define Initialisation_H
+#if ! defined ( INITIALISATION_H )
+#define INITIALISATION_H
 
 //--------------------------------------------------- Interfaces utilisees
 #include "Maladie.h"
 #include "Patient.h"
 #include "Medecin.h"
+
 #include <vector>
 #include <string>
 #include <unordered_map>
-//------------------------------------------------------------- Constantes
+#include <iostream>
 
-//------------------------------------------------------------------ Types
-
+using namespace std;
 
 //------------------------------------------------------------------------
 // Role de la classe <Initialisation>

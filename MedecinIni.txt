@@ -1,0 +1,5 @@
+Guittat;Clement;clement.guittat@insa-lyon.fr;123
+Pape;Leo;leo.pape@insa-lyon.fr;456
+Dionizio;Flore;flore.dionizio@insa-lyon.fr;678
+Gay;Neijma;neijma.gay@insa-lyon.fr;91011
+Martin;Anais;anais.martin@insa-lyon.fr;121314

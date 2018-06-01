@@ -10,8 +10,8 @@ e-mail               : @insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Maladie> (fichier Maladie.h) ----------------
-#if ! defined ( Maladie_H )
-#define Maladie_H
+#if ! defined ( MALADIE_H )
+#define MALADIE_H
 
 //--------------------------------------------------- Interfaces utilisées
 
