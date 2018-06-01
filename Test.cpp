@@ -70,13 +70,30 @@ using namespace std;
 		m.mesurerPatient(mesures, p);
 
 		list <Empreinte> le = p.getEmpreintes();
-		Empreinte e = le.back();
-
+	
+		Empreinte e= le.back();
+	
 		cout << e.getMesures();
-
-		cout << "----------- Fin de Test se Connecter -----------" << endl;
 	}
 
+	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini) {
+		cout << "----------- Test Charger Empreinte -----------" << endl;
+		
+		m.chargerEmpreinte(nomFichier, liste);
+		
+	
+		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++){
+			cout << "Liste Patients pas vide" << endl;
+			list<Empreinte> le = (*it).getEmpreintes();
+			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++) {
+				cout << "Je passe dans la liste d'empreinte, elle n'est pas vide" << endl;
+				Empreinte temp = *it2;
+
+				cout << temp.getMesures() << endl;;
+			}
+		}
+		cout << "-------------- FIN Test charger Empreinte -------------" << endl;
+	}
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;
