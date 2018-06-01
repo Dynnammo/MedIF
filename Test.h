@@ -66,7 +66,7 @@ public:
 	void testAjouterPatient(Medecin medecin, Initialisation ini);
 	//void testFaireAnalyse();
 	//void testRechercherAnalyse();
-	void testSeConnecter(string nomFichier, Medecin m);
+	void testSeConnecter(string nomFichier, Medecin m, vector <Medecin> liste);
 	void testMesurerPatient(string mesures, Patient p, Medecin m);
 
 	//--------------------------------------------- Tests de la classe Analyse
