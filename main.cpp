@@ -39,12 +39,14 @@ vector<string> split(string lignef, string del)
 	return reponse;
 }
 
-void appelTestAjouterPatient(Test t, Medecin medecin, Initialisation ini)
-{
-	vector <Patient> & listeP = ini.getListePatient();
-	t.testAjouterPatient(medecin, ini, listeP);
-}
+void appelTestSeConnecter(Initialisation ini, Test t) {
 
+	ini.initMedecin("MedecinIni.txt");
+
+	vector <Medecin> medecins = ini.getListeMedecin();
+	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	t.testSeConnecter(m, medecins);
+}
 int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
@@ -55,7 +57,10 @@ int main()
 	// test Ajouter Patient
 	appelTestAjouterPatient(t, m, i);
 
-
+	//test pour vérifier qu'un Medecin puisse se connecter.
+	appelTestSeConnecter(ini, t);
+	
+	/*
 	//t.testSeConnecter("MedecinIni.txt", m);
 	
 
