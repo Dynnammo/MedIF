@@ -80,7 +80,7 @@ Analyse Medecin::rechercherAnalyse(int id, Patient p) {
 		if (a.getId() == id) {
 			a = *it;
 		} else {
-			cout << "Rien trouvee" << endl;
+			cout << "Pas de resultat " << endl;
 		}
 
 	}
