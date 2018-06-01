@@ -55,7 +55,7 @@ void appelTestAjouterPatient(Test t, Medecin m, Initialisation i)
 }
 int main()
 {
-	/* Initialisation des variables indispensable a tous les tests*/
+	/* Initialisation des variables indispensable a tous les tests */
 	Test t;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Initialisation ini;
