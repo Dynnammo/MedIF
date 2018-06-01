@@ -1,5 +1,3 @@
-#pragma once
-#pragma once
 /*************************************************************************
 Empreinte  -  description
 -------------------
@@ -15,18 +13,12 @@ e-mail               : @insa-lyon.fr
 #if ! defined ( EMPREINTE_H )
 #define EMPREINTE_H
 
-
+//-------------------------------------------------------- Include système
 #include <string>
 #include <iostream>
 #include <fstream>
 
-
 using namespace std;
-
-
-//--------------------------------------------------- Interfaces utilis�es
-
-//------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 static int id = 0;
@@ -39,33 +31,16 @@ static int id = 0;
 class Empreinte 
 {
 	//----------------------------------------------------------------- PUBLIC
-
 public:
 	
 	//----------------------------------------------------- M�thodes publiques
-	// type M�thode ( liste de param�tres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-
+	//------------------------------------------------------ Getters - Setters
 	string getMesures() const
 	{
 		return mesures;
 	}
-	// Mode d'emploi :
-	//
-	// Contrat :
-
-
-	//
-
 
 	//------------------------------------------------- Surcharge d'op�rateurs
-
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 	Empreinte & operator = (const Empreinte & uneEmpreinte)
 	// Algorithme :
 	//
@@ -74,22 +49,15 @@ public:
 		return *this;
 	} //----- Fin de operator =
 
-	//-------------------------------------------- Constructeurs - destructeur
+	friend std::ostream& operator <<(std::ostream&, const Empreinte&);
 
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
+	//-------------------------------------------- Constructeurs - destructeur
 	Empreinte(string m) :mesures(m) 
 	{
 #ifdef MAP
 		cout << "Appel au constructeur de <Empreinte>" << endl;
 #endif
 	}
-	// Mode d'emploi :
-
-	// Contrat :
-	//
 
 	virtual ~Empreinte()
 		// Algorithme :
@@ -101,38 +69,22 @@ public:
 #endif
 	} //----- Fin de ~Empreinte
 
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
 
-	//------------------------------------------------------------------ PRIVE 
+	//------------------------------------------------------- Attributs publics
 
-protected:
-	//----------------------------------------------------- M�thodes prot�g�es
+	int idEmpreinte;
 
+//------------------------------------------------------------------ PRIVE
 private:
-	//------------------------------------------------------- M�thodes priv�es
-
-public:
- int idEmpreinte;
-protected:
-	//----------------------------------------------------- Attributs prot�g�s
-
-
-private:
-	//------------------------------------------------------- Attributs priv�s
-	//static int idEmpreinte; 
+	//------------------------------------------------------- Attributs priv�s 
 	string mesures;
-	//---------------------------------------------------------- Classes amies
-
-	//-------------------------------------------------------- Classes priv�es
-
-	//----------------------------------------------------------- Types priv�s
-
 };
 
-//----------------------------------------- Types d�pendants de <Empreinte>
+ostream& operator<<(ostream &flux, const Empreinte & e)
+{
+	//Affichage des attributs
+	flux << "idEmpreinte : " << e.idEmpreinte << " ; mesures : " << e.getMesures() << endl;
+	return flux;
+} //----- Fin de operator <<
 
 #endif // EMPREINTE_H
-#pragma once

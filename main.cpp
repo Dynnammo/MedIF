@@ -58,6 +58,15 @@ void appelTestAjouterPatient(Test t, Medecin m, Initialisation i)
 	vector <Patient> listeP = i.getListePatient();
 	t.testAjouterPatient(m, listeP);
 }
+
+void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
+{
+	// recuperer la liste de maladies de initialisation
+	unordered_map<int, Maladie> lm = i.getListeMaladie();
+
+	t.testFaireAnalyse(m, p, lm);
+}
+
 int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
@@ -65,12 +74,14 @@ int main()
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Initialisation ini;
 	
-	// test Ajouter Patient
+	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
 	appelTestAjouterPatient(t, m, ini);
 
-	//test pour vérifier qu'un Medecin puisse se connecter.
+	// test pour vérifier qu'un Medecin puisse se connecter.
 	appelTestSeConnecter(ini, t);
 	
+	// test qui vérifie que les empreintes d'un patient sont bien analysées
+	appelTestFaireAnalyse(t, m, p, ini);
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;
