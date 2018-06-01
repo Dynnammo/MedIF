@@ -15,10 +15,12 @@ e-mail               : @insa-lyon.fr
 
 //-------------------------------------------------------- Include systï¿½me
 #include <iostream>
-using namespace std;
+#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "Medecin.h"
+#include "Empreinte.h"
+using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
@@ -132,17 +134,17 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 		while (getline(fichier, line)) {
 			pos = line.find(';');
 			idP = line.substr(0,pos);
-			line.erase(0, pos + 1); //j'enlève l'id du patient de l'Empreinte
+			line.erase(0, pos + 1); //j'enlï¿½ve l'id du patient de l'Empreinte
 			//cout << "test pour voir si l'idP est bon : " << idP<<endl;
 			//cout << "test pour voir si line est bon : " << line<<endl;
 			for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++) {
 			
 				//cout << "je passe" << endl;
-				test = stoi(idP, &sz); //convertit l'id du Patient de string à int
+				test = stoi(idP, &sz); //convertit l'id du Patient de string ï¿½ int
 				//cout << "Conversion reussie :" << test << endl;
 				if (it->getIdPersonne() == test ) {
 					//Patient p = *it;
-					//cout << "J'ai reconnu à quel patient appartenait cette empreinte!" << endl;
+					//cout << "J'ai reconnu ï¿½ quel patient appartenait cette empreinte!" << endl;
 					mesurerPatient(line, *it);
 					//cout << "Modif de liste :" << (*it).getEmpreintes().back().getMesures() << endl;
 					/*Empreinte e = p.getEmpreintes().back();
@@ -188,7 +190,34 @@ ostream &operator<< (ostream &os, const Medecin &m){
 }
 
 //-------------------------------------------- Constructeurs - destructeur
+	Medecin::Medecin(const Medecin &m)
+		:mdp(m.mdp), Personne(m.nom, m.prenom, m.mail)
+	{
+#ifdef MAP
+   		cout << "Appel au constructeur de copie de <Medecin>" << endl;
+#endif
+	}
 
+	Medecin::Medecin()	{
+#ifdef MAP
+   		cout << "Appel au constructeur par defaut de <Medecin>" << endl;
+#endif
+	} //----- Fin de Medecin
+
+	Medecin::Medecin(string n, string m, string p, string motDePasse)
+		:Personne(n, p, m), mdp(motDePasse)
+	{
+#ifdef MAP
+    cout << "Appel au constructeur de <Medecin>" << endl;
+#endif
+	}
+	
+	Medecin::~ Medecin()
+	{
+#ifdef MAP
+    cout << "Appel au destructeur de <Medecin>" << endl;
+#endif
+	} //----- Fin de ~Medecin//----- Fin de Medecin
 
   //------------------------------------------------------------------ PRIVE
 

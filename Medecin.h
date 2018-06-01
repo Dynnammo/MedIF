@@ -46,13 +46,13 @@ public:
 
 	bool seConnecter(vector<Medecin>);
 	void seDeconnecter();
-	Patient ajouterPatient(string n, string p, string m, vector <Patient> &patients);
+	Patient ajouterPatient(std::string n, std::string p, std::string m, vector <Patient> &patients);
 	list <Analyse> faireAnalyse(Patient p, unordered_map<int, Maladie> &lm);
 	Analyse rechercherAnalyse(int id, Patient p);
     void afficherMaladies(list <Maladie> lm);
 	//void afficherAnalyse(Patient p);
-	void mesurerPatient(string mesures, Patient &p);
-	void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste);
+	void mesurerPatient(std::string mesures, Patient &p);
+	void chargerEmpreinte(std::string nomFichier, vector<Patient> &liste);
 
 	// type M�thode ( liste de param�tres );
 	// Mode d'emploi :
@@ -77,35 +77,14 @@ public:
 	//
 	// Contrat :
 	//
+	Medecin(const Medecin &m);
 
-	Medecin(const Medecin &m) 
-		:mdp(m.mdp), Personne(m.nom, m.prenom, m.mail)
-	{
-#ifdef MAP
-   		cout << "Appel au constructeur de copie de <Medecin>" << endl;
-#endif
-	}
-	Medecin()
-	{
-#ifdef MAP
-   		cout << "Appel au constructeur par defaut de <Medecin>" << endl;
-#endif
-	} //----- Fin de Medecin
+	Medecin();
 
-	Medecin(string n, string m, string p, string motDePasse) 
-		:Personne(n, p, m), mdp(motDePasse)
-	{
-#ifdef MAP
-    cout << "Appel au constructeur de <Medecin>" << endl;
-#endif
-	}//----- Fin de Medecin
 
-	virtual ~ Medecin()
-	{
-#ifdef MAP
-    cout << "Appel au destructeur de <Medecin>" << endl;
-#endif
-	} //----- Fin de ~Medecin
+	Medecin(std::string n, std::string m, std::string p, std::string motDePasse);
+
+	virtual ~ Medecin();
 
 	// Mode d'emploi :
 	//
@@ -127,7 +106,7 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs priv�s
-	string mdp;
+	std::string mdp;
 	//---------------------------------------------------------- Classes amies
 
 	//-------------------------------------------------------- Classes priv�es

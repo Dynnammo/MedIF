@@ -241,7 +241,8 @@ Analyse&  Analyse::operator =(Analyse const &a)
     pourcentage = 0;
 }*/
 
-Analyse::Analyse ( const Analyse & unAnalyse )
+Analyse::Analyse ( const Analyse & a)
+	:idAnalyse(a.idAnalyse), maladiesPotentielles(a.maladiesPotentielles)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Analyse>" << endl;
