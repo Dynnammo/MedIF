@@ -51,7 +51,7 @@ public:
 	Analyse rechercherAnalyse(int id, Patient p);
     void afficherMaladies(list <Maladie> lm);
 	//void afficherAnalyse(Patient p);
-	void mesurerPatient(string mesures, Patient p);
+	void mesurerPatient(string mesures, Patient &p);
 	void chargerEmpreinte(string nomFichier, list <Patient> liste);
 	
 	// type M�thode ( liste de param�tres );

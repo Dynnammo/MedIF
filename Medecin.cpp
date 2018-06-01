@@ -1,7 +1,11 @@
 /*************************************************************************
 Medecin  -  description
 -------------------     
+<<<<<<< HEAD
 dï¿½but                : 27.04.2018
+=======
+début                : 27.04.2018
+>>>>>>> 870942ccdf807d0da48bd030eb9f48ceb3916ae8
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
 									Lï¿½o PAPE
@@ -107,7 +111,7 @@ void Medecin::afficherAnalyse(Patient p) {
 
 }
 
-void Medecin::mesurerPatient(string mesures, Patient p) {
+void Medecin::mesurerPatient(string mesures, Patient &p) {
 
 	Empreinte e(mesures);
 	p.setEmpreintes(e);
