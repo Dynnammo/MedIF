@@ -48,7 +48,7 @@ void appelTestSeConnecter(Initialisation ini, Test t, Medecin m) {
 	t.testSeConnecter(m, medecins);
 }
 
-void appelTestMesurerPatient(Initialisation ini, Test t, Medecin m, Patient p) {
+void appelTestMesurerPatient( Test t, Medecin m, Patient p) {
 	
 
 
@@ -56,6 +56,19 @@ void appelTestMesurerPatient(Initialisation ini, Test t, Medecin m, Patient p) {
 
 	t.testMesurerPatient(mesures, p, m);
 	
+
+}
+
+void appelTestChargerEmpreinte(Initialisation ini, Test t, Medecin m,Patient p) {
+	
+	string nomFichier = "Mesures.txt";
+	ini.setPatient(p);
+	Patient p1("Janson", "Clay", "clay.janson@gmail.com");
+	ini.setPatient(p1);
+	Patient p2("Padilla", "Tonny", "tonny.padilla@gmail.com");
+	ini.setPatient(p2);
+	vector <Patient> liste = ini.getListePatient();
+	t.testChargerEmpreinte(nomFichier, liste , m,ini);
 
 }
 int main()
@@ -73,7 +86,11 @@ int main()
 	//appelTestSeConnecter(i, t,m);
 
 	//test pour vérifier que l'empreinte est ajoutee au patient
-	appelTestMesurerPatient(i, t, m,p);
+	//appelTestMesurerPatient( t, m,p);
+
+	//test pour vérifier que l'on charge correctement les empreintes
+
+	appelTestChargerEmpreinte(i, t, m,p);
 	
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");

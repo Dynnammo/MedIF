@@ -68,6 +68,7 @@ public:
 	//void testRechercherAnalyse();
 	void testSeConnecter( Medecin m, vector <Medecin> liste);
 	void testMesurerPatient(string mesures, Patient p, Medecin m);
+	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini);
 
 	//--------------------------------------------- Tests de la classe Analyse
 

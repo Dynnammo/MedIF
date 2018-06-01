@@ -52,7 +52,7 @@ public:
     void afficherMaladies(list <Maladie> lm);
 	//void afficherAnalyse(Patient p);
 	void mesurerPatient(string mesures, Patient &p);
-	void chargerEmpreinte(string nomFichier, list <Patient> liste);
+	void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste);
 
 	// type M�thode ( liste de param�tres );
 	// Mode d'emploi :

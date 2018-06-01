@@ -112,9 +112,11 @@ void Medecin::mesurerPatient(string mesures, Patient &p) {
 	Empreinte e(mesures);
 	p.setEmpreintes(e);
 
+
+
 }
 
-void Medecin::chargerEmpreinte(string nomFichier, list <Patient> liste) { //changer diagramme uml
+void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //changer diagramme uml
 
 	ifstream fichier(nomFichier, ios::in);  // on ouvre en lecture
 
@@ -126,18 +128,26 @@ void Medecin::chargerEmpreinte(string nomFichier, list <Patient> liste) { //chan
 		int test;
 		Patient p;
 		string::size_type sz;
+		getline(fichier, line);
 		while (getline(fichier, line)) {
 			pos = line.find(';');
 			idP = line.substr(0,pos);
 			line.erase(0, pos + 1); //j'enlève l'id du patient de l'Empreinte
-			cout << "test pour voir si l'idP est bon :" << idP;
-			cout << "test pour voir si line est bon :" << line;
-			for (list<Patient>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
-				p = *it;
+			//cout << "test pour voir si l'idP est bon : " << idP<<endl;
+			//cout << "test pour voir si line est bon : " << line<<endl;
+			for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++) {
+			
+				//cout << "je passe" << endl;
 				test = stoi(idP, &sz); //convertit l'id du Patient de string à int
-				if (p.getIdPersonne() == test ) {
-
-					mesurerPatient(line, p);
+				//cout << "Conversion reussie :" << test << endl;
+				if (it->getIdPersonne() == test ) {
+					//Patient p = *it;
+					//cout << "J'ai reconnu à quel patient appartenait cette empreinte!" << endl;
+					mesurerPatient(line, *it);
+					//cout << "Modif de liste :" << (*it).getEmpreintes().back().getMesures() << endl;
+					/*Empreinte e = p.getEmpreintes().back();
+					cout << "Modif de p: " << e.getMesures() << endl;*/
+					
 				}
 			}
 			

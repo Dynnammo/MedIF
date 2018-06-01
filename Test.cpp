@@ -75,3 +75,23 @@ using namespace std;
 	
 		cout << e.getMesures();
 	}
+
+	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini) {
+		cout << "----------- Test Charger Empreinte -----------" << endl;
+		
+		m.chargerEmpreinte(nomFichier, liste);
+		
+	
+		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++){
+			cout << "Liste Patients pas vide" << endl;
+			list<Empreinte> le = (*it).getEmpreintes();
+			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++) {
+				cout << "Je passe dans la liste d'empreinte, elle n'est pas vide" << endl;
+				Empreinte temp = *it2;
+
+				cout << temp.getMesures() << endl;;
+			}
+		}
+
+		
+	}
