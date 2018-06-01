@@ -207,10 +207,6 @@ unordered_map<string, double> Analyse::getMaladiesPotentielles()
 	return this->maladiesPotentielles;
 }
 
-Analyse::Analyse rechercherAnalyse(int id){
-	
-}
-
 int Analyse::getId()
 // type Analyse::Méthode ( liste des paramètres )
 // Algorithme :

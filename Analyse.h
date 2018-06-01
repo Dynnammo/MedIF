@@ -73,13 +73,6 @@ public:
 	// Contrat :
 	//
 
-	Analyse rechercherAnalyse(int id);
-	// type Méthode ( liste des paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
 
 
 //------------------------------------------------- Surcharge d'opérateurs

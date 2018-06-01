@@ -12,6 +12,9 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include "Test.h"
+#include "Medecin.h"
+
 #include <string>
 
 //------------------------------------------------------ Include personnel
@@ -44,13 +47,12 @@ using namespace std;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
-	void Test::testSeConnecter(string nomFichier, Medecin m)
+	void Test::testSeConnecter(string nomFichier, Medecin m, vector <Medecin> liste)
 	{
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
-		vector<Medecin> vm;
-		vm.push_back(m);
-		bool estConnecte = m.seConnecter(vm);
+
+		bool estConnecte = m.seConnecter(liste);
 
 		if (estConnecte) {
 

@@ -1,19 +1,19 @@
 /*************************************************************************
 Medecin  -  description
--------------------
-début                : 27.04.2018
+-------------------     
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Medecin> (fichier Medecin.cpp) --
+//---------- Rï¿½alisation de la classe <Medecin> (fichier Medecin.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 #include <iostream>
 using namespace std;
 
@@ -22,7 +22,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
 
 bool Medecin::seConnecter(vector<Medecin> liste)
 {
@@ -118,7 +118,7 @@ void Medecin::chargerEmpreinte(string nomFichier, list <Patient> liste) { //chan
 
 	ifstream fichier(nomFichier, ios::in);  // on ouvre en lecture
 
-	if (fichier)  // si l'ouverture a fonctionné
+	if (fichier)  // si l'ouverture a fonctionnï¿½
 	{
 		string line;
 		string idP;
@@ -129,12 +129,12 @@ void Medecin::chargerEmpreinte(string nomFichier, list <Patient> liste) { //chan
 		while (getline(fichier, line)) {
 			pos = line.find(';');
 			idP = line.substr(0,pos);
-			line.erase(0, pos + 1); //j'enlève l'id du patient de l'Empreinte
+			line.erase(0, pos + 1); //j'enlï¿½ve l'id du patient de l'Empreinte
 			cout << "test pour voir si l'idP est bon :" << idP;
 			cout << "test pour voir si line est bon :" << line;
 			for (list<Patient>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 				p = *it;
-				test = stoi(idP, &sz); //convertit l'id du Patient de string à int
+				test = stoi(idP, &sz); //convertit l'id du Patient de string ï¿½ int
 				if (p.getIdPersonne() == test ) {
 
 					mesurerPatient(line, p);
@@ -147,16 +147,16 @@ void Medecin::chargerEmpreinte(string nomFichier, list <Patient> liste) { //chan
 		cerr << "Impossible d'ouvrir le fichier !" << endl;
 	}
 }
-// type ${file_base}::Méthode ( liste de paramètres )
+// type ${file_base}::Mï¿½thode ( liste de paramï¿½tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de Mï¿½thode
 
 //------------------------------------------------------ Getters - Setters
 
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 Medecin & Medecin::operator = ( Medecin const & unMedecin)
 // Algorithme :
 //
@@ -168,11 +168,19 @@ Medecin & Medecin::operator = ( Medecin const & unMedecin)
 	return *this;
 } //----- Fin de operator =
 
+ostream &operator<< (ostream &os, const Medecin &m){
+	os << "Medecin" << endl;
+	os << m.nom <<endl;
+	os << m.prenom <<endl;
+	os<< m.mdp <<endl;
+	return os;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-  //------------------------------------------------------- Méthodes privées
+  //------------------------------------------------------- Mï¿½thodes privï¿½es

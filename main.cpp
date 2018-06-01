@@ -43,12 +43,19 @@ vector<string> split(string lignef, string del)
 
 int main()
 {
-
-	/*Test t;
-
-	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
-	//t.testSeConnecter("MedecinIni.txt", m);
+	Test t;
 	Initialisation i;
+	i.initMedecin("fichierMedecin.txt");
+	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	Patient p("Patient","Tifenn","tifenn.patient@jesuismalade.fr");
+	cout << m;
+	cout << p;
+	i.afficherMedecin();
+	i.afficherPatient();
+	cout << "Fin du programme"<<endl;
+	//m.faireAnalyse()
+	//t.testSeConnecter("MedecinIni.txt", m);
+	/*Initialisation i;
 
 	i.init("test2.txt");
 	ifstream lecture("test3.txt");
@@ -68,7 +75,9 @@ int main()
 	
 	a.analyseEmpreinte(e, i.getListeMaladie());
 	cout << a << endl;*/
-	vector<string> vec;
+
+	// TEST DE VITESSE
+	/*vector<string> vec;
 
 	string test = "A.Z.E.R.T.Y.A.Z.E.R.T.Y.G";
 	time_t init = time(0);
@@ -96,5 +105,5 @@ int main()
 	}
 	time_t tvec22 = time(0);
 	cout << tvec22 - tvec2 << endl;
-	return 0;
+	return 0;*/
 }
