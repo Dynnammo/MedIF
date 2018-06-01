@@ -79,8 +79,11 @@ public:
 	//
 
 	Medecin(const Medecin &m) 
+		:mdp(m.mdp), Personne(m.nom, m.prenom, m.mail)
 	{
-
+#ifdef MAP
+   		cout << "Appel au constructeur de copie de <Medecin>" << endl;
+#endif
 	}
 	Medecin()
 	{
@@ -136,4 +139,3 @@ private:
 //----------------------------------------- Types d�pendants de <Medecin>
 
 #endif // MEDECIN_H
-#pragma once

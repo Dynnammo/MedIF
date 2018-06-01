@@ -37,7 +37,7 @@ vector<string> Analyse::split(string &lignef, string del)
 // Algorithme :
 //
 	vector<string> reponse;
-	int pos = 0;
+	unsigned int pos = 0;
 	while (pos != -1)
 	{
 		pos = lignef.find(del);

@@ -1,11 +1,7 @@
 /*************************************************************************
 Medecin  -  description
 -------------------     
-<<<<<<< HEAD
 dï¿½but                : 27.04.2018
-=======
-début                : 27.04.2018
->>>>>>> 870942ccdf807d0da48bd030eb9f48ceb3916ae8
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
 									Lï¿½o PAPE
@@ -83,10 +79,10 @@ Analyse Medecin::rechercherAnalyse(int id, Patient p) {
 
 		
 		if (a.getId() == id) {
-
 			a = *it;
+		} else {
+			cout << "Rien trouvÃ©" << endl;
 		}
-
 
 	}
 	return a;
@@ -177,6 +173,7 @@ ostream &operator<< (ostream &os, const Medecin &m){
 	os << m.nom <<endl;
 	os << m.prenom <<endl;
 	os<< m.mdp <<endl;
+	os<< m.mail <<endl;
 	return os;
 }
 
