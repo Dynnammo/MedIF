@@ -32,44 +32,6 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-vector<string> Analyse::split(string &lignef, string del)
-{
-// Algorithme :
-//
-	vector<string> reponse;
-	int pos = 0;
-	while (pos != -1)
-	{
-		pos = lignef.find(del);
-		if (del.size() != lignef.size())
-		{
-
-			if (pos != 0)
-			{
-				reponse.push_back(lignef.substr(0, pos));
-
-			}
-			if (pos != lignef.size() - 1 && pos != -1)
-			{
-				lignef.erase(0, pos + del.size());
-			}
-			else if (pos != -1)
-			{
-				lignef.erase(pos, pos + del.size());
-				break;
-			}
-		}
-		else
-		{
-			pos = -1;
-			reponse.push_back(lignef);
-		}
-
-	}
-	return reponse;
-
-}
-
 void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie)
 // Algorithme : Créer une map temporaire avec les maladies
 //pour chaque symptome descriminant (intervalle ou sequence string) parcourir la map et exclure les maladies 
