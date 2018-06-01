@@ -83,7 +83,7 @@ int main()
 	
 	a.analyseEmpreinte(e, i.getListeMaladie());
 	cout << a << endl;*/
-	vector<string> vec;
+	//vector<string> vec;
 
 	/*string test = "A.Z.E.R.T.Y.A.Z.E.R.T.Y.G";
 	time_t init = time(0);
@@ -111,5 +111,7 @@ int main()
 	}
 	time_t tvec22 = time(0);
 	cout << tvec22 - tvec2 << endl;*/
+	int n;
+	cin >> n;
 	return 0;
 }
