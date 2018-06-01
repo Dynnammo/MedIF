@@ -44,6 +44,11 @@ void appelTestSeConnecter(Initialisation ini, Test t) {
 	ini.initMedecin("MedecinIni.txt");
 
 	vector <Medecin> medecins = ini.getListeMedecin();
+	
+	t.testSeConnecter(m, medecins);
+}
+
+void appelTestMesurerPatient(Initialisation ini, Test t) {
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	t.testSeConnecter(m, medecins);
 }
@@ -55,7 +60,7 @@ void appelTestAjouterPatient(Test t, Medecin m, Initialisation i)
 }
 int main()
 {
-	/* Initialisation des variables indispensable a tous les tests */
+	/* Initialisation des variables indispensable a tous les tests*/
 	Test t;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Initialisation ini;
