@@ -24,6 +24,20 @@ e-mail               : @insa-lyon.fr
 
 using namespace std;
 
+vector<string> split(string lignef, string del)
+{
+	// Algorithme :
+	//
+	vector<string> reponse;
+	int pos = 0;
+	while (pos != -1)
+	{
+		pos = lignef.find(del);
+		reponse.push_back(lignef.substr(0, pos));
+		lignef.erase(0, pos + 1);
+	}
+	return reponse;
+}
 
 void appelTestSeConnecter(Initialisation ini, Test t, Medecin m)
 {
@@ -92,10 +106,6 @@ int main()
 	//i.initMedecin("fichierMedecin.txt");
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
-	//cout << m;
-	//cout << p;
-	//i.afficherMedecin();
-	//i.afficherPatient();
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
 	appelTestAjouterPatient(t, m, i);

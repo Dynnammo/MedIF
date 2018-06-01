@@ -103,9 +103,8 @@ ostream& Attribut_enumeration::afficher(ostream &flux)
 } //----- Fin de operator <<
 
   //-------------------------------------------- Constructeurs - destructeur
-Attribut_enumeration::Attribut_enumeration(const Attribut_enumeration & unAttribut_enumeration)
-// Algorithme :
-//
+Attribut_enumeration::Attribut_enumeration(const Attribut_enumeration & a)
+	:nbValeurs(a.nbValeurs), valeurs(a.valeurs), Attribut(a.idAttribut, a.nomAttribut) 
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Attribut_enumeration>" << endl;

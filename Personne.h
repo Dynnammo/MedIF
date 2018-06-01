@@ -1,10 +1,10 @@
 /*************************************************************************
 Personne  -  description
 -------------------
-début                : 27.04.2018
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
@@ -18,15 +18,15 @@ e-mail               : @insa-lyon.fr
 
 using namespace std;
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 
 //------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 static  int id1 = 0;
 //------------------------------------------------------------------------ 
-// Rôle de la classe <Personne>
-// définit les attributs communs aux médecins et aux patients
+// Rï¿½le de la classe <Personne>
+// dï¿½finit les attributs communs aux mï¿½decins et aux patients
 //
 //------------------------------------------------------------------------ 
 class Personne
@@ -34,13 +34,13 @@ class Personne
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
-	// type Méthode ( liste de paramètres );
+	//----------------------------------------------------- Mï¿½thodes publiques
+	// type Mï¿½thode ( liste de paramï¿½tres );
 	// Mode d'emploi :
 	//
 	// Contrat :
 	
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 	Personne&  operator = ( Personne const &p)
 	{
 		this->idPersonne = p.idPersonne;
@@ -65,7 +65,7 @@ public:
     Personne()
 	{
 #ifdef MAP
-	    cout << "Appel au constructeur par défaut de <Personne>" << endl;
+	    cout << "Appel au constructeur par dï¿½faut de <Personne>" << endl;
 #endif
 	}//----- Fin de Personne
 
@@ -88,29 +88,29 @@ public:
 	//------------------------------------------------------------------ PRIVE 
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
 private:
-	//------------------------------------------------------- Méthodes privées
+	//------------------------------------------------------- Mï¿½thodes privï¿½es
 
 protected:
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
 	int idPersonne;
     string prenom;
 	string nom;
 	string mail;
 
 private:
-	//------------------------------------------------------- Attributs privés
+	//------------------------------------------------------- Attributs privï¿½s
 
 	//---------------------------------------------------------- Classes amies
 
-	//-------------------------------------------------------- Classes privées
+	//-------------------------------------------------------- Classes privï¿½es
 
-	//----------------------------------------------------------- Types privés
+	//----------------------------------------------------------- Types privï¿½s
 
 };
 
-//----------------------------------------- Types dépendants de <Personne>
+//----------------------------------------- Types dï¿½pendants de <Personne>
 
 #endif // PERSONNE_H

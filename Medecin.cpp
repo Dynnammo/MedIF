@@ -1,11 +1,7 @@
 /*************************************************************************
 Medecin  -  description
 -------------------     
-<<<<<<< HEAD
 dï¿½but                : 27.04.2018
-=======
-début                : 27.04.2018
->>>>>>> 870942ccdf807d0da48bd030eb9f48ceb3916ae8
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
 									Lï¿½o PAPE
@@ -19,10 +15,12 @@ e-mail               : @insa-lyon.fr
 
 //-------------------------------------------------------- Include systï¿½me
 #include <iostream>
-using namespace std;
+#include <string>
 
 //------------------------------------------------------ Include personnel
 #include "Medecin.h"
+#include "Empreinte.h"
+using namespace std;
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
@@ -83,10 +81,10 @@ Analyse Medecin::rechercherAnalyse(int id, Patient p) {
 
 		
 		if (a.getId() == id) {
-			cout << "je passe ici" << endl;
 			a = *it;
+		} else {
+			cout << "Rien trouvÃ©" << endl;
 		}
-
 
 	}
 	return a;
@@ -136,10 +134,10 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 		while (getline(fichier, line)) {
 			pos = line.find(';');
 			idP = line.substr(0,pos);
-			line.erase(0, pos + 1); //j'enlève l'id du patient de l'Empreinte
+			line.erase(0, pos + 1); //j'enlï¿½ve l'id du patient de l'Empreinte
 			for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
 			{
-				test = stoi(idP, &sz); //convertit l'id du Patient de string à int
+				test = stoi(idP, &sz); //convertit l'id du Patient de string ï¿½ int
 				if (it->getIdPersonne() == test )
 				{
 					mesurerPatient(line, *it);					
@@ -172,11 +170,39 @@ ostream &operator<< (ostream &os, const Medecin &m){
 	os << m.nom <<endl;
 	os << m.prenom <<endl;
 	os<< m.mdp <<endl;
+	os<< m.mail <<endl;
 	return os;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
+	Medecin::Medecin(const Medecin &m)
+		:mdp(m.mdp), Personne(m.nom, m.prenom, m.mail)
+	{
+#ifdef MAP
+   		cout << "Appel au constructeur de copie de <Medecin>" << endl;
+#endif
+	}
 
+	Medecin::Medecin()	{
+#ifdef MAP
+   		cout << "Appel au constructeur par defaut de <Medecin>" << endl;
+#endif
+	} //----- Fin de Medecin
+
+	Medecin::Medecin(string n, string m, string p, string motDePasse)
+		:Personne(n, p, m), mdp(motDePasse)
+	{
+#ifdef MAP
+    cout << "Appel au constructeur de <Medecin>" << endl;
+#endif
+	}
+	
+	Medecin::~ Medecin()
+	{
+#ifdef MAP
+    cout << "Appel au destructeur de <Medecin>" << endl;
+#endif
+	} //----- Fin de ~Medecin//----- Fin de Medecin
 
   //------------------------------------------------------------------ PRIVE
 

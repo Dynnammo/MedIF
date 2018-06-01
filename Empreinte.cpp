@@ -1,19 +1,19 @@
 /*************************************************************************
 Empreinte  -  description
 -------------------
-début                : 01.06.2018
+dï¿½but                : 01.06.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 Anatolii GASIUK
-Léo PAPE
+Lï¿½o PAPE
 Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Empreinte> (fichier Empreinte.cpp) ------------
+//---------- Rï¿½alisation de la classe <Empreinte> (fichier Empreinte.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 #include <string>
@@ -25,18 +25,18 @@ using namespace std;
 
 //---------------------------------------------------- Variables de classe
 
-//----------------------------------------------------------- Types privés
+//----------------------------------------------------------- Types privï¿½s
 
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
-//----------------------------------------------------- Méthodes publiques
-// type Empreinte::Méthode ( liste de paramètres )
+//----------------------------------------------------- Mï¿½thodes publiques
+// type Empreinte::Mï¿½thode ( liste de paramï¿½tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de Mï¿½thode
 
 
 //------------------------------------------------------ Getters - Setters
@@ -45,7 +45,7 @@ string Empreinte::getMesures() const
 	return mesures;
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 Empreinte & Empreinte::operator = (const Empreinte & uneEmpreinte)
 {
 	this->idEmpreinte = uneEmpreinte.idEmpreinte;
@@ -62,9 +62,9 @@ ostream & operator << (ostream & out, const Empreinte & e)
 
 //-------------------------------------------- Constructeurs - destructeur
 Empreinte::Empreinte(const Empreinte & unEmpreinte)
-	:idEmpreinte(unEmpreinte.idEmpreinte)
+	:idEmpreinte(unEmpreinte.idEmpreinte), mesures(unEmpreinte.mesures)
 {
-	mesures = unEmpreinte.getMesures();
+	///mesures = unEmpreinte.getMesures();
 #ifdef MAP
 	cout << "Appel au constructeur de copie de <Empreinte>" << endl;
 #endif
@@ -88,7 +88,7 @@ Empreinte::~Empreinte()
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-  //------------------------------------------------------- Méthodes privées
+  //------------------------------------------------------- Mï¿½thodes privï¿½es
 

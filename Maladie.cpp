@@ -1,19 +1,19 @@
 /*************************************************************************
 Maladie  -  description
 -------------------
-début                : 27.04.2018
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Maladie> (fichier Maladie.cpp) ------------
+//---------- Rï¿½alisation de la classe <Maladie> (fichier Maladie.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 #include <vector>
@@ -26,13 +26,13 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
-//----------------------------------------------------------- Types privés
+//----------------------------------------------------------- Types privï¿½s
 
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
 void Maladie::ajouterAttribut(Attribut* attribut)
 {
 	this->listeAttribut.push_back(attribut);
@@ -63,7 +63,7 @@ void Maladie::setId(int id)
 {
 	this->idMaladie = id;
 }
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 Maladie & Maladie::operator = ( Maladie const & unMaladie)
 // Algorithme :
 //
@@ -85,12 +85,11 @@ ostream& operator<<(ostream &flux, Maladie const& maladie)
 
 	}
 	return flux;
-} //----- Fin de Méthode
+} //----- Fin de Mï¿½thode
 
   //-------------------------------------------- Constructeurs - destructeur
-Maladie::Maladie(const Maladie & unMaladie)
-// Algorithme :
-//
+Maladie::Maladie(const Maladie &m)
+	:idMaladie(m.idMaladie), nomMaladie(m.nomMaladie), listeAttribut(m.listeAttribut)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Maladie>" << endl;
@@ -103,7 +102,7 @@ Maladie::Maladie()
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur par défaut de <Maladie>" << endl;
+    cout << "Appel au constructeur par dï¿½faut de <Maladie>" << endl;
 #endif
 } //----- Fin de Maladie
 
@@ -135,7 +134,7 @@ Maladie::~Maladie()
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-  //------------------------------------------------------- Méthodes privées
+  //------------------------------------------------------- Mï¿½thodes privï¿½es
 
