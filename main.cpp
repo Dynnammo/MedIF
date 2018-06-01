@@ -60,7 +60,7 @@ void appelTestMesurerPatient(Initialisation ini, Test t, Medecin m, Patient p) {
 }
 int main()
 {
-	/* Initialisation des variables indispensable a tous les tests*/
+	/* Initialisation des variables indispensable a tous les tests*/ 
 	Test t;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Patient p("Baker", "Hanna", "hanna.bake@tapes.com");
