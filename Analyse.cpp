@@ -16,6 +16,7 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include système
 #include <iostream>
 #include <regex>
+#include <string>
 #include <sstream>
 using namespace std;
 
@@ -74,13 +75,15 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 //pour chaque symptome descriminant (intervalle ou sequence string) parcourir la map et exclure les maladies 
 //avec les maladies restante faire un calcule de probabilité de la maladie
 {
-	vector<string> symptomes; // = split(e.getMesures(), ";");
+	vector<string> symptomes;
 	// on recupères les symptomes de l'empreinte
-	for(istringstream iss(e.getMesures());;) {
-		string item; getline(iss, item, ';');
+	for (istringstream iss(e.getMesures());;) 
+	{
+		string item; 
+		getline(iss, item, ';');
 		if (iss.fail()) break;
 		symptomes.push_back(item);
-	}// on recupères les symptomes de l'empreinte
+	}// on recupères les symptomes de l'empreinte en split sur ';'
 	
 	unordered_map <int, Maladie> temp; //map temporaire des maladies
 	unordered_map <int, Maladie>::iterator it;
