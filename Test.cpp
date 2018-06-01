@@ -13,6 +13,7 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 #include <iostream>
 #include "Test.h"
+#include "Medecin.h"
 
 #include <string>
 
@@ -45,12 +46,12 @@ using namespace std;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
-	void Test::testSeConnecter(string nomFichier, Medecin m)
+	void Test::testSeConnecter(string nomFichier, Medecin m, vector <Medecin> liste)
 	{
 		Initialisation ini;
 		ini.initMedecin(nomFichier);
 
-		bool estConnecte = m.seConnecter();
+		bool estConnecte = m.seConnecter(liste);
 
 		if (estConnecte) {
 
