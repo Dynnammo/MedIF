@@ -53,25 +53,21 @@ public:
 	//------------------------------------------------------ Getters - Setters
 	list <Empreinte> getEmpreintes() 
 	{
-
 		return le;
 	}
 
 	list <Analyse> getAnalyses() 
 	{
-
 		return la;
 	}
 
-	void  setAnalyses(Analyse a) {
-
+	void setAnalyses(Analyse &a)
+	{
 		la.push_back(a);
-
 	}
 
-	void setEmpreintes(Empreinte e)
+	void setEmpreintes(Empreinte &e)
 	{
-
 		 le.push_back(e);
 	}
 	//------------------------------------------------- Surcharge d'op�rateurs
@@ -90,7 +86,7 @@ public:
 	friend ostream &operator<<(ostream &os, const Patient  &p){
 		os << "Patient"<< endl;
 		os << "Nom " << p.nom << endl;
-		os << "Prénom " << p.prenom << endl;
+		os << "Prenom " << p.prenom << endl;
 		os << "Mail " << p.mail << endl;
 		return os;
 	}

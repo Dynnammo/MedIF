@@ -37,7 +37,7 @@ vector<string> Analyse::split(string &lignef, string del)
 // Algorithme :
 //
 	vector<string> reponse;
-	int pos = 0;
+	unsigned int pos = 0;
 	while (pos != -1)
 	{
 		pos = lignef.find(del);
@@ -241,8 +241,10 @@ Analyse&  Analyse::operator =(Analyse const &a)
     pourcentage = 0;
 }*/
 
-Analyse::Analyse ( const Analyse & unAnalyse )
+Analyse::Analyse ( const Analyse & a)
+	:idAnalyse(a.idAnalyse), maladiesPotentielles(a.maladiesPotentielles)
 {
+	
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Analyse>" << endl;
 #endif
@@ -259,10 +261,7 @@ Analyse::Analyse ( )
 
 
 Analyse::~Analyse ( )
-// Algorithme :
-//
 {
-    idA--;
 #ifdef MAP
     cout << "Appel au destructeur de <Analyse>" << endl;
 #endif

@@ -1,19 +1,19 @@
 /*************************************************************************
 Attribut_intervalle  -  description
 -------------------
-début                : 27.04.2018
+dï¿½but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Lï¿½o PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Attribut_intervalle> (fichier Attribut_intervalle.cpp) ------------
+//---------- Rï¿½alisation de la classe <Attribut_intervalle> (fichier Attribut_intervalle.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 using namespace std;
 #include <iostream>
 
@@ -28,18 +28,18 @@ using namespace std;
 double borneSup;
 double borneInf;
 double moyenne;
-//----------------------------------------------------------- Types privés
+//----------------------------------------------------------- Types privï¿½s
 
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
 
-//----------------------------------------------------- Méthodes publiques
-// type Attribut_intervalle::Méthode ( liste de paramètres )
+//----------------------------------------------------- Mï¿½thodes publiques
+// type Attribut_intervalle::Mï¿½thode ( liste de paramï¿½tres )
 // Algorithme :
 //
 //{
-//} //----- Fin de Méthode
+//} //----- Fin de Mï¿½thode
 
 bool Attribut_intervalle :: verification(double valeur)
 {
@@ -89,7 +89,7 @@ void Attribut_intervalle::setMoyenne(double moy)
 	this->moyenne = moy;
 }
 
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 Attribut_intervalle & Attribut_intervalle::operator = (const Attribut_intervalle & unAttribut_intervalle)
 // Algorithme :
 //
@@ -121,17 +121,11 @@ ostream& Attribut_intervalle::afficher (ostream &flux)
 } //----- Fin de operator <<
 
   //-------------------------------------------- Constructeurs - destructeur
-Attribut_intervalle::Attribut_intervalle(const Attribut_intervalle & unAttribut_intervalle)
-// Algorithme :
-//
-{
-
-} //----- Fin de Attribut_intervalle (constructeur de copie)
+ //----- Fin de Attribut_intervalle (constructeur de copie)
 
 
-Attribut_intervalle::Attribut_intervalle()
-// Algorithme :
-//
+Attribut_intervalle::Attribut_intervalle(const Attribut_intervalle &a)
+	:borneInf(a.borneInf),borneSup(a.borneSup),moyenne(a.moyenne), Attribut(a.idAttribut,a.nomAttribut)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Attribut_intervalle>" << endl;
@@ -164,7 +158,7 @@ Attribut_intervalle::~Attribut_intervalle()
 
   //------------------------------------------------------------------ PRIVE
 
-  //----------------------------------------------------- Méthodes protégées
+  //----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-  //------------------------------------------------------- Méthodes privées
+  //------------------------------------------------------- Mï¿½thodes privï¿½es
 

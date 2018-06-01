@@ -285,7 +285,8 @@ void Initialisation::afficherPatient(){
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Initialisation::Initialisation ( const Initialisation & unInitialisation )
+Initialisation::Initialisation ( const Initialisation &i )
+	:listeMedecin(i.listeMedecin),listePatient(i.listePatient),mapMaladie(i.mapMaladie)
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Initialisation>" << endl;
