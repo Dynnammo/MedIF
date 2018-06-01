@@ -1,5 +1,3 @@
-#pragma once
-#pragma once
 /*************************************************************************
 Empreinte  -  description
 -------------------
@@ -15,18 +13,12 @@ e-mail               : @insa-lyon.fr
 #if ! defined ( EMPREINTE_H )
 #define EMPREINTE_H
 
-
+//-------------------------------------------------------- Include système
 #include <string>
 #include <iostream>
 #include <fstream>
 
-
 using namespace std;
-
-
-//--------------------------------------------------- Interfaces utilis�es
-
-//------------------------------------------------------------- Constantes 
 
 //------------------------------------------------------------------ Types 
 static int id = 0;
@@ -39,100 +31,32 @@ static int id = 0;
 class Empreinte 
 {
 	//----------------------------------------------------------------- PUBLIC
-
 public:
 	
 	//----------------------------------------------------- M�thodes publiques
-	// type M�thode ( liste de param�tres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-
-	string getMesures() const
-	{
-		return mesures;
-	}
-	// Mode d'emploi :
-	//
-	// Contrat :
-
-
-	//
-
+	//------------------------------------------------------ Getters - Setters
+	string getMesures() const;
 
 	//------------------------------------------------- Surcharge d'op�rateurs
+	Empreinte & operator = (const Empreinte & uneEmpreinte);
 
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-	Empreinte & operator = (const Empreinte & uneEmpreinte)
-	// Algorithme :
-	//
-	{
-		this->idEmpreinte = uneEmpreinte.idEmpreinte;
-		return *this;
-	} //----- Fin de operator =
+	friend ostream & operator << (ostream & out, const Empreinte & e);
 
 	//-------------------------------------------- Constructeurs - destructeur
+	Empreinte(string m);
 
-	// Mode d'emploi (constructeur de copie) :
-	//
-	// Contrat :
-	//
-	Empreinte(string m) :mesures(m) 
-	{
-#ifdef MAP
-		cout << "Appel au constructeur de <Empreinte>" << endl;
-#endif
-	}
-	// Mode d'emploi :
+	Empreinte(const Empreinte & unEmpreinte);
 
-	// Contrat :
-	//
+	virtual ~Empreinte();
 
-	virtual ~Empreinte()
-		// Algorithme :
-		//
-	{
-		id--;
-#ifdef MAP
-		cout << "Appel au destructeur de <Empreinte>" << endl;
-#endif
-	} //----- Fin de ~Empreinte
 
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+	//------------------------------------------------------- Attributs publics
 
-	//------------------------------------------------------------------ PRIVE 
+	int idEmpreinte;
 
-protected:
-	//----------------------------------------------------- M�thodes prot�g�es
-
+//------------------------------------------------------------------ PRIVE
 private:
-	//------------------------------------------------------- M�thodes priv�es
-
-public:
- int idEmpreinte;
-protected:
-	//----------------------------------------------------- Attributs prot�g�s
-
-
-private:
-	//------------------------------------------------------- Attributs priv�s
-	//static int idEmpreinte; 
+	//------------------------------------------------------- Attributs priv�s 
 	string mesures;
-	//---------------------------------------------------------- Classes amies
-
-	//-------------------------------------------------------- Classes priv�es
-
-	//----------------------------------------------------------- Types priv�s
-
 };
-
-//----------------------------------------- Types d�pendants de <Empreinte>
-
 #endif // EMPREINTE_H
-#pragma once
