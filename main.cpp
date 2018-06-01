@@ -47,23 +47,25 @@ void appelTestSeConnecter(Initialisation ini, Test t) {
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	t.testSeConnecter(m, medecins);
 }
+
+void appelTestAjouterPatient(Test t, Medecin m, Initialisation i)
+{
+	vector <Patient> listeP = i.getListePatient();
+	t.testAjouterPatient(m, listeP);
+}
 int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
 	Test t;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
-	Initialisation i;
+	Initialisation ini;
 	
 	// test Ajouter Patient
-	appelTestAjouterPatient(t, m, i);
+	appelTestAjouterPatient(t, m, ini);
 
 	//test pour vérifier qu'un Medecin puisse se connecter.
 	appelTestSeConnecter(ini, t);
 	
-	/*
-	//t.testSeConnecter("MedecinIni.txt", m);
-	
-
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;

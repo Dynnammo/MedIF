@@ -12,15 +12,13 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include "Test.h"
-#include "Medecin.h"
-
 #include <string>
 
 //------------------------------------------------------ Include personnel
-
 #include "Medecin.h"
 #include "Initialisation.h"
+#include "Test.h"
+#include "Medecin.h"
 
 using namespace std;
 
@@ -51,7 +49,7 @@ using namespace std;
 
 	void Test::testSeConnecter( Medecin m, vector <Medecin> liste)
 	{
-		
+		cout << "----------- Test se Connecter -----------" << endl;
 
 		bool estConnecte = m.seConnecter(liste);
 
@@ -63,10 +61,12 @@ using namespace std;
 
 			cout << "Le médecin n'existe pas." << endl;
 		}
+		cout << "----------- Fin de Test se Connecter -----------" << endl;
 	}
 
-	void Test::testMesurerPatient(string mesures, Patient p, Medecin m) {
-
+	void Test::testMesurerPatient(string mesures, Patient p, Medecin m)
+	{
+		cout << "----------- Test Mesurer Patient -----------" << endl;
 		m.mesurerPatient(mesures, p);
 
 		list <Empreinte> le = p.getEmpreintes();
@@ -77,5 +77,5 @@ using namespace std;
 
 		cout << temp.getMesures();
 
-
+		cout << "----------- Fin de Test se Connecter -----------" << endl;
 	}
