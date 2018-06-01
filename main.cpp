@@ -155,12 +155,6 @@ void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
 	t.testFaireAnalyse(m, p, lm);
 }
 
-void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
-{
-	unordered_map<int, Maladie> lm = i.getListeMaladie();
-	t.testFaireAnalyse(m, p, lm);
-}
-
 int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
@@ -191,16 +185,16 @@ int main()
 	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
-	appelTestAjouterPatient(t, m, i);
+	//appelTestAjouterPatient(t, m, i);
 
 	// test pour vérifier qu'un Medecin puisse se connecter.
-	appelTestSeConnecter(i, t,m);
+	//appelTestSeConnecter(i, t,m);
 
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	appelTestFaireAnalyse(t, m, p, i);
+	//appelTestFaireAnalyse(t, m, p, i);
 
 	//test pour vérifier que l'empreinte est ajoutee au patient
-	appelTestMesurerPatient( t, m,p);
+	//appelTestMesurerPatient( t, m,p);
 
 	//test pour vérifier que l'on charge correctement les empreintes
 	//appelTestChargerEmpreinte(i, t, m,p);
@@ -209,7 +203,7 @@ int main()
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
-	appelTestRechercherAnalyse(t, p, m);
+	//appelTestRechercherAnalyse(t, p, m);
 	cout << "Fin du programme" << endl;
 	
 	system("PAUSE");
