@@ -75,10 +75,6 @@ int main()
 	//test pour vérifier que l'empreinte est ajoutee au patient
 	appelTestMesurerPatient(i, t, m,p);
 	
-	/*
-	//t.testSeConnecter("MedecinIni.txt", m);
-	
-
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;
