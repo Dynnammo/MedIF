@@ -55,11 +55,8 @@ public:
 
 	//-------------------------------------------- Constructeurs - destructeur
     Personne(const Personne & p)
+		:prenom(p.prenom), nom(p.nom), idPersonne(p.idPersonne), mail(p.mail)
 	{
-		this->prenom = p.prenom;
-		this->nom = p.nom;
-		this->idPersonne = p.idPersonne;
-		this->mail = p.mail; 
 #ifdef MAP
 	    cout << "Appel au constructeur de copie de <Personne>" << endl;
 #endif
@@ -82,7 +79,7 @@ public:
 
 	virtual ~Personne()
 	{
-		id1--;
+		//id1--;
 #ifdef MAP
 	    cout << "Appel au destructeur de <Personne>" << endl;
 #endif

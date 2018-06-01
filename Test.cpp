@@ -44,7 +44,7 @@ using namespace std;
 			listeP[i].afficher();
 			cout << endl;
 		}
-		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
+		cout << "----------- FIN Test Ajouter Patient -----------\n" << endl;
 	}
 
 	void Test::testSeConnecter( Medecin m, vector <Medecin> liste)
@@ -55,13 +55,13 @@ using namespace std;
 
 		if (estConnecte) {
 
-			cout << "Le médecin est bien connecté à l'appli." << endl;
+			cout << "Le medecin est bien connecte a l'appli." << endl;
 		}
 		else {
 
-			cout << "Le médecin n'existe pas." << endl;
+			cout << "Le medecin n'existe pas." << endl;
 		}
-		cout << "----------- Fin de Test se Connecter -----------" << endl;
+		cout << "----------- FIN de Test se Connecter -----------\n" << endl;
 	}
 
 	void Test::testMesurerPatient(string mesures, Patient p, Medecin m)
@@ -73,7 +73,8 @@ using namespace std;
 	
 		Empreinte e= le.back();
 	
-		cout << e.getMesures();
+		cout << e.getMesures() << endl;
+		cout << "-----------  FIN Test Mesurer Patient -----------\n" << endl;
 	}
 
 	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini) {
@@ -82,17 +83,16 @@ using namespace std;
 		m.chargerEmpreinte(nomFichier, liste);
 		
 	
-		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++){
-			cout << "Liste Patients pas vide" << endl;
+		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
+		{
 			list<Empreinte> le = (*it).getEmpreintes();
-			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++) {
-				cout << "Je passe dans la liste d'empreinte, elle n'est pas vide" << endl;
+			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
+			{
 				Empreinte temp = *it2;
-
-				cout << temp.getMesures() << endl;;
+				cout << temp.getMesures() << endl;
 			}
 		}
-		cout << "-------------- FIN Test charger Empreinte -------------" << endl;
+		cout << "-------------- FIN Test charger Empreinte -------------\n" << endl;
 	}
 
 	void Test::testRechercherAnalyse(Patient &p, Medecin &m) {

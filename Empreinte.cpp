@@ -80,7 +80,6 @@ Empreinte::Empreinte(string m)
 
 Empreinte::~Empreinte()
 {
-	id--;
 #ifdef MAP
 	cout << "Appel au destructeur de <Empreinte>" << endl;
 #endif
