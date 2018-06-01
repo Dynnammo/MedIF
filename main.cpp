@@ -39,9 +39,8 @@ vector<string> split(string lignef, string del)
 	return reponse;
 }
 
-int main()
+void testsAnatolii()
 {
-
 	/*Test t;
 
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
@@ -94,21 +93,7 @@ int main()
 	}
 	time_t tvec22 = time(0);
 	cout << tvec22 - tvec2 << endl;
-	*/
-}
-vector<string> split(string lignef, string del)
-{
-	// Algorithme :
-	//
-	vector<string> reponse;
-	int pos = 0;
-	while (pos != -1)
-	{
-		pos = lignef.find(del);
-		reponse.push_back(lignef.substr(0, pos));
-		lignef.erase(0, pos + 1);
-	}
-	return reponse;
+	*/	
 }
 
 void appelTestSeConnecter(Initialisation ini, Test t, Medecin m)
@@ -145,6 +130,7 @@ void appelTestChargerEmpreinte(Initialisation ini, Test t, Medecin m,Patient p) 
 	t.testChargerEmpreinte(nomFichier, liste , m,ini);
 
 }
+
 int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
