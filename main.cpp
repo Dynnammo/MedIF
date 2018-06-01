@@ -24,79 +24,8 @@ e-mail               : @insa-lyon.fr
 
 using namespace std;
 
-vector<string> split(string lignef, string del)
+void testAnatolii()
 {
-	// Algorithme :
-	//
-	vector<string> reponse;
-	int pos = 0;
-	while (pos != -1)
-	{
-		pos = lignef.find(del);
-		reponse.push_back(lignef.substr(0, pos));
-		lignef.erase(0, pos + 1);
-	}
-	return reponse;
-}
-
-void appelTestSeConnecter(Initialisation ini, Test t, Medecin m)
-{
-
-	ini.initMedecin("MedecinIni.txt");
-
-	vector <Medecin> medecins = ini.getListeMedecin();
-	
-	t.testSeConnecter(m, medecins);
-}
-
-void appelTestMesurerPatient( Test t, Medecin m, Patient p) {
-	
-
-
-	string mesures = "1;True;2.12;13;3.156;1236";
-
-	t.testMesurerPatient(mesures, p, m);
-}
-
-void appelTestAjouterPatient(Test t, Medecin m, Initialisation i)
-{
-	vector <Patient> listeP = i.getListePatient();
-	t.testAjouterPatient(m, listeP);
-}
-
-void appelTestChargerEmpreinte(Initialisation ini, Test t, Medecin m,Patient p) {
-	
-	string nomFichier = "Mesures.txt";
-	ini.setPatient(p);
-	Patient p1("Janson", "Clay", "clay.janson@gmail.com");
-	ini.setPatient(p1);
-	Patient p2("Padilla", "Tonny", "tonny.padilla@gmail.com");
-	ini.setPatient(p2);
-	vector <Patient> liste = ini.getListePatient();
-	t.testChargerEmpreinte(nomFichier, liste , m,ini);
-
-}
-int main()
-{
-	/* Initialisation des variables indispensable a tous les tests*/ 
-	Test t;
-	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
-	Patient p("Baker", "Hanna", "hanna.bake@tapes.com");
-	Initialisation i;
-	
-	// test Ajouter Patient
-	//appelTestAjouterPatient(t, m, i);
-
-	//test pour vérifier qu'un Medecin puisse se connecter.
-	//appelTestSeConnecter(i, t,m);
-
-	//test pour vérifier que l'empreinte est ajoutee au patient
-	//appelTestMesurerPatient( t, m,p);
-
-	//test pour vérifier que l'on charge correctement les empreintes
-
-	appelTestChargerEmpreinte(i, t, m,p);
-	
 	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;
@@ -145,7 +74,55 @@ int main()
 	cout << tvec22 - tvec2 << endl;
 	*/
 }
+vector<string> split(string lignef, string del)
+{
+	// Algorithme :
+	//
+	vector<string> reponse;
+	int pos = 0;
+	while (pos != -1)
+	{
+		pos = lignef.find(del);
+		reponse.push_back(lignef.substr(0, pos));
+		lignef.erase(0, pos + 1);
+	}
+	return reponse;
+}
 
+void appelTestSeConnecter(Initialisation ini, Test t, Medecin m)
+{
+	ini.initMedecin("MedecinIni.txt");
+
+	vector <Medecin> medecins = ini.getListeMedecin();
+	
+	t.testSeConnecter(m, medecins);
+}
+
+void appelTestMesurerPatient( Test t, Medecin m, Patient p) {
+	
+	string mesures = "1;True;2.12;13;3.156;1236";
+
+	t.testMesurerPatient(mesures, p, m);
+}
+
+void appelTestAjouterPatient(Test t, Medecin m, Initialisation i)
+{
+	vector <Patient> listeP = i.getListePatient();
+	t.testAjouterPatient(m, listeP);
+}
+
+void appelTestChargerEmpreinte(Initialisation ini, Test t, Medecin m,Patient p) {
+	
+	string nomFichier = "Mesures.txt";
+	ini.setPatient(p);
+	Patient p1("Janson", "Clay", "clay.janson@gmail.com");
+	ini.setPatient(p1);
+	Patient p2("Padilla", "Tonny", "tonny.padilla@gmail.com");
+	ini.setPatient(p2);
+	vector <Patient> liste = ini.getListePatient();
+	t.testChargerEmpreinte(nomFichier, liste , m,ini);
+
+}
 int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
@@ -160,17 +137,23 @@ int main()
 	i.afficherPatient();
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
-	appelTestAjouterPatient(t, m, ini);
+	//appelTestAjouterPatient(t, m, i);
 
 	// test pour vérifier qu'un Medecin puisse se connecter.
-	appelTestSeConnecter(ini, t);
-	
+	//appelTestSeConnecter(i, t,m);
+
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	appelTestFaireAnalyse(t, m, p, ini);
-	
+	//appelTestFaireAnalyse(t, m, p, i);
+
+	//test pour vérifier que l'empreinte est ajoutee au patient
+	//appelTestMesurerPatient( t, m,p);
+
+	//test pour vérifier que l'on charge correctement les empreintes
+	appelTestChargerEmpreinte(i, t, m,p);
+
 	cout << "Fin du programme" << endl;
 	// pour eviter que la fenetre se ferme dans la foulee, un cin inutile
-	int a;
+	string a;
 	cin >> a;
 	return 0;
 }

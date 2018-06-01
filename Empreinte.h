@@ -35,39 +35,19 @@ public:
 	
 	//----------------------------------------------------- M�thodes publiques
 	//------------------------------------------------------ Getters - Setters
-	string getMesures() const
-	{
-		return mesures;
-	}
+	string getMesures() const;
 
 	//------------------------------------------------- Surcharge d'op�rateurs
-	Empreinte & operator = (const Empreinte & uneEmpreinte)
-	// Algorithme :
-	//
-	{
-		this->idEmpreinte = uneEmpreinte.idEmpreinte;
-		return *this;
-	} //----- Fin de operator =
+	Empreinte & operator = (const Empreinte & uneEmpreinte);
 
-	friend std::ostream& operator <<(std::ostream&, const Empreinte&);
+	friend ostream & operator << (ostream & out, const Empreinte & e);
 
 	//-------------------------------------------- Constructeurs - destructeur
-	Empreinte(string m) :mesures(m) 
-	{
-#ifdef MAP
-		cout << "Appel au constructeur de <Empreinte>" << endl;
-#endif
-	}
+	Empreinte(string m);
 
-	virtual ~Empreinte()
-		// Algorithme :
-		//
-	{
-		id--;
-#ifdef MAP
-		cout << "Appel au destructeur de <Empreinte>" << endl;
-#endif
-	} //----- Fin de ~Empreinte
+	Empreinte(const Empreinte & unEmpreinte);
+
+	virtual ~Empreinte();
 
 
 	//------------------------------------------------------- Attributs publics
@@ -79,12 +59,4 @@ private:
 	//------------------------------------------------------- Attributs priv�s 
 	string mesures;
 };
-
-ostream& operator<<(ostream &flux, const Empreinte & e)
-{
-	//Affichage des attributs
-	flux << "idEmpreinte : " << e.idEmpreinte << " ; mesures : " << e.getMesures() << endl;
-	return flux;
-} //----- Fin de operator <<
-
 #endif // EMPREINTE_H
