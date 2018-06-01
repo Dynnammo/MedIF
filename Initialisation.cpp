@@ -99,6 +99,7 @@ void Initialisation::init(string nomFichier)
 	else
 	{
 		cout << "Erreur de lecture du fichier" << endl;
+		return;
 	}
 	unordered_map<string, vector<string>>::iterator it;
 	int idMaladie(0);
@@ -111,11 +112,11 @@ void Initialisation::init(string nomFichier)
 			vector<string> symptomes = split(it->second[i], separateur); // symptomes d'empreinte
 			for (unsigned int j(0); j < symptomes.size(); j++)
 			{
-				if (symptomes[j] == "F" || symptomes[j] == "V") // test symptome Vrai/Faux attribut de type intervale 0(V) - 1(F)
+				if (symptomes[j] == "False" || symptomes[j] == "True") // test symptome Vrai/Faux attribut de type intervale 0(V) - 1(F)
 				{
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)//test pour initialiser les attribut
 					{
-						if (symptomes[j] == "F")
+						if (symptomes[j] == "False")
 						{
 							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j,1,0,0);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
@@ -132,7 +133,7 @@ void Initialisation::init(string nomFichier)
 						
 						Attribut_intervalle* symptome = (Attribut_intervalle*)mapMaladie[idMaladie].getListeAttribut()[j];
 						double moy = symptome->getMoyenne();
-						if (symptomes[j] == "V")
+						if (symptomes[j] == "True")
 						{
 							moy+=1/ nbrEmpreinte;
 							
@@ -200,7 +201,7 @@ void Initialisation::init(string nomFichier)
 	}
 } //----- Fin de Méthode init
 
-vector<string> Initialisation::split(string &lignef, string del)
+vector<string> Initialisation::split(string lignef, string del)
 {
 	vector<string> reponse;
 	int pos = 0;
@@ -251,6 +252,7 @@ void Initialisation::initMedecin(string nomFichier)
 			Medecin m( parametres[0], parametres[1], parametres[2], parametres[3]);
 			listeMedecin.push_back(m);
 		}
+		lecture.close();
 	}
 	else
 	{
@@ -280,7 +282,7 @@ void Initialisation::afficherMedecin(){
 void Initialisation::afficherPatient(){
 	for(unsigned int i = 0; i < listePatient.size() ; i++)
 	{
-		cout << listeMedecin[i];
+		cout << listePatient[i];
 	}	
 }
 

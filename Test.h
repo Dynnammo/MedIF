@@ -64,7 +64,7 @@ public:
 
 	//--------------------------------------------- Tests de la classe Medecin
 	void testAjouterPatient(Medecin medecin, vector <Patient> & listeP);
-	void testSeConnecter( Medecin m, vector <Medecin> liste);
+	void testSeConnecter(Medecin m, vector <Medecin> liste);
 	void testMesurerPatient(string mesures, Patient p, Medecin m);
 	void testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm);
 	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini);
@@ -73,6 +73,10 @@ public:
 
 
 	//-------------------------------------- Tests de la classe Initialisation
+	void testInitialisation(string nomFichier, Initialisation &ini);
+	void testInitialisationMedecin(string nomFichier, Initialisation &ini);
+	void testAnalyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie);
+	void testSplit(string test, string del);
 };
 #endif // TEST_H
 #pragma once

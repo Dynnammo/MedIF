@@ -1,10 +1,10 @@
 /*************************************************************************
 Initialisation  -  description
 -------------------
-début                : 27.04.2018
+debut                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Leo PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
@@ -126,7 +126,7 @@ protected:
 
 private:
 	//------------------------------------------------------- Methodes privees
-    vector<string> split(string &lignef, string del);
+    vector<string> split(string lignef, string del);
 protected:
 	//----------------------------------------------------- Attributs proteges
 

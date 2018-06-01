@@ -1,10 +1,10 @@
 /*************************************************************************
 Test  -  tests unitaires
 -------------------
-début                : 31.05.2018
+debut                : 31.05.2018
 copyright            : (C) 2018 par Tifenn FLOCH
 									Anatolii GASIUK
-									Léo PAPE
+									Leo PAPE
 									Baptiste THIVEND
 e-mail               : @insa-lyon.fr
 *************************************************************************/
@@ -18,12 +18,145 @@ using namespace std;
 #include "Medecin.h"
 #include "Initialisation.h"
 #include "Test.h"
-#include "Medecin.h"
 
 using namespace std;
+/*	void Test::test()
+	{
+		cout << "----------- Test  -----------" << endl;
+
+	
+		cout << "----------- Fin de Test se Connecter -----------" << endl;
+	}   
+
+*/
+
+	void Test::testInitialisation(string nomFichier, Initialisation &in)
+	{
+		cout << "----------- Test Initialisation Maladie -----------" << endl;
+		unordered_map<int, Maladie> *mapTmp = &in.getListeMaladie();
+		unordered_map<int, Maladie>::iterator it;
+		cout << "----------- liste Maladies avant -----------" << endl;
+		if (mapTmp->begin() == mapTmp->end())
+		{
+			cout << "Pas de maladie presente" << endl;
+		}
+		for (it = mapTmp->begin(); it != mapTmp->end(); ++it)
+		{
+			cout << it->second << endl;
+		}
+		
+		in.init(nomFichier);
+		cout << "----------- liste Maladies apres -----------" << endl;
+		mapTmp = &in.getListeMaladie();
+		if (mapTmp->begin() == mapTmp->end())
+		{
+			cout << "Pas de maladie presente" << endl;
+		}
+		for (it = mapTmp->begin(); it != mapTmp->end(); ++it)
+		{
+			cout << it->second << endl;
+		}
+
+		cout << "----------- Fin de Test Initialisation -----------" << endl;
+	}
+
+	void Test::testSplit(string lignef, string del )
+	{
+		vector<string> reponse;
+		int pos = 0;
+		while (pos != -1)
+		{
+			pos = lignef.find(del);
+			if (del.size() != lignef.size())
+			{
+
+				if (pos != 0)
+				{
+					reponse.push_back(lignef.substr(0, pos));
+
+				}
+				if (pos != lignef.size() - 1 && pos != -1)
+				{
+					lignef.erase(0, pos + del.size());
+				}
+				else if (pos != -1)
+				{
+					lignef.erase(pos, pos + del.size());
+					break;
+				}
+			}
+			else
+			{
+				pos = -1;
+				reponse.push_back(lignef);
+			}
+
+		}
+		cout << "----------- Test Split -----------" << endl;
+		cout << "----------- String entre -----------" << endl;
+		cout << lignef << endl;
+		cout << "----------- Sortie -----------" << endl;
+		for (int i(0); i < reponse.size(); i++)
+		{
+			cout << reponse[i] << endl;
+		}
+		
+		cout << "----------- Fin de Test se Connecter -----------" << endl;
+	}
+
+	void Test::testAnalyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie)
+	{
+		cout << "----------- Test d'analyse d'empreinte -----------" << endl;
+		Analyse a;
+		unordered_map<string, double> maladiesPot = a.getMaladiesPotentielles();
+		unordered_map<string, double>::iterator it;
+		cout << "----------- liste des Maladies Potentielles Avant -----------" << endl;
+
+		if (maladiesPot.begin() == maladiesPot.end())
+		{
+			cout << "Pas de maladie presente" << endl;
+		}
+		cout << a << endl;
+
+		a.analyseEmpreinte(e, mapMaladie);
+
+		cout << "----------- liste des Maladies Potentielles Apres -----------" << endl;
+		cout << a << endl;
+
+		cout << "----------- Fin de Test d'analyse d'empreinte -----------" << endl;
+	}
+
+	void Test::testInitialisationMedecin(string nomFichier, Initialisation &in)
+	{
+		cout << "----------- Test Initialisation Medecin -----------" << endl;
+		cout << "----------- liste Medecin Avant -----------" << endl;
+		if (in.getListeMedecin().size()==0)
+		{
+			cout << "Pas de Medecin present" << endl;
+		}
+		else
+		{
+			in.afficherMedecin();
+		}
+		
+		in.initMedecin(nomFichier);
+		cout << "----------- liste Medecin Apres -----------" << endl;
+
+		if (in.getListeMedecin().size() == 0)
+		{
+			cout << "Pas de Medecin present" << endl;
+		}
+		else
+		{
+			in.afficherMedecin();
+		}
+
+		cout << "----------- Fin de Test Initialisation de Medecin -----------" << endl;
+	}
 
 	void Test::testAjouterPatient(Medecin medecin, vector <Patient> & listeP)
 	{
+
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
 		for (unsigned int i(0); i<listeP.size(); i++)
@@ -55,11 +188,11 @@ using namespace std;
 
 		if (estConnecte) {
 
-			cout << "Le médecin est bien connecté à l'appli." << endl;
+			cout << "Le medecin est bien connecte à l'appli." << endl;
 		}
 		else {
 
-			cout << "Le médecin n'existe pas." << endl;
+			cout << "Le medecin n'existe pas." << endl;
 		}
 		cout << "----------- Fin de Test se Connecter -----------" << endl;
 	}
@@ -94,6 +227,8 @@ using namespace std;
 		}
 		cout << "-------------- FIN Test charger Empreinte -------------" << endl;
 	}
+
+
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;

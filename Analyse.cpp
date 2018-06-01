@@ -86,7 +86,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 
 			}
 
-			else if (symptomes[j] != "F" && symptomes[j] != "V")//on test si le symptome c'est un string
+			else if (symptomes[j] != "False" && symptomes[j] != "True")//on test si le symptome c'est un string
 			{
 
 				if (!attribut->verification(symptomes[j]))//cf commentaire au dessus

@@ -20,7 +20,6 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 
 //--------------------------------------------------- Interfaces utilisées
-#include "Analyse.h"
 #include "Maladie.h"
 #include "Empreinte.h"
 //------------------------------------------------------------- Constantes
@@ -47,13 +46,6 @@ public:
     //
 
 	void analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie);
-	// type Méthode ( liste des paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
-
-	vector<string> split(string &lignef, string del);
 	// type Méthode ( liste des paramètres );
 	// Mode d'emploi :
 	//

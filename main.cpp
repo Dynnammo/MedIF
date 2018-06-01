@@ -65,13 +65,26 @@ int main()
 	/* Initialisation des variables indispensable a tous les tests*/
 	Test t;
 	Initialisation i;
-	i.initMedecin("fichierMedecin.txt");
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
+	Empreinte e("AT;102;63;203");
 	cout << m;
 	cout << p;
-	i.afficherMedecin();
-	i.afficherPatient();
+
+	// test pour vérifier que l'initialisation des maladie renvoie une erreur s'il y a un problème avec le fichier
+	//t.testInitialisation("fichierErrone.txt", i);
+
+	// test pour vérifier que l'initialisation se passe correctement
+	//t.testInitialisation("test2.txt", i);
+
+	// test pour vérifier que l'initialisation des medecins renvoie une erreur s'il y a un problème avec le fichier
+	//t.testInitialisationMedecin("fichierErrone.txt", i);
+
+	// test pour vérifier que l'initialisation des medecins se passe correctement
+	//t.testInitialisationMedecin("fichierMedecin2.txt", i);
+
+	// test pour vérifier que analyse d'empreinte se passe correctement
+	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
 	//appelTestAjouterPatient(t, m, i);
@@ -86,11 +99,13 @@ int main()
 	//appelTestMesurerPatient( t, m,p);
 
 	//test pour vérifier que l'on charge correctement les empreintes
-	appelTestChargerEmpreinte(i, t, m,p);
+	//appelTestChargerEmpreinte(i, t, m,p);
+
+	//test pour vérifier que la methode split fonctionne correctement
+	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	cout << "Fin du programme" << endl;
-	// pour eviter que la fenetre se ferme dans la foulee, un cin inutile
-	string a;
-	cin >> a;
+	
+	system("PAUSE");
 	return 0;
 }
