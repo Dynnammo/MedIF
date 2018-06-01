@@ -24,11 +24,10 @@ using namespace std;
 
 using namespace std;
 
-	void Test::testAjouterPatient(Medecin medecin, Initialisation ini)
+	void Test::testAjouterPatient(Medecin medecin, vector <Patient> & listeP)
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
 		cout << "Liste des Patients AVANT : " << endl;
-		vector <Patient> listeP = ini.getListePatient();
 		for (unsigned int i(0); i<listeP.size(); i++)
 		{
 			listeP[i].afficher();
@@ -39,10 +38,9 @@ using namespace std;
 		string p = "Bob";
 		string mdp = "bm";
 
-		medecin.ajouterPatient(n,p,mdp, listeP);
-
+		Patient test = medecin.ajouterPatient(n,p,mdp, listeP);
+		
 		cout << "Liste des Patients APRES : " << endl;
-		listeP = ini.getListePatient();
 		for (unsigned int i(0); i<listeP.size(); i++)
 		{
 			listeP[i].afficher();

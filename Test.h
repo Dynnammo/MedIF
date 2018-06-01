@@ -63,7 +63,7 @@ public:
 
 
 	//--------------------------------------------- Tests de la classe Medecin
-	void testAjouterPatient(Medecin medecin, Initialisation ini);
+	void testAjouterPatient(Medecin medecin, vector <Patient> & listeP);
 	//void testFaireAnalyse();
 	//void testRechercherAnalyse();
 	void testSeConnecter( Medecin m, vector <Medecin> liste);
