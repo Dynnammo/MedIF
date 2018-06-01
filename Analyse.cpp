@@ -242,7 +242,9 @@ Analyse&  Analyse::operator =(Analyse const &a)
 }*/
 
 Analyse::Analyse ( const Analyse & unAnalyse )
+	:idAnalyse(unAnalyse.idAnalyse), maladiesPotentielles(unAnalyse.maladiesPotentielles)
 {
+	
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Analyse>" << endl;
 #endif
@@ -259,10 +261,7 @@ Analyse::Analyse ( )
 
 
 Analyse::~Analyse ( )
-// Algorithme :
-//
 {
-    idA--;
 #ifdef MAP
     cout << "Appel au destructeur de <Analyse>" << endl;
 #endif

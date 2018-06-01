@@ -75,15 +75,15 @@ Analyse Medecin::rechercherAnalyse(int id, Patient p) {
 
 	list <Analyse> liste= p.getAnalyses();
 	Analyse a;
-	Analyse tmp;
+
 
 	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 
-		tmp = *it;
+	
 
 		
 		if (a.getId() == id) {
-
+			cout << "je passe ici" << endl;
 			a = *it;
 		}
 
@@ -137,35 +137,20 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 			pos = line.find(';');
 			idP = line.substr(0,pos);
 			line.erase(0, pos + 1); //j'enlève l'id du patient de l'Empreinte
-			//cout << "test pour voir si l'idP est bon : " << idP<<endl;
-			//cout << "test pour voir si line est bon : " << line<<endl;
-			for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++) {
-			
-				//cout << "je passe" << endl;
+			for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
+			{
 				test = stoi(idP, &sz); //convertit l'id du Patient de string à int
-				//cout << "Conversion reussie :" << test << endl;
-				if (it->getIdPersonne() == test ) {
-					//Patient p = *it;
-					//cout << "J'ai reconnu à quel patient appartenait cette empreinte!" << endl;
-					mesurerPatient(line, *it);
-					//cout << "Modif de liste :" << (*it).getEmpreintes().back().getMesures() << endl;
-					/*Empreinte e = p.getEmpreintes().back();
-					cout << "Modif de p: " << e.getMesures() << endl;*/
-					
+				if (it->getIdPersonne() == test )
+				{
+					mesurerPatient(line, *it);					
 				}
 			}
-			
 		}
 	}
 	else {
 		cerr << "Impossible d'ouvrir le fichier !" << endl;
 	}
 }
-// type ${file_base}::Mï¿½thode ( liste de paramï¿½tres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Mï¿½thode
 
 //------------------------------------------------------ Getters - Setters
 
