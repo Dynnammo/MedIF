@@ -53,25 +53,21 @@ public:
 	//------------------------------------------------------ Getters - Setters
 	list <Empreinte> getEmpreintes() 
 	{
-
 		return le;
 	}
 
 	list <Analyse> getAnalyses() 
 	{
-
 		return la;
 	}
 
-	void  setAnalyses(Analyse a) {
-
+	void setAnalyses(Analyse &a)
+	{
 		la.push_back(a);
-
 	}
 
-	void setEmpreintes(Empreinte e)
+	void setEmpreintes(Empreinte &e)
 	{
-
 		 le.push_back(e);
 	}
 	//------------------------------------------------- Surcharge d'op�rateurs

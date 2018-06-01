@@ -94,6 +94,19 @@ using namespace std;
 		}
 		cout << "-------------- FIN Test charger Empreinte -------------" << endl;
 	}
+
+	void Test::testRechercherAnalyse(Patient &p, Medecin &m) {
+		
+		int id= p.getAnalyses().back().getId();
+		//Analyse test = p.getAnalyses().back();
+
+		//cout << test << endl;
+		Analyse a=m.rechercherAnalyse(id, p);
+
+		cout <<"Analyse "<<a.getId()<<" a ete trouvee"<<a << endl;
+
+	}
+
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;

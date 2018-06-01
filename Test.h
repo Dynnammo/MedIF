@@ -68,7 +68,7 @@ public:
 	void testMesurerPatient(string mesures, Patient p, Medecin m);
 	void testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm);
 	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini);
-
+	void testRechercherAnalyse(Patient &p, Medecin &m);
 	//--------------------------------------------- Tests de la classe Analyse
 
 
