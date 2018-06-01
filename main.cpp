@@ -135,13 +135,13 @@ int main()
 	i.afficherPatient();
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
-	appelTestAjouterPatient(t, m, ini);
+	appelTestAjouterPatient(t, m, i);
 
 	// test pour vérifier qu'un Medecin puisse se connecter.
-	appelTestSeConnecter(ini, t);
+	appelTestSeConnecter(i, t, m);
 	
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	appelTestFaireAnalyse(t, m, p, ini);
+	appelTestFaireAnalyse(t, m, p, i);
 	
 	cout << "Fin du programme" << endl;
 	// pour eviter que la fenetre se ferme dans la foulee, un cin inutile

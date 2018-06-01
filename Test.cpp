@@ -149,4 +149,3 @@ using namespace std;
 
 		cout << "----------- Fin Test Faire Analyse -----------" << endl;
 	}
-}
