@@ -46,10 +46,9 @@ using namespace std;
 		cout << "----------- FIN Test Ajouter Patient -----------" << endl;
 	}
 
-	void Test::testSeConnecter(string nomFichier, Medecin m, vector <Medecin> liste)
+	void Test::testSeConnecter( Medecin m, vector <Medecin> liste)
 	{
-		Initialisation ini;
-		ini.initMedecin(nomFichier);
+		
 
 		bool estConnecte = m.seConnecter(liste);
 

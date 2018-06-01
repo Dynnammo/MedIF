@@ -24,8 +24,7 @@ e-mail               : @insa-lyon.fr
 
 
 
-using namespace std;
-
+/*
 vector<string> split(string lignef, string del)
 {
 	// Algorithme :
@@ -40,13 +39,29 @@ vector<string> split(string lignef, string del)
 	}
 	return reponse;
 }
+*/
 
+void appelTestSeConnecter(Initialisation ini, Test t) {
+
+	ini.initMedecin("MedecinIni.txt");
+
+	vector <Medecin> medecins = ini.getListeMedecin();
+	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	t.testSeConnecter(m, medecins);
+
+
+}
 int main()
 {
+	Initialisation ini;
 
-	/*Test t;
+	
+	Test t;
 
-	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	//test pour vérifier qu'un Medecin puisse se connecter.
+	appelTestSeConnecter(ini, t);
+	
+	/*
 	//t.testSeConnecter("MedecinIni.txt", m);
 	Initialisation i;
 
@@ -70,7 +85,7 @@ int main()
 	cout << a << endl;*/
 	vector<string> vec;
 
-	string test = "A.Z.E.R.T.Y.A.Z.E.R.T.Y.G";
+	/*string test = "A.Z.E.R.T.Y.A.Z.E.R.T.Y.G";
 	time_t init = time(0);
 	for (int i(0); i < 5000000; i++)
 	{
@@ -95,6 +110,6 @@ int main()
 		p = 0;
 	}
 	time_t tvec22 = time(0);
-	cout << tvec22 - tvec2 << endl;
+	cout << tvec22 - tvec2 << endl;*/
 	return 0;
 }
