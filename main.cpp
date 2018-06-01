@@ -59,6 +59,7 @@ void appelTestChargerEmpreinte(Initialisation ini, Test t, Medecin m,Patient p) 
 	t.testChargerEmpreinte(nomFichier, liste , m,ini);
 
 }
+
 int main()
 {
 	/* Initialisation des variables indispensable a tous les tests*/
