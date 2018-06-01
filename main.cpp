@@ -22,8 +22,6 @@ e-mail               : @insa-lyon.fr
 #include "Initialisation.h"
 #include "Test.h"
 
-
-
 using namespace std;
 
 vector<string> split(string lignef, string del)
@@ -41,16 +39,27 @@ vector<string> split(string lignef, string del)
 	return reponse;
 }
 
+void appelTestAjouterPatient(Test t, Medecin medecin, Initialisation ini)
+{
+	vector <Patient> & listeP = ini.getListePatient();
+	t.testAjouterPatient(medecin, ini, listeP);
+}
+
 int main()
 {
-
-	/*Test t;
-
+	/* Initialisation des variables indispensable a tous les tests*/
+	Test t;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
-	//t.testSeConnecter("MedecinIni.txt", m);
 	Initialisation i;
+	
+	// test Ajouter Patient
+	appelTestAjouterPatient(t, m, i);
 
-	i.init("test2.txt");
+
+	//t.testSeConnecter("MedecinIni.txt", m);
+	
+
+	/*i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;
 	
@@ -67,7 +76,7 @@ int main()
 	}
 	
 	a.analyseEmpreinte(e, i.getListeMaladie());
-	cout << a << endl;*/
+	cout << a << endl;
 	vector<string> vec;
 
 	string test = "A.Z.E.R.T.Y.A.Z.E.R.T.Y.G";
@@ -96,5 +105,9 @@ int main()
 	}
 	time_t tvec22 = time(0);
 	cout << tvec22 - tvec2 << endl;
+	*/
+	// pour eviter que la fenetre se ferme dans la foulee, un cin inutile
+	int a;
+	cin >> a;
 	return 0;
 }
