@@ -66,6 +66,56 @@ void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
 
 	t.testFaireAnalyse(m, p, lm);
 }
+void appelTestsAnatolii()
+{
+	/*i.init("test2.txt");
+	ifstream lecture("test3.txt");
+	string ligne;
+
+	getline(lecture, ligne);
+	Empreinte e(ligne);
+
+	Analyse a;
+	unordered_map <string, double> maladies;
+	unordered_map <int, Maladie> maladies2= i.getListeMaladie();
+
+	for (int j(0); j < maladies2.size(); j++)
+	{
+	cout << i.getListeMaladie()[j] << endl;
+	}
+
+	a.analyseEmpreinte(e, i.getListeMaladie());
+	cout << a << endl;
+	vector<string> vec;
+
+	string test = "A.Z.E.R.T.Y.A.Z.E.R.T.Y.G";
+	time_t init = time(0);
+	for (int i(0); i < 5000000; i++)
+	{
+	vec = split(test, ".");
+	}
+	time_t init2 = time(0);
+	cout << init2 - init << endl;
+
+	time_t tvec2 = time(0);
+	vector<string> vec2(13);
+	int p = 0;
+	for (int k(0); k < 5000000; k++)
+	{
+	for (istringstream iss(test);;)
+	{
+	string item;
+	getline(iss, item, '.');
+	if (iss.fail()) break;
+	vec2[p]=item;
+	p++;
+	}
+	p = 0;
+	}
+	time_t tvec22 = time(0);
+	cout << tvec22 - tvec2 << endl;
+	*/
+}
 
 int main()
 {
@@ -82,53 +132,7 @@ int main()
 	
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
 	appelTestFaireAnalyse(t, m, p, ini);
-	/*i.init("test2.txt");
-	ifstream lecture("test3.txt");
-	string ligne;
-	
-	getline(lecture, ligne);
-	Empreinte e(ligne);
 
-	Analyse a;
-	unordered_map <string, double> maladies;
-	unordered_map <int, Maladie> maladies2= i.getListeMaladie();
-
-	for (int j(0); j < maladies2.size(); j++)
-	{
-		cout << i.getListeMaladie()[j] << endl;
-	}
-	
-	a.analyseEmpreinte(e, i.getListeMaladie());
-	cout << a << endl;
-	vector<string> vec;
-
-	string test = "A.Z.E.R.T.Y.A.Z.E.R.T.Y.G";
-	time_t init = time(0);
-	for (int i(0); i < 5000000; i++)
-	{
-		vec = split(test, ".");
-	}
-	time_t init2 = time(0);
-	cout << init2 - init << endl;
-
-	time_t tvec2 = time(0);
-	vector<string> vec2(13);
-	int p = 0;
-	for (int k(0); k < 5000000; k++)
-	{
-		for (istringstream iss(test);;) 
-		{
-			string item; 
-			getline(iss, item, '.');
-			if (iss.fail()) break;
-			vec2[p]=item;
-			p++;
-		}
-		p = 0;
-	}
-	time_t tvec22 = time(0);
-	cout << tvec22 - tvec2 << endl;
-	*/
 	// pour eviter que la fenetre se ferme dans la foulee, un cin inutile
 	int a;
 	cin >> a;
