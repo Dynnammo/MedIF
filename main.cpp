@@ -24,9 +24,31 @@ e-mail               : @insa-lyon.fr
 
 using namespace std;
 
-void testAnatolii()
+vector<string> split(string lignef, string del)
 {
-	/*i.init("test2.txt");
+	// Algorithme :
+	//
+	vector<string> reponse;
+	int pos = 0;
+	while (pos != -1)
+	{
+		pos = lignef.find(del);
+		reponse.push_back(lignef.substr(0, pos));
+		lignef.erase(0, pos + 1);
+	}
+	return reponse;
+}
+
+int main()
+{
+
+	/*Test t;
+
+	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	//t.testSeConnecter("MedecinIni.txt", m);
+	Initialisation i;
+
+	i.init("test2.txt");
 	ifstream lecture("test3.txt");
 	string ligne;
 
