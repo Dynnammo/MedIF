@@ -63,9 +63,11 @@ void Initialisation::init(string nomFichier)
 // Pour chaque maladie parcourir ses empreintes et calculer les attributs: intervalle+moyenne, p(X=Vrai), sequence string
 // 
 {
-	if (nomFichier.substr(nomFichier.size() - 3, 3) != "txt")
+	int pos = nomFichier.find_last_of(".");
+	if (pos==-1||nomFichier.substr(pos) != ".txt")
 	{
 		cout << "Erreur : format du fichier incorrecte." << endl;
+		return;
 	}
 
 	string separateur = ";";
@@ -84,6 +86,7 @@ void Initialisation::init(string nomFichier)
 			if (nomAttributs.size() == 0)
 			{
 				cout << "Erreur : le fichier ne comporte pas de ligne d'attributs" << endl;
+				return;
 			}
 
 		}

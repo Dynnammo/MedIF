@@ -120,7 +120,7 @@ int main()
 	//t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
-	t.testInitialisation("test2.txt", i);
+	//t.testInitialisation("test2.txt", i);
 
 	//t.testInitialisation("test3.txt", i);
 
@@ -131,7 +131,7 @@ int main()
 	//t.testInitialisationMedecin("fichierMedecin2.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
-	t.testAnalyseEmpreinte(e, i.getListeMaladie());
+	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
@@ -141,7 +141,7 @@ int main()
 	//appelTestSeConnecter(i, t,m);
 
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	appelTestFaireAnalyse(t, m, p, i);
+	//appelTestFaireAnalyse(t, m, p, i);
 
 	//test pour vérifier que l'empreinte est ajoutee au patient
 	//appelTestMesurerPatient( t, m,p);
@@ -170,7 +170,7 @@ int main()
 	//test créer Maladie
 	//t.testCreerMaladie("uneMaladie.txt");
 	//t.testCreerMaladie("desMaladie.txt");
-	//t.testCreerMaladie("fichierErrone.tx");
+	t.testCreerMaladie(".tt.txt");  //test non fonctionnel - mauvais format
 	//t.testCreerMaladie("maladieSansAttribut.txt");
 	//t.testCreerMaladie("fichierVide.txt");
 
