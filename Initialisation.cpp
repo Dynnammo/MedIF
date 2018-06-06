@@ -43,7 +43,7 @@ Patient  Initialisation::getPatient(int id)
 	return p;
 } //----- Fin de Méthode getPatient
 
-void  Initialisation::setPatient(Patient p)
+void  Initialisation::setPatient(Patient &p)
 {
 	this->listePatient.push_back(p);
 } //----- Fin de Méthode setPatient

@@ -74,7 +74,7 @@ void appelTestChargerEmpreinte(Initialisation ini, Test t, Medecin m,Patient p) 
 	Patient p2("Padilla", "Tonny", "tonny.padilla@gmail.com");
 	ini.setPatient(p2);
 	vector <Patient> liste = ini.getListePatient();
-	t.testChargerEmpreinte(nomFichier, liste , m,ini);
+	t.testChargerEmpreinte(nomFichier, liste , m);
 
 }
 
@@ -102,6 +102,15 @@ void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
 	t.testFaireAnalyse(m, p, lm);
 }
 
+void appelTestEmpreinteSaine(Test t, Medecin m, Patient p, Initialisation i) {
+	unordered_map<int, Maladie> lm = i.getListeMaladie();
+
+	string nomFichier = "SaneMeasurement.txt";
+	i.setPatient(p);
+	vector <Patient> liste = i.getListePatient();
+	t.testEmpreinteSaine(m, liste, nomFichier, p, lm);
+}
+
 int main()
 {
 	id = 0;
@@ -121,7 +130,7 @@ int main()
 	//t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
-	t.testInitialisation("test2.txt", i);
+	t.testInitialisation("HealthMeasurementsWithLabels.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins renvoie une erreur s'il y a un problème avec le fichier
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
@@ -132,6 +141,7 @@ int main()
 	// test pour vérifier que analyse d'empreinte se passe correctement
 	t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
+
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
 	//appelTestAjouterPatient(t, m, i);
 
@@ -139,7 +149,7 @@ int main()
 	//appelTestSeConnecter(i, t,m);
 
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	//appelTestFaireAnalyse(t, m, p, i);
+	appelTestFaireAnalyse(t, m, p, i);
 
 	//test pour vérifier que l'empreinte est ajoutee au patient
 	//appelTestMesurerPatient( t, m,p);
@@ -152,6 +162,10 @@ int main()
 
 	//test pour rechercherAnalyse
 	//appelTestRechercherAnalyse(t, p, m);
+
+	//testfonctionnel 2.1:
+
+	//appelTestEmpreinteSaine(t, m, p, i);
 	cout << "Fin du programme" << endl;
 	
 	

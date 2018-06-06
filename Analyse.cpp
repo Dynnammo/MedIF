@@ -78,7 +78,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 				if (!attribut->verification(valeurSymptome))//si c'est le cas, on supprime la maladie de la table sans supprimé le 
 															// vector des pointeurs d'attributs
 				{
-					it->second = 0;
+					it->second = NULL;
 					it=temp.erase(it);
 				}
 				else
@@ -94,7 +94,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 
 				if (!attribut->verification(symptomes[j]))//cf commentaire au dessus
 				{
-					it->second = 0;
+					it->second = NULL;
 					it = temp.erase(it);
 				}
 				else

@@ -55,7 +55,7 @@ Patient Medecin::ajouterPatient(string n, string p, string m, vector <Patient> &
 }
 
 
-list<Analyse> Medecin::faireAnalyse(Patient p, unordered_map<int, Maladie> &lm)
+list<Analyse> Medecin::faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm)
 {
 	list <Empreinte> le = p.getEmpreintes();
 	Analyse a;
@@ -69,7 +69,7 @@ list<Analyse> Medecin::faireAnalyse(Patient p, unordered_map<int, Maladie> &lm)
 }
 
 
-Analyse Medecin::rechercherAnalyse(int id, Patient p) {
+Analyse Medecin::rechercherAnalyse(int id, Patient &p) {
 
 	list <Analyse> liste= p.getAnalyses();
 	Analyse a;

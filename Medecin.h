@@ -47,8 +47,8 @@ public:
 	bool seConnecter(vector<Medecin>);
 	void seDeconnecter();
 	Patient ajouterPatient(std::string n, std::string p, std::string m, vector <Patient> &patients);
-	list <Analyse> faireAnalyse(Patient p, unordered_map<int, Maladie> &lm);
-	Analyse rechercherAnalyse(int id, Patient p);
+	list <Analyse> faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm);
+	Analyse rechercherAnalyse(int id, Patient &p);
     void afficherMaladies(list <Maladie> lm);
 	//void afficherAnalyse(Patient p);
 	void mesurerPatient(std::string mesures, Patient &p);

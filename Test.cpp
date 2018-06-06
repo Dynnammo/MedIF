@@ -209,7 +209,7 @@ using namespace std;
 		cout << "-----------  FIN Test Mesurer Patient -----------\n" << endl;
 	}
 
-	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini) {
+	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m) {
 		cout << "----------- Test Charger Empreinte -----------" << endl;
 		
 		m.chargerEmpreinte(nomFichier, liste);
@@ -239,12 +239,33 @@ using namespace std;
 
 	}
 
+	void Test::testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier,Patient p, unordered_map<int, Maladie> &lm) {
+		cout << "----------- Test Faire Analyse d'une Empreinte saine -----------" << endl;
+		
+		for (int i = 0; i < liste.size(); i++) {
+			cout << "id patient :" << p.getIdPersonne();
+		}
+		m.chargerEmpreinte(nomFichier, liste);
+		list <Analyse> la=m.faireAnalyse(p, lm);
+
+		
+	
+
+	
+		/*for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++) {
+			cout<<(*it)<<endl;
+		}
+		*/
+		
+
+
+	}
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;
-		Empreinte e1("True;101;bloup;100%");
-		Empreinte e2("False;0.001;bloup;0%");
-		Empreinte e3("NA;50;blidou;50%");
+		Empreinte e1("TT;158.785072773956;134.202843809773;155.578398714048");
+		Empreinte e2("TT;-8.06041743387215;156.208637725086;127.004626704367");
+		Empreinte e3("AT;-29.8670607474956;9.12582752675129;154.212716708429");
 
 		// faire analyse pour 1 empreinte
 		cout << "--- Analyse d'une empreinte ---" << endl;

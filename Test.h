@@ -67,8 +67,14 @@ public:
 	void testSeConnecter(Medecin m, vector <Medecin> liste);
 	void testMesurerPatient(string mesures, Patient p, Medecin m);
 	void testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm);
-	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m, Initialisation &ini);
+	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m);
 	void testRechercherAnalyse(Patient &p, Medecin &m);
+
+
+	//--------------------------------------------- Tests fonctionnels de la classe Medecin
+
+	void testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier, Patient p, unordered_map<int, Maladie> &lm);
+
 	//--------------------------------------------- Tests de la classe Analyse
 
 

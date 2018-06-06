@@ -62,7 +62,7 @@ public:
 	// Contrat :
 	//
 
-	void setPatient(Patient p);
+	void setPatient(Patient &p);
 	// Mode d'emploi :
 	//
 	// Contrat :
