@@ -111,7 +111,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		cout << "Veuillez faire des testes supplémentaires" << endl;
 	}
 
-	for (it = temp.begin(); it != temp.end(); ++it)//on parcourt les maladies restantes
+	for (it = temp.begin(); it != temp.end();++it)//on parcourt les maladies restantes
 													// details:: ajouter une condition si pas de maladies
 	{
 		double probabilite = 0;
@@ -154,11 +154,11 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		if (temp.size() == 1 || probabilite > 0.20)
 		{
 			maladiesPotentielles[it->second.getNom()] = probabilite; // conditions pour un pourcentage minimal
-			it->second = 0;
+			
 		}
+		it->second = NULL;
+
 	}
-
-
 
 } //----- Fin de Méthode analyseEmpreinte
 

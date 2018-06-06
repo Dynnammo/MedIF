@@ -136,7 +136,7 @@ int main()
 	//t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
-	t.testInitialisation("HealthMeasurementsWithLabels.txt", i);
+	t.testInitialisation("test2.txt", i);
 
 	//t.testInitialisation("test3.txt", i);
 

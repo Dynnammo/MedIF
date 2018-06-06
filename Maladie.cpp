@@ -17,6 +17,7 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 #include <iostream>
 #include <vector>
+#include <typeinfo.h>
 //------------------------------------------------------ Include personnel
 #include "Maladie.h"
 #include "Attribut.h"
@@ -70,7 +71,21 @@ Maladie & Maladie::operator = ( Maladie const & unMaladie)
 {
 	this->idMaladie = unMaladie.idMaladie;
 	this->nomMaladie = unMaladie.nomMaladie;
-	this->listeAttribut = unMaladie.listeAttribut;
+	vector<Attribut*> temp = unMaladie.listeAttribut;
+	for (unsigned int i(0); i < temp.size(); i++)
+	{
+		if (typeid(*temp[i]) == typeid((Attribut_intervalle())))
+		{
+			Attribut *a = new Attribut_intervalle(*(Attribut_intervalle*)(temp[i]));
+			this->listeAttribut.push_back(a);
+		}
+		else
+		{
+			Attribut *a = new Attribut_enumeration(*(Attribut_enumeration*)(temp[i]));
+			this->listeAttribut.push_back(a);
+		}
+		
+	}
 	return *this;
 } //----- Fin de operator =
 
@@ -89,8 +104,23 @@ ostream& operator<<(ostream &flux, Maladie const& maladie)
 
   //-------------------------------------------- Constructeurs - destructeur
 Maladie::Maladie(const Maladie &m)
-	:idMaladie(m.idMaladie), nomMaladie(m.nomMaladie), listeAttribut(m.listeAttribut)
+	:idMaladie(m.idMaladie), nomMaladie(m.nomMaladie)
 {
+	vector<Attribut*> temp = m.listeAttribut;
+	for (unsigned int i(0); i < temp.size(); i++)
+	{
+		if (typeid(*temp[i]) == typeid((Attribut_intervalle())))
+		{
+			Attribut *a = new Attribut_intervalle(*(Attribut_intervalle*)(temp[i]));
+			this->listeAttribut.push_back(a);
+		}
+		else
+		{
+			Attribut *a = new Attribut_enumeration(*(Attribut_enumeration*)(temp[i]));
+			this->listeAttribut.push_back(a);
+		}
+
+}
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Maladie>" << endl;
 #endif
