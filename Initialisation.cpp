@@ -63,6 +63,11 @@ void Initialisation::init(string nomFichier)
 // Pour chaque maladie parcourir ses empreintes et calculer les attributs: intervalle+moyenne, p(X=Vrai), sequence string
 // 
 {
+	if (nomFichier.substr(nomFichier.size() - 3, 3) != "txt")
+	{
+		cout << "Erreur : format du fichier incorrecte." << endl;
+	}
+
 	string separateur = ";";
 	unordered_map<string, vector<string>> tmp_map;
 	ifstream lecture(nomFichier); //lecture du fichier
@@ -76,11 +81,16 @@ void Initialisation::init(string nomFichier)
 			nomAttributs = split(ligne, ";");
 			nomAttributs.pop_back();
 			nomAttributs.erase(nomAttributs.begin());
+			if (nomAttributs.size() == 0)
+			{
+				cout << "Erreur : le fichier ne comporte pas de ligne d'attributs" << endl;
+			}
 
 		}
 		else
 		{
 			cout << "Le fichier est vide." << endl;
+			return;
 		}
 		int posLigne=lecture.tellg();
 		getline(lecture, ligne);
@@ -88,20 +98,28 @@ void Initialisation::init(string nomFichier)
 
 		vector<string> tmp_attributs;
 		tmp_attributs = split(ligne, ";");
-		for (unsigned int l(1); l < tmp_attributs.size()-1; l++)
+		if (ligne.size() != 0)
 		{
-			if (tmp_attributs[l] == "False" || tmp_attributs[l] == "True")
+			for (unsigned int l(1); l < tmp_attributs.size() - 1; l++)
 			{
-				typeAttributs.push_back(1);
+				if (tmp_attributs[l] == "False" || tmp_attributs[l] == "True")
+				{
+					typeAttributs.push_back(1);
+				}
+				else if (regex_match(tmp_attributs[l], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+				{
+					typeAttributs.push_back(2);
+				}
+				else
+				{
+					typeAttributs.push_back(3);
+				}
 			}
-			else if (regex_match(tmp_attributs[l], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
-			{
-				typeAttributs.push_back(2);
-			}
-			else
-			{
-				typeAttributs.push_back(3);
-			}
+		}
+		else // fichier erroné
+		{
+			cout << "Erreur : Maladie sans attributs. Premier résultat éroné." << endl;
+			return;
 		}
 
 		while (getline(lecture, ligne)) // initialisation de maladies et empreintes correspondantes dans une map
@@ -113,8 +131,14 @@ void Initialisation::init(string nomFichier)
 			{
 				maladie = "sain"; // état correspondant à aucune maladie
 			}
-			
-			tmp_map[maladie].push_back(ligne.substr(positionId+1, (position-1-positionId)));
+			if (ligne.size() != 0)
+			{
+				tmp_map[maladie].push_back(ligne.substr(positionId + 1, (position - 1 - positionId)));
+			}
+			else // pour eviter de creer des maladies sans attributs;
+			{
+				cout << "Attention : Maladie sans attributs ignorée."<<endl;
+			}
 		}
 
 		lecture.close();

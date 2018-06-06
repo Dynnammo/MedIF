@@ -311,3 +311,32 @@ using namespace std;
 
 		cout << "----------- Fin Test Faire Analyse -----------" << endl;
 	}
+
+	///////////////////////////////////////Test fonctionnelles
+	void Test::testAfficherMaladies(unordered_map<int, Maladie> &m)
+	{
+		unordered_map<int, Maladie>::iterator it;
+		for (it = m.begin(); it != m.end(); ++it)
+		{
+			cout << it->second << endl;
+		}
+	}
+
+	void Test::testCreerMaladie(string nomFichier)
+	{
+		Initialisation ii;
+		ii.init(nomFichier);
+		unordered_map<int, Maladie> m = ii.getListeMaladie();
+		unordered_map<int, Maladie>::iterator it;
+		for (it = m.begin(); it != m.end(); ++it)
+		{
+
+			cout << it->second << endl;
+		}
+
+		if (m.begin() == m.end())
+		{
+			cout << "Attention : Pas de maladie Créee" << endl;
+		}
+
+	}

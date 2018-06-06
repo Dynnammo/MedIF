@@ -102,6 +102,12 @@ void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
 	t.testFaireAnalyse(m, p, lm);
 }
 
+////////////////////////////////////////fonction test fonctionnelles
+void afficherMaladie(Maladie m)
+{
+	cout << m << endl;
+}
+
 int main()
 {
 	id = 0;
@@ -141,7 +147,7 @@ int main()
 	//appelTestSeConnecter(i, t,m);
 
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	//appelTestFaireAnalyse(t, m, p, i);
+	appelTestFaireAnalyse(t, m, p, i);
 
 	//test pour vérifier que l'empreinte est ajoutee au patient
 	//appelTestMesurerPatient( t, m,p);
@@ -156,6 +162,20 @@ int main()
 	//appelTestRechercherAnalyse(t, p, m);
 	cout << "Fin du programme" << endl;
 	
+	//-------------------------------------- Test fonctionnelles 
+	//test afficher/description les maladies
+	//t.testAfficherMaladies(i.getListeMaladie());
+
+	//test afficher/description une maladies
+	//afficherMaladie(i.getListeMaladie().begin()->first);
+
+	//test créer Maladie
+	//t.testCreerMaladie("uneMaladie.txt");
+	//t.testCreerMaladie("desMaladie.txt");
+	//t.testCreerMaladie("fichierErrone.tx");
+	//t.testCreerMaladie("maladieSansAttribut.txt");
+	//t.testCreerMaladie("fichierVide.txt");
+
 	
 	system("PAUSE");
 	return 0;
