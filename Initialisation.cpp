@@ -141,13 +141,13 @@ void Initialisation::init(string nomFichier)
 					{
 						if (symptomes[j] == "False")
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(symptomes[j],j,1,0,0);
+							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j,1,0,0);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 						}
 						else 
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(symptomes[j],j, 1, 0, 1/ nbrEmpreinte);
+							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, 1, 0, 1/ nbrEmpreinte);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 						}
 					}
@@ -172,7 +172,7 @@ void Initialisation::init(string nomFichier)
 
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j) //cf commentaire symptome precedent
 					{
-						Attribut_intervalle* symptome = new Attribut_intervalle(symptomes[j],j, borne, borne, borne/ nbrEmpreinte);
+						Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, borne, borne, borne/ nbrEmpreinte);
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 						
 					}
@@ -202,7 +202,7 @@ void Initialisation::init(string nomFichier)
 					{
 						vector<string> valeurs;
 						valeurs.push_back(symptomes[j]);
-						Attribut_enumeration* symptome = new Attribut_enumeration(symptomes[j],j, 1,valeurs );
+						Attribut_enumeration* symptome = new Attribut_enumeration(nomAttributs[j],j, 1,valeurs );
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 					}
