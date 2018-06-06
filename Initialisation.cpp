@@ -67,8 +67,6 @@ void Initialisation::init(string nomFichier)
 	unordered_map<string, vector<string>> tmp_map;
 	ifstream lecture(nomFichier); //lecture du fichier
 	string ligne;
-	time_t temps = clock();
-	cout <<"debut : "<< clock() - temps <<endl;
 	vector<string> nomAttributs;
 	vector<int> typeAttributs;
 	if (lecture) // test de lecture
@@ -119,7 +117,6 @@ void Initialisation::init(string nomFichier)
 			tmp_map[maladie].push_back(ligne.substr(positionId+1, (position-1-positionId)));
 		}
 
-		cout << "lecture fini : " << clock() - temps << endl;
 		lecture.close();
 	}
 	else
@@ -131,7 +128,7 @@ void Initialisation::init(string nomFichier)
 	int idMaladie(0);
 	for (it = tmp_map.begin(); it != tmp_map.end(); ++it,idMaladie++) // debut de calcul des attributs dans la mapMaladie
 	{
-		cout << "maladie  : " << clock() - temps << endl;
+		
 		int nbrEmpreinte = it->second.size();
 		for (unsigned int i(0); i < it->second.size(); i++)
 		{
