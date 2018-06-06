@@ -90,7 +90,7 @@ void Initialisation::init(string nomFichier)
 
 		vector<string> tmp_attributs;
 		tmp_attributs = split(ligne, ";");
-		for (int l(1); l < tmp_attributs.size()-1; l++)
+		for (unsigned int l(1); l < tmp_attributs.size()-1; l++)
 		{
 			if (tmp_attributs[l] == "False" || tmp_attributs[l] == "True")
 			{
@@ -138,19 +138,19 @@ void Initialisation::init(string nomFichier)
 			vector<string> symptomes = split(it->second[i], separateur); // symptomes d'empreinte
 			for (unsigned int j(0); j < symptomes.size(); j++)
 			{
-				if (typeAttributs[j]) // test symptome Vrai/Faux attribut de type intervale 0(V) - 1(F)
+				if (typeAttributs[j]==1) // test symptome Vrai/Faux attribut de type intervale 0(V) - 1(F)
 				{
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)//test pour initialiser les attribut
 					{
 						if (symptomes[j] == "False")
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j,1,0,0);
+							Attribut_intervalle* symptome = new Attribut_intervalle(symptomes[j],j,1,0,0);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 						}
 						else 
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, 1, 0, 1/ nbrEmpreinte);
+							Attribut_intervalle* symptome = new Attribut_intervalle(symptomes[j],j, 1, 0, 1/ nbrEmpreinte);
 							mapMaladie[idMaladie].ajouterAttribut(symptome);
 						}
 					}
@@ -175,7 +175,7 @@ void Initialisation::init(string nomFichier)
 
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j) //cf commentaire symptome precedent
 					{
-						Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, borne, borne, borne/ nbrEmpreinte);
+						Attribut_intervalle* symptome = new Attribut_intervalle(symptomes[j],j, borne, borne, borne/ nbrEmpreinte);
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 						
 					}
@@ -205,7 +205,7 @@ void Initialisation::init(string nomFichier)
 					{
 						vector<string> valeurs;
 						valeurs.push_back(symptomes[j]);
-						Attribut_enumeration* symptome = new Attribut_enumeration(nomAttributs[j],j, 1,valeurs );
+						Attribut_enumeration* symptome = new Attribut_enumeration(symptomes[j],j, 1,valeurs );
 						mapMaladie[idMaladie].ajouterAttribut(symptome);
 
 					}
