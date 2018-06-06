@@ -34,6 +34,7 @@ bool Medecin::seConnecter(vector<Medecin> liste)
 
 		if (it->mdp == this->mdp && it->mail==this->mail) {
 			estConnecte = true;
+			//break;
 		}
 	}
 
@@ -110,9 +111,6 @@ void Medecin::mesurerPatient(string mesures, Patient &p) {
 
 	Empreinte e(mesures);
 	p.setEmpreintes(e);
-
-
-
 }
 
 void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //changer diagramme uml

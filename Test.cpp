@@ -247,19 +247,8 @@ using namespace std;
 		}
 		m.chargerEmpreinte(nomFichier, liste);
 		list <Analyse> la=m.faireAnalyse(p, lm);
-
-		
-	
-
-	
-		/*for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++) {
-			cout<<(*it)<<endl;
-		}
-		*/
-		
-
-
 	}
+	
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;
@@ -333,7 +322,7 @@ using namespace std;
 		cout << "----------- Fin Test Faire Analyse -----------" << endl;
 	}
 
-	///////////////////////////////////////Test fonctionnelles
+	///////////////////////////////////////Test fonctionnels
 	void Test::testAfficherMaladies(unordered_map<int, Maladie> &m)
 	{
 		unordered_map<int, Maladie>::iterator it;
