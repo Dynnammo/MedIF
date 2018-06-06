@@ -25,6 +25,8 @@ using namespace std;
 #include "Maladie.h"
 #include "Empreinte.h"
 
+static  int idA = 0;
+
 
 //------------------------------------------------------------- Constantes
 
@@ -76,7 +78,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 				if (!attribut->verification(valeurSymptome))//si c'est le cas, on supprime la maladie de la table sans supprimé le 
 															// vector des pointeurs d'attributs
 				{
-					it->second = NULL;
+					it->second = 0;
 					it=temp.erase(it);
 				}
 				else
@@ -92,7 +94,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 
 				if (!attribut->verification(symptomes[j]))//cf commentaire au dessus
 				{
-					it->second = NULL;
+					it->second = 0;
 					it = temp.erase(it);
 				}
 				else
@@ -152,7 +154,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		if (temp.size() == 1 || probabilite > 0.20)
 		{
 			maladiesPotentielles[it->second.getNom()] = probabilite; // conditions pour un pourcentage minimal
-			it->second = NULL;
+			it->second = 0;
 		}
 	}
 

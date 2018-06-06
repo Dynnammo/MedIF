@@ -75,7 +75,7 @@ using namespace std;
 					reponse.push_back(lignef.substr(0, pos));
 
 				}
-				if (pos != lignef.size() - 1 && pos != -1)
+				if (pos != (int)lignef.size() - 1 && pos != -1)
 				{
 					lignef.erase(0, pos + del.size());
 				}
@@ -96,7 +96,7 @@ using namespace std;
 		cout << "----------- String entre -----------" << endl;
 		cout << lignef << endl;
 		cout << "----------- Sortie -----------" << endl;
-		for (int i(0); i < reponse.size(); i++)
+		for (unsigned int i(0); i < reponse.size(); i++)
 		{
 			cout << reponse[i] << endl;
 		}

@@ -13,6 +13,7 @@ e-mail               : @insa-lyon.fr
 #include <regex>
 #include <string>
 #include <sstream>
+#include <stdlib.h>
 
 #include "Attribut.h"
 #include "Attribut_enumeration.h"
@@ -23,6 +24,8 @@ e-mail               : @insa-lyon.fr
 #include "Test.h"
 
 using namespace std;
+
+static int id;
 
 /*vector<string> split(string lignef, string del)
 {
@@ -101,6 +104,7 @@ void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
 
 int main()
 {
+	id = 0;
 	/* Initialisation des variables indispensable a tous les tests*/
 	Test t;
 	Initialisation i;
@@ -126,7 +130,7 @@ int main()
 	//t.testInitialisationMedecin("fichierMedecin2.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
-	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
+	t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
 	//appelTestAjouterPatient(t, m, i);
@@ -149,6 +153,7 @@ int main()
 	//test pour rechercherAnalyse
 	//appelTestRechercherAnalyse(t, p, m);
 	cout << "Fin du programme" << endl;
+	
 	
 	system("PAUSE");
 	return 0;

@@ -1,6 +1,6 @@
 PROGRAM_NAME = MedIF
 COMPILER = g++
-COMPFLAGS = -ansi -pedantic -Wall -std=c++14
+COMPFLAGS = -ansi -pedantic -Wall -std=c++14 -Wno-reorder
 
 COMPPART = $(COMPILER) $(COMPFLAGS) -c
 COMPFINAL = $(COMPILER) $(COMPFLAGS) -o

@@ -216,7 +216,7 @@ vector<string> Initialisation::split(string lignef, string del)
 				reponse.push_back(lignef.substr(0, pos));
 
 			}
-			if (pos != lignef.size() - 1 && pos != -1)
+			if (pos != (int)lignef.size() - 1 && pos != -1)
 			{
 				lignef.erase(0, pos + del.size());
 			}
