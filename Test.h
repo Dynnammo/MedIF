@@ -83,6 +83,10 @@ public:
 	void testInitialisationMedecin(string nomFichier, Initialisation &ini);
 	void testAnalyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie);
 	void testSplit(string test, string del);
+
+	//-------------------------------------- Test fonctionnelles 
+	void testAfficherMaladies(unordered_map <int, Maladie> &mapMaladie);
+	void testCreerMaladie(string nomFichier);
 };
 #endif // TEST_H
 #pragma once

@@ -102,6 +102,12 @@ void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
 	t.testFaireAnalyse(m, p, lm);
 }
 
+////////////////////////////////////////fonction test fonctionnelles
+void afficherMaladie(Maladie m)
+{
+	cout << m << endl;
+}
+
 void appelTestEmpreinteSaine(Test t, Medecin m, Patient p, Initialisation i) {
 	unordered_map<int, Maladie> lm = i.getListeMaladie();
 
@@ -131,6 +137,8 @@ int main()
 
 	// test pour vérifier que l'initialisation se passe correctement
 	t.testInitialisation("HealthMeasurementsWithLabels.txt", i);
+
+	//t.testInitialisation("test3.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins renvoie une erreur s'il y a un problème avec le fichier
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
@@ -168,6 +176,20 @@ int main()
 	//appelTestEmpreinteSaine(t, m, p, i);
 	cout << "Fin du programme" << endl;
 	
+	//-------------------------------------- Test fonctionnelles 
+	//test afficher/description les maladies
+	//t.testAfficherMaladies(i.getListeMaladie());
+
+	//test afficher/description une maladies
+	//afficherMaladie(i.getListeMaladie().begin()->first);
+
+	//test créer Maladie
+	//t.testCreerMaladie("uneMaladie.txt");
+	//t.testCreerMaladie("desMaladie.txt");
+	//t.testCreerMaladie("fichierErrone.tx");
+	//t.testCreerMaladie("maladieSansAttribut.txt");
+	//t.testCreerMaladie("fichierVide.txt");
+
 	
 	system("PAUSE");
 	return 0;
