@@ -27,22 +27,6 @@ using namespace std;
 
 static int id;
 
-/*vector<string> split(string lignef, string del)
-{
-	// Algorithme :
-	//
-	vector<string> reponse;
-	int pos = 0;
-	while (pos != -1)
-	{
-		pos = lignef.find(del);
-		reponse.push_back(lignef.substr(0, pos));
-		lignef.erase(0, pos + 1);
-	}
-	return reponse;
-}*/
-
-
 void appelTestSeConnecter(Initialisation ini, Test t, Medecin m)
 {
 	ini.initMedecin("MedecinIni.txt");
@@ -102,7 +86,7 @@ void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
 	t.testFaireAnalyse(m, p, lm);
 }
 
-////////////////////////////////////////fonction test fonctionnelles
+////////////////////////////////////////fonction test fonctionnels
 void afficherMaladie(Maladie m)
 {
 	cout << m << endl;

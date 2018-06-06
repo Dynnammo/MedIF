@@ -17,15 +17,13 @@ e-mail               : @insa-lyon.fr
 #include <iostream>
 #include <list>
 
+using namespace std;
+
+//--------------------------------------------------- Interfaces utilis�es
 #include "Personne.h"
 #include "Patient.h"
 #include "Analyse.h"
 #include "Maladie.h"
-
-using namespace std;
-
-
-//--------------------------------------------------- Interfaces utilis�es
 
 //------------------------------------------------------------- Constantes 
 
@@ -46,13 +44,13 @@ public:
 
 	bool seConnecter(vector<Medecin>);
 	void seDeconnecter();
-	Patient ajouterPatient(std::string n, std::string p, std::string m, vector <Patient> &patients);
+	Patient ajouterPatient(string n, string p, string m, vector <Patient> &patients);
 	list <Analyse> faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm);
 	Analyse rechercherAnalyse(int id, Patient &p);
     void afficherMaladies(list <Maladie> lm);
 	//void afficherAnalyse(Patient p);
-	void mesurerPatient(std::string mesures, Patient &p);
-	void chargerEmpreinte(std::string nomFichier, vector<Patient> &liste);
+	void mesurerPatient(string mesures, Patient &p);
+	void chargerEmpreinte(string nomFichier, vector<Patient> &liste);
 
 	// type M�thode ( liste de param�tres );
 	// Mode d'emploi :
@@ -82,7 +80,7 @@ public:
 	Medecin();
 
 
-	Medecin(std::string n, std::string m, std::string p, std::string motDePasse);
+	Medecin(string n, string m, string p, string motDePasse);
 
 	virtual ~ Medecin();
 
@@ -106,12 +104,7 @@ protected:
 
 private:
 	//------------------------------------------------------- Attributs priv�s
-	std::string mdp;
-	//---------------------------------------------------------- Classes amies
-
-	//-------------------------------------------------------- Classes priv�es
-
-	//----------------------------------------------------------- Types priv�s
+	string mdp;
 
 };
 
