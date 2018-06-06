@@ -67,7 +67,10 @@ void Initialisation::init(string nomFichier)
 	unordered_map<string, vector<string>> tmp_map;
 	ifstream lecture(nomFichier); //lecture du fichier
 	string ligne;
+	time_t temps = clock();
+	cout <<"debut : "<< clock() - temps <<endl;
 	vector<string> nomAttributs;
+	vector<int> typeAttributs;
 	if (lecture) // test de lecture
 	{
 		if (getline(lecture, ligne))
@@ -80,6 +83,27 @@ void Initialisation::init(string nomFichier)
 		else
 		{
 			cout << "Le fichier est vide." << endl;
+		}
+		int posLigne=lecture.tellg();
+		getline(lecture, ligne);
+		lecture.seekg(posLigne);
+
+		vector<string> tmp_attributs;
+		tmp_attributs = split(ligne, ";");
+		for (int l(1); l < tmp_attributs.size()-1; l++)
+		{
+			if (tmp_attributs[l] == "False" || tmp_attributs[l] == "True")
+			{
+				typeAttributs.push_back(1);
+			}
+			else if (regex_match(tmp_attributs[l], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+			{
+				typeAttributs.push_back(2);
+			}
+			else
+			{
+				typeAttributs.push_back(3);
+			}
 		}
 
 		while (getline(lecture, ligne)) // initialisation de maladies et empreintes correspondantes dans une map
@@ -94,6 +118,8 @@ void Initialisation::init(string nomFichier)
 			
 			tmp_map[maladie].push_back(ligne.substr(positionId+1, (position-1-positionId)));
 		}
+
+		cout << "lecture fini : " << clock() - temps << endl;
 		lecture.close();
 	}
 	else
@@ -105,14 +131,14 @@ void Initialisation::init(string nomFichier)
 	int idMaladie(0);
 	for (it = tmp_map.begin(); it != tmp_map.end(); ++it,idMaladie++) // debut de calcul des attributs dans la mapMaladie
 	{
+		cout << "maladie  : " << clock() - temps << endl;
 		int nbrEmpreinte = it->second.size();
 		for (unsigned int i(0); i < it->second.size(); i++)
 		{
-
 			vector<string> symptomes = split(it->second[i], separateur); // symptomes d'empreinte
 			for (unsigned int j(0); j < symptomes.size(); j++)
 			{
-				if (symptomes[j] == "False" || symptomes[j] == "True") // test symptome Vrai/Faux attribut de type intervale 0(V) - 1(F)
+				if (typeAttributs[j]) // test symptome Vrai/Faux attribut de type intervale 0(V) - 1(F)
 				{
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)//test pour initialiser les attribut
 					{
@@ -142,7 +168,7 @@ void Initialisation::init(string nomFichier)
 					}
 				}
 
-				else if (regex_match(symptomes[j],regex{ "[+-]?[0-9]+(.[0-9]+)?" })) // test symptome numérique
+				else if (typeAttributs[j]==2) // test symptome numérique
 				{
 
 					double borne = atof(symptomes[j].c_str());
