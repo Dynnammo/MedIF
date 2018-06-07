@@ -170,9 +170,12 @@ int main()
 	//test créer Maladie
 	//t.testCreerMaladie("uneMaladie.txt");
 	//t.testCreerMaladie("desMaladie.txt");
-	t.testCreerMaladie(".tt.txt");  //test non fonctionnel - mauvais format
+	//t.testCreerMaladie(".tt.txt");  //test non fonctionnel - mauvais format
 	//t.testCreerMaladie("maladieSansAttribut.txt");
 	//t.testCreerMaladie("fichierVide.txt");
+
+	//test modifier Maladie (mise à jour)
+	t.testModifierMaladie("fichierA.txt", "fichierB.txt");
 
 	
 	system("PAUSE");

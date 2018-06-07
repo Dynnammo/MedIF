@@ -84,7 +84,7 @@ public:
 	void testAnalyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie);
 	void testSplit(string test, string del);
 
-	//-------------------------------------- Test fonctionnelles 
+	//-------------------------------------- Test fonctionnelles de la classe Initialisation
 	void testAfficherMaladies(unordered_map <int, Maladie> &mapMaladie);
 	void testCreerMaladie(string nomFichier);
 };

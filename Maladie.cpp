@@ -64,6 +64,7 @@ void Maladie::setId(int id)
 {
 	this->idMaladie = id;
 }
+
 //------------------------------------------------- Surcharge d'op�rateurs
 Maladie & Maladie::operator = ( Maladie const & unMaladie)
 // Algorithme :
@@ -131,6 +132,7 @@ Maladie::Maladie()
 // Algorithme :
 //
 {
+	this->qualite = 0;
 #ifdef MAP
     cout << "Appel au constructeur par d�faut de <Maladie>" << endl;
 #endif
