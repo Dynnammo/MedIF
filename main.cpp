@@ -123,9 +123,7 @@ int main()
 	//t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
-	t.testInitialisation("test2.txt", i);
-
-	//t.testInitialisation("test3.txt", i);
+	t.testInitialisation("initMaladie.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins renvoie une erreur s'il y a un problème avec le fichier
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
@@ -177,7 +175,9 @@ int main()
 	//t.testCreerMaladie("maladieSansAttribut.txt");
 	//t.testCreerMaladie("fichierVide.txt");
 
-
+	//Test alert pour analyses supplémentaires
+	t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
+	t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
 	
 	system("PAUSE");
 	return 0;

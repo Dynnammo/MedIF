@@ -108,7 +108,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 	if (temp.begin() == temp.end())
 	{
 		cout << "L'analyse n'a pas donné de resultat." << endl;
-		cout << "Veuillez faire des testes supplémentaires" << endl;
+		cout << "Veuillez faire des analyses supplémentaires" << endl;
 	}
 
 	for (it = temp.begin(); it != temp.end();++it)//on parcourt les maladies restantes
@@ -134,7 +134,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 
 			}
 
-			else if (symptomes[i] == "F" || symptomes[i] == "V")
+			else if (symptomes[i] == "False" || symptomes[i] == "True")
 			{
 				Attribut_intervalle *ai = (Attribut_intervalle*)(attribut[i]);
 				if (ai->getMoyenne() == 0)
@@ -155,6 +155,11 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		{
 			maladiesPotentielles[it->second.getNom()] = probabilite; // conditions pour un pourcentage minimal
 			
+		}
+		if (probabilite < 0.50 && it->second.getNom() != "sain")
+		{
+			cout << "Veuillez faire des analyses supplémentaires" << endl;
+			cout << "Resultats impresis pour : " << it->second.getNom()<< endl;
 		}
 		it->second = NULL;
 

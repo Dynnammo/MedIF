@@ -329,7 +329,7 @@ using namespace std;
 		cout << "----------- Fin Test Faire Analyse -----------" << endl;
 	}
 
-	///////////////////////////////////////Test fonctionnels
+	///////////////////////////////////////Test fonctionnels de classe Initialisation
 	void Test::testAfficherMaladies(unordered_map<int, Maladie> &m)
 	{
 		unordered_map<int, Maladie>::iterator it;
@@ -358,4 +358,53 @@ using namespace std;
 
 	}
 
-	
+	///////////////////////////////////////Test fonctionnels de classe Analyse
+
+	void Test::testAlertAnalysesupplementaires(Initialisation i)
+	{
+		Empreinte sain("AT;75;84;225");
+		Empreinte malade("AA;172.984793832031;201.510355876721;149.614446667032");
+		Empreinte aucunResultat("Toto;182,201,149");
+		cout << "----------Debut de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+		Analyse a;
+		Analyse b;
+		Analyse c;
+		cout << "----------test pour personne en bonne sante------------" << endl;
+		a.analyseEmpreinte(sain, i.getListeMaladie());
+		cout << a << endl;
+		cout << "----------test pour personne malade------------" << endl;
+		b.analyseEmpreinte(malade, i.getListeMaladie());
+		cout << b << endl;
+		cout << "----------test pour personne sans resultat------------" << endl;
+		c.analyseEmpreinte(aucunResultat, i.getListeMaladie());
+		cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+	}
+
+	void Test::testAlertAnalysesupplementairesPlusieursEmpreintes(Initialisation i)
+	{
+		cout << "----------Debut de test fonctionnel : Alert pour analyses supplementaires- pour plusieurs empreintes---------" << endl;
+
+		vector<Empreinte> ve;
+
+		ve.push_back(Empreinte("AA;25.9031133467853;131.884670383258;147.766366832492"));
+		ve.push_back(Empreinte("AA;149.084428233379;-11.0641318146703;161.926491846857"));
+		ve.push_back(Empreinte("AA;-41.3700728049188;11.9823805235924;182.606685356541"));
+		ve.push_back(Empreinte("AT;75.715310469384;84.641826657236;221.676305582463"));
+		ve.push_back(Empreinte("AT;79.3082936874793;90.4204976271684;149.529648264601"));
+		ve.push_back(Empreinte("AT;-5.63242184270023;147.930197284059;124.357348523696"));
+		ve.push_back(Empreinte("AT;164.822089406812;29.7361104819574;139.14984867508"));
+		ve.push_back(Empreinte("AA;76.1269612581185;131.543560643103;182.610346524986"));
+		ve.push_back(Empreinte("AA;172.984793832031;201.510355876721;149.614446667032"));
+		ve.push_back(Empreinte("Toto;182,201,149"));
+
+
+		for (int p(0); p < ve.size(); p++)
+		{
+			Analyse a;
+			a.analyseEmpreinte(ve[p], i.getListeMaladie());
+			cout << a << endl;
+		}
+
+		cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires- pour plusieurs empreintes---------" << endl;
+
+	}
