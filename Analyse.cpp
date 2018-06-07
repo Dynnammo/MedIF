@@ -27,28 +27,25 @@ using namespace std;
 
 static  int idA = 0;
 
-
-//------------------------------------------------------------- Constantes
-
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
 
 void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie)
-// Algorithme : Créer une map temporaire avec les maladies
-//pour chaque symptome descriminant (intervalle ou sequence string) parcourir la map et exclure les maladies 
-//avec les maladies restante faire un calcule de probabilité de la maladie
+// Algorithme : Creer une map temporaire avec les maladies
+// pour chaque symptome descriminant (intervalle ou sequence string) parcourir la map et exclure les maladies 
+// avec les maladies restantes faire un calcule de probabilite de la maladie
 {
 	vector<string> symptomes;
-	// on recupères les symptomes de l'empreinte
+	// on recupere les symptomes de l'empreinte
 	for (istringstream iss(e.getMesures());;) 
 	{
 		string item; 
 		getline(iss, item, ';');
 		if (iss.fail()) break;
 		symptomes.push_back(item);
-	}// on recupères les symptomes de l'empreinte en split sur ';'
+	}// on recupere les symptomes de l'empreinte en split sur ';'
 	
 	unordered_map <int, Maladie> temp; //map temporaire des maladies
 	unordered_map <int, Maladie>::iterator it;
@@ -63,9 +60,10 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		
 		for (it = temp.begin(); it != temp.end(); )
 		{
-			if (j > it->second.getListeAttribut().size()) //pour chaque maladie on teste s'il y a pas plus de symptomes
-														 //que des attributs dans la maladie tester, si oui on break
-														 //cas possible si le capteur sera amelioré avec l'ajout d'attributs
+			if (j > it->second.getListeAttribut().size()) 
+			// pour chaque maladie on teste s'il n'y a pas plus de symptomes
+			// que des attributs dans la maladie testee, si oui on break
+			// cas possible si le capteur sera ameliore avec l'ajout d'attributs
 			{
 				break;
 			}
@@ -107,8 +105,8 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 	}
 	if (temp.begin() == temp.end())
 	{
-		cout << "L'analyse n'a pas donné de resultat." << endl;
-		cout << "Veuillez faire des analyses supplémentaires" << endl;
+		cout << "L'analyse n'a pas donne de resultat." << endl;
+		cout << "Veuillez faire des analyses supplementaires" << endl;
 	}
 
 	for (it = temp.begin(); it != temp.end();++it)//on parcourt les maladies restantes
