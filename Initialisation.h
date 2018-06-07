@@ -1,5 +1,5 @@
 /*************************************************************************
-Initialisation  -  description
+Initialisation  -  initialisation de l'application
 -------------------
 debut                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
@@ -27,8 +27,8 @@ using namespace std;
 
 //------------------------------------------------------------------------
 // Role de la classe <Initialisation>
-//
-//
+// permet d'avoir les maladies enregistrees, afin de pouvoir faire les analyses
+// initialise aussi la liste des medecins et des patients
 //------------------------------------------------------------------------
 
 class Initialisation
@@ -120,30 +120,16 @@ public:
 	//
 
 	//------------------------------------------------------------------ PRIVE
-
-protected:
-	//----------------------------------------------------- Methodes protegees
-
 private:
 	//------------------------------------------------------- Methodes privees
     vector<string> split(string lignef, string del);
-protected:
-	//----------------------------------------------------- Attributs proteges
 
-private:
 	//------------------------------------------------------- Attributs prives
 	vector<Medecin> listeMedecin;
 	vector<Patient> listePatient;
 	unordered_map <int, Maladie> mapMaladie;
-	//---------------------------------------------------------- Classes amies
-
-	//-------------------------------------------------------- Classes privees
-
-	//----------------------------------------------------------- Types prives
 
 };
-
-//---------------------------------------------- Types dependants de <Initialisation>
 
 #endif // Initialisation_H
 

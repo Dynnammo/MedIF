@@ -129,7 +129,7 @@ int main()
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins se passe correctement
-	//t.testInitialisationMedecin("fichierMedecin2.txt", i);
+	t.testInitialisationMedecin("MedecinIni.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
 	//t.testAnalyseEmpreinte(e, i.getListeMaladie());

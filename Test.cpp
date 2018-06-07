@@ -130,7 +130,9 @@ using namespace std;
 	{
 		cout << "----------- Test Initialisation Medecin -----------" << endl;
 		cout << "----------- liste Medecin Avant -----------" << endl;
-		if (in.getListeMedecin().size()==0)
+
+		bool estReussi = true;
+		/*if (in.getListeMedecin().size()==0)
 		{
 			cout << "Pas de Medecin present" << endl;
 		}
@@ -149,6 +151,20 @@ using namespace std;
 		else
 		{
 			in.afficherMedecin();
+		}*/
+		in.initMedecin(nomFichier);
+		if (in.getListeMedecin().size() == 0)
+		{
+			estReussi = false;
+		}
+	
+		if (estReussi == true) {
+
+			cout << "Le test d'initialisation des Medecins est reussi" << endl;
+		}
+		else {
+			cout << "Le test d'initialisation des Medecins a echoue." << endl;
+
 		}
 
 		cout << "----------- Fin de Test Initialisation de Medecin -----------" << endl;
@@ -157,7 +173,7 @@ using namespace std;
 	void Test::testAjouterPatient(Medecin medecin, vector <Patient> & listeP)
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
-		cout << "Liste des Patients AVANT : " << endl;
+		/*cout << "Liste des Patients AVANT : " << endl;
 		for (unsigned int i(0); i<listeP.size(); i++)
 		{
 			listeP[i].afficher();
@@ -175,7 +191,26 @@ using namespace std;
 		{
 			listeP[i].afficher();
 			cout << endl;
+		}*/
+		bool estReussi = true;
+		string n = "Marley";
+		string p = "Bob";
+		string m = "bob.marley@gmail.com";
+		Patient test = medecin.ajouterPatient(n, p, m, listeP);
+
+		if (listeP.back().getNom() != test.getNom() || listeP.back().getPrenom() != test.getPrenom() || listeP.back().getMail() != test.getMail()) {
+			estReussi = false;
 		}
+
+		if (estReussi == true) {
+
+			cout << "Le test d'ajout de Patient est reussi" << endl;
+		}
+		else {
+
+			cout << "Le test d'ajout de Patient a echoue" << endl;
+		}
+		
 		cout << "----------- FIN Test Ajouter Patient -----------\n" << endl;
 	}
 
@@ -216,33 +251,110 @@ using namespace std;
 	}
 
 	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m) {
+
+		bool estReussi = true;
 		cout << "----------- Test Charger Empreinte -----------" << endl;
 		
 		m.chargerEmpreinte(nomFichier, liste);
 		
 	
-		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
+		for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
 		{
-			cout <<"id du Patient"<< it->getIdPersonne() << endl;
+			//cout <<"id du Patient"<< it->getIdPersonne() << endl;
 			list<Empreinte> le = (*it).getEmpreintes();
-			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
+
+			if (it->getIdPersonne() == 1) {
+
+				Empreinte e = le.back();
+
+				if (e.getMesures() == "False;1.1;14.3;13.2;2367") {
+
+					cout << "Le test de chargement d'empreinte est reussi pour le patient d'id 1" << endl;
+				}
+				else {
+					cout << "Le test de chargement d'empreinte a echoue pour le patient d'id 1" << endl;
+					estReussi = false;
+				}
+
+				
+
+			}
+
+			if (it->getIdPersonne() == 4) {
+				Empreinte e = le.back();
+				if (e.getMesures() == "False;1.1;14.3;13.2;2368") {
+
+					cout << "Le test de chargement d'empreinte est reussi pour le patient d'id 4" << endl;
+				}
+				else {
+					cout << "Le test de chargement d'empreinte a echoue pour le patient d'id 4" << endl;
+					estReussi = false;
+				}
+
+			}
+
+			if (it->getIdPersonne() == 3) {
+				Empreinte e = le.back();
+				if (e.getMesures() == "False;1.1;14.3;13.2;2365") {
+
+					cout << "Le test de chargement d'empreinte est reussi pour le patient d'id 3" << endl;
+				}
+				else {
+					cout << "Le test de chargement d'empreinte a echoue pour le patient d'id 3" << endl;
+					estReussi = false;
+				}
+
+			}
+		}
+
+		if (estReussi == true) {
+
+			cout << "Le test de chargement d'empreinte a reussi pour tous les patients." << endl;
+		}
+			/*for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
 			{
 				Empreinte temp = *it2;
 				cout << temp.getMesures() << endl;
 			}
-		}
+		}*/
 		cout << "-------------- FIN Test charger Empreinte -------------\n" << endl;
 	}
 
 	void Test::testRechercherAnalyse(Patient &p, Medecin &m) {
 		
+		cout << "----------- Test Rechercher Analyse -----------" << endl;
 		int id= p.getAnalyses().back().getId();
+		cout << "voici l'id recherche" << id << endl;
+		bool estReussi = true;
 		//Analyse test = p.getAnalyses().back();
 
 		//cout << test << endl;
 		Analyse a=m.rechercherAnalyse(id, p);
 
-		cout <<"Analyse "<<a.getId()<<" a ete trouvee"<<a << endl;
+		unordered_map <string, double> liste = a.getMaladiesPotentielles();
+		unordered_map <string, double> liste2 = p.getAnalyses().back().getMaladiesPotentielles();
+
+		unordered_map <string, double>::iterator it2 = liste2.begin();
+		for (unordered_map <string, double>::iterator it = liste.begin(); it != liste.end(); it++) {
+			if (it->first != it2->first || it2->second != it->second) {
+
+				estReussi = false;
+			}
+
+			it2++;
+		}
+			
+		if (estReussi == true) {
+
+			cout << "Le test de recherche d'Analyse a reussi." << endl;
+		}
+		else {
+			cout << "Le test de recherche d'Analyse a echoue." << endl;
+		}
+
+		cout << "-------------- FIN Test rechercher Analyse -------------\n" << endl;
+
+		//cout <<"Analyse "<<a.getId()<<" a ete trouvee"<<a << endl;
 
 	}
 
