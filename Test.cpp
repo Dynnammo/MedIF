@@ -399,9 +399,9 @@ using namespace std;
 	void Test::testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier,Patient p, unordered_map<int, Maladie> &lm) {
 		cout << "----------- Test Faire Analyse d'une Empreinte saine -----------" << endl;
 		
-		for (int i = 0; i < liste.size(); i++) {
+		/*for (int i = 0; i < liste.size(); i++) {
 			cout << "id patient :" << p.getIdPersonne();
-		}
+		}*/
 		m.chargerEmpreinte(nomFichier, liste);
 		list <Analyse> la=m.faireAnalyse(p, lm);
 	}
@@ -409,75 +409,119 @@ using namespace std;
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;
-		Empreinte e1("TT;158.785072773956;134.202843809773;155.578398714048");
+		/*Empreinte e1("TT;158.785072773956;134.202843809773;155.578398714048");*/
 		Empreinte e2("TT;-8.06041743387215;156.208637725086;127.004626704367");
 		Empreinte e3("AT;-29.8670607474956;9.12582752675129;154.212716708429");
+		Empreinte e1("AT; 102; 63;203");
 
 		// faire analyse pour 1 empreinte
 		cout << "--- Analyse d'une empreinte ---" << endl;
 		p.setEmpreintes(e1);
 		list<Empreinte> le = p.getEmpreintes();
+		//list<Analyse> la = p.getAnalyses();
+
+		/*cout << "Liste des Empreintes AVANT : " << endl;
+		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
+		{
+			cout << (*it) << endl;
+		}
+
+		cout << "Liste des Analyses AVANT : " << endl;
+		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
+		{
+			cout << (*it) << endl;
+		}*/
+
+		m.faireAnalyse(p, lm);
+
 		list<Analyse> la = p.getAnalyses();
 
-		cout << "Liste des Empreintes AVANT : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-		{
-			cout << (*it) << endl;
+		Analyse a = la.back();
+		bool estReussi = true;
+		unordered_map<string, double> maladies = a.getMaladiesPotentielles();
+
+		int index = 0;
+		for (unordered_map<string, double>::iterator it = maladies.begin(); it != maladies.end(); it++) {
+
+			switch (index) {
+
+			case 0:
+				cout << "première analyse :" << it->first << " " << it->second << endl;
+				if (it->first != "M3" && it->second != 0.484849) {
+					
+					estReussi = false;
+				}
+				break;
+
+
+			case 1:
+				if (it->first != "sain" && it->second != 0.733754) {
+					estReussi = false;
+				}
+				break;
+
+
+
+			}
+
+			index++;
 		}
 
-		cout << "Liste des Analyses AVANT : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
+			if (estReussi == true) {
+
+				cout << "Le test faire une analyse est reussi." << endl;
+			}
+			else {
+
+				cout << "Le test faire une analyse a echoue." << endl;
+			}
+
+			cout << "Liste des Empreintes APRES : " << endl;
+			for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
+			{
+				cout << (*it) << endl;
+			}
+
+			cout << "Liste des Analyses APRES : " << endl;
+			for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
+			{
+				cout << (*it) << endl;
+			}
+
+			// faire analyse pour plusieurs empreintes
+			cout << "--- Analyse de plusieurs empreintes ---" << endl;
+			p.setEmpreintes(e2);
+			p.setEmpreintes(e3);
+
+			cout << "Liste des Empreintes AVANT : " << endl;
+			for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
+			{
+				cout << (*it) << endl;
+			}
+
+			cout << "Liste des Analyses AVANT : " << endl;
+			for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
+			{
+				cout << (*it) << endl;
+			}
+
+			m.faireAnalyse(p, lm);
+
+			cout << "Liste des Empreintes APRES : " << endl;
+			for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
+			{
+				cout << (*it) << endl;
+			}
+
+			cout << "Liste des Analyses APRES : " << endl;
+			for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
+			{
+				cout << (*it) << endl;
+			}
+
+			cout << "----------- Fin Test Faire Analyse -----------" << endl;
 		}
-
-		m.faireAnalyse(p, lm);
-
-		cout << "Liste des Empreintes APRES : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "Liste des Analyses APRES : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		// faire analyse pour plusieurs empreintes
-		cout << "--- Analyse de plusieurs empreintes ---" << endl;
-		p.setEmpreintes(e2);
-		p.setEmpreintes(e3);
-
-		cout << "Liste des Empreintes AVANT : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "Liste des Analyses AVANT : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		m.faireAnalyse(p, lm);
-
-		cout << "Liste des Empreintes APRES : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "Liste des Analyses APRES : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "----------- Fin Test Faire Analyse -----------" << endl;
-	}
+	
 
 	///////////////////////////////////////Test fonctionnels de classe Initialisation
 	void Test::testAfficherMaladies(unordered_map<int, Maladie> &m)

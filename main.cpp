@@ -142,7 +142,7 @@ int main()
 	//appelTestSeConnecter(i, t,m);
 
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	//appelTestFaireAnalyse(t, m, p, i);
+	appelTestFaireAnalyse(t, m, p, i);
 
 	//test pour vérifier que l'empreinte est ajoutee au patient
 	//appelTestMesurerPatient( t, m,p);
@@ -154,7 +154,7 @@ int main()
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
-	appelTestRechercherAnalyse(t, p, m);
+	//appelTestRechercherAnalyse(t, p, m);
 
 	//testfonctionnel 2.1:
 
