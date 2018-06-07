@@ -129,14 +129,14 @@ int main()
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins se passe correctement
-	//t.testInitialisationMedecin("fichierMedecin2.txt", i);
+	t.testInitialisationMedecin("MedecinIni.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
 	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
-	appelTestAjouterPatient(t, m, i);
+	//appelTestAjouterPatient(t, m, i);
 
 	// test pour vérifier qu'un Medecin puisse se connecter.
 	//appelTestSeConnecter(i, t,m);

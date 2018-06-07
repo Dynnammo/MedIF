@@ -130,7 +130,9 @@ using namespace std;
 	{
 		cout << "----------- Test Initialisation Medecin -----------" << endl;
 		cout << "----------- liste Medecin Avant -----------" << endl;
-		if (in.getListeMedecin().size()==0)
+
+		bool estReussi = true;
+		/*if (in.getListeMedecin().size()==0)
 		{
 			cout << "Pas de Medecin present" << endl;
 		}
@@ -149,6 +151,20 @@ using namespace std;
 		else
 		{
 			in.afficherMedecin();
+		}*/
+		in.initMedecin(nomFichier);
+		if (in.getListeMedecin().size() == 0)
+		{
+			estReussi = false;
+		}
+	
+		if (estReussi == true) {
+
+			cout << "Le test d'initialisation des Medecins est reussi" << endl;
+		}
+		else {
+			cout << "Le test d'initialisation des Medecins a echoue." << endl;
+
 		}
 
 		cout << "----------- Fin de Test Initialisation de Medecin -----------" << endl;
