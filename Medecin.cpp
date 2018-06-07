@@ -89,9 +89,9 @@ Analyse Medecin::rechercherAnalyse(int id, Patient &p) {
 }
 
 
-void Medecin::afficherMaladies(list <Maladie> lm)
+void Medecin::afficherMaladies(unordered_map <int, Maladie> lm)
 {
-	for (list<Maladie>::const_iterator it = lm.cbegin(); it != lm.cend(); it++)
+	for (lm::const_iterator it = lm.begin(); it != lm.end(); ++it)
 	{
 		cout << *it << endl;
 	}

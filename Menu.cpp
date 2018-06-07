@@ -52,10 +52,12 @@ void Menu::menuAppli()
     Medecin m("Don't care", "Don't care", mailMedecin, mdpMedecin);
     vector<Medecin> listeMedecins = i.getListeMedecin();
     vector<Patient> listePatients = i.getListePatient();
+    unordered_map<int, Maladie> lm = i.getListeMaladie();
+
     if (m.seConnecter(listeMedecins))
     {
         int option;
-        while (option != 7)
+        while (option != 6)
         {
             cout << "Vous etes bien connecte a notre plateforme." << endl;
             cout << "Que souhaitez-vous faire maintenant ?" << endl;
@@ -65,9 +67,8 @@ void Menu::menuAppli()
             cout << "2. Effectuer les mesures sur un patient" << endl;
             cout << "3. Effectuer l'analyse d'une ou plusieurs empreintes" << endl;
             cout << "4. Rechercher une analyse" << endl;
-            cout << "5. Afficher les analyses precedentes d'un patient" << endl;
-            cout << "6. Afficher la liste des maladies enregistrees" << endl;
-            cout << "7. Vous deconnecter" << endl;
+            cout << "5. Afficher la liste des maladies enregistrees" << endl;
+            cout << "6. Vous deconnecter" << endl;
             cout << "---------------------------------------------" << endl;
             cin >> option;
 
@@ -77,21 +78,18 @@ void Menu::menuAppli()
                 menuAjoutPatient(m, listePatients);
                 break;
             case 2:
-                menuMesurerPatient(p);
+                menuMesurerPatient(m, listePatients);
                 break;
             case 3:
-                cout << "Vous avez choisi d'effectuer l'analyse d'empreintes." << endl;
+                menuFaireAnalyse(i, m, lm);
                 break;
             case 4:
-                cout << "Vous avez choisi de rechercher une analyse." << endl;
+                menuRechercherAnalyse(i, m);
                 break;
             case 5:
-                cout << "Vous avez choisi d'afficher les analyses precedentes d'un patient." << endl;
+                menuAfficherMaladie(i, m);
                 break;
             case 6:
-                cout << "Vous avez choisi d'afficher la liste des maladies enregistrees." << endl;
-                break;
-            case 7:
                 m.seDeconnecter();
                 cout << "A la revoyure !";
                 break;
@@ -107,7 +105,7 @@ void Menu::menuAppli()
     }
 }
 
-Patient Menu::menuAjoutPatient(Medecin m, vector<Patient> listePatients)
+void Menu::menuAjoutPatient(Medecin m, vector<Patient> &listePatients)
 {
     cout << "Vous avez choisi d'enregistrer un nouveau patient." << endl;
     string nomPatient;
@@ -121,10 +119,60 @@ Patient Menu::menuAjoutPatient(Medecin m, vector<Patient> listePatients)
     cin >> mailPatient;
     Patient p = m.ajouterPatient(nomPatient, prenomPatient, mailPatient, listePatients);
     cout << "Patient bien ajoute." << endl;
-    return p;
+    cout << "=======================>>> Retour au menu" << endl;
 }
 
-void Menu::menuMesurerPatient(Patient p)
+void Menu::menuMesurerPatient(Medecin m, vector<Patient> listePatients)
 {
+    cout << "Vous avez choisi de faire les mesures de vos patients." << endl;
+    cout << "Veuillez entrer le nom du fichier correspondant au mesures du capteur : ";
+    string nomFichier;
+    cin >> nomFichier;
+    m.chargerEmpreinte(nomFichier, listePatients);
+    cout << "Les empreintes ont bien ete enregistrees pour les patients." << endl;
+    cout << "=======================>>> Retour au menu" << endl;
+}
 
+void Menu::menuFaireAnalyse(Initialisation i, Medecin m, unordered_map<int, Maladie> &lm)
+{
+    cout << "Vous avez choisi d'effectuer l'analyse d'empreintes." << endl;
+    cout << "Veuillez entrer l'id du patient : " << endl;
+    int idPatient;
+    cin >> idPatient;
+    Patient p = i.getPatient(idPatient);
+    list<Analyse> listeAnalyse = m.faireAnalyse(p, lm);
+    cout << "L'analyse est terminee. Voulez-vous la voir ? (Y/N) ";
+    string afficher;
+    cin >> afficher;
+    if (afficher=="Y")
+    {
+        for (list<Analyse>::const_iterator it = listeAnalyse.cbegin(); it != listeAnalyse.cend(); it++) {
+            cout << *it << endl;
+        }
+    }
+    cout << "=======================>>> Retour au menu" << endl;
+}
+
+void Menu::menuRechercherAnalyse(Initialisation i, Medecin m)
+{
+    cout << "Vous avez choisi de rechercher une analyse." << endl;
+    cout << "Veuillez entrer l'id du patient : ";
+    int idPatient;
+    cin >> idPatient;
+    cout << "Veuillez entrer l'id de l'analyse que vous recherchez : ";
+    int idAnalyse;
+    cin >> idAnalyse;
+    Patient p = i.getPatient(idPatient);
+    cout << "Voici ce que nous avons trouve : " << endl;
+    Analyse a = m.rechercherAnalyse(idAnalyse, p);
+    cout << a << endl;
+    cout << "=======================>>> Retour au menu" << endl;
+}
+
+void Menu::menuAfficherMaladie(Initialisation i, Medecin m)
+{
+    cout << "Vous avez choisi d'afficher la liste des maladies enregistrees." << endl;
+    unordered_map <int, Maladie> listeMaladies = i.getListeMaladie();
+    m.afficherMaladies(listeMaladies);
+    cout << "=======================>>> Retour au menu" << endl;
 }

@@ -47,7 +47,7 @@ public:
 	Patient ajouterPatient(string n, string p, string m, vector <Patient> &patients);
 	list <Analyse> faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm);
 	Analyse rechercherAnalyse(int id, Patient &p);
-    void afficherMaladies(list <Maladie> lm);
+    void afficherMaladies(unordered_map <int, Maladie> lm);
 	//void afficherAnalyse(Patient p);
 	void mesurerPatient(string mesures, Patient &p);
 	void chargerEmpreinte(string nomFichier, vector<Patient> &liste);
