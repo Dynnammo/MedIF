@@ -148,13 +148,13 @@ int main()
 	//appelTestMesurerPatient( t, m,p);
 
 	//test pour vérifier que l'on charge correctement les empreintes
-	appelTestChargerEmpreinte(i, t, m,p);
+	//appelTestChargerEmpreinte(i, t, m,p);
 
 	//test pour vérifier que la methode split fonctionne correctement
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
-	//appelTestRechercherAnalyse(t, p, m);
+	appelTestRechercherAnalyse(t, p, m);
 
 	//testfonctionnel 2.1:
 

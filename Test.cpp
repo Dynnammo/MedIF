@@ -287,13 +287,39 @@ using namespace std;
 
 	void Test::testRechercherAnalyse(Patient &p, Medecin &m) {
 		
+		cout << "----------- Test Rechercher Analyse -----------" << endl;
 		int id= p.getAnalyses().back().getId();
+		cout << "voici l'id recherche" << id << endl;
+		bool estReussi = true;
 		//Analyse test = p.getAnalyses().back();
 
 		//cout << test << endl;
 		Analyse a=m.rechercherAnalyse(id, p);
 
-		cout <<"Analyse "<<a.getId()<<" a ete trouvee"<<a << endl;
+		unordered_map <string, double> liste = a.getMaladiesPotentielles();
+		unordered_map <string, double> liste2 = p.getAnalyses().back().getMaladiesPotentielles();
+
+		unordered_map <string, double>::iterator it2 = liste2.begin();
+		for (unordered_map <string, double>::iterator it = liste.begin(); it != liste.end(); it++) {
+			if (it->first != it2->first || it2->second != it->second) {
+
+				estReussi = false;
+			}
+
+			it2++;
+		}
+			
+		if (estReussi == true) {
+
+			cout << "Le test de recherche d'Analyse a reussi." << endl;
+		}
+		else {
+			cout << "Le test de recherche d'Analyse a echoue." << endl;
+		}
+
+		cout << "-------------- FIN Test rechercher Analyse -------------\n" << endl;
+
+		//cout <<"Analyse "<<a.getId()<<" a ete trouvee"<<a << endl;
 
 	}
 
