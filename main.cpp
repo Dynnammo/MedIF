@@ -174,8 +174,6 @@ int main()
 	//t.testCreerMaladie("maladieSansAttribut.txt");
 	//t.testCreerMaladie("fichierVide.txt");
 
-	//test modifier Maladie (mise à jour)
-	t.testModifierMaladie("fichierA.txt", "fichierB.txt");
 
 	
 	system("PAUSE");
