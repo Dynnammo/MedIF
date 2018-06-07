@@ -56,7 +56,10 @@ void appelTestChargerEmpreinte(Initialisation ini, Test t, Medecin m,Patient p) 
 	Patient p1("Janson", "Clay", "clay.janson@gmail.com");
 	ini.setPatient(p1);
 	Patient p2("Padilla", "Tonny", "tonny.padilla@gmail.com");
+
+	Patient p3("Thivend", "Baptiste", "baptiste.thivend@gmail.com");
 	ini.setPatient(p2);
+	ini.setPatient(p3);
 	vector <Patient> liste = ini.getListePatient();
 	t.testChargerEmpreinte(nomFichier, liste , m);
 
@@ -117,10 +120,10 @@ int main()
 	cout << endl;
 
 	// test pour vérifier que l'initialisation des maladie renvoie une erreur s'il y a un problème avec le fichier
-	t.testInitialisation("fichierErrone.txt", i);
+	//t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
-	//t.testInitialisation("test2.txt", i);
+	t.testInitialisation("test2.txt", i);
 
 	//t.testInitialisation("test3.txt", i);
 
@@ -147,7 +150,7 @@ int main()
 	//appelTestMesurerPatient( t, m,p);
 
 	//test pour vérifier que l'on charge correctement les empreintes
-	//appelTestChargerEmpreinte(i, t, m,p);
+	appelTestChargerEmpreinte(i, t, m,p);
 
 	//test pour vérifier que la methode split fonctionne correctement
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");

@@ -187,7 +187,7 @@ using namespace std;
 
 		if (estConnecte) {
 
-			cout << "Le medecin est bien connecte à l'appli." << endl;
+			cout << "Le medecin est bien connecte à l'appli, test reussi." << endl;
 		}
 		else {
 
@@ -205,7 +205,13 @@ using namespace std;
 	
 		Empreinte e= le.back();
 	
-		cout << e.getMesures() << endl;
+		if (e.getMesures() == mesures) {
+
+			cout << "Test de Mesure du Patient reussie" << endl;
+		}
+		else {
+			cout << "Test de Mesure du Patient echoue" << endl;
+		}
 		cout << "-----------  FIN Test Mesurer Patient -----------\n" << endl;
 	}
 
@@ -217,6 +223,7 @@ using namespace std;
 	
 		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
 		{
+			cout <<"id du Patient"<< it->getIdPersonne() << endl;
 			list<Empreinte> le = (*it).getEmpreintes();
 			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
 			{
