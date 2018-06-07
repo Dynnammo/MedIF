@@ -129,7 +129,7 @@ int main()
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins se passe correctement
-	t.testInitialisationMedecin("MedecinIni.txt", i);
+	//t.testInitialisationMedecin("MedecinIni.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
 	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
@@ -154,7 +154,7 @@ int main()
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
-	//appelTestRechercherAnalyse(t, p, m);
+	appelTestRechercherAnalyse(t, p, m);
 
 	//testfonctionnel 2.1:
 
@@ -166,18 +166,18 @@ int main()
 	//t.testAfficherMaladies(i.getListeMaladie());
 
 	//test afficher/description une maladies
-	//afficherMaladie(i.getListeMaladie().begin()->first);
+	afficherMaladie(i.getListeMaladie().begin()->first);
 
 	//test créer Maladie
-	//t.testCreerMaladie("uneMaladie.txt");
-	//t.testCreerMaladie("desMaladie.txt");
-	//t.testCreerMaladie(".tt.txt");  //test non fonctionnel - mauvais format
-	//t.testCreerMaladie("maladieSansAttribut.txt");
-	//t.testCreerMaladie("fichierVide.txt");
+	// t.testCreerMaladie("uneMaladie.txt") << endl;
+	//t.testCreerMaladie("desMaladies.txt") << endl;
+	//t.testCreerMaladieErreur(".tt.sxt") << endl;  //test non fonctionnel - mauvais format
+	//t.testCreerMaladie("maladieSansAttribut.txt") << endl;
+	//t.testCreerMaladieErreur("fichierVide.txt") << endl; //test non fonctionnel - fichier vide
 
-	//Test alert pour analyses supplémentaires
-	//t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
-	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+	// Test alert pour analyses supplémentaires
+	//t.testAlertAnalysesupplementaires(i) << endl; // pour une empreinte : sain, malade, pas de resultat
+	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i) << endl; // pour plusieurs empreintes
 	
 	system("PAUSE");
 	return 0;

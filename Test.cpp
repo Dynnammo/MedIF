@@ -324,7 +324,7 @@ using namespace std;
 		
 		cout << "----------- Test Rechercher Analyse -----------" << endl;
 		int id= p.getAnalyses().back().getId();
-		cout << "voici l'id recherche" << id << endl;
+		cout << "voici l'id recherche : " << id << endl;
 		bool estReussi = true;
 		//Analyse test = p.getAnalyses().back();
 
@@ -442,37 +442,43 @@ using namespace std;
 	}
 
 	///////////////////////////////////////Test fonctionnels de classe Initialisation
-	void Test::testAfficherMaladies(unordered_map<int, Maladie> &m)
+	bool Test::testAfficherMaladies(unordered_map<int, Maladie> &m)
 	{
-		unordered_map<int, Maladie>::iterator it;
-		for (it = m.begin(); it != m.end(); ++it)
+		cout << "----------Debut de test fonctionnel : AfficherMaladies----------" << endl;
+		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
 		{
-			cout << it->second << endl;
+			cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
+			return true;
 		}
+		cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
+		return false;
 	}
 
-	void Test::testCreerMaladie(string nomFichier)
+	bool Test::testCreerMaladie(string nomFichier)
 	{
+		cout << "----------Debut de test fonctionnel : CreerMaladie----------" << endl;
 		Initialisation ii;
 		ii.init(nomFichier);
 		unordered_map<int, Maladie> m = ii.getListeMaladie();
-		unordered_map<int, Maladie>::iterator it;
-		for (it = m.begin(); it != m.end(); ++it)
+		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
 		{
-
-			cout << it->second << endl;
+			cout << "----------Fin de test fonctionnel : CreerMaladie----------" << endl;
+			return true;
 		}
+		cout << "----------Fin de test fonctionnel : CreerMaladie----------" << endl;
+		return false;
+	}
 
-		if (m.begin() == m.end())
-		{
-			cout << "Attention : Pas de maladie Créee" << endl;
-		}
-
+	bool Test::testCreerMaladieErreur(string nomFichier)
+	{
+		cout << "----------Debut de test fonctionnel : CreerMaladieErreur----------" << endl;
+		cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
+		return !this->testCreerMaladie(nomFichier);
 	}
 
 	///////////////////////////////////////Test fonctionnels de classe Analyse
 
-	void Test::testAlertAnalysesupplementaires(Initialisation i)
+	bool Test::testAlertAnalysesupplementaires(Initialisation i)
 	{
 		Empreinte sain("AT;75;84;225");
 		Empreinte malade("AA;172.984793832031;201.510355876721;149.614446667032");
@@ -481,18 +487,44 @@ using namespace std;
 		Analyse a;
 		Analyse b;
 		Analyse c;
-		cout << "----------test pour personne en bonne sante------------" << endl;
+
 		a.analyseEmpreinte(sain, i.getListeMaladie());
-		cout << a << endl;
-		cout << "----------test pour personne malade------------" << endl;
 		b.analyseEmpreinte(malade, i.getListeMaladie());
-		cout << b << endl;
-		cout << "----------test pour personne sans resultat------------" << endl;
 		c.analyseEmpreinte(aucunResultat, i.getListeMaladie());
+		unordered_map <string, double> liste = a.getMaladiesPotentielles();
+		unordered_map <string, double>::iterator it;
+		for (it =liste.begin(); it != liste.end(); ++it)
+		{
+			if (it->second < 0.5)
+			{
+				cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+				return true;
+			}
+		}
+		liste = b.getMaladiesPotentielles();
+		for (it = liste.begin(); it != liste.end(); ++it)
+		{
+			if (it->second < 0.5)
+			{
+				cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+				return true;
+			}
+		}
+		liste = c.getMaladiesPotentielles();
+		for (it = liste.begin(); it != liste.end(); ++it)
+		{
+			if (it->second < 0.5)
+			{
+				cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+				return true;
+			}
+		}
+
 		cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+		return false;
 	}
 
-	void Test::testAlertAnalysesupplementairesPlusieursEmpreintes(Initialisation i)
+	bool Test::testAlertAnalysesupplementairesPlusieursEmpreintes(Initialisation i)
 	{
 		cout << "----------Debut de test fonctionnel : Alert pour analyses supplementaires- pour plusieurs empreintes---------" << endl;
 
@@ -508,15 +540,25 @@ using namespace std;
 		ve.push_back(Empreinte("AA;76.1269612581185;131.543560643103;182.610346524986"));
 		ve.push_back(Empreinte("AA;172.984793832031;201.510355876721;149.614446667032"));
 		ve.push_back(Empreinte("Toto;182,201,149"));
-
+		unordered_map<string, double>::iterator it;
+		unordered_map <string, double> liste;
 
 		for (int p(0); p < ve.size(); p++)
 		{
 			Analyse a;
 			a.analyseEmpreinte(ve[p], i.getListeMaladie());
-			cout << a << endl;
+			 liste= a.getMaladiesPotentielles();
+			for (it = liste.begin(); it != liste.end(); ++it)
+			{
+				if (it->second < 0.5)
+				{
+					cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires- pour plusieurs empreintes---------" << endl;
+					return true;
+				}
+			}
 		}
 
 		cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires- pour plusieurs empreintes---------" << endl;
+		return false;
 
 	}

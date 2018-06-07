@@ -78,8 +78,8 @@ public:
 	//--------------------------------------------- Tests de la classe Analyse
 
 	//--------------------------------------------- Tests fonctionnels de la classe Analyse
-	void testAlertAnalysesupplementaires(Initialisation i);
-	void testAlertAnalysesupplementairesPlusieursEmpreintes(Initialisation i);
+	bool testAlertAnalysesupplementaires(Initialisation i);
+	bool testAlertAnalysesupplementairesPlusieursEmpreintes(Initialisation i);
 	//-------------------------------------- Tests de la classe Initialisation
 	void testInitialisation(string nomFichier, Initialisation &ini);
 	void testInitialisationMedecin(string nomFichier, Initialisation &ini);
@@ -87,8 +87,9 @@ public:
 	void testSplit(string test, string del);
 
 	//-------------------------------------- Test fonctionnelles de la classe Initialisation
-	void testAfficherMaladies(unordered_map <int, Maladie> &mapMaladie);
-	void testCreerMaladie(string nomFichier);
+	bool testAfficherMaladies(unordered_map <int, Maladie> &mapMaladie);
+	bool testCreerMaladie(string nomFichier);
+	bool testCreerMaladieErreur(string nomFichier);
 
 
 };
