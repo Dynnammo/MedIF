@@ -121,6 +121,7 @@ private:
 	//------------------------------------------------------- Attributs privés
 	int idMaladie;
 	string nomMaladie;
+	int qualite;
 	vector<Attribut*> listeAttribut;
 
 	//---------------------------------------------------------- Classes amies

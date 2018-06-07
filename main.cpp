@@ -117,7 +117,7 @@ int main()
 	cout << endl;
 
 	// test pour vérifier que l'initialisation des maladie renvoie une erreur s'il y a un problème avec le fichier
-	//t.testInitialisation("fichierErrone.txt", i);
+	t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
 	//t.testInitialisation("test2.txt", i);
