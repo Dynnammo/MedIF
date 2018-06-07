@@ -129,7 +129,7 @@ int main()
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins se passe correctement
-	t.testInitialisationMedecin("MedecinIni.txt", i);
+	//t.testInitialisationMedecin("MedecinIni.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
 	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
@@ -151,7 +151,7 @@ int main()
 	//appelTestChargerEmpreinte(i, t, m,p);
 
 	//test pour vérifier que la methode split fonctionne correctement
-	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
+	t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
 	//appelTestRechercherAnalyse(t, p, m);

@@ -96,11 +96,49 @@ using namespace std;
 		cout << "----------- String entre -----------" << endl;
 		cout << lignef << endl;
 		cout << "----------- Sortie -----------" << endl;
+
+		bool estReussi = true;
 		for (unsigned int i(0); i < reponse.size(); i++)
 		{
-			cout << reponse[i] << endl;
+			switch (i) {
+
+			case 0:
+				if (reponse[i] != "A") {
+					estReussi = false;
+				}
+				break;
+
+
+			case 1:
+				if (reponse[i] != "Z") {
+					estReussi = false;
+				}
+				break;
+
+			case 2:
+				if (reponse[i] != "E") {
+					estReussi = false;
+				}
+				break;
+
+
+			case 6:
+				if (reponse[i] != "TEST;") {
+					estReussi = false;
+				}
+				break;
+			}
+
+
 		}
 		
+		if (estReussi == true) {
+
+			cout << "Le test split est reussi" << endl;
+		}
+		else {
+			cout << "Le test split a echoue." << endl;
+		}
 		cout << "----------- Fin de Test se Connecter -----------" << endl;
 	}
 
