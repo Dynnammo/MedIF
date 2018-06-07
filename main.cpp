@@ -148,7 +148,7 @@ int main()
 	//appelTestMesurerPatient( t, m,p);
 
 	//test pour vérifier que l'on charge correctement les empreintes
-	appelTestChargerEmpreinte(i, t, m,p);
+	//appelTestChargerEmpreinte(i, t, m,p);
 
 	//test pour vérifier que la methode split fonctionne correctement
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
@@ -176,8 +176,8 @@ int main()
 	//t.testCreerMaladie("fichierVide.txt");
 
 	//Test alert pour analyses supplémentaires
-	t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
-	t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+	//t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
+	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
 	
 	system("PAUSE");
 	return 0;
