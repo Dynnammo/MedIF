@@ -53,6 +53,18 @@ public:
 		return idPersonne;
 	}
 
+	string getNom() {
+		return nom;
+	}
+
+	string getPrenom() {
+		return prenom;
+	}
+
+	string getMail() {
+		return mail;
+	}
+
 	//-------------------------------------------- Constructeurs - destructeur
     Personne(const Personne & p)
 		:prenom(p.prenom), nom(p.nom), idPersonne(p.idPersonne), mail(p.mail)

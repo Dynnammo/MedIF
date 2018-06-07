@@ -136,7 +136,7 @@ int main()
 
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
-	//appelTestAjouterPatient(t, m, i);
+	appelTestAjouterPatient(t, m, i);
 
 	// test pour vérifier qu'un Medecin puisse se connecter.
 	//appelTestSeConnecter(i, t,m);
@@ -154,7 +154,7 @@ int main()
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
-	appelTestRechercherAnalyse(t, p, m);
+	//appelTestRechercherAnalyse(t, p, m);
 
 	//testfonctionnel 2.1:
 

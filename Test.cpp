@@ -157,7 +157,7 @@ using namespace std;
 	void Test::testAjouterPatient(Medecin medecin, vector <Patient> & listeP)
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
-		cout << "Liste des Patients AVANT : " << endl;
+		/*cout << "Liste des Patients AVANT : " << endl;
 		for (unsigned int i(0); i<listeP.size(); i++)
 		{
 			listeP[i].afficher();
@@ -175,7 +175,26 @@ using namespace std;
 		{
 			listeP[i].afficher();
 			cout << endl;
+		}*/
+		bool estReussi = true;
+		string n = "Marley";
+		string p = "Bob";
+		string m = "bob.marley@gmail.com";
+		Patient test = medecin.ajouterPatient(n, p, m, listeP);
+
+		if (listeP.back().getNom() != test.getNom() || listeP.back().getPrenom() != test.getPrenom() || listeP.back().getMail() != test.getMail()) {
+			estReussi = false;
 		}
+
+		if (estReussi == true) {
+
+			cout << "Le test d'ajout de Patient est reussi" << endl;
+		}
+		else {
+
+			cout << "Le test d'ajout de Patient a echoue" << endl;
+		}
+		
 		cout << "----------- FIN Test Ajouter Patient -----------\n" << endl;
 	}
 
