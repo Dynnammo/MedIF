@@ -77,7 +77,9 @@ public:
 
 	//--------------------------------------------- Tests de la classe Analyse
 
-
+	//--------------------------------------------- Tests fonctionnels de la classe Analyse
+	void testAlertAnalysesupplementaires(Initialisation i);
+	void testAlertAnalysesupplementairesPlusieursEmpreintes(Initialisation i);
 	//-------------------------------------- Tests de la classe Initialisation
 	void testInitialisation(string nomFichier, Initialisation &ini);
 	void testInitialisationMedecin(string nomFichier, Initialisation &ini);
@@ -87,6 +89,8 @@ public:
 	//-------------------------------------- Test fonctionnelles de la classe Initialisation
 	void testAfficherMaladies(unordered_map <int, Maladie> &mapMaladie);
 	void testCreerMaladie(string nomFichier);
+
+
 };
 #endif // TEST_H
 #pragma once
