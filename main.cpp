@@ -176,8 +176,8 @@ int main()
 	//t.testCreerMaladie("fichierVide.txt");
 
 	//Test alert pour analyses supplémentaires
-	t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
-	t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+	//t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
+	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
 	
 	system("PAUSE");
 	return 0;

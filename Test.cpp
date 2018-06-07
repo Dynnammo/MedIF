@@ -216,21 +216,72 @@ using namespace std;
 	}
 
 	void Test::testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m) {
+
+		bool estReussi = true;
 		cout << "----------- Test Charger Empreinte -----------" << endl;
 		
 		m.chargerEmpreinte(nomFichier, liste);
 		
 	
-		for(vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
+		for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
 		{
-			cout <<"id du Patient"<< it->getIdPersonne() << endl;
+			//cout <<"id du Patient"<< it->getIdPersonne() << endl;
 			list<Empreinte> le = (*it).getEmpreintes();
-			for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
+
+			if (it->getIdPersonne() == 1) {
+
+				Empreinte e = le.back();
+
+				if (e.getMesures() == "False;1.1;14.3;13.2;2367") {
+
+					cout << "Le test de chargement d'empreinte est reussi pour le patient d'id 1" << endl;
+				}
+				else {
+					cout << "Le test de chargement d'empreinte a echoue pour le patient d'id 1" << endl;
+					estReussi = false;
+				}
+
+				
+
+			}
+
+			if (it->getIdPersonne() == 4) {
+				Empreinte e = le.back();
+				if (e.getMesures() == "False;1.1;14.3;13.2;2368") {
+
+					cout << "Le test de chargement d'empreinte est reussi pour le patient d'id 4" << endl;
+				}
+				else {
+					cout << "Le test de chargement d'empreinte a echoue pour le patient d'id 4" << endl;
+					estReussi = false;
+				}
+
+			}
+
+			if (it->getIdPersonne() == 3) {
+				Empreinte e = le.back();
+				if (e.getMesures() == "False;1.1;14.3;13.2;2365") {
+
+					cout << "Le test de chargement d'empreinte est reussi pour le patient d'id 3" << endl;
+				}
+				else {
+					cout << "Le test de chargement d'empreinte a echoue pour le patient d'id 3" << endl;
+					estReussi = false;
+				}
+
+			}
+		}
+
+		if (estReussi == true) {
+
+			cout << "Le test de chargement d'empreinte a reussi pour tous les patients." << endl;
+		}
+			/*for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
 			{
 				Empreinte temp = *it2;
 				cout << temp.getMesures() << endl;
 			}
-		}
+		}*/
 		cout << "-------------- FIN Test charger Empreinte -------------\n" << endl;
 	}
 
