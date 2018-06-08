@@ -60,7 +60,7 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		
 		for (it = temp.begin(); it != temp.end(); )
 		{
-			if (j > it->second.getListeAttribut().size()) 
+			if (j > it->second.getListeAttribut().size()-1) 
 			// pour chaque maladie on teste s'il n'y a pas plus de symptomes
 			// que des attributs dans la maladie testee, si oui on break
 			// cas possible si le capteur sera ameliore avec l'ajout d'attributs
@@ -117,6 +117,10 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		int nbrAttribut = it->second.getListeAttribut().size();
 		for (int i(0); i < nbrAttribut; i++)// chaque attribut de la maladie
 		{
+			if (i > symptomes.size() - 1)
+			{
+				break;
+			}
 			if (regex_match(symptomes[i], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))// comparaison avec symptome associé
 			{
 				double valeurSymptome = atof(symptomes[i].c_str());

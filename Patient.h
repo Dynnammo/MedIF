@@ -113,6 +113,9 @@ public:
 
 	Patient()
 	{
+		this->nom = "";
+		this->prenom = "";
+		this->mail = "";
 #ifdef MAP
     	cout << "Appel au constructeur de copie de <Patient>" << endl;
 #endif

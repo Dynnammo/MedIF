@@ -368,78 +368,127 @@ using namespace std;
 		list <Analyse> la=m.faireAnalyse(p, lm);
 	}
 	
-	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
+	bool Test::testFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm, bool opt)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;
-		Empreinte e1("TT;158.785072773956;134.202843809773;155.578398714048");
-		Empreinte e2("TT;-8.06041743387215;156.208637725086;127.004626704367");
-		Empreinte e3("AT;-29.8670607474956;9.12582752675129;154.212716708429");
+
+		Patient p;
+		vector<Empreinte> ve;
+
+		ve.push_back(Empreinte("AA;25;131;147"));
+		ve.push_back(Empreinte("AA;149;-11.;161"));
+		ve.push_back(Empreinte("AA;-41;11;182"));
+		ve.push_back(Empreinte("AT;75;84;221"));
+		ve.push_back(Empreinte("AT;79;90;149"));
+		ve.push_back(Empreinte("AT;-5;147;124"));
+		ve.push_back(Empreinte("AT;164;29;139"));
+		ve.push_back(Empreinte("AA;76;131;182"));
+		ve.push_back(Empreinte("AA;172;201;149"));
 
 		// faire analyse pour 1 empreinte
-		cout << "--- Analyse d'une empreinte ---" << endl;
-		p.setEmpreintes(e1);
+		vector<Analyse> refA;
+		if (opt)
+		{
+			cout << "--- Analyse de plusieurs empreintes ---" << endl;
+			for (int i(0); i < 9; i++)
+			{
+				Analyse a;
+				a.analyseEmpreinte(ve[i], lm);
+				p.setEmpreintes(ve[i]);
+				refA.push_back(a);
+			}
+
+		}
+		else
+		{
+			cout << "--- Analyse d'une empreinte ---" << endl;
+			p.setEmpreintes(ve[0]);
+			Analyse a;
+			a.analyseEmpreinte(ve[0], lm);
+			refA.push_back(a);
+		}
+
 		list<Empreinte> le = p.getEmpreintes();
+		m.faireAnalyse(p, lm);
 		list<Analyse> la = p.getAnalyses();
 
-		cout << "Liste des Empreintes AVANT : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
+		bool estReussi = true;
+		list<Analyse>::iterator it;
+		int index = 0;
+		for (it=la.begin();it!=la.end();index++ ,++it)
 		{
-			cout << (*it) << endl;
+			if (refA[index].getMaladiesPotentielles().size() != (*it).getMaladiesPotentielles().size())
+			{
+				estReussi = false;
+				break;
+			}
+			else
+			{
+				unordered_map<string, double> ref = refA[index].getMaladiesPotentielles();
+				unordered_map<string, double>::iterator it_ref;
+				it_ref= ref.begin();
+				unordered_map<string, double> testA= (*it).getMaladiesPotentielles();
+				unordered_map<string, double>::iterator it_test; 
+				it_test= testA.begin();
+
+				for (it_ref; it_ref != ref.end(); ++it_ref, ++it_test)
+				{
+					if (it_ref->first!=it_test->first || it_ref->second!=it_test->second)
+					{
+						estReussi = false;
+						break;
+					}
+				
+				}
+
+			}
 		}
 
-		cout << "Liste des Analyses AVANT : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
+		if (estReussi)
 		{
-			cout << (*it) << endl;
+			cout << "Le test faire une analyse a reussi." << endl;
 		}
-
-		m.faireAnalyse(p, lm);
-
-		cout << "Liste des Empreintes APRES : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
+		else
 		{
-			cout << (*it) << endl;
+			cout << "Le test faire une analyse a echoue." << endl;
 		}
-
-		cout << "Liste des Analyses APRES : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		// faire analyse pour plusieurs empreintes
-		cout << "--- Analyse de plusieurs empreintes ---" << endl;
-		p.setEmpreintes(e2);
-		p.setEmpreintes(e3);
-
-		cout << "Liste des Empreintes AVANT : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "Liste des Analyses AVANT : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		m.faireAnalyse(p, lm);
-
-		cout << "Liste des Empreintes APRES : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "Liste des Analyses APRES : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "----------- Fin Test Faire Analyse -----------" << endl;
+		return estReussi;
 	}
+
+	///////////////////////////////////////Test fonctionnels de classe Medecin
+
+	bool Test::testAjouterPatienfonct(Medecin medecin, Initialisation i)
+	{
+		cout << "----------Debut de test fonctionnel : AjouterPatient----------" << endl;
+		Patient p("test1", "test2", "test3");
+		int tailleAv = i.getListePatient().size();
+		i.setPatient(p);
+		if (i.getListePatient().size() == tailleAv + 1)
+		{
+			cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
+			return true;
+		}
+		cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
+		return false;
+		
+	}
+
+	bool Test::testAjouterPatienErreurfonct(Medecin medecin, Initialisation i)
+	{
+
+		cout << "----------Debut de test fonctionnel : AjouterPatient----------" << endl;
+		Patient p;
+		int tailleAv = i.getListePatient().size();
+		i.setPatient(p);
+		if (i.getListePatient().size() == tailleAv + 1)
+		{
+			cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
+			return false;
+		}
+		cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
+		return true;
+	}
+
 
 	///////////////////////////////////////Test fonctionnels de classe Initialisation
 	bool Test::testAfficherMaladies(unordered_map<int, Maladie> &m)
@@ -530,15 +579,15 @@ using namespace std;
 
 		vector<Empreinte> ve;
 
-		ve.push_back(Empreinte("AA;25.9031133467853;131.884670383258;147.766366832492"));
-		ve.push_back(Empreinte("AA;149.084428233379;-11.0641318146703;161.926491846857"));
-		ve.push_back(Empreinte("AA;-41.3700728049188;11.9823805235924;182.606685356541"));
-		ve.push_back(Empreinte("AT;75.715310469384;84.641826657236;221.676305582463"));
-		ve.push_back(Empreinte("AT;79.3082936874793;90.4204976271684;149.529648264601"));
-		ve.push_back(Empreinte("AT;-5.63242184270023;147.930197284059;124.357348523696"));
-		ve.push_back(Empreinte("AT;164.822089406812;29.7361104819574;139.14984867508"));
-		ve.push_back(Empreinte("AA;76.1269612581185;131.543560643103;182.610346524986"));
-		ve.push_back(Empreinte("AA;172.984793832031;201.510355876721;149.614446667032"));
+		ve.push_back(Empreinte("AA;25;131;147"));
+		ve.push_back(Empreinte("AA;149;-11.;161"));
+		ve.push_back(Empreinte("AA;-41;11;182"));
+		ve.push_back(Empreinte("AT;75;84;221"));
+		ve.push_back(Empreinte("AT;79;90;149"));
+		ve.push_back(Empreinte("AT;-5;147;124"));
+		ve.push_back(Empreinte("AT;164;29;139"));
+		ve.push_back(Empreinte("AA;76;131;182"));
+		ve.push_back(Empreinte("AA;172;201;149"));
 		ve.push_back(Empreinte("Toto;182,201,149"));
 		unordered_map<string, double>::iterator it;
 		unordered_map <string, double> liste;
@@ -548,6 +597,7 @@ using namespace std;
 			Analyse a;
 			a.analyseEmpreinte(ve[p], i.getListeMaladie());
 			 liste= a.getMaladiesPotentielles();
+			 cout << a << endl;
 			for (it = liste.begin(); it != liste.end(); ++it)
 			{
 				if (it->second < 0.5)
@@ -562,3 +612,5 @@ using namespace std;
 		return false;
 
 	}
+
+	///////////////////////////////////////////////////Test non fonctionnels
