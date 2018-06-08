@@ -404,7 +404,15 @@ using namespace std;
 			cout << "id patient :" << p.getIdPersonne();
 		}*/
 		m.chargerEmpreinte(nomFichier, liste);
-		list <Analyse> la=m.faireAnalyse(p, lm);
+		
+		list <Analyse> la=m.faireAnalyse(p, lm,false);
+		bool estReussi = true;
+		Analyse a = la.back();
+		unordered_map <string, double> maladies = a.getMaladiesPotentielles();
+
+		unordered_map <string, double>::iterator it = maladies.begin();
+
+		cout << "Analyse d'une personne Saine: " << it->first << " " << it->second << endl;
 	}
 	
 	bool Test::testFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm, bool opt)
@@ -448,7 +456,7 @@ using namespace std;
 		}
 
 		list<Empreinte> le = p.getEmpreintes();
-		m.faireAnalyse(p, lm);
+		m.faireAnalyse(p, lm,opt);
 		list<Analyse> la = p.getAnalyses();
 
 		bool estReussi = true;
@@ -540,6 +548,14 @@ using namespace std;
 		}
 		cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
 		return false;
+	}
+
+	bool Test::seConnecterMauvaisMdp(vector <Medecin> liste, string n, string m, string p, string motDePasse) {
+
+		Medecin med(n, m, p, motDePasse);
+		bool estCo=med.seConnecter(liste);
+
+		return estCo;
 	}
 
 	bool Test::testCreerMaladie(string nomFichier)

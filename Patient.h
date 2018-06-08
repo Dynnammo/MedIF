@@ -42,6 +42,11 @@ public:
 	// type M�thode ( liste de param�tres );
 	// Mode d'emploi :
 	//
+
+	void viderListeEmpreintes() {
+
+		le.clear();
+	}
 	// Contrat :
 	void afficher() const
 	{
