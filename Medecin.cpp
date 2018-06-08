@@ -86,7 +86,7 @@ Analyse Medecin::rechercherAnalyse(int id, Patient &p) {
 	list <Analyse> liste= p.getAnalyses();
 	Analyse a;
 	Analyse temp;
-	cout << "voici l'id de l'analyse" << a.getId() << endl;
+	//cout << "voici l'id de l'analyse" << a.getId() << endl;
 
 	for (list<Analyse>::const_iterator it = liste.cbegin(); it != liste.cend(); it++) {
 
@@ -94,6 +94,7 @@ Analyse Medecin::rechercherAnalyse(int id, Patient &p) {
 
 		if (temp.getId() == id) {
 			a = *it;
+			cout << "id de l'analyse trouvee :" <<a.getId()<< endl;
 			//cout << "Trouvee " << endl;
 		} else {
 			//cout << "Pas de resultat " << endl;
