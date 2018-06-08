@@ -58,7 +58,7 @@ vector<Medecin> Initialisation::getListeMedecin()
 	return this->listeMedecin;
 } //----- Fin de Méthode getListeMedecin
 
-vector<Patient> Initialisation::getListePatient()
+vector<Patient> &Initialisation::getListePatient()
 {
 	return this->listePatient;
 } //----- Fin de Méthode getListeMedecin

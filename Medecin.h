@@ -84,6 +84,7 @@ public:
 private:
 	//----------------------------------------------------- Methodes privees
 	void afficherAnalyse(Patient p);
+	vector<string> split(string lignef, string del);
 	//------------------------------------------------------- Attributs prives
 	string mdp;
 

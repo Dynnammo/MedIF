@@ -64,6 +64,9 @@ using namespace std;
 
 	void Test::testSplit(string lignef, string del )
 	{
+		cout << "----------- Test Split -----------" << endl;
+		cout << "----------- String entre -----------" << endl;
+		cout << lignef << endl;
 		vector<string> reponse;
 		int pos = 0;
 		while (pos != -1)
@@ -94,10 +97,12 @@ using namespace std;
 			}
 
 		}
-		cout << "----------- Test Split -----------" << endl;
-		cout << "----------- String entre -----------" << endl;
-		cout << lignef << endl;
+		
 		cout << "----------- Sortie -----------" << endl;
+		for (int j(0); j < reponse.size(); j++)
+		{
+			cout << reponse[j] << endl;
+		}
 
 		bool estReussi = true;
 		for (unsigned int i(0); i < reponse.size(); i++)
@@ -133,7 +138,7 @@ using namespace std;
 
 
 		}
-		
+		cout << "----------- Fin de Test Split -----------" << endl;
 		if (estReussi == true) {
 			nbTestsUnitairesValides++;
 			cout << "Le test split est reussi" << endl;
@@ -141,7 +146,7 @@ using namespace std;
 		else {
 			cout << "Le test split a echoue." << endl;
 		}
-		cout << "----------- Fin de Test se Connecter -----------" << endl;
+		
 	}
 
 	void Test::testAnalyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie)
@@ -540,11 +545,50 @@ using namespace std;
 		return true;
 	}
 
+	bool Test::testChargerEmpreintesErronee(Medecin m, string nomFichier )
+	{
+		Initialisation i;
+		i.setPatient(Patient("test", "test", "test"));
+		i.setPatient(Patient("tes2", "tes2t", "tes2t"));
+		cout << "----------Debut de test fonctionnel : Charger Empreintes Erronees----------" << endl;
+		m.chargerEmpreinte(nomFichier, i.getListePatient());
+		//On charge un dossier avec 5 empreintes dont 2 erronés pour pation::id=0
+		//On charge un dossier avec 7 empreintes dont 3 erronés pour pation::id=1
+		vector<Patient> temp = i.getListePatient();
+		if (temp[0].getEmpreintes().size() == 3 && temp[1].getEmpreintes().size() == 4)
+		{
+			return true;
+		}
+		return false;
+
+		cout << "----------Fin de test fonctionnel : Charger Empreintes Erronees----------" << endl;
+
+	}
+
+	bool Test::testChargerEmpreinteFausse(Medecin m, string nomFichier)
+	{
+		Initialisation i;
+		i.setPatient(Patient("test", "test", "test"));
+		cout << "----------Debut de test fonctionnel : Charger Empreinte Erronee----------" << endl;
+		m.chargerEmpreinte(nomFichier, i.getListePatient());
+		//On charge un dossier avec 1 empreinte erronee pour patien::id=6
+
+		if (i.getListePatient()[0].getEmpreintes().size() == 0)
+		{
+			return true;
+		}
+		return false;
+
+		cout << "----------Fin de test fonctionnel : Charger Empreinte Erronee----------" << endl;
+	}
+
 
 	///////////////////////////////////////Test fonctionnels de classe Initialisation
 	bool Test::testAfficherMaladies(unordered_map<int, Maladie> &m)
 	{
 		cout << "----------Debut de test fonctionnel : AfficherMaladies----------" << endl;
+		
+		
 		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
 		{
 			cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
@@ -553,7 +597,12 @@ using namespace std;
 			cout << "Le test AfficherMaladies est reussi" << endl;
 			return true;
 		}
-		cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
+		else
+		{
+			cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
+
+			cout << "Le test AfficherMaladies a echoué." << endl;
+		}
 		return false;
 	}
 
@@ -588,16 +637,35 @@ using namespace std;
 			cout << " Le test CreerMaladie est reussi " << endl;
 			return true;
 		}
-		cout << "----------Fin de test fonctionnel : CreerMaladie----------" << endl;
-		return false;
+		else
+		{
+			cout << "----------Fin de test fonctionnel : CreerMaladie----------" << endl;
+			cout << " Le test CreerMaladie a echoue " << endl;
+			return false;
+		}
 	}
 
 	bool Test::testCreerMaladieErreur(string nomFichier)
 	{
 		cout << "----------Debut de test fonctionnel : CreerMaladieErreur----------" << endl;
-		cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
-		nbTestsFonctionnelsValides++;
-		return !this->testCreerMaladie(nomFichier);
+		Initialisation ii;
+		ii.init(nomFichier);
+		unordered_map<int, Maladie> m = ii.getListeMaladie();
+		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
+		{
+			cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
+
+			cout << " Le test CreerMaladieErreur a echoue " << endl;
+			
+			return false;
+		}
+		else
+		{
+			cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
+			nbTestsFonctionnelsValides++;
+			cout << " Le test CreerMaladieErreur est reussi " << endl;
+			return false;
+		}
 	}
 
 	///////////////////////////////////////Test fonctionnels de classe Analyse
@@ -682,7 +750,6 @@ using namespace std;
 			Analyse a;
 			a.analyseEmpreinte(ve[p], i.getListeMaladie());
 			 liste= a.getMaladiesPotentielles();
-			 cout << a << endl;
 			for (it = liste.begin(); it != liste.end(); ++it)
 			{
 				if (it->second < 0.5)
@@ -722,13 +789,16 @@ using namespace std;
 			if (3 * duree < t_fin - t_deb)
 			{
 				return false;
+				cout << "----------Fin de test non fonctionnel : Verification de progression lineaire en temps d'initialisation---------" << endl;
+				cout << "Le test Verification de progression lineaire en temps d'initialisationest a echoue" << endl;
+
 			}
 			duree = t_fin - t_deb;
 			fichierTest = "fichierTest";
 		}
 
 		cout << "----------Fin de test non fonctionnel : Verification de progression lineaire en temps d'initialisation---------" << endl;
-		cout << "Le test Verification de progression lineaire en temps d'initialisationest reussi" << endl;
+		cout << "Le test Verification de progression lineaire en temps d'initialisationest est reussi" << endl;
 		nbTestsFonctionnelsValides++;
 		return true;
 		

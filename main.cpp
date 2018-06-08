@@ -90,10 +90,7 @@ void appelTestFaireAnalyse(Test &t, Medecin m, Initialisation i)
 }
 
 ////////////////////////////////////////fonction test fonctionnels
-void afficherMaladie(Maladie m)
-{
-	cout << m << endl;
-}
+
 
 void appelTestEmpreinteSaine(Test &t, Medecin m, Patient &p, Initialisation i) {
 	unordered_map<int, Maladie> lm = i.getListeMaladie();
@@ -184,28 +181,28 @@ int main()
 	//cout << "Fin du programme" << endl;
 	
 	//-------------------------------------- Test fonctionnelles 
-	//test afficher/description les maladies
+	//Test afficher/description les maladies
 	//t.testAfficherMaladies(i.getListeMaladie());
 
-	//test afficher/description une maladies
-	//afficherMaladie(i.getListeMaladie().begin()->first);
-
-	//test créer Maladie
-//	cout<<t.testCreerMaladie("uneMaladie.txt") << endl;
-	//cout<<t.testCreerMaladie("desMaladies.txt") << endl;
-	//cout << t.testCreerMaladieErreur(".tt.sxt") << endl;  //test non fonctionnel - mauvais format
-	// t.testCreerMaladie("maladieSansAttribut.txt");
-	// t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
-
+	//Test créer Maladie
+	//t.testCreerMaladie("uneMaladie.txt");
+	//t.testCreerMaladie("desMaladies.txt");
+	//t.testCreerMaladie("maladieSansAttribut.txt");
+	
 	// Test alert pour analyses supplémentaires
-	//cout << t.testAlertAnalysesupplementaires(i) << endl; // pour une empreinte : sain, malade, pas de resultat
+	//t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
 	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+
 
 	//Test Pour ajouter Patien
 	//t.testAjouterPatienfonct(m, i);
-
-	//Test Patien avec attribut nom ou prenom ou mail ou id manquant
 	//t.testAjouterPatienErreurfonct(m, i);
+
+
+	//-----------------------------------Tests non fonctionnels
+	//Test  manipulation fichier
+	//t.testCreerMaladieErreur(".tt.sxt");  //test non fonctionnel - mauvais format
+	//t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
 
 	//Test Reutilisabilite d'application avec different nombre d'attribut dans l'empreinte mais dans l'ordre
 	//t.testReutilisabilite(i);
@@ -213,9 +210,30 @@ int main()
 	//Test Verification de vitesse d'initialisation
 	//cout<<t.testVitesse(i);
 
+<<<<<<< HEAD
 
 	Menu m;
 	m.menuPrincipal();
 	//system("PAUSE");
+=======
+	//Test Verification de chargement d'empreinte(s) erronées
+	t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
+	t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
+
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << "Nombre de tests fonctionnels passes avec succes: " << t.nbTestsFonctionnelsValides << endl;
+
+
+	///---------------------------------------------------------------------------------Tests Systemes
+
+	//Test charger une empreinte erronée
+	//t.testChargerEmpreinteFausse(m, "fichierTestEmpreinteFausse.txt");
+
+	t.testSysteme1(m, i.getListeMedecin(), i.getListePatient(), i.getListeMaladie(),false);
+	
+	system("PAUSE");
+>>>>>>> aa31b17ffb1e2dd1e4df892dbc5578d9d8eb7322
 	return 0;
 }

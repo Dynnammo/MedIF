@@ -74,7 +74,7 @@ public:
 	// Contrat :
 	//
 	
-	vector<Patient> getListePatient();
+	vector<Patient>& getListePatient();
 	// Mode d'emploi :
 	//
 	// Contrat :
