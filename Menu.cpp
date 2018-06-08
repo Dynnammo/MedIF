@@ -7,10 +7,12 @@ using namespace std;
 #include "Menu.h"
 #include "Initialisation.h"
 #include "Medecin.h"
+#include "Test.h"
 
 static Initialisation i;
 void Menu::menuPrincipal()
 {
+
     cout << "Bienvenue dans l'application Med'IF !" << endl;
     cout << "Si vous souhaitez effectuer des tests, tapez 1." << endl;
     cout << "Si vous etes medecin et souhaitez utiliser l'application, tapez 0." << endl;
@@ -26,8 +28,274 @@ void Menu::menuPrincipal()
 
 void Menu::menuTest()
 {
+	DEBUT:
+	cout << "Quels tests souhaitez vous effectuer?" << endl;
+	cout << "0 - tests unitaires" << endl;
+	cout << "1 - tests fonctionnels" << endl;
+	cout << "2 - tests non fonctionnels" << endl;
+	cout << "3 - Quitter l'application" << endl;
+	int test;
+	cin >> test;
+	cout << test << endl;
+	/* Initialisation des variables indispensable a tous les tests*/
+	Test t;
+	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
+	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
+	Empreinte e("AT;102;63;215");
+	p.setEmpreintes(e);
+	static int id;
+	id = 0;
+	switch (test)
+	{
+		case 0:
+		{
+			cout << "----------------Debuts des tests unitaires---------------" << endl << endl << endl;
+
+			// test pour vérifier que l'initialisation des maladie renvoie une erreur s'il y a un problème avec le fichier
+			t.testInitialisation("fichierErrone.txt", i);
+			cout << endl << endl << endl;
+
+			// test pour vérifier que l'initialisation se passe correctement
+			t.testInitialisation("initMaladie.txt", i);
+			cout << endl << endl << endl;
+
+			//test pour vérifier que l'on charge correctement les empreintes
+			appelTestChargerEmpreinte(i, t, m, p);
+			cout << endl << endl << endl;
+
+			// test pour vérifier que l'initialisation des medecins renvoie une erreur s'il y a un problème avec le fichier
+			t.testInitialisationMedecin("fichierErrone.txt", i);
+			cout << endl << endl << endl;
+
+			// test pour vérifier que l'initialisation des medecins se passe correctement
+			t.testInitialisationMedecin("MedecinIni.txt", i);
+			cout << endl << endl << endl;
+
+			// test pour vérifier que analyse d'empreinte se passe correctement
+			t.testAnalyseEmpreinte(e, i.getListeMaladie());
+			cout << endl << endl << endl;
+
+
+			// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
+			appelTestAjouterPatient(t, m, i);
+			cout << endl << endl << endl;
+
+			// test pour vérifier qu'un Medecin puisse se connecter.
+			appelTestSeConnecter(i, t,m);
+			cout << endl << endl << endl;
+
+			// test qui vérifie que les empreintes d'un patient sont bien analysées
+			appelTestFaireAnalyse(t, m, i);
+			cout << endl << endl << endl;
+
+			//test pour vérifier que l'empreinte est ajoutee au patient
+			appelTestMesurerPatient( t, m,p);
+			cout << endl << endl << endl;
+
+
+
+			//test pour vérifier que la methode split fonctionne correctement
+			t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
+			cout << endl << endl << endl;
+
+			appelTestEmpreinteSaine(t, m, p, i);
+			cout << endl << endl << endl;
+
+			//test pour rechercherAnalyse
+			appelTestRechercherAnalyse(t, p, m);
+			cout << endl << endl << endl;
+			cout << "Nombre de tests unitaires passes avec succes: " << t.nbTestsUnitairesValides << " / 12" << endl << endl;
+
+			i.getListeMedecin().clear();
+			i.getListePatient().clear();
+			break;
+		}
+
+		case 1: 
+		{
+			cout << "----------------Debut de tests fonctionnels--------------------" << endl << endl << endl;
+			i.init("initMaladie.txt");
+
+			//f.1  Test Verification de chargement d'empreinte(s) erronées
+			t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
+			cout << endl << endl << endl;
+			t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
+			cout << endl << endl << endl;
+
+			//f.2 Test faire Analyse pour une ou plusieurs empreintes
+			t.testFaireAnalysefonc(m, i.getListeMaladie(), false); //pour une empreinte
+			cout << endl << endl << endl;
+			t.testFaireAnalysefonc(m, i.getListeMaladie(), true); //pour plusieurs empreintes
+			cout << endl << endl << endl;
+
+			//f.4 - f.3  Test afficher/description les maladies
+			t.testAfficherMaladies(i.getListeMaladie());
+			cout << endl << endl << endl;
+
+			//f.5 Test créer Maladie
+			t.testCreerMaladie("uneMaladie.txt");
+			cout << endl << endl << endl;
+			t.testCreerMaladie("desMaladies.txt");
+			cout << endl << endl << endl;
+			t.testCreerMaladie("maladieSansAttribut.txt");
+			cout << endl << endl << endl;
+
+			//f.6 Test alert pour analyses supplémentaires
+			t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
+			cout << endl << endl << endl;
+			t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+			cout << endl << endl << endl;
+
+
+			//f.7 Test Pour ajouter Patien
+			t.testAjouterPatienfonct(m, i);
+			cout << endl << endl << endl;
+			t.testAjouterPatienErreurfonct(m, i);
+			cout << endl << endl << endl;
+
+
+			//f.8 Test connecter Medecin
+			t.testConnecterMedecin(m, i.getListeMedecin());
+			cout << endl << endl << endl;
+
+			cout << "Nombre de tests fonctionnels passes avec succes: " << t.nbTestsFonctionnelsValides << " / 13" << endl << endl;
+			i.getListeMedecin().clear();
+			i.getListePatient().clear();
+			break;
+		}
+
+		case 2:
+		{
+			cout << "----------------Debuts des tests non fonctionnels---------------" << endl << endl << endl;
+
+			//Test  manipulation fichier
+			t.testCreerMaladieErreur(".tt.sxt");  //test non fonctionnel - mauvais format
+			cout << endl << endl << endl;
+			t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
+			cout << endl << endl << endl;
+
+			//Test Reutilisabilite d'application avec different nombre d'attribut dans l'empreinte mais dans l'ordre
+			t.testReutilisabilite(i);
+			cout << endl << endl << endl;
+
+			//Test Verification de vitesse d'initialisation
+			t.testVitesse(i);
+			cout << endl << endl << endl;
+
+			cout << "Nombre de tests non fonctionnels passes avec succes: " << t.nbTestsNonFonctionnelsValides << " / 4" << endl << endl;
+
+			i.getListeMedecin().clear();
+			i.getListePatient().clear();
+			break;
+		}
+
+		case 3:
+		{
+			return;
+			break;
+		}
+
+		default :
+		{
+			cout << "L'option rentrée ne pas conforme aux choix présents" << endl;
+			cout << "Veuillez recommencer : " << endl;
+			goto DEBUT;
+		}
+	}
 
 }
+
+void Menu::appelTestSeConnecter(Initialisation ini, Test t, Medecin m)
+{
+	ini.initMedecin("MedecinIni.txt");
+
+	vector <Medecin> medecins = ini.getListeMedecin();
+
+	t.testSeConnecter(m, medecins);
+}
+
+void Menu::appelTestMesurerPatient(Test &t, Medecin m, Patient &p) {
+
+	string mesures = "1;True;2.12;13;3.156;1236";
+
+	t.testMesurerPatient(mesures, p, m);
+}
+
+void Menu::appelTestAjouterPatient(Test &t, Medecin m, Initialisation i)
+{
+	vector <Patient> listeP = i.getListePatient();
+	t.testAjouterPatient(m, listeP);
+}
+
+void Menu::appelTestChargerEmpreinte(Initialisation ini, Test &t, Medecin m, Patient &p) {
+
+	string nomFichier = "Mesures.txt";
+	ini.setPatient(p);
+	Patient p1("Janson", "Clay", "clay.janson@gmail.com");
+	ini.setPatient(p1);
+	Patient p2("Padilla", "Tonny", "tonny.padilla@gmail.com");
+
+	Patient p3("Thivend", "Baptiste", "baptiste.thivend@gmail.com");
+	ini.setPatient(p2);
+	ini.setPatient(p3);
+	vector <Patient> liste = ini.getListePatient();
+	t.testChargerEmpreinte(nomFichier, liste, m);
+
+}
+
+void Menu::appelTestRechercherAnalyse(Test &t, Patient &p, Medecin m) {
+
+	Analyse a;
+	//Analyse b;
+	//Analyse c;
+
+	p.setAnalyses(a);
+	//p.setAnalyses(b);
+	//p.setAnalyses(c);
+
+
+
+
+	t.testRechercherAnalyse(p, m);
+
+}
+
+void Menu::appelTestFaireAnalyse(Test &t, Medecin m, Initialisation i)
+{
+	unordered_map<int, Maladie> lm = i.getListeMaladie();
+	t.testFaireAnalyse(m, lm, false);
+}
+
+////////////////////////////////////////fonction test fonctionnels
+
+
+void Menu::appelTestEmpreinteSaine(Test &t, Medecin m, Patient &p, Initialisation i) {
+	unordered_map<int, Maladie> lm = i.getListeMaladie();
+
+	string nomFichier = "SaneMeasurement.txt";
+	i.setPatient(p);
+	vector <Patient> liste = i.getListePatient();
+	t.testEmpreinteSaine(m, liste, nomFichier, p, lm);
+}
+
+void Menu::appelSeConnecterMauvaisMdp(Test &t, Initialisation ini) {
+	ini.initMedecin("MedecinIni.txt");
+
+	vector <Medecin> medecins = ini.getListeMedecin();
+	string nom = "Dicaprio";
+	string prenom = "Leonardo";
+	string mail = "leonardo.dicaprio@gmail.com";
+	string mdp = "101112";
+	bool testReussi = t.seConnecterMauvaisMdp(medecins, nom, mail, prenom, mdp);
+
+	if (testReussi == true) {
+		cout << "Le test est reussi" << endl;
+	}
+	else {
+		cout << "Le test a echoue" << endl;
+	}
+}
+
 
 void Menu::menuAppli()
 {

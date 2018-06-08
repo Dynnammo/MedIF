@@ -763,28 +763,7 @@ using namespace std;
 		}
 	}
 
-	bool Test::testCreerMaladieErreur(string nomFichier)
-	{
-		cout << "----------Debut de test fonctionnel : CreerMaladieErreur----------" << endl;
-		Initialisation ii;
-		ii.init(nomFichier);
-		unordered_map<int, Maladie> m = ii.getListeMaladie();
-		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
-		{
-			cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
-
-			cout << " Le test CreerMaladieErreur a echoue " << endl;
-			
-			return false;
-		}
-		else
-		{
-			cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
-			nbTestsFonctionnelsValides++;
-			cout << " Le test CreerMaladieErreur est reussi " << endl;
-			return false;
-		}
-	}
+	
 
 	///////////////////////////////////////Test fonctionnels de classe Analyse
 
@@ -889,6 +868,30 @@ using namespace std;
 	}
 
 	///////////////////////////////////////////////////Test non fonctionnels
+	bool Test::testCreerMaladieErreur(string nomFichier)
+	{
+		cout << "----------Debut de test fonctionnel : CreerMaladieErreur----------" << endl;
+		Initialisation ii;
+		ii.init(nomFichier);
+		unordered_map<int, Maladie> m = ii.getListeMaladie();
+		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
+		{
+			cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
+
+			cout << " Le test CreerMaladieErreur a echoue " << endl;
+
+			return false;
+		}
+		else
+		{
+			cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
+			nbTestsNonFonctionnelsValides++;
+			cout << " Le test CreerMaladieErreur est reussi " << endl;
+			return false;
+		}
+	}
+
+
 	bool Test::testVitesse(Initialisation i)
 	{
 		cout << "----------Debut de test non fonctionnel : Verification de progression lineaire en temps d'initialisation---------" << endl;
@@ -916,8 +919,8 @@ using namespace std;
 		}
 
 		cout << "----------Fin de test non fonctionnel : Verification de progression lineaire en temps d'initialisation---------" << endl;
-		cout << "Le test Verification de progression lineaire en temps d'initialisationest est reussi" << endl;
-		nbTestsFonctionnelsValides++;
+		cout << "Le test Verification de progression lineaire en temps d'initialisation est reussi" << endl;
+		nbTestsNonFonctionnelsValides++;
 		return true;
 		
 	}
@@ -935,14 +938,16 @@ using namespace std;
 
 		if ((a1.getMaladiesPotentielles().size() > 0 && a1.getMaladiesPotentielles().begin()->second > 0) && (a2.getMaladiesPotentielles().size() > 0 && a2.getMaladiesPotentielles().begin()->second > 0))
 		{
-			nbTestsFonctionnelsValides++;
+			nbTestsNonFonctionnelsValides++;
 			cout << "Le test testReutilisabilite est reussi" << endl;
 			return true;
 		
 		}
 		else
 		{
+			cout << "Le test testReutilisabilite a echoue" << endl;
 			return false;
+
 		}
 
 		cout << "----------Fin de test non fonctionnel : Reutilisabilite en fonction de differents nombre d'attributs---------" << endl;

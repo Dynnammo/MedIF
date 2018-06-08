@@ -51,6 +51,7 @@ public:
 	{
 		nbTestsFonctionnelsValides = 0;
 		nbTestsUnitairesValides = 0;
+		nbTestsNonFonctionnelsValides = 0;
 #ifdef MAP
 
 		
@@ -113,6 +114,7 @@ public:
 	//----------------------------------------------------- Attributs publics
 	int nbTestsUnitairesValides;
 	int nbTestsFonctionnelsValides;
+	int nbTestsNonFonctionnelsValides;
 };
 #endif // TEST_H
 #pragma once
