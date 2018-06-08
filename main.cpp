@@ -179,42 +179,49 @@ int main()
 	cout << "Nombre de tests unitaires passes avec succes: " << t.nbTestsUnitairesValides << endl;
 	//testfonctionnel 2.1:
 
-	appelTestEmpreinteSaine(t, m, p, i);
+	//appelTestEmpreinteSaine(t, m, p, i);
 	//cout << "Fin du programme" << endl;
 
 	//-------------------------------------- Test fonctionnelles 
 	//test afficher/description les maladies
-	t.testAfficherMaladies(i.getListeMaladie());
+	//t.testAfficherMaladies(i.getListeMaladie());
 
 	//test afficher/description une maladies
 	//afficherMaladie(i.getListeMaladie().begin()->first);
 
 	//test créer Maladie
-	cout<<t.testCreerMaladie("uneMaladie.txt") << endl;
-	cout<<t.testCreerMaladie("desMaladies.txt") << endl;
-	cout << t.testCreerMaladieErreur(".tt.sxt") << endl;  //test non fonctionnel - mauvais format
-	 t.testCreerMaladie("maladieSansAttribut.txt");
-	 t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
+//	cout<<t.testCreerMaladie("uneMaladie.txt") << endl;
+	//cout<<t.testCreerMaladie("desMaladies.txt") << endl;
+	//cout << t.testCreerMaladieErreur(".tt.sxt") << endl;  //test non fonctionnel - mauvais format
+	// t.testCreerMaladie("maladieSansAttribut.txt");
+	// t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
 
 	// Test alert pour analyses supplémentaires
-	cout << t.testAlertAnalysesupplementaires(i) << endl; // pour une empreinte : sain, malade, pas de resultat
-	t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+	//cout << t.testAlertAnalysesupplementaires(i) << endl; // pour une empreinte : sain, malade, pas de resultat
+	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
 
 	//Test Pour ajouter Patien
-	t.testAjouterPatienfonct(m, i);
+	//t.testAjouterPatienfonct(m, i);
 
 	//Test Patien avec attribut nom ou prenom ou mail ou id manquant
-	t.testAjouterPatienErreurfonct(m, i);
+	//t.testAjouterPatienErreurfonct(m, i);
 
 	//Test Reutilisabilite d'application avec different nombre d'attribut dans l'empreinte mais dans l'ordre
-	t.testReutilisabilite(i);
+	//t.testReutilisabilite(i);
 
 	//Test Verification de vitesse d'initialisation
-	t.testVitesse(i);
+	//t.testVitesse(i);
 
+	cout << endl;
+	cout << endl;
+	cout << endl;
 	cout << "Nombre de tests fonctionnels passes avec succes: " << t.nbTestsFonctionnelsValides << endl;
 
 
+	///---------------------------------------------------------------------------------Tests Systemes
+
+
+	t.testSysteme1(m, i.getListeMedecin(), i.getListePatient(), i.getListeMaladie(),false);
 	
 	system("PAUSE");
 	return 0;
