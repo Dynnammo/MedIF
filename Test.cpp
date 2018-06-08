@@ -13,6 +13,7 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 #include <iostream>
 #include <string>
+#include <time.h>
 
 //------------------------------------------------------ Include personnel
 #include "Medecin.h"
@@ -155,10 +156,10 @@ using namespace std;
 			cout << "Pas de maladie presente" << endl;
 		}
 		cout << a << endl;
-
+		cout << "----------- liste des Maladies Potentielles Apres -----------" << endl;
 		a.analyseEmpreinte(e, mapMaladie);
 
-		cout << "----------- liste des Maladies Potentielles Apres -----------" << endl;
+		
 		cout << a << endl;
 
 		cout << "----------- Fin de Test d'analyse d'empreinte -----------" << endl;
@@ -694,3 +695,52 @@ using namespace std;
 	}
 
 	///////////////////////////////////////////////////Test non fonctionnels
+	bool Test::testVitesse(Initialisation i)
+	{
+		cout << "----------Debut de test non fonctionnel : Verification de progression lineaire en temps d'initialisation---------" << endl;
+		string fichierTest = "fichierTest";
+		time_t t_deb = clock();
+		i.init("fichierTest1.txt");
+		time_t t_fin = clock();
+		int duree = t_fin - t_deb;
+
+		for (int j(2); j < 11;j++)
+		{
+			fichierTest += to_string(j) + ".txt";
+			t_deb = clock();
+			i.init(fichierTest);
+			t_fin = clock();
+			if (3 * duree < t_fin - t_deb)
+			{
+				return false;
+			}
+			duree = t_fin - t_deb;
+			fichierTest = "fichierTest";
+		}
+
+		cout << "----------Fin de test non fonctionnel : Verification de progression lineaire en temps d'initialisation---------" << endl;
+		return true;
+	}
+
+	bool Test::testReutilisabilite(Initialisation i)
+	{
+		cout << "----------Debut de test non fonctionnel : Reutilisabilite en fonction de differents nombre d'attributs---------" << endl;
+		Empreinte e1("AT;102;63");
+		Empreinte e2("AT;102;63;215;5");
+		Analyse a1;
+		a1.analyseEmpreinte(e1, i.getListeMaladie());
+
+		Analyse a2;
+		a2.analyseEmpreinte(e2, i.getListeMaladie());
+
+		if ((a1.getMaladiesPotentielles().size() > 0 && a1.getMaladiesPotentielles().begin()->second > 0) && (a2.getMaladiesPotentielles().size() > 0 && a2.getMaladiesPotentielles().begin()->second > 0))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+		cout << "----------Fin de test non fonctionnel : Reutilisabilite en fonction de differents nombre d'attributs---------" << endl;
+	}

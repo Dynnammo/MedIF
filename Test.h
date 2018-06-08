@@ -94,6 +94,10 @@ public:
 	bool testCreerMaladieErreur(string nomFichier);
 	bool seConnecterMauvaisMdp(vector <Medecin> liste, string n, string m, string p, string motDePasse);
 
+	//----------------------------------------Test non Fonctionnels
+	bool testVitesse(Initialisation i);
+	bool testReutilisabilite(Initialisation i);
+
 
 };
 #endif // TEST_H
