@@ -112,7 +112,7 @@ int main()
 	Initialisation i;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
-	Empreinte e("AT;102;63");
+	Empreinte e("AT;102;63;215");
 	p.setEmpreintes(e);
 	cout << "Voici le medecin que nous allons utiliser : " << endl;
 	cout << m;
@@ -133,7 +133,7 @@ int main()
 	//t.testInitialisationMedecin("MedecinIni.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
-	t.testAnalyseEmpreinte(e, i.getListeMaladie());
+	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
@@ -170,7 +170,7 @@ int main()
 	//afficherMaladie(i.getListeMaladie().begin()->first);
 
 	//test créer Maladie
-	// t.testCreerMaladie("uneMaladie.txt") << endl;
+	//t.testCreerMaladie("uneMaladie.txt") << endl;
 	//t.testCreerMaladie("desMaladies.txt") << endl;
 	//t.testCreerMaladieErreur(".tt.sxt") << endl;  //test non fonctionnel - mauvais format
 	//t.testCreerMaladie("maladieSansAttribut.txt");
@@ -185,6 +185,14 @@ int main()
 
 	//Test Patien avec attribut nom ou prenom ou mail ou id manquant
 	//t.testAjouterPatienErreurfonct(m, i);
+
+	//Test Reutilisabilite d'application avec different nombre d'attribut dans l'empreinte mais dans l'ordre
+	//t.testReutilisabilite(i);
+
+	//Test Verification de vitesse d'initialisation
+	cout<<t.testVitesse(i);
+
+
 	
 	system("PAUSE");
 	return 0;

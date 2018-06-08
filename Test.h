@@ -93,6 +93,10 @@ public:
 	bool testCreerMaladie(string nomFichier);
 	bool testCreerMaladieErreur(string nomFichier);
 
+	//----------------------------------------Test non Fonctionnels
+	bool testVitesse(Initialisation i);
+	bool testReutilisabilite(Initialisation i);
+
 
 };
 #endif // TEST_H

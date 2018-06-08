@@ -100,6 +100,7 @@ void Initialisation::init(string nomFichier)
 			cout << "Le fichier est vide." << endl;
 			return;
 		}
+		mapMaladie.clear();
 		int posLigne=lecture.tellg();
 		getline(lecture, ligne);
 		lecture.seekg(posLigne);
