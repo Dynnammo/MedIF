@@ -63,6 +63,9 @@ using namespace std;
 
 	void Test::testSplit(string lignef, string del )
 	{
+		cout << "----------- Test Split -----------" << endl;
+		cout << "----------- String entre -----------" << endl;
+		cout << lignef << endl;
 		vector<string> reponse;
 		int pos = 0;
 		while (pos != -1)
@@ -93,10 +96,12 @@ using namespace std;
 			}
 
 		}
-		cout << "----------- Test Split -----------" << endl;
-		cout << "----------- String entre -----------" << endl;
-		cout << lignef << endl;
+		
 		cout << "----------- Sortie -----------" << endl;
+		for (int j(0); j < reponse.size(); j++)
+		{
+			cout << reponse[j] << endl;
+		}
 
 		bool estReussi = true;
 		for (unsigned int i(0); i < reponse.size(); i++)
@@ -534,6 +539,43 @@ using namespace std;
 		}
 		cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
 		return true;
+	}
+
+	bool Test::testChargerEmpreintesErronee(Medecin m, string nomFichier )
+	{
+		Initialisation i;
+		i.setPatient(Patient("test", "test", "test"));
+		i.setPatient(Patient("tes2", "tes2t", "tes2t"));
+		cout << "----------Debut de test fonctionnel : Charger Empreintes Erronees----------" << endl;
+		m.chargerEmpreinte(nomFichier, i.getListePatient());
+		//On charge un dossier avec 5 empreintes dont 2 erronés pour pation::id=0
+		//On charge un dossier avec 7 empreintes dont 3 erronés pour pation::id=1
+		vector<Patient> temp = i.getListePatient();
+		if (temp[0].getEmpreintes().size() == 3 && temp[1].getEmpreintes().size() == 4)
+		{
+			return true;
+		}
+		return false;
+
+		cout << "----------Fin de test fonctionnel : Charger Empreintes Erronees----------" << endl;
+
+	}
+
+	bool Test::testChargerEmpreinteFausse(Medecin m, string nomFichier)
+	{
+		Initialisation i;
+		i.setPatient(Patient("test", "test", "test"));
+		cout << "----------Debut de test fonctionnel : Charger Empreinte Erronee----------" << endl;
+		m.chargerEmpreinte(nomFichier, i.getListePatient());
+		//On charge un dossier avec 1 empreinte erronee pour patien::id=6
+
+		if (i.getListePatient()[0].getEmpreintes().size() == 0)
+		{
+			return true;
+		}
+		return false;
+
+		cout << "----------Fin de test fonctionnel : Charger Empreinte Erronee----------" << endl;
 	}
 
 

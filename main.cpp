@@ -170,14 +170,14 @@ int main()
 	//appelTestChargerEmpreinte(i, t, m,p);
 
 	//test pour vérifier que la methode split fonctionne correctement
-	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
+	t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
 	//appelTestRechercherAnalyse(t, p, m);
 
 	//testfonctionnel 2.1:
 
-	appelTestEmpreinteSaine(t, m, p, i);
+	//appelTestEmpreinteSaine(t, m, p, i);
 	cout << "Fin du programme" << endl;
 	
 	//-------------------------------------- Test fonctionnelles 
@@ -208,8 +208,14 @@ int main()
 	//t.testReutilisabilite(i);
 
 	//Test Verification de vitesse d'initialisation
-	cout<<t.testVitesse(i);
+	//t.testVitesse(i);
 
+
+	//Test charges plusieurs empreintes avec des erreurs
+	//t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
+
+	//Test charger une empreinte erronée
+	//t.testChargerEmpreinteFausse(m, "fichierTestEmpreinteFausse.txt");
 
 	
 	system("PAUSE");

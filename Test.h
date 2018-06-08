@@ -76,6 +76,8 @@ public:
 	void testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier, Patient p, unordered_map<int, Maladie> &lm);
 	bool testAjouterPatienfonct(Medecin medecin, Initialisation i);
 	bool testAjouterPatienErreurfonct(Medecin medecin, Initialisation i);
+	bool testChargerEmpreintesErronee(Medecin m, string nomFichier);
+	bool testChargerEmpreinteFausse(Medecin m, string nomFichier);
 
 	//--------------------------------------------- Tests de la classe Analyse
 

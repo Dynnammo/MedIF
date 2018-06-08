@@ -16,6 +16,7 @@ e-mail               : @insa-lyon.fr
 //-------------------------------------------------------- Include syst�me
 #include <iostream>
 #include <string>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "Medecin.h"
@@ -140,16 +141,45 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 		Patient p;
 		string::size_type sz;
 		getline(fichier, line);
+
+		vector<string> attributs;
+		// on recupere les attributs de l'empreinte
+		for (istringstream iss(line);;)
+		{
+			string item;
+			getline(iss, item, ';');
+			if (iss.fail()) break;
+			attributs.push_back(item);
+		}// on recupere les Attributs de l'empreinte en split sur ';'
+
+		int nbrAttributs = attributs.size();
 		while (getline(fichier, line)) {
-			pos = line.find(';');
-			idP = line.substr(0,pos);
-			line.erase(0, pos + 1); //j'enl�ve l'id du patient de l'Empreinte
-			for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
+			attributs.clear();
+			// on recupere les attributs de chaque empreintes suivante
+			for (istringstream iss(line);;)
 			{
-				test = stoi(idP, &sz); //convertit l'id du Patient de string � int
-				if (it->getIdPersonne() == test )
+				string item;
+				getline(iss, item, ';');
+				if (iss.fail()) break;
+				attributs.push_back(item);
+			}//  en split sur ';'
+
+			if (nbrAttributs != attributs.size())
+			{
+				cout << "Empreinte erronee était negligee." << endl;
+			}
+			else
+			{
+				pos = line.find(';');
+				idP = line.substr(0, pos);
+				line.erase(0, pos + 1); //j'enl�ve l'id du patient de l'Empreinte
+				for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
 				{
-					mesurerPatient(line, *it);					
+					test = stoi(idP, &sz); //convertit l'id du Patient de string � int
+					if (it->getIdPersonne() == test)
+					{
+						mesurerPatient(line, *it);
+					}
 				}
 			}
 		}
@@ -158,6 +188,41 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 		cerr << "Impossible d'ouvrir le fichier !" << endl;
 	}
 }
+
+vector<string> Medecin::split(string lignef, string del)
+{
+	vector<string> reponse;
+	int pos = 0;
+	while (pos != -1)
+	{
+		pos = lignef.find(del);
+		if (del.size() != lignef.size())
+		{
+
+			if (pos != 0)
+			{
+				reponse.push_back(lignef.substr(0, pos));
+
+			}
+			if (pos != (int)lignef.size() - 1 && pos != -1)
+			{
+				lignef.erase(0, pos + del.size());
+			}
+			else if (pos != -1)
+			{
+				lignef.erase(pos, pos + del.size());
+				break;
+			}
+		}
+		else
+		{
+			pos = -1;
+			reponse.push_back(lignef);
+		}
+
+	}
+	return reponse;
+} //----- Fin de Méthode split
 
 //------------------------------------------------------ Getters - Setters
 
