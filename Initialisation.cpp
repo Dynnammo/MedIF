@@ -45,6 +45,11 @@ Patient  Initialisation::getPatient(int id)
 
 void  Initialisation::setPatient(Patient &p)
 {
+	if (p.getPrenom() == "" || p.getNom() == "" || p.getMail() == "" || p.getIdPersonne() == NULL)
+	{
+		cout << "Profil du Patient est incomplet." << endl;
+		return;
+	}
 	this->listePatient.push_back(p);
 } //----- Fin de Méthode setPatient
 

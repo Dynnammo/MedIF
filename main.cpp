@@ -83,10 +83,10 @@ void appelTestRechercherAnalyse(Test t, Patient p, Medecin m) {
 	}
 }
 
-void appelTestFaireAnalyse(Test t, Medecin m, Patient p, Initialisation i)
+void appelTestFaireAnalyse(Test t, Medecin m, Initialisation i)
 {
 	unordered_map<int, Maladie> lm = i.getListeMaladie();
-	t.testFaireAnalyse(m, p, lm);
+	t.testFaireAnalyse(m, lm, false);
 }
 
 ////////////////////////////////////////fonction test fonctionnels
@@ -130,7 +130,8 @@ int main()
 	Initialisation i;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
-	Empreinte e("AT;102;63;203");
+	Empreinte e("AT;102;63");
+	p.setEmpreintes(e);
 	cout << "Voici le medecin que nous allons utiliser : " << endl;
 	cout << m;
 	cout << "Voici le patient que nous allons utiliser : " << endl;
@@ -150,7 +151,7 @@ int main()
 	//t.testInitialisationMedecin("MedecinIni.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
-	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
+	t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
@@ -160,7 +161,7 @@ int main()
 	//appelTestSeConnecter(i, t,m);
 
 	// test qui vérifie que les empreintes d'un patient sont bien analysées
-	appelTestFaireAnalyse(t, m, p, i);
+	//appelTestFaireAnalyse(t, m, i);
 
 	//test pour vérifier que l'empreinte est ajoutee au patient
 	//appelTestMesurerPatient( t, m,p);
@@ -172,7 +173,7 @@ int main()
 	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
-	appelTestRechercherAnalyse(t, p, m);
+	//appelTestRechercherAnalyse(t, p, m);
 
 	//testfonctionnel 2.1:
 
@@ -184,18 +185,24 @@ int main()
 	//t.testAfficherMaladies(i.getListeMaladie());
 
 	//test afficher/description une maladies
-	afficherMaladie(i.getListeMaladie().begin()->first);
+	//afficherMaladie(i.getListeMaladie().begin()->first);
 
 	//test créer Maladie
 	// t.testCreerMaladie("uneMaladie.txt") << endl;
 	//t.testCreerMaladie("desMaladies.txt") << endl;
 	//t.testCreerMaladieErreur(".tt.sxt") << endl;  //test non fonctionnel - mauvais format
-	//t.testCreerMaladie("maladieSansAttribut.txt") << endl;
-	//t.testCreerMaladieErreur("fichierVide.txt") << endl; //test non fonctionnel - fichier vide
+	//t.testCreerMaladie("maladieSansAttribut.txt");
+	//t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
 
 	// Test alert pour analyses supplémentaires
 	//t.testAlertAnalysesupplementaires(i) << endl; // pour une empreinte : sain, malade, pas de resultat
-	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i) << endl; // pour plusieurs empreintes
+	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+
+	//Test Pour ajouter Patien
+	//t.testAjouterPatienfonct(m, i);
+
+	//Test Patien avec attribut nom ou prenom ou mail ou id manquant
+	//t.testAjouterPatienErreurfonct(m, i);
 	
 	system("PAUSE");
 	return 0;

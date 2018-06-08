@@ -66,7 +66,7 @@ public:
 	void testAjouterPatient(Medecin medecin, vector <Patient> & listeP);
 	void testSeConnecter(Medecin m, vector <Medecin> liste);
 	void testMesurerPatient(string mesures, Patient p, Medecin m);
-	void testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm);
+	bool testFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm, bool opt);
 	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m);
 	void testRechercherAnalyse(Patient &p, Medecin &m);
 
@@ -74,6 +74,8 @@ public:
 	//--------------------------------------------- Tests fonctionnels de la classe Medecin
 
 	void testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier, Patient p, unordered_map<int, Maladie> &lm);
+	bool testAjouterPatienfonct(Medecin medecin, Initialisation i);
+	bool testAjouterPatienErreurfonct(Medecin medecin, Initialisation i);
 
 	//--------------------------------------------- Tests de la classe Analyse
 
