@@ -81,82 +81,81 @@ void Initialisation::init(string nomFichier)
 	string ligne;
 	vector<string> nomAttributs;
 	vector<int> typeAttributs;
-	if (lecture) // test de lecture
+
+	if (!lecture) // test de lecture
 	{
-		if (getline(lecture, ligne))
-		{
-			nomAttributs = split(ligne, ";");
-			nomAttributs.pop_back();
-			nomAttributs.erase(nomAttributs.begin());
-			if (nomAttributs.size() == 0)
+		cout << "Erreur de lecture du fichier" << endl;
+		return;		
+	}
+
+	if (getline(lecture, ligne))
 			{
-				cout << "Erreur : le fichier ne comporte pas de ligne d'attributs" << endl;
+				nomAttributs = split(ligne, ";");
+				nomAttributs.pop_back();
+				nomAttributs.erase(nomAttributs.begin());
+				if (nomAttributs.size() == 0)
+				{
+					cout << "Erreur : le fichier ne comporte pas de ligne d'attributs" << endl;
+					return;
+				}
+
+			}
+			else
+			{
+				cout << "Le fichier est vide." << endl;
+				return;
+			}
+			mapMaladie.clear();
+			int posLigne=lecture.tellg();
+			getline(lecture, ligne);
+			lecture.seekg(posLigne);
+
+			vector<string> tmp_attributs;
+			tmp_attributs = split(ligne, ";");
+			if (ligne.size() != 0)
+			{
+				for (unsigned int l(1); l < tmp_attributs.size() - 1; l++)
+				{
+					if (tmp_attributs[l] == "False" || tmp_attributs[l] == "True")
+					{
+						typeAttributs.push_back(1);
+					}
+					else if (regex_match(tmp_attributs[l], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+					{
+						typeAttributs.push_back(2);
+					}
+					else
+					{
+						typeAttributs.push_back(3);
+					}
+				}
+			}
+			else // fichier erroné
+			{
+				cout << "Erreur : Maladie sans attributs. Premier résultat éroné." << endl;
 				return;
 			}
 
-		}
-		else
-		{
-			cout << "Le fichier est vide." << endl;
-			return;
-		}
-		mapMaladie.clear();
-		int posLigne=lecture.tellg();
-		getline(lecture, ligne);
-		lecture.seekg(posLigne);
-
-		vector<string> tmp_attributs;
-		tmp_attributs = split(ligne, ";");
-		if (ligne.size() != 0)
-		{
-			for (unsigned int l(1); l < tmp_attributs.size() - 1; l++)
+			while (getline(lecture, ligne)) // initialisation de maladies et empreintes correspondantes dans une map
 			{
-				if (tmp_attributs[l] == "False" || tmp_attributs[l] == "True")
+				int position = ligne.find_last_of(separateur);
+				int positionId = ligne.find(separateur);
+				string maladie= ligne.substr(position + 1);
+				if (maladie == "")
 				{
-					typeAttributs.push_back(1);
+					maladie = "sain"; // état correspondant à aucune maladie
 				}
-				else if (regex_match(tmp_attributs[l], regex{ "[+-]?[0-9]+(.[0-9]+)?" }))
+				if (ligne.size() != 0)
 				{
-					typeAttributs.push_back(2);
+					tmp_map[maladie].push_back(ligne.substr(positionId + 1, (position - 1 - positionId)));
 				}
-				else
+				else // pour eviter de creer des maladies sans attributs;
 				{
-					typeAttributs.push_back(3);
+					cout << "Attention : Maladie sans attributs ignorée."<<endl;
 				}
 			}
-		}
-		else // fichier erroné
-		{
-			cout << "Erreur : Maladie sans attributs. Premier résultat éroné." << endl;
-			return;
-		}
 
-		while (getline(lecture, ligne)) // initialisation de maladies et empreintes correspondantes dans une map
-		{
-			int position = ligne.find_last_of(separateur);
-			int positionId = ligne.find(separateur);
-			string maladie= ligne.substr(position + 1);
-			if (maladie == "")
-			{
-				maladie = "sain"; // état correspondant à aucune maladie
-			}
-			if (ligne.size() != 0)
-			{
-				tmp_map[maladie].push_back(ligne.substr(positionId + 1, (position - 1 - positionId)));
-			}
-			else // pour eviter de creer des maladies sans attributs;
-			{
-				cout << "Attention : Maladie sans attributs ignorée."<<endl;
-			}
-		}
-
-		lecture.close();
-	}
-	else
-	{
-		cout << "Erreur de lecture du fichier" << endl;
-		return;
-	}
+			lecture.close();
 	unordered_map<string, vector<string>>::iterator it;
 	int idMaladie(0);
 	for (it = tmp_map.begin(); it != tmp_map.end(); ++it,idMaladie++) // debut de calcul des attributs dans la mapMaladie
@@ -172,17 +171,13 @@ void Initialisation::init(string nomFichier)
 				{
 					if (mapMaladie[idMaladie].getListeAttribut().size()<=j)//test pour initialiser les attribut
 					{
+						int boolean = 1;
 						if (symptomes[j] == "False")
 						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j,1,0,0);
-							mapMaladie[idMaladie].ajouterAttribut(symptome);
-
+							boolean = 0;
 						}
-						else 
-						{
-							Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, 1, 0, 1/ nbrEmpreinte);
-							mapMaladie[idMaladie].ajouterAttribut(symptome);
-						}
+						Attribut_intervalle* symptome = new Attribut_intervalle(nomAttributs[j],j, 1, 0, boolean/ nbrEmpreinte);						
+						mapMaladie[idMaladie].ajouterAttribut(symptome);
 					}
 					else // sinon recuprer et modifier les attributs existants
 					{

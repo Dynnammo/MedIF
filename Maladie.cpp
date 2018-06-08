@@ -17,7 +17,7 @@ e-mail               : @insa-lyon.fr
 using namespace std;
 #include <iostream>
 #include <vector>
-#include <typeinfo.h>
+//#include <typeinfo.h>
 //------------------------------------------------------ Include personnel
 #include "Maladie.h"
 #include "Attribut.h"
