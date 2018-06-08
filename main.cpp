@@ -151,7 +151,7 @@ int main()
 	//t.testInitialisationMedecin("MedecinIni.txt", i);
 
 	// test pour vérifier que analyse d'empreinte se passe correctement
-	t.testAnalyseEmpreinte(e, i.getListeMaladie());
+	//t.testAnalyseEmpreinte(e, i.getListeMaladie());
 
 
 	// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
@@ -177,7 +177,7 @@ int main()
 
 	//testfonctionnel 2.1:
 
-	//appelTestEmpreinteSaine(t, m, p, i);
+	appelTestEmpreinteSaine(t, m, p, i);
 	cout << "Fin du programme" << endl;
 	
 	//-------------------------------------- Test fonctionnelles 

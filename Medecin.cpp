@@ -74,7 +74,7 @@ list<Analyse> Medecin::faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm,
 		a.analyseEmpreinte(e, lm);
 	}
 
-	p.viderListeEmpreintes();*/
+	p.viderListeEmpreintes();
 
 	return p.getAnalyses();
 }
