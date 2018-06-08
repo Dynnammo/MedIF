@@ -1,2 +1,1 @@
-Mohamed;Dupont;m.Dupont@test.fr;1234
-Jack;Itation;j.itation@test.fr;4321
+A;a.Medecin@test.fr;A;0

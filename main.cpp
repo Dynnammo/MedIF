@@ -22,6 +22,7 @@ e-mail               : @insa-lyon.fr
 #include "Medecin.h"
 #include "Initialisation.h"
 #include "Test.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -123,7 +124,7 @@ int main()
 	
 	id = 0;
 	/* Initialisation des variables indispensable a tous les tests*/
-	Test t;
+	/*Test t;
 	Initialisation i;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
@@ -133,13 +134,13 @@ int main()
 	cout << m;
 	cout << "Voici le patient que nous allons utiliser : " << endl;
 	cout << p;
-	cout << endl;
-	
+	cout << endl;*/
+
 	// test pour vérifier que l'initialisation des maladie renvoie une erreur s'il y a un problème avec le fichier
 	//t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
-	t.testInitialisation("initMaladie.txt", i);
+	//t.testInitialisation("initMaladie.txt", i);
 
 	//test pour vérifier que l'on charge correctement les empreintes
 	//appelTestChargerEmpreinte(i, t, m, p);
@@ -178,7 +179,7 @@ int main()
 
 	//appelTestEmpreinteSaine(t, m, p, i);
 	//cout << "Fin du programme" << endl;
-
+	
 	//-------------------------------------- Test fonctionnelles 
 
 	//f.1  Test Verification de chargement d'empreinte(s) erronées
@@ -221,6 +222,13 @@ int main()
 	//Test Verification de vitesse d'initialisation
 	//t.testVitesse(i);
 
+	Menu m;
+	m.menuPrincipal();
+	//system("PAUSE");
+=======
+	//Test Verification de chargement d'empreinte(s) erronées
+	t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
+	t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
 
 	cout << endl;
 	cout << endl;

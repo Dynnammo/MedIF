@@ -15,7 +15,7 @@ private:
     static void menuAppli();
     static void menuAjoutPatient(Medecin m, vector<Patient> &listePatients);
     static void menuMesurerPatient(Medecin m, vector<Patient> listePatients);
-    static void menuFaireAnalyse(Initialisation i, Medecin m, unordered_map<int, Maladie> &lm);
+    static void menuFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm);
     static void menuRechercherAnalyse(Initialisation i, Medecin m);
     static void menuAfficherMaladie(Initialisation i, Medecin m);
 };

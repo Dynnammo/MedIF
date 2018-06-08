@@ -6,8 +6,8 @@ COMPPART = $(COMPILER) $(COMPFLAGS) -c
 COMPFINAL = $(COMPILER) $(COMPFLAGS) -o
 all: $(PROGRAM_NAME) clean
 
-$(PROGRAM_NAME): main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o Test.o Empreinte.o
-	$(COMPFINAL) $(PROGRAM_NAME) main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o Test.o Empreinte.o
+$(PROGRAM_NAME): main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o Test.o Empreinte.o Menu.o
+	$(COMPFINAL) $(PROGRAM_NAME) main.cpp Analyse.o Initialisation.o Maladie.o Medecin.o Attribut_intervalle.o Attribut_enumeration.o Attribut.o Test.o Empreinte.o Menu.o
 
 Analyse.o: Analyse.cpp Analyse.h
 	$(COMPPART) Analyse.cpp
@@ -36,6 +36,9 @@ Attribut_intervalle.o : Attribut_intervalle.cpp Attribut_intervalle.h
 
 Attribut_enumeration.o :Attribut_enumeration.cpp Attribut_enumeration.h 
 	$(COMPPART) Attribut_enumeration.cpp
+
+Menu.o :Menu.cpp Menu.h 
+	$(COMPPART) Menu.cpp
 
 .PHONY : clean
 clean:

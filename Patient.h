@@ -42,17 +42,25 @@ public:
 	// type M�thode ( liste de param�tres );
 	// Mode d'emploi :
 	//
-
+	void afficherAnalyse(){
+		
+		for(list<Analyse>::iterator it = la.begin(); it!= la.end(); it++)
+		{
+			cout << *it;
+		}
+		
+	}
+	void afficherEmpreinte(){
+		for(list<Empreinte>::iterator it = le.begin(); it!= le.end(); it++)
+		{
+			cout << *it;
+		}
+	}
 	void viderListeEmpreintes() {
 
 		le.clear();
 	}
 	// Contrat :
-	void afficher() const
-	{
-
-		cout << nom << " " << prenom << endl;
-	}
 
 
 	//------------------------------------------------------ Getters - Setters
