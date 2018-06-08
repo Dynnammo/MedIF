@@ -333,7 +333,9 @@ void Initialisation::afficherMedecin(){
 void Initialisation::afficherPatient(){
 	for(unsigned int i = 0; i < listePatient.size() ; i++)
 	{
-		cout << listePatient[i];
+		Patient p = listePatient[i];
+		cout << p.getNom() << " " << p.getPrenom() <<endl;
+		cout  << "ID = " <<p.getIdPersonne();
 	}	
 }
 

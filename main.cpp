@@ -22,6 +22,7 @@ e-mail               : @insa-lyon.fr
 #include "Medecin.h"
 #include "Initialisation.h"
 #include "Test.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -126,7 +127,7 @@ int main()
 {
 	id = 0;
 	/* Initialisation des variables indispensable a tous les tests*/
-	Test t;
+	/*Test t;
 	Initialisation i;
 	Medecin m("Guittat", "Clement", "clement.guittat@insa-lyon.fr", "123");
 	Patient p("Patient", "Tifenn", "tifenn.patient@jesuismalade.fr");
@@ -136,13 +137,13 @@ int main()
 	cout << m;
 	cout << "Voici le patient que nous allons utiliser : " << endl;
 	cout << p;
-	cout << endl;
+	cout << endl;*/
 
 	// test pour vérifier que l'initialisation des maladie renvoie une erreur s'il y a un problème avec le fichier
 	//t.testInitialisation("fichierErrone.txt", i);
 
 	// test pour vérifier que l'initialisation se passe correctement
-	t.testInitialisation("initMaladie.txt", i);
+	//t.testInitialisation("initMaladie.txt", i);
 
 	// test pour vérifier que l'initialisation des medecins renvoie une erreur s'il y a un problème avec le fichier
 	//t.testInitialisationMedecin("fichierErrone.txt", i);
@@ -177,8 +178,8 @@ int main()
 
 	//testfonctionnel 2.1:
 
-	appelTestEmpreinteSaine(t, m, p, i);
-	cout << "Fin du programme" << endl;
+	//appelTestEmpreinteSaine(t, m, p, i);
+	//cout << "Fin du programme" << endl;
 	
 	//-------------------------------------- Test fonctionnelles 
 	//test afficher/description les maladies
@@ -208,10 +209,11 @@ int main()
 	//t.testReutilisabilite(i);
 
 	//Test Verification de vitesse d'initialisation
-	cout<<t.testVitesse(i);
+	//cout<<t.testVitesse(i);
 
 
-	
-	system("PAUSE");
+	Menu m;
+	m.menuPrincipal();
+	//system("PAUSE");
 	return 0;
 }

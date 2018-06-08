@@ -8,24 +8,20 @@ using namespace std;
 #include "Initialisation.h"
 #include "Medecin.h"
 
-
+static Initialisation i;
 void Menu::menuPrincipal()
 {
     cout << "Bienvenue dans l'application Med'IF !" << endl;
     cout << "Si vous souhaitez effectuer des tests, tapez 1." << endl;
     cout << "Si vous etes medecin et souhaitez utiliser l'application, tapez 0." << endl;
-    bool test;
+    int test;
     cin >> test;
-    cout << endl;
+    cout << test << endl;
 
     if(test)
-    {
         menuTest();
-    }
     else
-    {
         menuAppli();
-    }
 }
 
 void Menu::menuTest()
@@ -40,8 +36,10 @@ void Menu::menuAppli()
     cout << "Avec quel fichier souhaitez-vous faire l'initialisation ? Merci d'écrire le nom complet du fichier." << endl;
     string nomFichier;
     cin >> nomFichier;
-    Initialisation i;
     i.init(nomFichier);
+    i.initMedecin("fichierMedecin.txt");
+    i.afficherMedecin();
+    
     cout << "Pour continuer votre aventure, veuillez vous connecter, s'il vous plait." << endl;
     cout << "Votre adresse mail : ";
     string mailMedecin;
@@ -49,12 +47,11 @@ void Menu::menuAppli()
     cout << "Votre mot de passe : ";
     string mdpMedecin;
     cin >> mdpMedecin;
-    Medecin m("Don't care", "Don't care", mailMedecin, mdpMedecin);
+    Medecin m("Don't care", mailMedecin,"Don't care", mdpMedecin);
     vector<Medecin> listeMedecins = i.getListeMedecin();
     vector<Patient> listePatients = i.getListePatient();
     unordered_map<int, Maladie> lm = i.getListeMaladie();
-
-    if (m.seConnecter(listeMedecins))
+    //if (m.seConnecter(listeMedecins))
     {
         int option=0;
         while (option != 6)
@@ -81,7 +78,7 @@ void Menu::menuAppli()
                 menuMesurerPatient(m, listePatients);
                 break;
             case 3:
-                menuFaireAnalyse(i, m, lm);
+                menuFaireAnalyse(m, lm);
                 break;
             case 4:
                 menuRechercherAnalyse(i, m);
@@ -99,7 +96,7 @@ void Menu::menuAppli()
             }
         }
     }
-    else
+    //else
     {
         cout << "Vous n'etes pas inscrit dans notre base de donnees ou il y a une erreur dans mail ou mot de passe. Veuillez contacter votre service informatique pour plus d'informations." << endl;
     }
@@ -118,6 +115,8 @@ void Menu::menuAjoutPatient(Medecin m, vector<Patient> &listePatients)
     cout << "Veuillez entrer son adresse mail : ";
     cin >> mailPatient;
     Patient p = m.ajouterPatient(nomPatient, prenomPatient, mailPatient, listePatients);
+    i.setPatient(p);
+    i.afficherPatient();
     cout << "Patient bien ajoute." << endl;
     cout << "=======================>>> Retour au menu" << endl;
 }
@@ -133,13 +132,15 @@ void Menu::menuMesurerPatient(Medecin m, vector<Patient> listePatients)
     cout << "=======================>>> Retour au menu" << endl;
 }
 
-void Menu::menuFaireAnalyse(Initialisation i, Medecin m, unordered_map<int, Maladie> &lm)
+void Menu::menuFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm)
 {
+    i.afficherPatient();
     cout << "Vous avez choisi d'effectuer l'analyse d'empreintes." << endl;
     cout << "Veuillez entrer l'id du patient : " << endl;
     int idPatient;
     cin >> idPatient;
     Patient p = i.getPatient(idPatient);
+    cout << p;
     list<Analyse> listeAnalyse = m.faireAnalyse(p, lm,true);
     cout << "L'analyse est terminee. Voulez-vous la voir ? (Y/N) ";
     string afficher;
@@ -155,14 +156,20 @@ void Menu::menuFaireAnalyse(Initialisation i, Medecin m, unordered_map<int, Mala
 
 void Menu::menuRechercherAnalyse(Initialisation i, Medecin m)
 {
+    if (i.getListePatient().size() == 0) {
+        cout << "Vous n'avez aucun patient, donc aucune analyse" <<endl;
+        return;
+    }
     cout << "Vous avez choisi de rechercher une analyse." << endl;
-    cout << "Veuillez entrer l'id du patient : ";
+    cout << "Veuillez entrer l'id du patient dont vous voulez rechercher l'analyse: ";
+    i.afficherPatient();
     int idPatient;
     cin >> idPatient;
+    Patient p = i.getPatient(idPatient);
+    p.afficherAnalyse();
     cout << "Veuillez entrer l'id de l'analyse que vous recherchez : ";
     int idAnalyse;
     cin >> idAnalyse;
-    Patient p = i.getPatient(idPatient);
     cout << "Voici ce que nous avons trouve : " << endl;
     Analyse a = m.rechercherAnalyse(idAnalyse, p);
     cout << a << endl;
