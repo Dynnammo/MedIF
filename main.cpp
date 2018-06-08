@@ -89,10 +89,7 @@ void appelTestFaireAnalyse(Test &t, Medecin m, Initialisation i)
 }
 
 ////////////////////////////////////////fonction test fonctionnels
-void afficherMaladie(Maladie m)
-{
-	cout << m << endl;
-}
+
 
 void appelTestEmpreinteSaine(Test &t, Medecin m, Patient &p, Initialisation i) {
 	unordered_map<int, Maladie> lm = i.getListeMaladie();
@@ -172,7 +169,7 @@ int main()
 	
 
 	//test pour vérifier que la methode split fonctionne correctement
-	t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
+	//t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 
 	//test pour rechercherAnalyse
 	//appelTestRechercherAnalyse(t, p, m);
@@ -183,34 +180,38 @@ int main()
 	//cout << "Fin du programme" << endl;
 
 	//-------------------------------------- Test fonctionnelles 
-	//test afficher/description les maladies
+	//Test afficher/description les maladies
 	//t.testAfficherMaladies(i.getListeMaladie());
 
-	//test afficher/description une maladies
-	//afficherMaladie(i.getListeMaladie().begin()->first);
-
-	//test créer Maladie
-//	cout<<t.testCreerMaladie("uneMaladie.txt") << endl;
-	//cout<<t.testCreerMaladie("desMaladies.txt") << endl;
-	//cout << t.testCreerMaladieErreur(".tt.sxt") << endl;  //test non fonctionnel - mauvais format
-	// t.testCreerMaladie("maladieSansAttribut.txt");
-	// t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
-
+	//Test créer Maladie
+	//t.testCreerMaladie("uneMaladie.txt");
+	//t.testCreerMaladie("desMaladies.txt");
+	//t.testCreerMaladie("maladieSansAttribut.txt");
+	
 	// Test alert pour analyses supplémentaires
-	//cout << t.testAlertAnalysesupplementaires(i) << endl; // pour une empreinte : sain, malade, pas de resultat
+	//t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
 	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
+
 
 	//Test Pour ajouter Patien
 	//t.testAjouterPatienfonct(m, i);
-
-	//Test Patien avec attribut nom ou prenom ou mail ou id manquant
 	//t.testAjouterPatienErreurfonct(m, i);
+
+
+	//-----------------------------------Tests non fonctionnels
+	//Test  manipulation fichier
+	//t.testCreerMaladieErreur(".tt.sxt");  //test non fonctionnel - mauvais format
+	//t.testCreerMaladieErreur("fichierVide.txt"); //test non fonctionnel - fichier vide
 
 	//Test Reutilisabilite d'application avec different nombre d'attribut dans l'empreinte mais dans l'ordre
 	//t.testReutilisabilite(i);
 
 	//Test Verification de vitesse d'initialisation
 	//t.testVitesse(i);
+
+	//Test Verification de chargement d'empreinte(s) erronées
+	t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
+	t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
 
 	cout << endl;
 	cout << endl;

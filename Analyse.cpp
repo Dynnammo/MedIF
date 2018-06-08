@@ -161,7 +161,12 @@ void Analyse::analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMal
 		if (probabilite < 0.50 && it->second.getNom() != "sain")
 		{
 			cout << "Veuillez faire des analyses supplémentaires" << endl;
-			cout << "Resultats impresis pour : " << it->second.getNom()<< endl;
+			cout << "Resultats impressis pour : " << it->second.getNom()<< endl;
+		}
+		if (temp.size() == 1 && it->second.getNom() == "sain"&& it->first < 0.5)
+		{
+			cout << "Veuillez faire des analyses supplémentaires" << endl;
+			cout << "Le taux de santé est en dessous de 50%" << endl;
 		}
 		it->second = NULL;
 
