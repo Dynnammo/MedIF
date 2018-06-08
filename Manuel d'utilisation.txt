@@ -1,0 +1,17 @@
+Manuel d'utilisation
+
+1. Lancer Visual Studio
+2. Compiler le projet
+3. Exécuter le projet
+4. Suivre les instructions sur la console
+	5. Si vous souhaitez faire des tests, utiliser les fichiers nommés "fichierTest"+i
+		i, le numéro du test
+	6. Si vous souhaitez utiliser l'application en tant que médecin, 
+		il faudra procéder à l'initialisation de l'application.
+		Cette initialisation sert à enregistrer les maladies connues, les médecins et patients déjà existants.
+		Si vous souhaitez utiliser votre propre fichier, 
+		il faudra rentrer le nom de celui-ci lorsque cela vous sera demandé.
+		Si vous souhaitez utiliser le fichier d'initialisation des médecins par défaut, 
+		celui-ci s'appelle "fichierMedecin.txt". 
+		Pour initialiser les maladies, le fichier se nomme "HealthMeasurementDescription.txt"
+	

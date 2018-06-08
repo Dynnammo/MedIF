@@ -56,7 +56,7 @@ void Menu::menuAppli()
 
     if (m.seConnecter(listeMedecins))
     {
-        int option;
+        int option=0;
         while (option != 6)
         {
             cout << "Vous etes bien connecte a notre plateforme." << endl;
@@ -140,7 +140,7 @@ void Menu::menuFaireAnalyse(Initialisation i, Medecin m, unordered_map<int, Mala
     int idPatient;
     cin >> idPatient;
     Patient p = i.getPatient(idPatient);
-    list<Analyse> listeAnalyse = m.faireAnalyse(p, lm);
+    list<Analyse> listeAnalyse = m.faireAnalyse(p, lm,true);
     cout << "L'analyse est terminee. Voulez-vous la voir ? (Y/N) ";
     string afficher;
     cin >> afficher;

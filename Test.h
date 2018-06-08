@@ -49,7 +49,11 @@ public:
 	//-------------------------------------------- Constructeurs - destructeur
 	Test()
 	{
+		nbTestsFonctionnelsValides = 0;
+		nbTestsUnitairesValides = 0;
 #ifdef MAP
+
+		
 		cout << "Appel au constructeur de <Test>" << endl;
 #endif
 	}//----- Fin de Test (constructeur par d�faut)
@@ -100,7 +104,13 @@ public:
 	bool testVitesse(Initialisation i);
 	bool testReutilisabilite(Initialisation i);
 
+	//----------------------------------------Test Systeme
 
+	bool testSysteme1(Medecin, vector <Medecin> listeMedecins, vector<Patient> &listePatients, unordered_map<int, Maladie> &lm, bool opt);
+public:
+	//----------------------------------------------------- Attributs publics
+	int nbTestsUnitairesValides;
+	int nbTestsFonctionnelsValides;
 };
 #endif // TEST_H
 #pragma once
