@@ -52,6 +52,10 @@ using namespace std;
 		if (mapTmp->begin() == mapTmp->end())
 		{
 			cout << "Pas de maladie presente" << endl;
+
+			cout << "----------- Fin de Test Initialisation -----------" << endl;
+			cout << "test a echoue"<<endl;
+			return;
 		}
 		for (it = mapTmp->begin(); it != mapTmp->end(); ++it)
 		{
@@ -59,7 +63,44 @@ using namespace std;
 		}
 
 		cout << "----------- Fin de Test Initialisation -----------" << endl;
+		cout << "test est reussi" << endl;
 		nbTestsUnitairesValides++;
+	}
+
+	void Test::testInitialisationFausse(string nomFichier, Initialisation &in)
+	{
+		cout << "----------- Test Initialisation Maladie Fausse-----------" << endl;
+		unordered_map<int, Maladie> *mapTmp = &in.getListeMaladie();
+		unordered_map<int, Maladie>::iterator it;
+		cout << "----------- liste Maladies avant -----------" << endl;
+		if (mapTmp->begin() == mapTmp->end())
+		{
+			cout << "Pas de maladie presente" << endl;
+		}
+		for (it = mapTmp->begin(); it != mapTmp->end(); ++it)
+		{
+			cout << it->second << endl;
+		}
+
+		in.init(nomFichier);
+		cout << "----------- liste Maladies apres -----------" << endl;
+		mapTmp = &in.getListeMaladie();
+		if (mapTmp->begin() == mapTmp->end())
+		{
+			cout << "Pas de maladie presente" << endl;
+			nbTestsUnitairesValides++;
+			cout << "----------- Fin de Test Initialisation Fausse-----------" << endl;
+			cout << "test Initialisation Maladies Fausse est reussi" << endl;
+			return;
+		}
+		for (it = mapTmp->begin(); it != mapTmp->end(); ++it)
+		{
+			cout << it->second << endl;
+		}
+
+		cout << "----------- Fin de Test Initialisation Fausse-----------" << endl;
+		cout << "test Initialisation Maladies Fausse a echoue" << endl;
+		
 	}
 
 	void Test::testSplit(string lignef, string del )
@@ -169,6 +210,7 @@ using namespace std;
 
 		if (maladiesPotentielles.size() != 0) {
 			nbTestsUnitairesValides++;
+			cout << "Test analyse empreinte reussi"<<endl;
 		}
 		cout << a << endl;
 
@@ -191,6 +233,32 @@ using namespace std;
 		if (estReussi == true) {
 
 			cout << "Le test d'initialisation des Medecins est reussi" << endl;
+			nbTestsUnitairesValides++;
+		}
+		else {
+			cout << "Le test d'initialisation des Medecins a echoue." << endl;
+
+		}
+
+		cout << "----------- Fin de Test Initialisation de Medecin -----------" << endl;
+	}
+
+	void Test::testInitialisationMedecinFaux(string nomFichier, Initialisation &in)
+	{
+		cout << "----------- Test Initialisation Medecin Faux -----------" << endl;
+		 
+
+		bool estReussi = false;
+
+		in.initMedecin(nomFichier);
+		if (in.getListeMedecin().size() == 0)
+		{
+			estReussi = true;
+		}
+
+		if (estReussi == true) {
+
+			cout << "Le test d'initialisation des Medecins Faux est reussi" << endl;
 			nbTestsUnitairesValides++;
 		}
 		else {
@@ -606,7 +674,7 @@ using namespace std;
 
 				for (unordered_map <string, double>::iterator it2 = maladiesPots.begin(); it2 != maladiesPots.end(); it2++) {
 
-					if (it2->first == "sain" && ((it2->second) - 1)<0.01) {
+					if (it2->first == "sain" && ((it2->second) - 1)<0.1) {
 						estReussi = true;
 						
 
@@ -675,8 +743,12 @@ using namespace std;
 		vector<Patient> temp = i.getListePatient();
 		if (temp[0].getEmpreintes().size() == 3 && temp[1].getEmpreintes().size() == 4)
 		{
+			nbTestsFonctionnelsValides++;
+			cout << "test reussi" << endl;
 			return true;
+			
 		}
+		cout << "test a echoue" << endl;
 		return false;
 
 		cout << "----------Fin de test fonctionnel : Charger Empreintes Erronees----------" << endl;
@@ -693,8 +765,12 @@ using namespace std;
 
 		if (i.getListePatient()[0].getEmpreintes().size() == 0)
 		{
+			nbTestsFonctionnelsValides++;
+			cout << "test reussi" << endl;
 			return true;
+			
 		}
+		cout << "test a echoue" << endl;
 		return false;
 
 		cout << "----------Fin de test fonctionnel : Charger Empreinte Erronee----------" << endl;

@@ -52,7 +52,7 @@ void Menu::menuTest()
 			cout << "----------------Debuts des tests unitaires---------------" << endl << endl << endl;
 
 			// test pour vérifier que l'initialisation des maladie renvoie une erreur s'il y a un problème avec le fichier
-			t.testInitialisation("fichierErrone.txt", i);
+			t.testInitialisationFausse("fichierErrone.txt", i);
 			cout << endl << endl << endl;
 
 			// test pour vérifier que l'initialisation se passe correctement
@@ -64,7 +64,7 @@ void Menu::menuTest()
 			cout << endl << endl << endl;
 
 			// test pour vérifier que l'initialisation des medecins renvoie une erreur s'il y a un problème avec le fichier
-			t.testInitialisationMedecin("fichierErrone.txt", i);
+			t.testInitialisationMedecinFaux("fichierErrone.txt", i);
 			cout << endl << endl << endl;
 
 			// test pour vérifier que l'initialisation des medecins se passe correctement
@@ -75,6 +75,7 @@ void Menu::menuTest()
 			t.testAnalyseEmpreinte(e, i.getListeMaladie());
 			cout << endl << endl << endl;
 
+			appelTestEmpreinteSaine(t, m, p, i);
 
 			// test pour vérifier qu'un patient est bien ajouté à la liste du médecin qui l'ajoute
 			appelTestAjouterPatient(t, m, i);
@@ -98,8 +99,6 @@ void Menu::menuTest()
 			t.testSplit("A.Z.E.R.T.Y.TEST;.Q.W.E.R.T.Y",".");
 			cout << endl << endl << endl;
 
-			appelTestEmpreinteSaine(t, m, p, i);
-			cout << endl << endl << endl;
 
 			//test pour rechercherAnalyse
 			appelTestRechercherAnalyse(t, p, m);
@@ -115,6 +114,7 @@ void Menu::menuTest()
 		{
 			cout << "----------------Debut de tests fonctionnels--------------------" << endl << endl << endl;
 			i.init("initMaladie.txt");
+			i.initMedecin("MedecinIni.txt");
 
 			//f.1  Test Verification de chargement d'empreinte(s) erronées
 			t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
@@ -167,7 +167,7 @@ void Menu::menuTest()
 		case 2:
 		{
 			cout << "----------------Debuts des tests non fonctionnels---------------" << endl << endl << endl;
-
+			i.init("initMaladie.txt");
 			//Test  manipulation fichier
 			t.testCreerMaladieErreur(".tt.sxt");  //test non fonctionnel - mauvais format
 			cout << endl << endl << endl;

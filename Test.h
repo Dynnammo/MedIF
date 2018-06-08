@@ -74,6 +74,7 @@ public:
 	bool testFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm, bool opt);
 	void testChargerEmpreinte(string nomFichier, vector<Patient> &liste, Medecin m);
 	void testRechercherAnalyse(Patient &p, Medecin &m);
+	void testInitialisationMedecinFaux(string nomFichier, Initialisation &in);
 
 
 	//--------------------------------------------- Tests fonctionnels de la classe Medecin
@@ -102,6 +103,7 @@ public:
 	bool testCreerMaladie(string nomFichier);
 	bool testCreerMaladieErreur(string nomFichier);
 	bool seConnecterMauvaisMdp(vector <Medecin> liste, string n, string m, string p, string motDePasse);
+	void testInitialisationFausse(string nomFichier, Initialisation &in);
 
 	//----------------------------------------Test non Fonctionnels
 	bool testVitesse(Initialisation i);
