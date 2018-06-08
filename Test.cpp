@@ -397,23 +397,7 @@ using namespace std;
 
 	}
 
-	void Test::testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier,Patient p, unordered_map<int, Maladie> &lm) {
-		cout << "----------- Test Faire Analyse d'une Empreinte saine -----------" << endl;
-		
-		/*for (int i = 0; i < liste.size(); i++) {
-			cout << "id patient :" << p.getIdPersonne();
-		}*/
-		m.chargerEmpreinte(nomFichier, liste);
-		
-		list <Analyse> la=m.faireAnalyse(p, lm,false);
-		bool estReussi = true;
-		Analyse a = la.back();
-		unordered_map <string, double> maladies = a.getMaladiesPotentielles();
-
-		unordered_map <string, double>::iterator it = maladies.begin();
-
-		cout << "Analyse d'une personne Saine: " << it->first << " " << it->second << endl;
-	}
+	
 	
 	bool Test::testFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm, bool opt)
 	{
@@ -503,6 +487,48 @@ using namespace std;
 	}
 
 	///////////////////////////////////////Test fonctionnels de classe Medecin
+
+
+	void Test::testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier, Patient p, unordered_map<int, Maladie> &lm) {
+		cout << "----------- Test Faire Analyse d'une Empreinte saine -----------" << endl;
+
+
+		m.chargerEmpreinte(nomFichier, liste);
+
+		bool estReussi = false;
+		for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
+		{
+
+			if (p.getIdPersonne() == it->getIdPersonne()) {
+				list <Empreinte> le = it->getEmpreintes();
+
+
+				list <Analyse> la = m.faireAnalyse(*it, lm, false);
+
+				Analyse a = la.back();
+
+
+				unordered_map <string, double> maladiesPots = a.getMaladiesPotentielles();
+
+				for (unordered_map <string, double>::iterator it2 = maladiesPots.begin(); it2 != maladiesPots.end(); it2++) {
+
+					if (it2->first == "sain" && ((it2->second) - 1)<0.01) {
+						estReussi = true;
+					}
+				}
+
+			}
+		}
+
+		if (estReussi == true) {
+
+			cout << "Le test d'analyse d'empreinte saine est reussi." << endl;
+		}
+		else {
+			cout << "Le test d'analyse d'empreinte saine a echoue." << endl;
+		}
+
+	}
 
 	bool Test::testAjouterPatienfonct(Medecin medecin, Initialisation i)
 	{

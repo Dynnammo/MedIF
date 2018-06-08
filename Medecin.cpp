@@ -72,6 +72,7 @@ list<Analyse> Medecin::faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm,
 
 		Empreinte e = le.back();
 		a.analyseEmpreinte(e, lm);
+		p.setAnalyses(a);
 	}
 
 	p.viderListeEmpreintes();
@@ -137,18 +138,19 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 		string idP;
 		int pos;
 		int test;
-		Patient p;
 		string::size_type sz;
-		getline(fichier, line);
+		getline(fichier, line);//on retirre la première ligne avec la legende
 		while (getline(fichier, line)) {
 			pos = line.find(';');
 			idP = line.substr(0,pos);
+			//cout << "Affiche moi l'idPatient :" << idP<<endl;
 			line.erase(0, pos + 1); //j'enl�ve l'id du patient de l'Empreinte
 			for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
 			{
 				test = stoi(idP, &sz); //convertit l'id du Patient de string � int
 				if (it->getIdPersonne() == test )
 				{
+					//cout << "Match d'id trouve!" << endl;
 					mesurerPatient(line, *it);					
 				}
 			}

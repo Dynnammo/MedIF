@@ -46,11 +46,8 @@ public:
     //
 
 	void analyseEmpreinte(Empreinte e, unordered_map <int, Maladie> &mapMaladie);
-	// type Méthode ( liste des paramètres );
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+    // a partir des mesures de l'empreinte et des maladies enregistrees
+    // 
 
 	//------------------------------------------------------ Getters - Setters
 	int getId();
@@ -64,34 +61,19 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
     Analyse ( const Analyse & unAnalyse );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
     Analyse ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     virtual ~Analyse ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Attributs protégés
     int idAnalyse;
 	unordered_map<string, double> maladiesPotentielles;
-//----------------------------------------------------- Attributs protégés
 
 };
-
-//-------------------------------- Autres définitions dépendantes de <Analyse>
 
 #endif // Analyse_H
 
