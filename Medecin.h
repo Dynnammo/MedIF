@@ -17,6 +17,7 @@ e-mail               : @insa-lyon.fr
 #include <string>
 #include <iostream>
 #include <list>
+#include <cstdbool>
 
 using namespace std;
 
