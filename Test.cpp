@@ -464,6 +464,124 @@ using namespace std;
 
 	///////////////////////////////////////Test fonctionnels de classe Medecin
 
+	bool Test::testFaireAnalysefonc(Medecin m, unordered_map<int, Maladie> &lm, bool opt)
+	{
+		cout << "----------- Test Faire Analyse -----------" << endl;
+
+		Patient p;
+		vector<Empreinte> ve;
+
+		ve.push_back(Empreinte("AA;25;131;147"));
+		ve.push_back(Empreinte("AA;149;-11.;161"));
+		ve.push_back(Empreinte("AA;-41;11;182"));
+		ve.push_back(Empreinte("AT;75;84;221"));
+		ve.push_back(Empreinte("AT;79;90;149"));
+		ve.push_back(Empreinte("AT;-5;147;124"));
+		ve.push_back(Empreinte("AT;164;29;139"));
+		ve.push_back(Empreinte("AA;76;131;182"));
+		ve.push_back(Empreinte("AA;172;201;149"));
+
+		// faire analyse pour 1 empreinte
+		vector<Analyse> refA;
+		if (opt)
+		{
+			cout << "--- Analyse de plusieurs empreintes ---" << endl;
+			for (int i(0); i < 9; i++)
+			{
+				Analyse a;
+				a.analyseEmpreinte(ve[i], lm);
+				p.setEmpreintes(ve[i]);
+				refA.push_back(a);
+			}
+
+		}
+		else
+		{
+			cout << "--- Analyse d'une empreinte ---" << endl;
+			p.setEmpreintes(ve[0]);
+			Analyse a;
+			a.analyseEmpreinte(ve[0], lm);
+			refA.push_back(a);
+		}
+
+		list<Empreinte> le = p.getEmpreintes();
+		m.faireAnalyse(p, lm, opt);
+		list<Analyse> la = p.getAnalyses();
+
+		bool estReussi = true;
+		list<Analyse>::iterator it;
+		int index = 0;
+		for (it = la.begin(); it != la.end(); ++index, ++it)
+		{
+			unordered_map<string, double> ref = refA[index].getMaladiesPotentielles();
+			unordered_map<string, double>::iterator it_ref;
+			it_ref = ref.begin();
+			unordered_map<string, double> testA = (*it).getMaladiesPotentielles();
+			unordered_map<string, double>::iterator it_test;
+			it_test = testA.begin();
+			if (ref.size() != testA.size())
+			{
+				estReussi = false;
+				break;
+			}
+			else
+			{
+				
+
+				for (it_ref; it_ref != ref.end(); ++it_ref, ++it_test)
+				{
+					if (it_ref->first != it_test->first || it_ref->second != it_test->second)
+					{
+						estReussi = false;
+						break;
+					}
+
+				}
+
+			}
+		}
+
+		if (estReussi&&!opt) //pour une empreinte
+		{
+			nbTestsFonctionnelsValides++;
+			cout << "Le test faireAnalyse d'une empreinte est reussi." << endl;
+		}
+		else if(!estReussi&!opt)
+		{
+			cout << "Le test faireAnalyse d'une empreinte a echoue." << endl;
+		}
+
+		else if (estReussi && opt)// pour plusieurs empreintes
+		{
+			nbTestsFonctionnelsValides++;
+			cout << "Le test faireAnalyse pour plusieurs empreintes est reussi." << endl;
+		}
+
+		else
+		{
+			cout << "Le test faireAnalyse pour plusieurs empreintes a echoue." << endl;
+
+		}
+		return estReussi;
+	}
+
+	bool Test::testConnecterMedecin(Medecin m, vector <Medecin> liste)
+	{
+		cout << "----------- Test connecterMedecin -----------" << endl;
+
+		bool estConnecte = m.seConnecter(liste);
+		cout << "----------- FIN de Test connecterMedecin -----------\n" << endl;
+		if (estConnecte) {
+			nbTestsFonctionnelsValides++;
+			return true;
+			cout << "Le medecin est bien connecte à l'appli, test reussi." << endl;
+		}
+		else {
+			return false;
+			cout << "Le medecin n'existe pas." << endl;
+		}
+		
+	}
 
 	void Test::testEmpreinteSaine(Medecin m, vector<Patient> &liste, string nomFichier, Patient p, unordered_map<int, Maladie> &lm) {
 		cout << "----------- Test Faire Analyse d'une Empreinte saine -----------" << endl;

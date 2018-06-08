@@ -60,17 +60,17 @@ Patient Medecin::ajouterPatient(string n, string p, string m, vector <Patient> &
 list<Analyse> Medecin::faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm, bool opt)
 {
 	list <Empreinte> le = p.getEmpreintes();
-	Analyse a;
+	
 
 	if (opt == true) {
 		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
-
+			Analyse a;
 			a.analyseEmpreinte(*it, lm);
 			p.setAnalyses(a);
 		}
 	}
 	else {
-
+		Analyse a;
 		Empreinte e = le.back();
 		a.analyseEmpreinte(e, lm);
 		p.setAnalyses(a);
@@ -190,40 +190,6 @@ void Medecin::chargerEmpreinte(string nomFichier, vector<Patient> &liste) { //ch
 	}
 }
 
-vector<string> Medecin::split(string lignef, string del)
-{
-	vector<string> reponse;
-	int pos = 0;
-	while (pos != -1)
-	{
-		pos = lignef.find(del);
-		if (del.size() != lignef.size())
-		{
-
-			if (pos != 0)
-			{
-				reponse.push_back(lignef.substr(0, pos));
-
-			}
-			if (pos != (int)lignef.size() - 1 && pos != -1)
-			{
-				lignef.erase(0, pos + del.size());
-			}
-			else if (pos != -1)
-			{
-				lignef.erase(pos, pos + del.size());
-				break;
-			}
-		}
-		else
-		{
-			pos = -1;
-			reponse.push_back(lignef);
-		}
-
-	}
-	return reponse;
-} //----- Fin de Méthode split
 
 //------------------------------------------------------ Getters - Setters
 

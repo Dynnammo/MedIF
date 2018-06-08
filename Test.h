@@ -82,6 +82,8 @@ public:
 	bool testAjouterPatienErreurfonct(Medecin medecin, Initialisation i);
 	bool testChargerEmpreintesErronee(Medecin m, string nomFichier);
 	bool testChargerEmpreinteFausse(Medecin m, string nomFichier);
+	bool testConnecterMedecin(Medecin m, vector <Medecin> liste);
+	bool testFaireAnalysefonc(Medecin m, unordered_map<int, Maladie> &lm, bool opt);
 
 	//--------------------------------------------- Tests de la classe Analyse
 

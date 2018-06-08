@@ -180,23 +180,35 @@ int main()
 	//cout << "Fin du programme" << endl;
 
 	//-------------------------------------- Test fonctionnelles 
-	//Test afficher/description les maladies
+
+	//f.1  Test Verification de chargement d'empreinte(s) erronées
+	//t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
+	//t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
+
+	//f.2 Test faire Analyse pour une ou plusieurs empreintes
+	//t.testFaireAnalysefonc(m, i.getListeMaladie(), false); //pour une empreinte
+	//t.testFaireAnalysefonc(m, i.getListeMaladie(), true); //pour plusieurs empreintes
+
+	//f.4 - f.3  Test afficher/description les maladies
 	//t.testAfficherMaladies(i.getListeMaladie());
 
-	//Test créer Maladie
+	//f.5 Test créer Maladie
 	//t.testCreerMaladie("uneMaladie.txt");
 	//t.testCreerMaladie("desMaladies.txt");
 	//t.testCreerMaladie("maladieSansAttribut.txt");
 	
-	// Test alert pour analyses supplémentaires
+	//f.6 Test alert pour analyses supplémentaires
 	//t.testAlertAnalysesupplementaires(i); // pour une empreinte : sain, malade, pas de resultat
 	//t.testAlertAnalysesupplementairesPlusieursEmpreintes(i); // pour plusieurs empreintes
 
 
-	//Test Pour ajouter Patien
+	//f.7 Test Pour ajouter Patien
 	//t.testAjouterPatienfonct(m, i);
 	//t.testAjouterPatienErreurfonct(m, i);
 
+
+	//f.8 Test connecter Medecin
+	//t.testConnecterMedecin(m, i.getListeMedecin());
 
 	//-----------------------------------Tests non fonctionnels
 	//Test  manipulation fichier
@@ -209,9 +221,6 @@ int main()
 	//Test Verification de vitesse d'initialisation
 	//t.testVitesse(i);
 
-	//Test Verification de chargement d'empreinte(s) erronées
-	t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
-	t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
 
 	cout << endl;
 	cout << endl;
