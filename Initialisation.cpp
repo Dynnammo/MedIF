@@ -335,7 +335,7 @@ void Initialisation::afficherPatient(){
 	{
 		Patient p = listePatient[i];
 		cout << p.getNom() << " " << p.getPrenom() <<endl;
-		cout  << "ID = " <<p.getIdPersonne();
+		cout  << "ID = " <<p.getIdPersonne() << endl;
 	}	
 }
 

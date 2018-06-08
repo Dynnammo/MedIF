@@ -78,7 +78,7 @@ void Menu::menuAppli()
                 menuMesurerPatient(m, listePatients);
                 break;
             case 3:
-                menuFaireAnalyse(m, lm);
+                menuFaireAnalyse(m, i.getListeMaladie());
                 break;
             case 4:
                 menuRechercherAnalyse(i, m);
@@ -104,6 +104,7 @@ void Menu::menuAppli()
 
 void Menu::menuAjoutPatient(Medecin m, vector<Patient> &listePatients)
 {
+    AJOUT:
     cout << "Vous avez choisi d'enregistrer un nouveau patient." << endl;
     string nomPatient;
     string prenomPatient;
@@ -118,7 +119,16 @@ void Menu::menuAjoutPatient(Medecin m, vector<Patient> &listePatients)
     i.setPatient(p);
     i.afficherPatient();
     cout << "Patient bien ajoute." << endl;
-    cout << "=======================>>> Retour au menu" << endl;
+    cout << "Voulez-vous en ajouter un autre (Y/N)?" << endl;
+    CHOIX: string rajout;cin >>rajout;
+    if (rajout == "Y"){
+        goto AJOUT;
+    } else if (rajout == "N") {
+        cout << "=======================>>> Retour au menu" << endl;
+    } else {
+        cout << "Mauvaise entrée" << endl;
+        goto CHOIX;
+    }    
 }
 
 void Menu::menuMesurerPatient(Medecin m, vector<Patient> listePatients)
@@ -128,20 +138,42 @@ void Menu::menuMesurerPatient(Medecin m, vector<Patient> listePatients)
     string nomFichier;
     cin >> nomFichier;
     m.chargerEmpreinte(nomFichier, listePatients);
+    
+    for(int i = 0; i < listePatients.size(); i++)
+    {
+        cout <<listePatients[i].getIdPersonne()<<endl;
+        listePatients[i].afficherEmpreinte();
+    }
+    
+
     cout << "Les empreintes ont bien ete enregistrees pour les patients." << endl;
     cout << "=======================>>> Retour au menu" << endl;
 }
 
 void Menu::menuFaireAnalyse(Medecin m, unordered_map<int, Maladie> &lm)
 {
-    i.afficherPatient();
+    
+    for(int it =0; it < i.getListePatient().size(); it++)
+    {
+        cout << i.getListePatient()[it].getIdPersonne();
+        i.getListePatient()[it].afficherEmpreinte();
+    }
+    
     cout << "Vous avez choisi d'effectuer l'analyse d'empreintes." << endl;
     cout << "Veuillez entrer l'id du patient : " << endl;
     int idPatient;
     cin >> idPatient;
     Patient p = i.getPatient(idPatient);
-    cout << p;
+    p.afficherEmpreinte();
+    
+
     list<Analyse> listeAnalyse = m.faireAnalyse(p, lm,true);
+    
+    for(list<Analyse>::iterator it = listeAnalyse.begin(); it != listeAnalyse.end(); it++)
+    {
+        cout << *it;
+    }
+    
     cout << "L'analyse est terminee. Voulez-vous la voir ? (Y/N) ";
     string afficher;
     cin >> afficher;

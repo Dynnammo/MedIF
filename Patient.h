@@ -50,6 +50,12 @@ public:
 		}
 		
 	}
+	void afficherEmpreinte(){
+		for(list<Empreinte>::iterator it = le.begin(); it!= le.end(); it++)
+		{
+			cout << *it;
+		}
+	}
 	void viderListeEmpreintes() {
 
 		le.clear();

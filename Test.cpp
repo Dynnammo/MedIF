@@ -59,6 +59,7 @@ using namespace std;
 		}
 
 		cout << "----------- Fin de Test Initialisation -----------" << endl;
+		nbTestsUnitairesValides++;
 	}
 
 	void Test::testSplit(string lignef, string del )
@@ -134,7 +135,7 @@ using namespace std;
 		}
 		
 		if (estReussi == true) {
-
+			nbTestsUnitairesValides++;
 			cout << "Le test split est reussi" << endl;
 		}
 		else {
@@ -159,7 +160,11 @@ using namespace std;
 		cout << "----------- liste des Maladies Potentielles Apres -----------" << endl;
 		a.analyseEmpreinte(e, mapMaladie);
 
-		
+		unordered_map<string, double>maladiesPotentielles = a.getMaladiesPotentielles();
+
+		if (maladiesPotentielles.size() != 0) {
+			nbTestsUnitairesValides++;
+		}
 		cout << a << endl;
 
 		cout << "----------- Fin de Test d'analyse d'empreinte -----------" << endl;
@@ -168,29 +173,10 @@ using namespace std;
 	void Test::testInitialisationMedecin(string nomFichier, Initialisation &in)
 	{
 		cout << "----------- Test Initialisation Medecin -----------" << endl;
-		cout << "----------- liste Medecin Avant -----------" << endl;
+	
 
 		bool estReussi = true;
-		/*if (in.getListeMedecin().size()==0)
-		{
-			cout << "Pas de Medecin present" << endl;
-		}
-		else
-		{
-			in.afficherMedecin();
-		}
 		
-		in.initMedecin(nomFichier);
-		cout << "----------- liste Medecin Apres -----------" << endl;
-
-		if (in.getListeMedecin().size() == 0)
-		{
-			cout << "Pas de Medecin present" << endl;
-		}
-		else
-		{
-			in.afficherMedecin();
-		}*/
 		in.initMedecin(nomFichier);
 		if (in.getListeMedecin().size() == 0)
 		{
@@ -200,6 +186,7 @@ using namespace std;
 		if (estReussi == true) {
 
 			cout << "Le test d'initialisation des Medecins est reussi" << endl;
+			nbTestsUnitairesValides++;
 		}
 		else {
 			cout << "Le test d'initialisation des Medecins a echoue." << endl;
@@ -212,25 +199,7 @@ using namespace std;
 	void Test::testAjouterPatient(Medecin medecin, vector <Patient> & listeP)
 	{
 		cout << "----------- Test Ajouter Patient -----------" << endl;
-		/*cout << "Liste des Patients AVANT : " << endl;
-		for (unsigned int i(0); i<listeP.size(); i++)
-		{
-			listeP[i].afficher();
-			cout << endl;
-		}
-
-		string n = "Marley";
-		string p = "Bob";
-		string mdp = "bm";
-
-		Patient test = medecin.ajouterPatient(n,p,mdp, listeP);
-		
-		cout << "Liste des Patients APRES : " << endl;
-		for (unsigned int i(0); i<listeP.size(); i++)
-		{
-			listeP[i].afficher();
-			cout << endl;
-		}*/
+	
 		bool estReussi = true;
 		string n = "Marley";
 		string p = "Bob";
@@ -242,7 +211,7 @@ using namespace std;
 		}
 
 		if (estReussi == true) {
-
+			nbTestsUnitairesValides++;
 			cout << "Le test d'ajout de Patient est reussi" << endl;
 		}
 		else {
@@ -260,6 +229,7 @@ using namespace std;
 		bool estConnecte = m.seConnecter(liste);
 
 		if (estConnecte) {
+			nbTestsUnitairesValides++;
 
 			cout << "Le medecin est bien connecte à l'appli, test reussi." << endl;
 		}
@@ -280,7 +250,7 @@ using namespace std;
 		Empreinte e= le.back();
 	
 		if (e.getMesures() == mesures) {
-
+			nbTestsUnitairesValides++;
 			cout << "Test de Mesure du Patient reussie" << endl;
 		}
 		else {
@@ -299,7 +269,7 @@ using namespace std;
 	
 		for (vector<Patient>::iterator it = liste.begin(); it != liste.end(); it++)
 		{
-			//cout <<"id du Patient"<< it->getIdPersonne() << endl;
+			//cout <<"id du Patient :"<< it->getIdPersonne() << endl;
 			list<Empreinte> le = (*it).getEmpreintes();
 
 			if (it->getIdPersonne() == 1) {
@@ -322,7 +292,7 @@ using namespace std;
 			if (it->getIdPersonne() == 4) {
 				Empreinte e = le.back();
 				if (e.getMesures() == "False;1.1;14.3;13.2;2368") {
-
+					
 					cout << "Le test de chargement d'empreinte est reussi pour le patient d'id 4" << endl;
 				}
 				else {
@@ -347,7 +317,7 @@ using namespace std;
 		}
 
 		if (estReussi == true) {
-
+			nbTestsUnitairesValides++;
 			cout << "Le test de chargement d'empreinte a reussi pour tous les patients." << endl;
 		}
 			/*for (list<Empreinte>::const_iterator it2 = le.begin(); it2 != le.end(); it2++)
@@ -384,7 +354,7 @@ using namespace std;
 		}
 			
 		if (estReussi == true) {
-
+			nbTestsUnitairesValides++;
 			cout << "Le test de recherche d'Analyse a reussi." << endl;
 		}
 		else {
@@ -477,6 +447,7 @@ using namespace std;
 
 		if (estReussi)
 		{
+			nbTestsUnitairesValides++;
 			cout << "Le test faire une analyse a reussi." << endl;
 		}
 		else
@@ -514,6 +485,8 @@ using namespace std;
 
 					if (it2->first == "sain" && ((it2->second) - 1)<0.01) {
 						estReussi = true;
+						
+
 					}
 				}
 
@@ -521,7 +494,7 @@ using namespace std;
 		}
 
 		if (estReussi == true) {
-
+			nbTestsFonctionnelsValides++;
 			cout << "Le test d'analyse d'empreinte saine est reussi." << endl;
 		}
 		else {
@@ -539,7 +512,10 @@ using namespace std;
 		if (i.getListePatient().size() == tailleAv + 1)
 		{
 			cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
+			cout << "Le test AjouterPatienfonct est reussi" << endl;
+			nbTestsFonctionnelsValides++;
 			return true;
+			
 		}
 		cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
 		return false;
@@ -559,6 +535,8 @@ using namespace std;
 			return false;
 		}
 		cout << "----------Fin de test fonctionnel : AjouterPatient----------" << endl;
+		nbTestsFonctionnelsValides++;
+		cout << "Le test AjouterPatienErreurfonct est reussi" << endl;
 		return true;
 	}
 
@@ -570,6 +548,9 @@ using namespace std;
 		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
 		{
 			cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
+			
+			nbTestsFonctionnelsValides++;
+			cout << "Le test AfficherMaladies est reussi" << endl;
 			return true;
 		}
 		cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
@@ -581,6 +562,14 @@ using namespace std;
 		Medecin med(n, m, p, motDePasse);
 		bool estCo=med.seConnecter(liste);
 
+		if (estCo == true) {
+			cout<<"Le medecin n'a pas le bon id ou mdp, il ne peut pas se connecter au service, test reussi." << endl;
+			nbTestsFonctionnelsValides++;
+		}
+		else {
+
+			cout << "Le medecin a pu se connecter alors que ses informations ne sont pas correctes, test echoue." << endl;
+		}
 		return estCo;
 	}
 
@@ -593,6 +582,10 @@ using namespace std;
 		if (m.size() != 0 && m.begin()->second.getListeAttribut().size() != 0)
 		{
 			cout << "----------Fin de test fonctionnel : CreerMaladie----------" << endl;
+		
+			nbTestsFonctionnelsValides++;
+
+			cout << " Le test CreerMaladie est reussi " << endl;
 			return true;
 		}
 		cout << "----------Fin de test fonctionnel : CreerMaladie----------" << endl;
@@ -603,6 +596,7 @@ using namespace std;
 	{
 		cout << "----------Debut de test fonctionnel : CreerMaladieErreur----------" << endl;
 		cout << "----------Fin de test fonctionnel : CreerMaladieErreur----------" << endl;
+		nbTestsFonctionnelsValides++;
 		return !this->testCreerMaladie(nomFichier);
 	}
 
@@ -628,7 +622,11 @@ using namespace std;
 			if (it->second < 0.5)
 			{
 				cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+
+				nbTestsFonctionnelsValides++;
+				cout << "Le test AlertAnalysesupplementaires est reussi" << endl;
 				return true;
+				
 			}
 		}
 		liste = b.getMaladiesPotentielles();
@@ -637,7 +635,10 @@ using namespace std;
 			if (it->second < 0.5)
 			{
 				cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+				cout << "Le test AlertAnalysesupplementaires est reussi" << endl;
+				nbTestsFonctionnelsValides++;
 				return true;
+				
 			}
 		}
 		liste = c.getMaladiesPotentielles();
@@ -646,7 +647,10 @@ using namespace std;
 			if (it->second < 0.5)
 			{
 				cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires----------" << endl;
+				cout << "Le test AlertAnalysesupplementaires est reussi" << endl;
+				nbTestsFonctionnelsValides++;
 				return true;
+				
 			}
 		}
 
@@ -684,7 +688,12 @@ using namespace std;
 				if (it->second < 0.5)
 				{
 					cout << "----------Fin de test fonctionnel : Alert pour analyses supplementaires- pour plusieurs empreintes---------" << endl;
+					
+					cout << "Le test Alert pour analyses supplementaires- pour plusieurs empreintes est reussi" << endl;
+					nbTestsFonctionnelsValides++;
 					return true;
+
+					
 				}
 			}
 		}
@@ -719,7 +728,10 @@ using namespace std;
 		}
 
 		cout << "----------Fin de test non fonctionnel : Verification de progression lineaire en temps d'initialisation---------" << endl;
+		cout << "Le test Verification de progression lineaire en temps d'initialisationest reussi" << endl;
+		nbTestsFonctionnelsValides++;
 		return true;
+		
 	}
 
 	bool Test::testReutilisabilite(Initialisation i)
@@ -735,7 +747,10 @@ using namespace std;
 
 		if ((a1.getMaladiesPotentielles().size() > 0 && a1.getMaladiesPotentielles().begin()->second > 0) && (a2.getMaladiesPotentielles().size() > 0 && a2.getMaladiesPotentielles().begin()->second > 0))
 		{
+			nbTestsFonctionnelsValides++;
+			cout << "Le test testReutilisabilite est reussi" << endl;
 			return true;
+		
 		}
 		else
 		{
@@ -743,4 +758,58 @@ using namespace std;
 		}
 
 		cout << "----------Fin de test non fonctionnel : Reutilisabilite en fonction de differents nombre d'attributs---------" << endl;
+	}
+
+
+	///////////////////////////////////////////////////Test SYSTEME
+
+	bool Test::testSysteme1(Medecin m, vector <Medecin> listeMedecins, vector<Patient> &listePatients, unordered_map<int, Maladie> &lm, bool opt) {
+
+		
+
+		cout << "----------Debut de Test Systeme 1---------" << endl;
+
+		Patient test=m.ajouterPatient("Malade", "Jean-Michel", "jean-michel.malade@gmail.com", listePatients);
+
+		if (listePatients.back().getNom() != test.getNom() || listePatients.back().getPrenom() != test.getPrenom() || listePatients.back().getMail() != test.getMail()) {
+			cout << "L'ajout du Patient a echoue" << endl;
+			
+			return false;
+			
+		}
+
+		cout << "Id du patient rajoute : " << listePatients.back().getIdPersonne() << endl;
+
+		string nomFichier = "Mesures.txt";
+
+		m.chargerEmpreinte(nomFichier, listePatients);
+
+		
+
+		if (listePatients.back().getEmpreintes().size() == 0) {
+
+
+			cout << "Le chargement d'Empreinte a echoue pour le Patient" << endl;
+			return false;
+
+			
+		}
+
+		
+		m.faireAnalyse(listePatients.back(), lm, opt);
+		cout << "coucou" << endl;
+
+		if (listePatients.back().getAnalyses().size() == 0) {
+
+			cout << "La tentative de faire une analyse pour une empreinte a echoue" << endl;
+			return false;
+		}
+
+		cout << "Le testSystem1 est reussi." << endl;
+
+		cout << "----------Fin de Test Systeme 1---------" << endl;
+
+
+		return true;
+		
 	}
