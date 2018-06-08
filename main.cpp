@@ -174,7 +174,7 @@ int main()
 
 	//test pour rechercherAnalyse
 	//appelTestRechercherAnalyse(t, p, m);
-	cout << "Nombre de tests unitaires passes avec succes: " << t.nbTestsUnitairesValides << endl;
+	//cout << "Nombre de tests unitaires passes avec succes: " << t.nbTestsUnitairesValides << endl;
 	//testfonctionnel 2.1:
 
 	//appelTestEmpreinteSaine(t, m, p, i);
@@ -225,15 +225,11 @@ int main()
 	Menu m;
 	m.menuPrincipal();
 	//system("PAUSE");
-=======
-	//Test Verification de chargement d'empreinte(s) erronées
-	t.testChargerEmpreinteFausse(m,"fichierTestEmpreinteFausse.txt");
-	t.testChargerEmpreintesErronee(m,"fichierTestChargerEmpreintes.txt");
 
 	cout << endl;
 	cout << endl;
 	cout << endl;
-	cout << "Nombre de tests fonctionnels passes avec succes: " << t.nbTestsFonctionnelsValides << endl;
+	//cout << "Nombre de tests fonctionnels passes avec succes: " << t.nbTestsFonctionnelsValides << endl;
 
 
 	///---------------------------------------------------------------------------------Tests Systemes
@@ -241,7 +237,7 @@ int main()
 	//Test charger une empreinte erronée
 	//t.testChargerEmpreinteFausse(m, "fichierTestEmpreinteFausse.txt");
 
-	t.testSysteme1(m, i.getListeMedecin(), i.getListePatient(), i.getListeMaladie(),false);
+	//t.testSysteme1(m, i.getListeMedecin(), i.getListePatient(), i.getListeMaladie(),false);
 	
 	system("PAUSE");
 	return 0;
