@@ -104,6 +104,24 @@ void appelTestEmpreinteSaine(Test t, Medecin m, Patient p, Initialisation i) {
 	t.testEmpreinteSaine(m, liste, nomFichier, p, lm);
 }
 
+void appelSeConnecterMauvaisMdp(Test t,Initialisation ini ) {
+	ini.initMedecin("MedecinIni.txt");
+
+	vector <Medecin> medecins = ini.getListeMedecin();
+	string nom = "Dicaprio";
+	string prenom = "Leonardo";
+	string mail = "leonardo.dicaprio@gmail.com";
+	string mdp = "101112";
+	bool testReussi=t.seConnecterMauvaisMdp(medecins, nom, mail, prenom,mdp);
+
+	if (testReussi == true) {
+		cout << "Le test est reussi" << endl;
+	}
+	else {
+		cout << "Le test a echoue" << endl;
+	}
+}
+
 int main()
 {
 	id = 0;

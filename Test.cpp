@@ -403,36 +403,26 @@ using namespace std;
 			cout << "id patient :" << p.getIdPersonne();
 		}*/
 		m.chargerEmpreinte(nomFichier, liste);
-		list <Analyse> la=m.faireAnalyse(p, lm);
+		//list <Analyse> la=m.faireAnalyse(p, lm,false);
 	}
 	
 	void Test::testFaireAnalyse(Medecin m, Patient p, unordered_map<int, Maladie> &lm)
 	{
 		cout << "----------- Test Faire Analyse -----------" << endl;
 		/*Empreinte e1("TT;158.785072773956;134.202843809773;155.578398714048");*/
-		Empreinte e2("TT;-8.06041743387215;156.208637725086;127.004626704367");
-		Empreinte e3("AT;-29.8670607474956;9.12582752675129;154.212716708429");
+		Empreinte e2("AA;25;131;147");
+		Empreinte e3("AA;149;-11;161");
+		Empreinte e4("AA;-41;11;182");
+		Empreinte e5("AT;75;84;221");
 		Empreinte e1("AT; 102; 63;203");
 
 		// faire analyse pour 1 empreinte
 		cout << "--- Analyse d'une empreinte ---" << endl;
 		p.setEmpreintes(e1);
 		list<Empreinte> le = p.getEmpreintes();
-		//list<Analyse> la = p.getAnalyses();
+	
 
-		/*cout << "Liste des Empreintes AVANT : " << endl;
-		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}
-
-		cout << "Liste des Analyses AVANT : " << endl;
-		for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-		{
-			cout << (*it) << endl;
-		}*/
-
-		m.faireAnalyse(p, lm);
+		m.faireAnalyse(p, lm, false);
 
 		list<Analyse> la = p.getAnalyses();
 
@@ -476,49 +466,113 @@ using namespace std;
 				cout << "Le test faire une analyse a echoue." << endl;
 			}
 
-			cout << "Liste des Empreintes APRES : " << endl;
-			for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-			{
-				cout << (*it) << endl;
-			}
+			estReussi = true;
 
-			cout << "Liste des Analyses APRES : " << endl;
-			for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-			{
-				cout << (*it) << endl;
-			}
 
-			// faire analyse pour plusieurs empreintes
-			cout << "--- Analyse de plusieurs empreintes ---" << endl;
 			p.setEmpreintes(e2);
 			p.setEmpreintes(e3);
+			p.setEmpreintes(e4);
+			p.setEmpreintes(e5);
+	
+			m.faireAnalyse(p, lm, true);
 
-			cout << "Liste des Empreintes AVANT : " << endl;
-			for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-			{
-				cout << (*it) << endl;
+			list <Analyse> listeA2 = p.getAnalyses();
+
+		
+
+			Analyse a1 = listeA2.back();
+			listeA2.pop_back();
+
+			unordered_map<string, double> maladies1 = a1.getMaladiesPotentielles();
+
+			 index = 0;
+			for (unordered_map<string, double>::iterator it = maladies1.begin(); it != maladies1.end(); it++) {
+
+				switch (index) {
+
+				case 0:
+					cout << "première analyse :" << it->first << " " << it->second << endl;
+					if (it->first != "M1" && it->second != 0.560838) {
+
+						estReussi = false;
+					}
+					break;
+
+
+				case 1:
+					if (it->first != "M4" && it->second != 0.621925) {
+						estReussi = false;
+					}
+					break;
+
+				case 2:
+					if (it->first != "sain" && it->second != 0.934547) {
+						estReussi = false;
+					}
+					break;
+
+
+
+				}
+
+				index++;
 			}
+			Analyse a2 = listeA2.back();
+			listeA2.pop_back();
 
-			cout << "Liste des Analyses AVANT : " << endl;
-			for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-			{
-				cout << (*it) << endl;
+			unordered_map<string, double> maladies2 = a2.getMaladiesPotentielles();
+
+		 index = 0;
+			for (unordered_map<string, double>::iterator it = maladies2.begin(); it != maladies2.end(); it++) {
+
+				switch (index) {
+
+				case 0:
+					cout << "première analyse :" << it->first << " " << it->second << endl;
+					if (it->first != "M4" && it->second != 0.886387) {
+
+						estReussi = false;
+					}
+					break;
+
+				}
+
+				index++;
 			}
+			Analyse a3= listeA2.back();
+			listeA2.pop_back();
 
-			m.faireAnalyse(p, lm);
 
-			cout << "Liste des Empreintes APRES : " << endl;
-			for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++)
-			{
-				cout << (*it) << endl;
+			unordered_map<string, double> maladies3 = a3.getMaladiesPotentielles();
+
+		index = 0;
+			for (unordered_map<string, double>::iterator it = maladies3.begin(); it != maladies3.end(); it++) {
+
+				switch (index) {
+
+				case 0:
+					cout << "première analyse :" << it->first << " " << it->second << endl;
+					if (it->first != "M1" && it->second != 0.560838) {
+
+						estReussi = false;
+					}
+					break;
+
+
+				}
+
+				index++;
 			}
-
-			cout << "Liste des Analyses APRES : " << endl;
-			for (list<Analyse>::const_iterator it = la.cbegin(); it != la.cend(); it++)
-			{
-				cout << (*it) << endl;
+			Analyse a4 = listeA2.back();
+			listeA2.pop_back();
+	
+			if (estReussi == true) {
+				cout << "Test reussi pour plusieurs analyses" << endl;
 			}
-
+			else {
+				cout << "Test echoue pour plusieurs analyses" << endl;
+			}
+			
 			cout << "----------- Fin Test Faire Analyse -----------" << endl;
 		}
 	
@@ -534,6 +588,14 @@ using namespace std;
 		}
 		cout << "----------Fin de test fonctionnel : AfficherMaladies----------" << endl;
 		return false;
+	}
+
+	bool Test::seConnecterMauvaisMdp(vector <Medecin> liste, string n, string m, string p, string motDePasse) {
+
+		Medecin med(n, m, p, motDePasse);
+		bool estCo=med.seConnecter(liste);
+
+		return estCo;
 	}
 
 	bool Test::testCreerMaladie(string nomFichier)

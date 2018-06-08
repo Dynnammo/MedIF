@@ -51,7 +51,7 @@ public:
 	// detruit l'objet medecin en cours
 	Patient ajouterPatient(string n, string p, string m, vector <Patient> &patients);
 	// enregistrer un nouveau patient dans les donnees
-	list <Analyse> faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm);
+	list <Analyse> faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm, bool opt);
 	// a partir des empreintes d'un patient, analyser ces donnees
 	// pour savoir si le patient est malade
 	Analyse rechercherAnalyse(int id, Patient &p);

@@ -90,6 +90,7 @@ public:
 	bool testAfficherMaladies(unordered_map <int, Maladie> &mapMaladie);
 	bool testCreerMaladie(string nomFichier);
 	bool testCreerMaladieErreur(string nomFichier);
+	bool seConnecterMauvaisMdp(vector <Medecin> liste, string n, string m, string p, string motDePasse);
 
 
 };

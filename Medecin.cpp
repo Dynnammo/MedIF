@@ -56,15 +56,25 @@ Patient Medecin::ajouterPatient(string n, string p, string m, vector <Patient> &
 }
 
 
-list<Analyse> Medecin::faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm)
+list<Analyse> Medecin::faireAnalyse(Patient &p, unordered_map<int, Maladie> &lm, bool opt)
 {
 	list <Empreinte> le = p.getEmpreintes();
 	Analyse a;
-	for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
 
-		a.analyseEmpreinte(*it,lm);
-		p.setAnalyses(a);
+	if (opt == true) {
+		for (list<Empreinte>::const_iterator it = le.cbegin(); it != le.cend(); it++) {
+
+			a.analyseEmpreinte(*it, lm);
+			p.setAnalyses(a);
+		}
 	}
+	else {
+
+		Empreinte e = le.back();
+		a.analyseEmpreinte(e, lm);
+	}
+
+	p.viderListeEmpreintes();*/
 
 	return p.getAnalyses();
 }
