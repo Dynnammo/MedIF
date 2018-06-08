@@ -1,5 +1,5 @@
 /*************************************************************************
-Personne  -  description
+Personne
 -------------------
 d�but                : 27.04.2018
 copyright            : (C) 2018 par Tifenn FLOCH
@@ -91,7 +91,6 @@ public:
 
 	virtual ~Personne()
 	{
-		//id1--;
 #ifdef MAP
 	    cout << "Appel au destructeur de <Personne>" << endl;
 #endif
