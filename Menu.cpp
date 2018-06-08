@@ -49,7 +49,6 @@ void Menu::menuAppli()
     cin >> mdpMedecin;
     Medecin m("Don't care", mailMedecin,"Don't care", mdpMedecin);
     vector<Medecin> listeMedecins = i.getListeMedecin();
-    vector<Patient> listePatients = i.getListePatient();
     unordered_map<int, Maladie> lm = i.getListeMaladie();
     //if (m.seConnecter(listeMedecins))
     {
@@ -72,10 +71,10 @@ void Menu::menuAppli()
             switch (option)
             {
             case 1:
-                menuAjoutPatient(m, listePatients);
+                menuAjoutPatient(m, i.getListePatient());
                 break;
             case 2:
-                menuMesurerPatient(m, listePatients);
+                menuMesurerPatient(m, i.getListePatient());
                 break;
             case 3:
                 menuFaireAnalyse(m, i.getListeMaladie());
@@ -115,7 +114,7 @@ void Menu::menuAjoutPatient(Medecin m, vector<Patient> &listePatients)
     cin >> prenomPatient;
     cout << "Veuillez entrer son adresse mail : ";
     cin >> mailPatient;
-    Patient p = m.ajouterPatient(nomPatient, prenomPatient, mailPatient, listePatients);
+    Patient p(nomPatient, prenomPatient, mailPatient);
     i.setPatient(p);
     i.afficherPatient();
     cout << "Patient bien ajoute." << endl;
@@ -131,7 +130,7 @@ void Menu::menuAjoutPatient(Medecin m, vector<Patient> &listePatients)
     }    
 }
 
-void Menu::menuMesurerPatient(Medecin m, vector<Patient> listePatients)
+void Menu::menuMesurerPatient(Medecin m, vector<Patient> &listePatients)
 {
     cout << "Vous avez choisi de faire les mesures de vos patients." << endl;
     cout << "Veuillez entrer le nom du fichier correspondant au mesures du capteur : ";
